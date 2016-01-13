@@ -1,6 +1,7 @@
 /**
  * Created by root on 12/01/16.
  */
+
 Template.postSubmit.events({
     'submit form': function(e) {
         e.preventDefault();
@@ -15,9 +16,23 @@ Template.postSubmit.events({
             if (error)
                 return alert(error.reason);
             if (result.postExists)
-                alert('Este link ya ha sido posteado');
-            if (result.noTieneHTTP){
-                return alert('Enlace invalido, falta http://');
+                Bert.alert({
+                    title: 'ALERTA',
+                    message: 'Este link ya ha sido posteado',
+                    type: 'warning',
+                    style: 'growl-top-right',
+                    icon: 'fa-exclamation-triangle '
+                });
+
+            if (result.urlNoValida){
+                Bert.alert({
+                    title: 'ERROR',
+                    message: 'URL no valida',
+                    type: 'danger',
+                    style: 'growl-top-right',
+                    icon: 'fa-exclamation-triangle'
+                });
+                return;
             }
             Router.go('postPage', {_id: result._id});
         });

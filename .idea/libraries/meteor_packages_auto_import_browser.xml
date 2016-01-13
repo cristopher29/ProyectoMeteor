@@ -17,6 +17,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/livedata_connection.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/namespace.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/livedata_common.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/fortawesome_fontawesome/4.4.0_1/web.browser/upstream/css/font-awesome.css" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/client_convenience.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/id_map.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/random_stream.js" />
@@ -25,7 +26,9 @@
         <item url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/namespace.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/heartbeat.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-rate-limiter/1.0.0/web.browser/ddp-rate-limiter.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/themeteorchef_bert/2.1.0/web.browser/bert.js" />
         <item url="file://$USER_HOME$/.meteor/packages/diff-sequence/1.0.1/web.browser/diff.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/themeteorchef_bert/2.1.0/web.browser/templates/bert-alert.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ecmascript-runtime/0.2.6/web.browser/.npm/package/node_modules/meteor-ecmascript-runtime/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ejson/1.0.7/web.browser/stringify.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ejson/1.0.7/web.browser/ejson.js" />
@@ -202,6 +205,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/livedata_connection.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/namespace.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/livedata_common.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/fortawesome_fontawesome/4.4.0_1/web.browser/upstream/css/font-awesome.css" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/client_convenience.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/id_map.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/random_stream.js" />
@@ -210,7 +214,9 @@
       <root url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/namespace.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/heartbeat.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-rate-limiter/1.0.0/web.browser/ddp-rate-limiter.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/themeteorchef_bert/2.1.0/web.browser/bert.js" />
       <root url="file://$USER_HOME$/.meteor/packages/diff-sequence/1.0.1/web.browser/diff.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/themeteorchef_bert/2.1.0/web.browser/templates/bert-alert.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ecmascript-runtime/0.2.6/web.browser/.npm/package/node_modules/meteor-ecmascript-runtime/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ejson/1.0.7/web.browser/stringify.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ejson/1.0.7/web.browser/ejson.js" />
