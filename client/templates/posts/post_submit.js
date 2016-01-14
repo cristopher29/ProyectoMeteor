@@ -35,6 +35,13 @@ Template.postSubmit.events({
                 return;
             }
             Router.go('postPage', {_id: result._id});
+            Bert.alert({
+                title: 'CORRECTO',
+                message: 'Nuevo post agregado',
+                type: 'success',
+                style: 'growl-top-right',
+                icon: 'fa-check'
+            });
         });
     }
 });
