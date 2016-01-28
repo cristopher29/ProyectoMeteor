@@ -2,11 +2,17 @@
   <div class="post">
     <div class="post-content">
       <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
+      <p>enviado por {{author}}</p>
     </div>
 
     {{#if currentUser}}
         <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Ver</a>
     {{/if}}
+
+    {{#if ownPost}}
+      <a href="{{pathFor 'postEdit'}}" class="discuss btn btn-default">Editar</a>
+    {{/if}}
+
   </div>
 </template>
 

@@ -12,9 +12,10 @@ Template.postSubmit.events({
         };
 
         Meteor.call('postInsert', post, function(error, result) {
-            // display the error to the user and abort
+            // muestra alert con el error
             if (error)
                 return alert(error.reason);
+            // muestra alert si existe ese post
             if (result.postExists)
                 Bert.alert({
                     title: 'ALERTA',
