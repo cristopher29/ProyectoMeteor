@@ -28,10 +28,10 @@ Template.postEdit.events({
                 return;
             }
 
-            if (result.urlNoValida){
+            if (result.incorrectVal){
                 Bert.alert({
                     title: 'ERROR',
-                    message: 'URL no valida',
+                    message: 'Comprueba los datos',
                     type: 'danger',
                     style: 'growl-top-right',
                     icon: 'fa-exclamation-triangle'
@@ -55,12 +55,10 @@ Template.postEdit.events({
     },
 
     'click .delete': function(e) {
+        $('.modal').hide();
         e.preventDefault();
-
-        if (confirm("Seguro que quiere eliminar este post?")) {
-            var currentPostId = this._id;
-            Posts.remove(currentPostId);
-            Router.go('postsList');
-        }
+        var currentPostId = this._id;
+        Posts.remove(currentPostId);
+        Router.go('postsList');
     }
 });

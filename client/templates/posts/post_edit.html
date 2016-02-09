@@ -12,8 +12,29 @@
                 <input name="title" id="title" type="text" value="{{title}}" placeholder="Nombre de tu post" class="form-control"/>
             </div>
         </div>
-        <input type="submit" value="Submit" class="btn btn-primary submit"/>
+        <input type="submit" value="Actualizar" class="btn btn-primary submit"/>
         <hr/>
-        <a class="btn btn-danger delete" href="#">Eliminar post</a>
+        <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#modalEliminar">Eliminar post</a>
     </form>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminar">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar {{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    Seguro que quiere eliminar {{title}}?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <a class="btn btn-danger delete" href="#">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>

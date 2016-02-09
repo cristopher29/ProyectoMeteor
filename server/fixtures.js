@@ -1,6 +1,8 @@
 /**
  * Created by CristoH on 10/01/2016.
  */
+
+
 if (Posts.find().count() === 0) {
     Posts.insert({
         title: 'Introducing Telescope',
