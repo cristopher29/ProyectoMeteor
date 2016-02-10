@@ -43,21 +43,22 @@ Template.postSubmit.events({
                     icon: 'fa-exclamation-triangle '
                 });
 
+                Router.go('postPage', {_id: result._id});
+
+                return;
+
             }
 
             Router.go('postPage', {_id: result._id});
 
+            Bert.alert({
+                title: 'CORRECTO',
+                message: 'Nuevo post agregado',
+                type: 'success',
+                style: 'growl-top-right',
+                icon: 'fa-check'
+            });
 
-            if(result.postExists == false && result.incorrectVal == false){
-
-                Bert.alert({
-                    title: 'CORRECTO',
-                    message: 'Nuevo post agregado',
-                    type: 'success',
-                    style: 'growl-top-right',
-                    icon: 'fa-check'
-                });
-            }
 
         });
     }

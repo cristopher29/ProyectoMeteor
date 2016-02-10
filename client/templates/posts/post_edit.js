@@ -55,10 +55,13 @@ Template.postEdit.events({
     },
 
     'click .delete': function(e) {
-        $('.modal').hide();
-        e.preventDefault();
-        var currentPostId = this._id;
-        Posts.remove(currentPostId);
-        Router.go('postsList');
+
+        if (confirm("Seguro que quiere eliminar?")) {
+            e.preventDefault();
+            var currentPostId = this._id;
+            Posts.remove(currentPostId);
+            Router.go('postsList');
+        }
+
     }
 });
