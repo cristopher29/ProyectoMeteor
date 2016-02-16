@@ -4,12 +4,13 @@
 $.validator.setDefaults({
     rules: {
         title: {
-            required: true
+            required: true,
+            max: 10
         }
     },
     messages: {
         title: {
-            required: "Campo obligatorio.",
+            required: "Campo obligatorio."
         }
     }
 });

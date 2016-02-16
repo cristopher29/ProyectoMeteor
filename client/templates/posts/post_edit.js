@@ -38,7 +38,7 @@ Template.postEdit.events({
             if (result.postExists){
                 return Bert.alert({
                     title: 'ALERTA',
-                    message: 'Este link ya ha sido posteado',
+                    message: 'Este post tiene el mismo título y descripción que otro',
                     type: 'warning',
                     style: 'growl-top-right',
                     icon: 'fa-exclamation-triangle '

@@ -9,7 +9,8 @@
 
 body {
   background: #eee;
-  color: #666666; }
+  color: #666666;
+}
 
 #main {
   position: relative;
@@ -138,27 +139,11 @@ body {
   100% {opacity: 0;}
 }
 
-.errors{
-  position: fixed;
-  z-index: 10000;
-  padding: 10px;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  pointer-events: none;
-}
-.alert {
-          animation: fadeOut 2700ms ease-in 0s 1 forwards;
-  -webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
-     -moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
-  width: 250px;
-  float: right;
-  clear: both;
-  margin-bottom: 5px;
-  pointer-events: auto;
-}
 
 input.error{
   background-color:rgb(255, 231, 231);
+}
+
+.item{
+  min-height: 250px;
 }
