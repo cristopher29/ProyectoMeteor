@@ -2,13 +2,19 @@
  * Created by root on 12/01/16.
  */
 
+
+Template.postSubmit.onRendered(function(){
+    $('.postSubmit').validate();
+});
+
+
 Template.postSubmit.events({
     'submit form': function(e) {
         e.preventDefault();
 
         var post = {
-            url: $(e.target).find('#url').val(),
-            title: $(e.target).find('[name=title]').val()
+            title: $(e.target).find('[name=title]').val(),
+            description: $(e.target).find('[name=description]').val()
         };
 
         Meteor.call('postInsert', post, function(error, result) {
@@ -17,25 +23,16 @@ Template.postSubmit.events({
                 return alert(error.reason);
             // muestra alert si existe ese post
             if (result.postExists)
-                Bert.alert({
+                return Bert.alert({
                     title: 'ALERTA',
-                    message: 'Este link ya ha sido posteado',
+                    message: 'Este post tiene el mismo título y descripción que otro',
                     type: 'warning',
                     style: 'growl-top-right',
                     icon: 'fa-exclamation-triangle '
                 });
 
-            if (result.urlNoValida){
-                Bert.alert({
-                    title: 'ERROR',
-                    message: 'URL no valida',
-                    type: 'danger',
-                    style: 'growl-top-right',
-                    icon: 'fa-exclamation-triangle'
-                });
-                return;
-            }
             Router.go('postPage', {_id: result._id});
+
             Bert.alert({
                 title: 'CORRECTO',
                 message: 'Nuevo post agregado',

@@ -2,20 +2,27 @@
  * Created by root on 18/01/16.
  */
 
+Template.postSubmit.onRendered(function(){
+    $('.postEdit').validate();
+});
 
 Template.postEdit.events({
     'submit form': function(e) {
         e.preventDefault();
 
         var currentPostId = this._id;
-        var currentPostURL = this.url;
 
         var postProperties = {
-            url: $(e.target).find('[name=url]').val(),
+            description: $(e.target).find('[name=description]').val(),
             title: $(e.target).find('[name=title]').val()
         };
 
-        Meteor.call('postUpdate', currentPostId, postProperties , currentPostURL , function(error, result) {
+        var oldPostProperties = {
+            title: this.title,
+            description: this.description
+        };
+
+        Meteor.call('postUpdate', currentPostId, postProperties , oldPostProperties, function(error, result) {
             if (error) {
                 // alerta con error
                 Bert.alert({
@@ -28,19 +35,8 @@ Template.postEdit.events({
                 return;
             }
 
-            if (result.urlNoValida){
-                Bert.alert({
-                    title: 'ERROR',
-                    message: 'URL no valida',
-                    type: 'danger',
-                    style: 'growl-top-right',
-                    icon: 'fa-exclamation-triangle'
-                });
-                return;
-            }
-
             if (result.postExists){
-                Bert.alert({
+                return Bert.alert({
                     title: 'ALERTA',
                     message: 'Este link ya ha sido posteado',
                     type: 'warning',
@@ -50,6 +46,14 @@ Template.postEdit.events({
             }
 
             Router.go('postPage', {_id: result._id});
+
+            Bert.alert({
+                title: 'CORRECTO',
+                message: 'Post actualizado',
+                type: 'success',
+                style: 'growl-top-right',
+                icon: 'fa-check'
+            });
 
         });
     },

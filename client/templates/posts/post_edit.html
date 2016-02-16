@@ -1,18 +1,21 @@
 <template name="postEdit">
-    <form class="main form page">
-        <div class="form-group">
-            <label class="control-label" for="url">URL</label>
-            <div class="controls">
-                <input name="url" id="url" type="text" value="{{url}}" placeholder="Tu URL" class="form-control"/>
-            </div>
-        </div>
+    <form class="main form page postEdit">
+
         <div class="form-group">
             <label class="control-label" for="title">Titulo</label>
             <div class="controls">
                 <input name="title" id="title" type="text" value="{{title}}" placeholder="Nombre de tu post" class="form-control"/>
             </div>
         </div>
-        <input type="submit" value="Submit" class="btn btn-primary submit"/>
+
+        <div class="form-group">
+            <label class="control-label" for="url">Descripción</label>
+            <div class="controls">
+                <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{description}}</textarea>
+            </div>
+        </div>
+
+        <input type="submit" value="Guardar" class="btn btn-primary submit"/>
         <hr/>
         <a class="btn btn-danger delete" href="#">Eliminar post</a>
     </form>

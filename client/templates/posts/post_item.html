@@ -1,16 +1,13 @@
 <template name="postItem">
   <div class="post">
+
     <div class="post-content">
-      <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
-      <p>enviado por {{author}}</p>
+        <h3><a href="{{pathFor 'postPage'}}">{{title}}</a><span>enviado por {{author}}</span></h3>
+        <p>{{description}}</p>
     </div>
 
-    {{#if currentUser}}
-        <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Ver</a>
-    {{/if}}
-
     {{#if ownPost}}
-      <a href="{{pathFor 'postEdit'}}" class="discuss btn btn-default">Editar</a>
+        <a href="{{pathFor 'postEdit'}}" class="discuss btn btn-default">Editar</a>
     {{/if}}
 
   </div>
@@ -21,8 +18,11 @@
 <template name="postContent">
     <div class="post">
         <div class="post-content">
-            <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
+            <h3><a href="{{url}}">{{title}}</a></h3>
+            <p>{{description}}</p>
         </div>
+        <hr>
+        <p>enviado por {{author}}</p>
     </div>
     <div>
         <h3>Comentarios</h3>

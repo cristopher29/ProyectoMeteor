@@ -81,6 +81,7 @@ stylus@2.511.1
 templating@1.1.5
 templating-tools@1.0.0
 themeteorchef:bert@2.1.0
+themeteorchef:jquery-validation@1.14.0
 tracker@1.0.9
 twbs:bootstrap@3.3.6
 ui@1.0.8
