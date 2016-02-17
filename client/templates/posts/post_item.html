@@ -5,11 +5,13 @@
     <div class="item col-md-4">
 
         <div class="thumbnail">
-            <img src="http://placehold.it/320x125/EEE" class="">
+            <img src="http://placehold.it/320x125/EEE" class="img-responsive">
             <div class="caption">
                 <h4 class=""><a href="{{pathFor 'postPage'}}">{{title}}</a></h4>
+                <div class="descripcion">
+                    <p class="">{{description}}</p>
+                </div>
 
-                <p class="">{{description}}</p>
                 {{#if ownPost}}
                     <a href="{{pathFor 'postEdit'}}" class="btn btn-default btn-xs pull-right" role="button"><i class="glyphicon glyphicon-edit"></i></a>
                 {{/if}}
