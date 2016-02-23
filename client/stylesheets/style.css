@@ -15,11 +15,6 @@ body {
 #main {
   position: relative;
 }
-.page {
-  position: absolute;
-  top: 0px;
-  width: 100%;
-}
 
 .navbar {
   margin-bottom: 10px; }
@@ -143,26 +138,32 @@ body {
 input.error{
   background-color:rgb(255, 231, 231);
 }
-.descripcion{
-  width: 100%;
-  overflow: hidden;
-  max-height: 250px;
+
+.lista{
+  -moz-column-width: 18em;
+  -webkit-column-width: 18em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap:1em;
 }
 
-.thumbnail img{
+.item {
+  display: inline-block;
+  padding:  .25rem;
+  width:  100%;
+}
+
+.well {
+  position:relative;
+  display: block;
+}
+.descripcion{
+  overflow-wrap: break-word;
+}
+.well img{
   width: 100%;
-  min-height: 20vh;
 }
-#posts{
-  margin: 0;
-}
-.item{
-  margin: 0;
-  min-height: 20vh;
-  width: 33%;
-}
-@media (max-width: 600px) {
-  .item{
-    width: 100%;
-  }
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
 }

@@ -5,6 +5,10 @@
 
 Template.postSubmit.onRendered(function(){
     $('.postSubmit').validate();
+    $('#description').summernote({
+        height: 200,   // set editable area's height
+        focus: true    // set focus editable area after Initialize summernote
+    });
 });
 
 
@@ -14,7 +18,8 @@ Template.postSubmit.events({
 
         var post = {
             title: $(e.target).find('[name=title]').val(),
-            description: $(e.target).find('[name=description]').val()
+            shortDescription: $(e.target).find('[name=shortDescription]').val(),
+            description: $('#description').summernote('code')
         };
 
         Meteor.call('postInsert', post, function(error, result) {

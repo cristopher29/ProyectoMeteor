@@ -1,25 +1,17 @@
 <template name="postItem">
 
-
-
-    <div class="item col-md-4">
-
-        <div class="thumbnail">
-            <img src="http://placehold.it/320x125/EEE" class="img-responsive">
-            <div class="caption">
-                <h4 class=""><a href="{{pathFor 'postPage'}}">{{title}}</a></h4>
-                <div class="descripcion">
-                    <p class="">{{description}}</p>
-                </div>
-
-                {{#if ownPost}}
-                    <a href="{{pathFor 'postEdit'}}" class="btn btn-default btn-xs pull-right" role="button"><i class="glyphicon glyphicon-edit"></i></a>
-                {{/if}}
+    <div class="item">
+        <div class="well">
+            <img src="http://placehold.it/320x325/EEE" class="img-responsive">
+            <h4 class=""><a href="{{pathFor 'postPage'}}">{{title}}</a></h4>
+            <div class="descripcion">
+                {{shortDescription}}
             </div>
+            {{#if ownPost}}
+                <a href="{{pathFor 'postEdit'}}" class="btn btn-default" role="button"><i class="glyphicon glyphicon-edit"></i></a>
+            {{/if}}
         </div>
-
     </div>
-
 
 </template>
 
@@ -27,39 +19,33 @@
 
 <template name="postContent">
 
-    <div class="col-lg-12">
+    <div class="col-md-6">
 
-        <h1>{{title}}</h1>
+        <h2>{{title}}</h2>
 
         <p class="lead">
             por <a href="#">{{author}}</a>
         </p>
-
-        <hr>
-
         <p><span class="glyphicon glyphicon-time"></span> Publicado el {{submitted}}</p>
-
         <hr>
-
-        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
-        <hr>
-
-        <p>{{description}}</p>
-
-        <hr>
-
-        <div class="well">
-            <h4>Comentar:</h4>
-            <form role="form">
-                <div class="form-group">
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+        <div class="descripcion">
+            {{{description}}}
+            {{description}}
         </div>
+    </div>
 
+    <div class="col-md-6 text-center">
+        <img style="display: inline-block" class="img-responsive" src="http://placehold.it/300x400" alt="">
+    </div>
 
+    <div class="col-xs-12">
+        <h4>Comentar:</h4>
+        <form role="form">
+            <div class="form-group">
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
     </div>
 
 </template>

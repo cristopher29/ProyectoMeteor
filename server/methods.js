@@ -5,10 +5,7 @@ Meteor.methods({
     postInsert: function(postAttributes) {
 
         check(Meteor.userId(), String);
-        check(postAttributes, {
-            title: String,
-            description: String
-        });
+        check(postAttributes, PostSchema);
 
         var postWithSameAttr = Posts.findOne({title: postAttributes.title}, {description: postAttributes.description});
 
@@ -36,10 +33,7 @@ Meteor.methods({
     postUpdate: function(oldPost, newValues, oldValues){
 
         check(Meteor.userId(), String);
-        check(newValues, {
-            title: String,
-            description: String
-        });
+        check(newValues, PostSchema);
 
         if(oldValues.title != newValues.title || oldValues.description != newValues.description){
 
@@ -57,6 +51,7 @@ Meteor.methods({
         var post = _.extend(newValues, {
             title: newValues.title,
             description: newValues.description,
+            shortDescription: newValues.shortDescription,
             userId: user._id,
             author: user.username,
             updated: new Date()

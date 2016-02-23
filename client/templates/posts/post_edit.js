@@ -2,9 +2,15 @@
  * Created by root on 18/01/16.
  */
 
-Template.postSubmit.onRendered(function(){
+Template.postEdit.onRendered(function(){
     $('.postEdit').validate();
+    var textArea = $('#description');
+    textArea.summernote({
+        height: 200
+    });
+    textArea.summernote('code',$('#descOculto').val());
 });
+
 
 Template.postEdit.events({
     'submit form': function(e) {
@@ -13,18 +19,20 @@ Template.postEdit.events({
         var currentPostId = this._id;
 
         var postProperties = {
-            description: $(e.target).find('[name=description]').val(),
+            description: $('#description').summernote('code'),
+            shortDescription: $(e.target).find('[name=shortDescription]').val(),
             title: $(e.target).find('[name=title]').val()
         };
 
         var oldPostProperties = {
             title: this.title,
-            description: this.description
+            description: this.description,
+            shortDescription: this.shortDescription
         };
 
         Meteor.call('postUpdate', currentPostId, postProperties , oldPostProperties, function(error, result) {
             if (error) {
-                // alerta con error
+                console.log(error);
                 Bert.alert({
                     title: 'ALERTA',
                     message: error.reason,

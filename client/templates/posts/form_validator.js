@@ -5,7 +5,7 @@ $.validator.setDefaults({
     rules: {
         title: {
             required: true,
-            max: 10
+            maxlength: 10
         }
     },
     messages: {
