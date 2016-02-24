@@ -4,22 +4,37 @@
 
 
 Template.postSubmit.onRendered(function(){
+
     $('.postSubmit').validate();
-    $('#description').summernote({
-        height: 200,   // set editable area's height
-        focus: true    // set focus editable area after Initialize summernote
-    });
+
 });
 
 
 Template.postSubmit.events({
+
+    'keypress #description': function(){
+
+        $('#description').on('input', function(){
+            var limit = 200;
+            var remaining = limit - $('#description').val().length;
+            var textarea = $('.countdown');
+            textarea.text(remaining + ' caracteres restantes.');
+            if(remaining<0){
+                textarea.css('color','red');
+                $('#enviar').attr('disabled','disabled');
+            }else{
+                textarea.css('color','black');
+                $('#enviar').removeAttr('disabled');
+            }
+        });
+    },
+
     'submit form': function(e) {
         e.preventDefault();
 
         var post = {
             title: $(e.target).find('[name=title]').val(),
-            shortDescription: $(e.target).find('[name=shortDescription]').val(),
-            description: $('#description').summernote('code')
+            description: $(e.target).find('[name=description]').val()
         };
 
         Meteor.call('postInsert', post, function(error, result) {

@@ -6,12 +6,8 @@ PostSchema = new SimpleSchema({
     title: {
         type: String,
         label: "Título",
-        max: 20
-    },
-    shortDescription:{
-        type: String,
-        label: "Descripción corta",
-        max: 30
+        max: 20,
+        regEx: /^[a-z0-9]+$/i
     },
     description:{
         type: String,

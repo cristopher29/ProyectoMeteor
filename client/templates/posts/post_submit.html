@@ -10,19 +10,13 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label" for="title">Descripción corta</label>
-            <div class="controls">
-                <input name="shortDescription" id="shortDescription" type="text" value="" placeholder="Escribe una descripción corta" class="form-control" required/>
-            </div>
-        </div>
-
-        <div class="form-group">
             <label class="control-label" for="url">Descripción</label>
             <div class="controls">
-                <div id="description"></div>
+                <textarea name="description" id="description" rows="4" cols="20" class="form-control" required></textarea>
+                <span class="countdown">200 caracteres restantes.</span>
             </div>
         </div>
 
-        <input type="submit" value="Enviar" class="btn btn-primary"/>
+        <input id="enviar" type="submit" value="Enviar" class="btn btn-primary"/>
     </form>
 </template>

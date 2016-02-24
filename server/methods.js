@@ -7,7 +7,11 @@ Meteor.methods({
         check(Meteor.userId(), String);
         check(postAttributes, PostSchema);
 
-        var postWithSameAttr = Posts.findOne({title: postAttributes.title}, {description: postAttributes.description});
+        var d = new Date();
+        var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
+            d.getHours() + ":" + d.getMinutes();
+
+        var postWithSameAttr = Posts.findOne({title: postAttributes.title, description: postAttributes.description});
 
         if (postWithSameAttr) {
             return {
@@ -20,7 +24,7 @@ Meteor.methods({
         var post = _.extend(postAttributes, {
             userId: user._id,
             author: user.username,
-            submitted: new Date()
+            submitted: datestring
         });
 
         var postId = Posts.insert(post);
@@ -34,6 +38,10 @@ Meteor.methods({
 
         check(Meteor.userId(), String);
         check(newValues, PostSchema);
+
+        var d = new Date();
+        var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
+            d.getHours() + ":" + d.getMinutes();
 
         if(oldValues.title != newValues.title || oldValues.description != newValues.description){
 
@@ -51,10 +59,9 @@ Meteor.methods({
         var post = _.extend(newValues, {
             title: newValues.title,
             description: newValues.description,
-            shortDescription: newValues.shortDescription,
             userId: user._id,
             author: user.username,
-            updated: new Date()
+            updated: datestring
         });
 
 

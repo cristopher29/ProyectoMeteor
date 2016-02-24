@@ -4,13 +4,23 @@
 $.validator.setDefaults({
     rules: {
         title: {
+            type: text,
             required: true,
-            maxlength: 10
+            maxlength: 40
+        },
+        description: {
+            required: true,
+            maxlength: 200
         }
     },
     messages: {
         title: {
-            required: "Campo obligatorio."
+            required: "Campo obligatorio.",
+            maxlength: "Máximo 40 caracteres"
+        },
+        description: {
+            required: "Campo obligatorio.",
+            maxlength: ""
         }
     }
 });

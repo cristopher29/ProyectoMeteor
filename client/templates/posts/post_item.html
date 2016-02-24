@@ -5,7 +5,7 @@
             <img src="http://placehold.it/320x325/EEE" class="img-responsive">
             <h4 class=""><a href="{{pathFor 'postPage'}}">{{title}}</a></h4>
             <div class="descripcion">
-                {{shortDescription}}
+                <p>{{description}}</p>
             </div>
             {{#if ownPost}}
                 <a href="{{pathFor 'postEdit'}}" class="btn btn-default" role="button"><i class="glyphicon glyphicon-edit"></i></a>
@@ -29,8 +29,7 @@
         <p><span class="glyphicon glyphicon-time"></span> Publicado el {{submitted}}</p>
         <hr>
         <div class="descripcion">
-            {{{description}}}
-            {{description}}
+            <p>{{description}}</p>
         </div>
     </div>
 

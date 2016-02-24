@@ -4,23 +4,35 @@
 
 Template.postEdit.onRendered(function(){
     $('.postEdit').validate();
-    var textArea = $('#description');
-    textArea.summernote({
-        height: 200
-    });
-    textArea.summernote('code',$('#descOculto').val());
 });
 
 
 Template.postEdit.events({
+
+    'keypress #description': function(){
+
+        $('#description').on('input', function(){
+            var limit = 200;
+            var remaining = limit - $('#description').val().length;
+            var textarea = $('.countdown');
+            textarea.text(remaining + ' caracteres restantes.');
+            if(remaining<0){
+                textarea.css('color','red');
+                $('#enviar').attr('disabled','disabled');
+            }else{
+                textarea.css('color','black');
+                $('#enviar').removeAttr('disabled');
+            }
+        });
+    },
+
     'submit form': function(e) {
         e.preventDefault();
 
         var currentPostId = this._id;
 
         var postProperties = {
-            description: $('#description').summernote('code'),
-            shortDescription: $(e.target).find('[name=shortDescription]').val(),
+            description: $(e.target).find('[name=description]').val(),
             title: $(e.target).find('[name=title]').val()
         };
 

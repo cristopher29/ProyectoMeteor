@@ -8,18 +8,12 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="control-label" for="title">Descripción corta</label>
-            <div class="controls">
-                <input name="shortDescription" id="shortDescription" type="text" value="{{shortDescription}}" class="form-control" required/>
-            </div>
-        </div>
 
         <div class="form-group">
             <label class="control-label" for="url">Descripción</label>
             <div class="controls">
-                <textarea hidden="hidden" id="descOculto">{{description}}</textarea>
-                <div id="description"></div>
+                <textarea name="description" id="description" rows="4" cols="20" class="form-control" required>{{description}}</textarea>
+                <span class="countdown">200 caracteres restantes.</span>
             </div>
         </div>
 
