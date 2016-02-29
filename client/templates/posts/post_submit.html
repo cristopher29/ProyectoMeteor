@@ -1,22 +1,21 @@
 <template name="postSubmit">
 
-    <form class="main form page postSubmit">
+    {{#autoForm collection="Posts" id="insertPost"}}
 
-        <div class="form-group">
-            <label class="control-label" for="title">Título</label>
-            <div class="controls">
-                <input name="title" id="title" type="text" value="" placeholder="Nombre de tu post" class="form-control" required/>
+            <div class="form-group">
+                <div class="controls">
+                    {{> afQuickField name='title' class='title form-control'}}
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label" for="url">Descripción</label>
-            <div class="controls">
-                <textarea name="description" id="description" rows="4" cols="20" class="form-control" required></textarea>
-                <span class="countdown">200 caracteres restantes.</span>
+            <div class="form-group">
+                <div class="controls">
+                    {{> afQuickField name='description' class='description form-control'}}
+                    <span class="countdown">200 caracteres restantes.</span>
+                </div>
             </div>
-        </div>
 
-        <input id="enviar" type="submit" value="Enviar" class="btn btn-primary"/>
-    </form>
+            <input id="enviar" type="submit" value="Enviar" class="btn btn-primary"/>
+
+    {{/autoForm}}
+
 </template>

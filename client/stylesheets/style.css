@@ -65,6 +65,9 @@ body {
 input.error{
   background-color:rgb(255, 231, 231);
 }
+textarea.error{
+  background-color:rgb(255, 231, 231);
+}
 
 .lista{
   -moz-column-width: 18em;

@@ -2,21 +2,21 @@
  * Created by CristoH on 16/02/2016.
  */
 Meteor.methods({
+
     postInsert: function(postAttributes) {
 
         check(Meteor.userId(), String);
-        check(postAttributes, PostSchema);
+        check(postAttributes, Posts.simpleSchema());
 
         var d = new Date();
         var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
-            d.getHours() + ":" + d.getMinutes();
+            d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes();
 
-        var postWithSameAttr = Posts.findOne({title: postAttributes.title, description: postAttributes.description});
+        var postExists = Posts.findOne({title: postAttributes.title, description: postAttributes.description});
 
-        if (postWithSameAttr) {
+        if (postExists) {
             return {
-                postExists: true,
-                _id: postWithSameAttr._id
+                postExists: true
             }
         }
 
@@ -24,24 +24,28 @@ Meteor.methods({
         var post = _.extend(postAttributes, {
             userId: user._id,
             author: user.username,
-            submitted: datestring
+            createdAt: datestring,
+            updatedAt: datestring
         });
 
         var postId = Posts.insert(post);
+
+
         return {
 
             _id: postId
 
         }
     },
-    postUpdate: function(oldPost, newValues, oldValues){
+
+    postUpdate: function(postId, newValues, oldValues){
 
         check(Meteor.userId(), String);
         check(newValues, PostSchema);
 
         var d = new Date();
         var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
-            d.getHours() + ":" + d.getMinutes();
+            d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes();
 
         if(oldValues.title != newValues.title || oldValues.description != newValues.description){
 
@@ -61,14 +65,14 @@ Meteor.methods({
             description: newValues.description,
             userId: user._id,
             author: user.username,
-            updated: datestring
+            updatedAt: datestring
         });
 
 
-        Posts.update(oldPost, {$set: post});
+        Posts.update(postId, {$set: post});
         return {
 
-            _id: oldPost
+            _id: postId
 
         }
 
