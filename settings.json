@@ -1,0 +1,10 @@
+{
+  "private": {
+    "smtp": {
+      "username": "postmaster@sandboxc6179f4a6c5d431dbecc57150aef18ef.mailgun.org",
+      "password": "da98a99e422dacb16a07b64881e7c909",
+      "server": "smtp.mailgun.org",
+      "port": 587
+    }
+  }
+}

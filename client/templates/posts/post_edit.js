@@ -51,7 +51,7 @@ Template.postEdit.events({
     'submit form': function(e) {
         e.preventDefault();
     },
-    'click .delete': function(e) {
+    'click #eliminar': function(e) {
         e.preventDefault();
 
         if (confirm("Seguro que quiere eliminar este post?")) {
