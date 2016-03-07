@@ -1,4 +1,6 @@
 Meteor.startup(function () {
+
+    //-- Configuración del smtp (settings.json)
     smtp = {
         username: Meteor.settings.private.smtp.username,
         password: Meteor.settings.private.smtp.password,
@@ -6,24 +8,26 @@ Meteor.startup(function () {
         port: Meteor.settings.private.smtp.port
     };
 
+    //-- Variable de entorno
     process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 
-    //-- Set the from address
+    //-- Email del emisor
     Accounts.emailTemplates.from = smtp.username;
 
-    //-- Application name
+    //-- Nombre del sitio o aplicación
     Accounts.emailTemplates.siteName = 'Proyecto';
 
-    //-- Subject line of the email.
+    //-- Asunto del email
     Accounts.emailTemplates.verifyEmail.subject = function(user) {
         return 'Proyecto : Confirmar email';
     };
 
-    //-- Email text
+    //-- Contenido del email
     Accounts.emailTemplates.verifyEmail.text = function(user, url) {
         return 'Gracias por registrarte.  Por favor haz click en el siguiente enlace para confirmar tu correo: \r\n' + url;
     };
 
+    //-- Después de crear un usuario se envia un email
     Accounts.config({
         sendVerificationEmail: true
     });
