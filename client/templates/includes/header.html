@@ -12,9 +12,7 @@
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
                 {{#if currentUser}}
-                    {{#if emailVerified}}
-                        <li><a href="{{pathFor 'postSubmit'}}">Nuevo post</a></li>
-                    {{/if}}
+                    <li><a href="{{pathFor 'postSubmit'}}">Nuevo post</a></li>
                 {{/if}}
             </ul>
             <ul class="nav navbar-nav navbar-right">
