@@ -3,3 +3,4 @@ Template.postItem.helpers({
     return this.userId === Meteor.userId();
   }
 });
+

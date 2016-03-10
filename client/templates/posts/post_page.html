@@ -1,5 +1,42 @@
 <template name="postPage">
 
-        {{> postContent}}
+    <div class="col-md-6">
+
+        <h2>{{title}}</h2>
+
+        <p class="lead">
+            por <a href="#">{{author}}</a>
+        </p>
+        <p><span class="glyphicon glyphicon-time"></span> Publicado el {{createdAt}}</p>
+        <hr>
+        <div class="descripcion">
+            <p>{{description}}</p>
+        </div>
+    </div>
+
+    <div class="col-md-6 text-center">
+        <img style="display: inline-block" class="img-responsive" src="http://placehold.it/300x400" alt="">
+    </div>
+
+    {{#if currentUser}}
+
+        {{#autoForm collection="Comments" doc=this id="insertComment"}}
+
+            <div class="form-group">
+                <h3>Comentar</h3>
+                <div class="controls">
+                    {{> afQuickField name='body' class='textarea-comentario form-control'}}
+                    <span class="countdown">200 caracteres restantes.</span>
+                </div>
+            </div>
+
+            <input id="comentar" type="submit" value="Enviar" class="btn btn-primary"/>
+
+        {{/autoForm}}
+    {{else}}
+
+        <div><h4>Para comentar necesitas estar logueado</h4></div>
+
+    {{/if}}
 
 </template>
