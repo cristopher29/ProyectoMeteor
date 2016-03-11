@@ -33,10 +33,21 @@
             <input id="comentar" type="submit" value="Enviar" class="btn btn-primary"/>
 
         {{/autoForm}}
+
     {{else}}
 
         <div><h4>Para comentar necesitas estar logueado</h4></div>
 
     {{/if}}
+
+    <hr>
+
+    <ul class="comments">
+        {{#each comments}}
+            <li>
+                <p>{{body}}</p>
+            </li>
+        {{/each}}
+    </ul>
 
 </template>

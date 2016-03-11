@@ -6,6 +6,8 @@
 Meteor.methods({
     commentInsert: function(commentAttributes, postAttributes) {
 
+        //console.log(commentAttributes);
+        console.log(postAttributes);
         check(Meteor.userId(), String);
         check(commentAttributes, Comments.simpleSchema());
 
@@ -17,6 +19,7 @@ Meteor.methods({
         }
         var comment = _.extend(commentAttributes, {
             userId: user._id,
+            postId: postAttributes._id,
             author: user.username,
             createdAt: new Date()
         });
