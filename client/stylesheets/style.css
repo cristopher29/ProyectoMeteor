@@ -61,6 +61,13 @@ body {
   100% {opacity: 0;}
 }
 
+.contenido{
+  margin-top: 10%;
+}
+
+#login-dropdown-list .dropdown-menu {
+  margin-right: 10px;
+}
 
 input.error{
   background-color:rgb(255, 231, 231);
