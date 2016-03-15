@@ -6,8 +6,6 @@
 Meteor.methods({
     commentInsert: function(commentAttributes, postAttributes) {
 
-        //console.log(commentAttributes);
-        console.log(postAttributes);
         check(Meteor.userId(), String);
         check(commentAttributes, Comments.simpleSchema());
 

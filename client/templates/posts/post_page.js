@@ -8,7 +8,7 @@ var commentHook = {
                 Bert.alert(error.reason,'danger','growl-top-right');
                 $('#comentar').removeAttr('disabled');
             } else {
-                $('.textarea-comentario').val('');
+                $('.limit-200').val('');
                 $('#comentar').removeAttr('disabled');
             }
         });
@@ -19,25 +19,13 @@ AutoForm.addHooks('insertComment', commentHook);
 
 Template.postPage.events({
 
-    'focus .textarea-comentario': function(){
-
-        var limit = 200;
-
-        $('.textarea-comentario').on('change keydown paste', function(){
-
-            var remaining = limit - $('.textarea-comentario').val().length;
-            var textarea = $('.countdown');
-            textarea.text(remaining + ' caracteres restantes.');
-            if(remaining<0){
-                textarea.css('color','red');
-                $('#comentar').attr('disabled','disabled');
-            }else{
-                textarea.css('color','black');
-                $('#comentar').removeAttr('disabled');
-            }
-        });
+    'focus .limit-200, keypress': function(e){
+        if(e.which == 13) {
+            $('#comentar').click();
+            $('.limit-200').val('');
+            e.preventDefault();
+        }
     },
-
     'submit form': function(e){
         e.preventDefault();
     }
@@ -45,6 +33,6 @@ Template.postPage.events({
 
 Template.postPage.helpers({
     comments: function() {
-        return Comments.find({postId: this._id});
+        return Comments.find({postId: this._id}, {sort: {createdAt: -1}});
     }
 });

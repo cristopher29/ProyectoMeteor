@@ -26,7 +26,11 @@ check
 ejson
 aldeed:collection2
 aldeed:autoform
-meteortoys:allthings
+mpowaga:autoform-summernote
+msavin:mongol
 email
+momentjs:moment
+copleykj:livestamp
+peppelg:bootstrap-3-modal
 #useraccounts:bootstrap
 #useraccounts:iron-routing
