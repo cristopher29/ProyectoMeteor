@@ -32,5 +32,6 @@ email
 momentjs:moment
 copleykj:livestamp
 peppelg:bootstrap-3-modal
+djedi:sanitize-html
 #useraccounts:bootstrap
 #useraccounts:iron-routing

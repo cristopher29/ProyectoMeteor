@@ -8,7 +8,7 @@ var postEditHook = {
 
         Meteor.call('postUpdate', currentDoc._id, insertDoc , currentDoc, function(error, result) {
             if (error) {
-                Bert.alert(error.reason, 'warning', 'growl-top-right');
+                Bert.alert(error.reason, 'danger', 'growl-top-right');
                 $('#enviar').removeAttr('disabled');
                 return;
             }
@@ -41,6 +41,20 @@ Template.postEdit.events({
             var currentPostId = this._id;
             Posts.remove(currentPostId);
             Router.go('postsList');
+        }
+    },
+
+    'keyup .note-editable': function(e){
+        var num = $('.note-editable').text().replace(/(<([^>]+)>)/ig,"").length;
+        var countdown = $('.countdown');
+        var remaining = 500 - num;
+        countdown.text(remaining + ' caracteres restantes.');
+        if(remaining < 0){
+            countdown.css('color', 'red');
+            $('#enviar').prop('disabled', true);
+        }else{
+            countdown.css('color', 'black');
+            $('#enviar').prop('disabled', false);
         }
     }
 });

@@ -1,7 +1,7 @@
 <template name="postPage">
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
 
             <h2>{{title}}</h2>
 
@@ -11,11 +11,11 @@
             <p><span class="glyphicon glyphicon-time"></span> Publicado el {{formatDate createdAt}} a las {{formatHour createdAt}}</p>
             <hr>
             <div class="descripcion">
-                <p>{{description}}</p>
+                {{{description}}}
             </div>
         </div>
 
-        <div class="col-md-6 text-center">
+        <div class="col-md-5 text-center">
             <img style="display: inline-block" class="img-responsive" src="http://placehold.it/300x400" alt="">
         </div>
     </div>

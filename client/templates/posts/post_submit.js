@@ -36,16 +36,15 @@ Template.postSubmit.events({
 
     'keyup .note-editable': function(e){
         var num = $('.note-editable').text().replace(/(<([^>]+)>)/ig,"").length;
-        console.log(num);
-        var remaining = 1000 - num;
-        $('.countdown').text(remaining + ' caracteres restantes.');
-        var key = e.keyCode;
-        allowed_keys = [8, 37, 38, 39, 40, 46];
-        if($.inArray(key, allowed_keys) != -1)
-            return true;
-        else if(num > 1000){
-            e.preventDefault();
-            e.stopPropagation()
+        var countdown = $('.countdown');
+        var remaining = 500 - num;
+        countdown.text(remaining + ' caracteres restantes.');
+        if(remaining < 0){
+            countdown.css('color', 'red');
+            $('#enviar').prop('disabled', true);
+        }else{
+            countdown.css('color', 'black');
+            $('#enviar').prop('disabled', false);
         }
     }
 

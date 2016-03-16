@@ -2,6 +2,19 @@
  * Created by CristoH on 10/03/2016.
  */
 
+function sanitize(html){
+    return sanitizeHtml(html, {
+        allowedTags: [ 'b', 'i', 'u', 'strong', 'font','strike','span','div' ],
+        allowedAttributes: {
+            'font': [ 'color','style' ],
+            'span': [ 'style' ],
+            'div': [ 'style'],
+            'b': ['style']
+        }
+    });
+}
+
+
 Meteor.methods({
 
     postInsert: function(postAttributes) {
@@ -9,16 +22,27 @@ Meteor.methods({
         check(Meteor.userId(), String);
         check(postAttributes, Posts.simpleSchema());
 
-        var postExists = Posts.findOne({title: postAttributes.title, description: postAttributes.description});
+        var dirtyHtml = postAttributes.description;
+        var cleanHtml = sanitize(dirtyHtml);
+
+        var text = cleanHtml.replace(/<[^>]*>/g, "");
+        var textLength = text.length;
+
+        var postExists = Posts.findOne({title: postAttributes.title, shortDescription: postAttributes.shortDescription, textDescription: text});
 
         if (postExists) {
             return {
                 postExists: true
             }
         }
+        if(textLength > 500){
+            throw new Meteor.Error("over-limit", "Error limite descripcion");
+        }
 
         var user = Meteor.user();
         var post = _.extend(postAttributes, {
+            description: cleanHtml,
+            textDescription: text,
             userId: user._id,
             author: user.username,
             createdAt: new Date(),
@@ -40,10 +64,15 @@ Meteor.methods({
         check(Meteor.userId(), String);
         check(newValues, Posts.simpleSchema());
 
+        var dirtyHtml = newValues.description;
+        var cleanHtml = sanitize(dirtyHtml);
 
-        if(oldValues.title != newValues.title || oldValues.description != newValues.description){
+        var text = cleanHtml.replace(/<[^>]*>/g, "");
+        var textLength = text.length;
 
-            var postWithSameAttr = Posts.findOne({title: newValues.title, description: newValues.description});
+        if(oldValues.title != newValues.title || oldValues.textDescription != newValues.textDescription || oldValues.shortDescription != newValues.shortDescription){
+
+            var postWithSameAttr = Posts.findOne({title: newValues.title, shortDescription: newValues.shortDescription, textDescription: text});
 
             if (postWithSameAttr) {
                 return {
@@ -53,10 +82,16 @@ Meteor.methods({
 
         }
 
+        if(textLength > 500){
+            throw new Meteor.Error("over-limit", "Error limite descripcion");
+        }
+
         var user = Meteor.user();
         var post = _.extend(newValues, {
             title: newValues.title,
-            description: newValues.description,
+            shortDescription: newValues.shortDescription,
+            description: cleanHtml,
+            textDescription: text,
             userId: user._id,
             author: user.username,
             updatedAt: new Date()
