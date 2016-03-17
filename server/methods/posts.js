@@ -6,10 +6,7 @@ function sanitize(html){
     return sanitizeHtml(html, {
         allowedTags: [ 'b', 'i', 'u', 'strong', 'font','strike','span','div' ],
         allowedAttributes: {
-            'font': [ 'color','style' ],
-            'span': [ 'style' ],
-            'div': [ 'style'],
-            'b': ['style']
+            '*': [ 'color','style' ]
         }
     });
 }
@@ -61,6 +58,10 @@ Meteor.methods({
 
     postUpdate: function(postId, newValues, oldValues){
 
+        if(Meteor.userId() !== oldValues.userId){
+            throw new Meteor.Error("no-author", "No eres el autor del post");
+        }
+
         check(Meteor.userId(), String);
         check(newValues, Posts.simpleSchema());
 
@@ -70,7 +71,7 @@ Meteor.methods({
         var text = cleanHtml.replace(/<[^>]*>/g, "");
         var textLength = text.length;
 
-        if(oldValues.title != newValues.title || oldValues.textDescription != newValues.textDescription || oldValues.shortDescription != newValues.shortDescription){
+        if(oldValues.title != newValues.title || oldValues.textDescription != text || oldValues.shortDescription != newValues.shortDescription){
 
             var postWithSameAttr = Posts.findOne({title: newValues.title, shortDescription: newValues.shortDescription, textDescription: text});
 
@@ -92,13 +93,12 @@ Meteor.methods({
             shortDescription: newValues.shortDescription,
             description: cleanHtml,
             textDescription: text,
-            userId: user._id,
-            author: user.username,
             updatedAt: new Date()
         });
 
 
         Posts.update(postId, {$set: post});
+
         return {
 
             _id: postId
