@@ -2,12 +2,18 @@
  * Created by CristoH on 21/03/2016.
  */
 
-Template.userProfile.events({
-    'click .btn-pref .btn': function(e,t){
-        e.preventDefault();
-        $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-        $(e.currentTarget).removeClass("btn-default").addClass("btn-primary");
-
+Template.userProfile.helpers({
+    userPosts: function(){
+        return Posts.find({userId: Meteor.userId()},{sort:{createdAt: -1}});
+    },
+    ownProfile: function(){
 
     }
+});
+
+Template.registerHelper('ownProfile', function(){
+
+    var userPosts = Posts.find({userId: Meteor.userId()});
+
+
 });

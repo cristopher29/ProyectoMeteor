@@ -3,6 +3,10 @@ body {
   color: #666666;
 }
 
+.thumbnail > img, .thumbnail a > img {
+  width: 100%;
+}
+
 .navbar {
   margin-bottom: 10px;
 }
@@ -435,6 +439,11 @@ textarea.error{
 
 .border-radius {
   border-radius: 50%;
+}
+
+.time{
+  font-size: 1.5rem;
+  color: #999999;
 }
 
 .well{

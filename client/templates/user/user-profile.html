@@ -1,4 +1,4 @@
-<template name="myProfile">
+<template name="userProfile">
     <div class="row">
         <div class="col-sm-3">
 
@@ -7,11 +7,11 @@
 
                 </div>
                 <div class="avatar">
-                    <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                    <img alt="" src="http://placehold.it/60x60">
                 </div>
                 <div class="info">
                     <div class="title">
-                        <a target="_blank" href="http://scripteden.com/">{{username}}</a>
+                        <a target="_blank" >{{username}}</a>
                     </div>
                     <div class="desc">Passionate designer</div>
                     <div class="desc">Curious developer</div>
@@ -26,9 +26,9 @@
 
         </div>
         <div class="col-sm-6">
-            <ul class="list-unstyled">
+            {{#each userPosts}}
                 {{>userPost}}
-            </ul>
+            {{/each}}
         </div>
 
         <div class="col-sm-3 hidden-xs">
