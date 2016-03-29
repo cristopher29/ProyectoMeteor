@@ -9,3 +9,16 @@ Meteor.publish('comments', function(postId) {
     check(postId, String);
     return Comments.find({postId: postId});
 });
+
+Meteor.publish('notifications', function() {
+    return Notifications.find({alertedUserId: this.userId, read: false});
+});
+
+Meteor.publish('user-profile', function(userId) {
+    check(userId, String);
+    return Meteor.users.find({_id: userId}, {fields:{
+        "profile": 1,
+        "username": 1
+    }});
+});
+

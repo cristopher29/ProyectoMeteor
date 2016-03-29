@@ -6,10 +6,22 @@
             <h4 class=""><a href="{{pathFor 'postPage'}}">{{title}}</a></h4>
             <div class="descripcion">
                 <p>{{shortDescription}}</p>
+                <hr>
+                <ul class="list-inline">
+                {{#if currentUser}}
+                    {{#if liked}}
+                        <li><a class="like" href=""><i class="fa fa-heart"></i></a> {{likes}}</li>
+                    {{else}}
+                        <li><a class="like" href=""><i class="fa fa-heart-o"></i></a> {{likes}}</li>
+                    {{/if}}
+
+                    {{#if ownPost}}
+                        <li><a class="edit" href="{{pathFor 'postEdit'}}" ><i class="fa fa-pencil"></i> editar</a></li>
+                    {{/if}}
+                {{/if}}
+                </ul>
             </div>
-            {{#if ownPost}}
-                <a href="{{pathFor 'postEdit'}}" class="btn btn-default" role="button"><i class="glyphicon glyphicon-edit"></i></a>
-            {{/if}}
+
         </div>
     </div>
 

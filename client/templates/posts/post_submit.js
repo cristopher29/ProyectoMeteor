@@ -5,13 +5,13 @@ var postSubmitHook = {
 
     onSubmit: function(insertDoc){
         Meteor.call('postInsert', insertDoc, function(error, result) {
-            // muestra alert con el error
+            //Muestra alert con el error
             if (error){
                 Bert.alert(error.reason, 'danger', 'growl-top-right');
                 $('#enviar').removeAttr('disabled');
                 return;
             }
-            // muestra alert si existe ese post
+            //Muestra alert si existe ese post
             if (result.postExists){
                 Bert.alert('Este título y descripción ya existen', 'warning', 'growl-top-right');
                 $('#enviar').removeAttr('disabled');

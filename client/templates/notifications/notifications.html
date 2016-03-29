@@ -1,0 +1,45 @@
+<template name="notifications">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        {{#if notificationCount}}
+            <i data-count="{{notificationCount}}" class="glyphicon glyphicon-bell notification-icon"></i>
+        {{else}}
+            <i class="glyphicon glyphicon-bell"></i>
+        {{/if}}
+    </a>
+    <ul class="notification dropdown-menu">
+        {{#if notificationCount}}
+            {{#each notifications}}
+                {{> notificationItem}}
+            {{/each}}
+        {{else}}
+            <li class="notification">
+                <div class="media">
+                    <div class="media-body">
+                        <strong class="notification-title">No hay notificaciones</strong>
+
+                    </div>
+                </div>
+            </li>
+        {{/if}}
+    </ul>
+</template>
+
+<template name="notificationItem">
+    <li class="notification">
+        <div class="media">
+            <div class="media-left">
+                <div class="media-object">
+                    <img src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" alt="" width="30px" height="30px" class="img-rounded">
+                </div>
+            </div>
+            <div class="media-body">
+                <strong class="notification-title"><a href="/profile/{{userId}}">{{username}}</a> {{actionToText action}} <a class="postRoute" href="{{notificationPath}}">{{contentTitle}}</a></strong>
+
+                <div class="notification-desc text-left">
+                    <i class="fa fa-clock-o"></i> {{livestamp createdAt}}
+                </div>
+
+            </div>
+        </div>
+    </li>
+</template>

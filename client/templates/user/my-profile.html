@@ -1,0 +1,49 @@
+<template name="myProfile">
+    <div class="row">
+        <div class="col-sm-3">
+
+            <div class="card hovercard">
+                <div class="cardheader">
+
+                </div>
+                <div class="avatar">
+                    <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="http://scripteden.com/">{{username}}</a>
+                    </div>
+                    <div class="desc">Passionate designer</div>
+                    <div class="desc">Curious developer</div>
+                    <div class="desc">Tech geek</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="#">
+                        <i class="fa fa-user-plus"></i>Seguir
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            <ul class="list-unstyled">
+                {{>userPost}}
+            </ul>
+        </div>
+
+        <div class="col-sm-3 hidden-xs">
+            <div class="panel panel-default">
+                <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
+                <div class="panel-body">
+                    <img src="http://placehold.it/60x60" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
+                    <div class="clearfix"></div>
+                    There a load of new free Bootstrap 3
+                    ready templates at Bootply. All of these templates are free and don't
+                    require extensive customization to the Bootstrap baseline.
+                    <hr>
+                    <ul class="list-unstyled"><li><a href="http://usebootstrap.com/theme/facebook">Dashboard</a></li><li><a href="http://usebootstrap.com/theme/facebook">Darkside</a></li><li><a href="http://usebootstrap.com/theme/facebook">Greenfield</a></li></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

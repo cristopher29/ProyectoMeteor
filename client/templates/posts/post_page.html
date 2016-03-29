@@ -6,7 +6,7 @@
             <h2>{{title}}</h2>
 
             <p class="lead">
-                por <a href="#">{{author}}</a>
+                por <a href="{{pathFor 'userProfile'}}">{{author}}</a>
             </p>
             <p><span class="glyphicon glyphicon-time"></span> Publicado el {{formatDate createdAt}} a las {{formatHour createdAt}}</p>
             <hr>
@@ -24,27 +24,7 @@
 
     <div class="row">
 
-        {{#if currentUser}}
-
-            {{#autoForm collection="Comments" doc=this id="insertComment"}}
-
-                <div class="form-group">
-                    <h3>Comentar</h3>
-                    <div class="controls">
-                        {{> afQuickField name='body' class='limit-200 form-control'}}
-                        <span class="countdown">200 caracteres restantes.</span>
-                    </div>
-                </div>
-
-                <input id="comentar" type="submit" value="Enviar" class="btn btn-primary"/>
-
-            {{/autoForm}}
-
-        {{else}}
-
-            <div><h4>Para comentar necesitas estar logueado</h4></div>
-
-        {{/if}}
+        {{>commentForm}}
 
     </div>
 

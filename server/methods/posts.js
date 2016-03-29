@@ -2,6 +2,9 @@
  * Created by CristoH on 10/03/2016.
  */
 
+
+//FUNCION PARA SANITIZAR EL HTML
+
 function sanitize(html){
     return sanitizeHtml(html, {
         allowedTags: [ 'b', 'i', 'u', 'strong', 'font','strike','span','div' ],
@@ -14,17 +17,44 @@ function sanitize(html){
 
 Meteor.methods({
 
+    postLike: function(postId, userId){
+        check(Meteor.userId(), String);
+
+        if (userId != Meteor.userId()) {
+            throw new Meteor.Error('invalid-id', 'userId no es igual');
+        }
+
+        var post = Posts.findOne({_id: postId});
+
+        if(post.usersLiked.indexOf(userId) > -1){
+            Posts.update({_id: postId}, {$pull: {usersLiked: userId}, $inc:{likes: -1}});
+            return {
+                unlike: true
+            }
+        }else if(post.usersLiked.indexOf(userId) == -1){
+            Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likes: 1}});
+            Meteor.call('createNotification', post.userId, post._id, post.title, userId, Meteor.user().username, "like");
+            return {
+                like: true
+            }
+        }
+    },
+
     postInsert: function(postAttributes) {
 
         check(Meteor.userId(), String);
+        //Comprobamos que el post tenga los campos obligatorios del esquema
         check(postAttributes, Posts.simpleSchema());
 
+        //Limpiamos el html
         var dirtyHtml = postAttributes.description;
         var cleanHtml = sanitize(dirtyHtml);
 
+        //Obtenemos solo el texto
         var text = cleanHtml.replace(/<[^>]*>/g, "");
         var textLength = text.length;
 
+        //Comprobamos si existe el post con los mismo atributos
         var postExists = Posts.findOne({title: postAttributes.title, shortDescription: postAttributes.shortDescription, textDescription: text});
 
         if (postExists) {
@@ -32,23 +62,30 @@ Meteor.methods({
                 postExists: true
             }
         }
+
+        //Comprobamos la longitud del texto
         if(textLength > 500){
             throw new Meteor.Error("over-limit", "Error limite descripcion");
         }
 
+        //Agregamos los valores
         var user = Meteor.user();
         var post = _.extend(postAttributes, {
             description: cleanHtml,
             textDescription: text,
             userId: user._id,
             author: user.username,
+            usersLiked: [],
+            likes: 0,
             createdAt: new Date(),
             updatedAt: new Date()
         });
 
+        //Insertamos el post
         var postId = Posts.insert(post);
 
 
+        //Devolvemos el id
         return {
 
             _id: postId
@@ -58,6 +95,7 @@ Meteor.methods({
 
     postUpdate: function(postId, newValues, oldValues){
 
+        //Comprobamos que sea el autor del post
         if(Meteor.userId() !== oldValues.userId){
             throw new Meteor.Error("no-author", "No eres el autor del post");
         }
@@ -65,16 +103,21 @@ Meteor.methods({
         check(Meteor.userId(), String);
         check(newValues, Posts.simpleSchema());
 
+        //Limpiamos el html
         var dirtyHtml = newValues.description;
         var cleanHtml = sanitize(dirtyHtml);
 
+        //Obtenemos solo el texto
         var text = cleanHtml.replace(/<[^>]*>/g, "");
         var textLength = text.length;
 
+        //Si ha modificado alguno de estos valores entramos
         if(oldValues.title != newValues.title || oldValues.textDescription != text || oldValues.shortDescription != newValues.shortDescription){
 
+            //Buscamos un post con los mismo valores
             var postWithSameAttr = Posts.findOne({title: newValues.title, shortDescription: newValues.shortDescription, textDescription: text});
 
+            //Si existe devolvemos "postExist"
             if (postWithSameAttr) {
                 return {
                     postExists: true
@@ -83,11 +126,13 @@ Meteor.methods({
 
         }
 
+        //Comprobamos la longitud del texto
         if(textLength > 500){
             throw new Meteor.Error("over-limit", "Error limite descripcion");
         }
 
-        var user = Meteor.user();
+        //Actualizamos los valores
+
         var post = _.extend(newValues, {
             title: newValues.title,
             shortDescription: newValues.shortDescription,
@@ -96,9 +141,10 @@ Meteor.methods({
             updatedAt: new Date()
         });
 
-
+        //Actualizamos el post
         Posts.update(postId, {$set: post});
 
+        //Devolvemos el id
         return {
 
             _id: postId

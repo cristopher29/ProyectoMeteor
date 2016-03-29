@@ -1,0 +1,17 @@
+<template name="commentForm">
+
+    {{#autoForm collection="Comments" doc=this id="insertComment"}}
+
+        <div class="form-group">
+            <h3>Comentar</h3>
+            <div class="controls">
+                {{> afQuickField name='body' class='limit-200 form-control'}}
+                <span class="countdown">200 caracteres restantes.</span>
+            </div>
+        </div>
+
+        <input id="comentar" type="submit" value="Enviar" class="btn btn-primary"/>
+
+    {{/autoForm}}
+
+</template>
