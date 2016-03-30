@@ -7,6 +7,10 @@ body {
   width: 100%;
 }
 
+.panel > img {
+  width: 100%;
+}
+
 .navbar {
   margin-bottom: 10px;
 }
@@ -448,25 +452,4 @@ textarea.error{
 
 .well{
   background-color: #f5f9fa;
-}
-
-.edit{
-  color: #666666 !important;
-  text-decoration: none !important;
-}
-.edit:hover{
-  color: #18bc9c !important;
-  text-decoration: none !important;
-}
-.fa-pencil{
-  color: #18bc9c;
-}
-.fa-heart{
-  color: #e73b34;
-}
-.fa-heart-o{
-  color: #e73b34;
-}
-.fa-user-plus{
-  margin-right: 5px;
 }

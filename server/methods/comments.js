@@ -37,6 +37,7 @@ Meteor.methods({
         //Insertamos el comentario y guardamos el id
         comment._id = Comments.insert(comment);
 
+        Posts.update(comment.postId, {$inc: {commentsCount: 1}});
 
         Meteor.call('createNotification', post.userId, post._id, post.title, comment.userId, comment.author, "comment");
 

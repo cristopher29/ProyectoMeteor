@@ -4,16 +4,6 @@
 
 Template.userProfile.helpers({
     userPosts: function(){
-        return Posts.find({userId: Meteor.userId()},{sort:{createdAt: -1}});
-    },
-    ownProfile: function(){
-
+        return Posts.find({userId: Router.current().params.userId },{sort:{createdAt: -1}});
     }
-});
-
-Template.registerHelper('ownProfile', function(){
-
-    var userPosts = Posts.find({userId: Meteor.userId()});
-
-
 });

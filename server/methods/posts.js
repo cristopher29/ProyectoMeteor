@@ -75,6 +75,7 @@ Meteor.methods({
             textDescription: text,
             userId: user._id,
             author: user.username,
+            commentsCount: 0,
             usersLiked: [],
             likes: 0,
             createdAt: new Date(),

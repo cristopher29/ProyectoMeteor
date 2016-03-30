@@ -1,15 +1,13 @@
-<template name="postItem">
-<div class="col-md-4">
+<template name="userProfilePost">
 
-    <div class="panel panel-default">
-        <img class="img-responsive" src="http://placehold.it/320x250/" alt="">
-        <div class="panel-body">
-            <div class="valign">
-                <div>
-                    <a href="{{pathFor 'postPage'}}" class="lead">{{title}}</a>
-                    <p>{{shortDescription}}</p>
-                </div>
-            </div>
+    <div class="thumbnail">
+        <img src="http://placehold.it/450X300/" class="img-responsive">
+        <div class="caption">
+            <h4 class="">{{title}}<span class="pull-right time">{{livestamp createdAt}}</span></h4>
+
+            <p >{{shortDescription}}</p>
+            <hr>
+
             <div >
                 {{#if currentUser}}
                     <a href="{{pathFor 'postPage'}}" class="btn btn-sm btn-primary"><em class="fa fa-eye fa-fw"></em></a>
@@ -17,8 +15,6 @@
                     {{#if ownPost}}
                         <a href="{{pathFor 'postEdit'}}" class="pull-right btn btn-sm btn-primary"><em class="fa fa-pencil fa-fw"></em></a>
                     {{/if}}
-
-                    <div class="pull-right btn btn-sm btn-primary"><em class="fa fa-comment fa-fw"></em> {{commentsCount}}</div>
 
                     {{#if liked}}
                         <button class="pull-right like btn btn-sm btn-danger"><em class="fa fa-heart fa-fw"></em> {{likes}}</button>
@@ -28,9 +24,9 @@
 
                 {{/if}}
             </div>
+
         </div>
     </div>
 
-</div>
-</template>
 
+</template>
