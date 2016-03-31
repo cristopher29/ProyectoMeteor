@@ -3,6 +3,10 @@ body {
   color: #666666;
 }
 
+a:link, a:visited, a:hover, a:active{
+  text-decoration: none;
+}
+
 .thumbnail > img, .thumbnail a > img {
   width: 100%;
 }

@@ -44,5 +44,17 @@ Meteor.methods({
 
 
         return comment._id;
+    },
+    commentDelete: function(commentId){
+
+        var comment = Comments.findOne({_id: commentId});
+
+        if(Meteor.userId() === comment.userId){
+            Posts.update(comment.postId, {$inc: {commentsCount: -1}});
+            Comments.remove(comment._id);
+            return true;
+        }else {
+            return false;
+        }
     }
 });

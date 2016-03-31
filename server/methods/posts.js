@@ -103,7 +103,8 @@ Meteor.methods({
         }
 
         check(Meteor.userId(), String);
-        check(newValues, Posts.simpleSchema());
+
+        check(PostSchema.clean(newValues), Posts.simpleSchema());
 
         //Limpiamos el html
         var dirtyHtml = newValues.description;

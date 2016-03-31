@@ -19,7 +19,7 @@ Template.deleteCommentModal.events({
     'click .deleteComment' : function(e){
         e.preventDefault();
         var currentCommentId = Session.get('commentId');
-        Comments.remove(currentCommentId);
+        Meteor.call('commentDelete', currentCommentId);
         Modal.hide('deleteCommentModal')
     }
 });
