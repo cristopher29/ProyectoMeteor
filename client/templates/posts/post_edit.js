@@ -13,7 +13,7 @@ AutoForm.addHooks('updatePost', {
 
     onSubmit: function(insertDoc, updateDoc, currentDoc){
 
-        Meteor.call('postUpdate', currentDoc._id, insertDoc , currentDoc, function(error, result) {
+        Meteor.call('postUpdate', insertDoc , currentDoc, function(error, result) {
             if (error) {
                 Bert.alert(error.reason, 'danger', 'growl-top-right');
                 $('#enviar').removeAttr('disabled');
@@ -26,7 +26,7 @@ AutoForm.addHooks('updatePost', {
                 return;
             }
 
-            Router.go('postPage', {_id: result._id});
+            Router.go('postPage', {slug: result.slug});
 
             Bert.alert('Post actualizado', 'success', 'growl-top-right');
 

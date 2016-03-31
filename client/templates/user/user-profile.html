@@ -17,11 +17,19 @@
                     <div class="desc">Curious developer</div>
                     <div class="desc">Tech geek</div>
                 </div>
-                <div class="bottom">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="#">
-                        <i class="fa fa-user-plus"></i>Seguir
-                    </a>
-                </div>
+                {{#if ownProfile}}
+                    <div class="bottom">
+                        <a class="btn btn-primary btn-twitter btn-sm" href="#">
+                            <i class="fa fa-pencil"></i> Editar
+                        </a>
+                    </div>
+                {{else}}
+                    <div class="bottom">
+                        <a class="btn btn-primary btn-twitter btn-sm" href="#">
+                            <i class="fa fa-user-plus"></i>Seguir
+                        </a>
+                    </div>
+                {{/if}}
             </div>
 
         </div>

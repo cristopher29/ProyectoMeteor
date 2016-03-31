@@ -33,5 +33,6 @@ momentjs:moment
 copleykj:livestamp
 peppelg:bootstrap-3-modal
 djedi:sanitize-html
+todda00:friendly-slugs
 #useraccounts:bootstrap
 #useraccounts:iron-routing

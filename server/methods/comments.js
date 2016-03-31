@@ -31,6 +31,7 @@ Meteor.methods({
             userId: user._id,
             postId: postAttributes._id,
             author: user.username,
+            postSlug: postAttributes.slug,
             createdAt: new Date()
         });
 

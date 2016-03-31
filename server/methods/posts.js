@@ -3,7 +3,7 @@
  */
 
 
-//FUNCION PARA SANITIZAR EL HTML
+// Funcion para sanitizar el html
 
 function sanitize(html){
     return sanitizeHtml(html, {
@@ -27,12 +27,12 @@ Meteor.methods({
         var post = Posts.findOne({_id: postId});
 
         if(post.usersLiked.indexOf(userId) > -1){
-            Posts.update({_id: postId}, {$pull: {usersLiked: userId}, $inc:{likes: -1}});
+            Posts.update({_id: postId}, {$pull: {usersLiked: userId}, $inc:{likesCount: -1}});
             return {
                 unlike: true
             }
         }else if(post.usersLiked.indexOf(userId) == -1){
-            Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likes: 1}});
+            Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
             Meteor.call('createNotification', post.userId, post._id, post.title, userId, Meteor.user().username, "like");
             return {
                 like: true
@@ -77,24 +77,25 @@ Meteor.methods({
             author: user.username,
             commentsCount: 0,
             usersLiked: [],
-            likes: 0,
+            likesCount: 0,
             createdAt: new Date(),
             updatedAt: new Date()
         });
 
         //Insertamos el post
-        var postId = Posts.insert(post);
+        post._id = Posts.insert(post);
 
+        var res = Posts.findOne({_id:post._id});
 
         //Devolvemos el id
         return {
 
-            _id: postId
+            slug: res.slug
 
         }
     },
 
-    postUpdate: function(postId, newValues, oldValues){
+    postUpdate: function(newValues, oldValues){
 
         //Comprobamos que sea el autor del post
         if(Meteor.userId() !== oldValues.userId){
@@ -143,12 +144,13 @@ Meteor.methods({
         });
 
         //Actualizamos el post
-        Posts.update(postId, {$set: post});
+        Posts.update(oldValues._id, {$set: post});
+        Comments.update({postId: oldValues._id},{$set: {postSlug: post.slug}});
 
         //Devolvemos el id
         return {
 
-            _id: postId
+            slug: post.slug
 
         }
 

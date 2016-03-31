@@ -7,3 +7,14 @@ Template.userProfile.helpers({
         return Posts.find({userId: Router.current().params.userId },{sort:{createdAt: -1}});
     }
 });
+
+Template.userProfile.helpers({
+    ownProfile: function(){
+        var res = false;
+        var userId = Router.current().params.userId;
+        if(userId === Meteor.userId()){
+            res = true;
+        }
+        return res;
+    }
+});
