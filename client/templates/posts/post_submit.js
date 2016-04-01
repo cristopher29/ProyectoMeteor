@@ -17,7 +17,7 @@ var postSubmitHook = {
                 $('#enviar').removeAttr('disabled');
                 return;
             }
-            Router.go('postPage', {slug: result.slug});
+            Router.go('postPage', {_id: result._id, slug: result.slug});
 
             Bert.alert('Nuevo post agregado', 'success', 'growl-top-right');
         });

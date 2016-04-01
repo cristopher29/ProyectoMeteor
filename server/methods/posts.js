@@ -85,12 +85,12 @@ Meteor.methods({
         //Insertamos el post
         post._id = Posts.insert(post);
 
-        var res = Posts.findOne({_id:post._id});
+        var res = Posts.findOne(post._id);
 
         //Devolvemos el id
         return {
-
-            slug: res.slug
+            slug: res.slug,
+            _id: res._id
 
         }
     },
@@ -104,7 +104,7 @@ Meteor.methods({
 
         check(Meteor.userId(), String);
 
-        check(PostSchema.clean(newValues), Posts.simpleSchema());
+        check(newValues, Posts.simpleSchema());
 
         //Limpiamos el html
         var dirtyHtml = newValues.description;
@@ -146,12 +146,25 @@ Meteor.methods({
 
         //Actualizamos el post
         Posts.update(oldValues._id, {$set: post});
-        Comments.update({postId: oldValues._id},{$set: {postSlug: post.slug}});
+
+        if(newValues.title !== oldValues.title){
+
+            var comments = Comments.find({postId: oldValues._id});
+
+            if(comments){
+                comments.forEach(function(doc){
+                    Comments.update({_id: doc._id},{$set: {postSlug: post.slug}});
+                });
+            }
+
+        }
+
+        var res = Posts.findOne(oldValues._id);
 
         //Devolvemos el id
         return {
-
-            slug: post.slug
+            slug: res.slug,
+            _id: res._id
 
         }
 

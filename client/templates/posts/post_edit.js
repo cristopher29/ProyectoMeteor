@@ -26,7 +26,7 @@ AutoForm.addHooks('updatePost', {
                 return;
             }
 
-            Router.go('postPage', {slug: result.slug});
+            Router.go('postPage', {_id: result._id, slug: result.slug});
 
             Bert.alert('Post actualizado', 'success', 'growl-top-right');
 
