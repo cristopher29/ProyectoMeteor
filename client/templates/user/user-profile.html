@@ -13,22 +13,30 @@
                     <div class="title">
                         <a target="_blank" >{{username}}</a>
                     </div>
-                    <div class="desc">Passionate designer</div>
-                    <div class="desc">Curious developer</div>
+                    <div class="desc">Seguidores {{followerCount}}</div>
+                    <div class="desc">Siguiendo {{followingCount}} </div>
                     <div class="desc">Tech geek</div>
                 </div>
                 {{#if ownProfile}}
                     <div class="bottom">
-                        <a class="btn btn-primary btn-twitter btn-sm" href="#">
+                        <button class="btn btn-primary btn-twitter btn-sm" >
                             <i class="fa fa-pencil"></i> Editar
-                        </a>
+                        </button>
                     </div>
                 {{else}}
-                    <div class="bottom">
-                        <a class="btn btn-primary btn-twitter btn-sm" href="#">
-                            <i class="fa fa-user-plus"></i>Seguir
-                        </a>
-                    </div>
+                    {{#if isFollower}}
+                        <div class="bottom">
+                            <button class="unfollow btn btn-primary btn-twitter btn-sm" >
+                                <i class="fa fa-user-plus"></i>Dejar de seguir
+                            </button>
+                        </div>
+                    {{else}}
+                        <div class="bottom">
+                            <button class="follow btn btn-primary btn-twitter btn-sm" >
+                                <i class="fa fa-user-plus"></i>Seguir
+                            </button>
+                        </div>
+                    {{/if}}
                 {{/if}}
             </div>
 

@@ -14,11 +14,28 @@ Meteor.publish('notifications', function() {
     return Notifications.find({alertedUserId: this.userId, read: false});
 });
 
-Meteor.publish('user-profile', function(userId) {
+Meteor.publish('allUsers', function(){
+    return Meteor.users.find({},{fields:{
+        profile: 1,
+        username: 1,
+        followerCount: 1,
+        followers: 1,
+        followingCount: 1,
+        following: 1
+
+    }});
+});
+
+Meteor.publish('userProfile', function(userId) {
     check(userId, String);
     return Meteor.users.find({_id: userId}, {fields:{
-        "profile": 1,
-        "username": 1
+        profile: 1,
+        username: 1,
+        followerCount: 1,
+        followers: 1,
+        followingCount: 1,
+        following: 1
+
     }});
 });
 
