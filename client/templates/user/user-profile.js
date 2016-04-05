@@ -4,10 +4,15 @@
 
 Template.userProfile.events({
     'click .follow': function(e,t){
-        console.log(this._id);
         e.preventDefault();
         if(Meteor.user()){
             Meteor.call('follow',Meteor.userId(),this._id);
+        }
+    },
+    'click .unfollow': function(e,t){
+        e.preventDefault();
+        if(Meteor.user()){
+            Meteor.call('unfollow',Meteor.userId(),this._id);
         }
     }
 });
@@ -15,8 +20,9 @@ Template.userProfile.events({
 Template.userProfile.helpers({
 
     isFollower: function(){
+        console.log(this.followers);
 
-        if(Meteor.user() != null && $.inArray(Meteor.userId(), this.followers)){
+        if($.inArray(Meteor.userId(), this.followers) > -1){
             return true;
         }else {
             return false;
