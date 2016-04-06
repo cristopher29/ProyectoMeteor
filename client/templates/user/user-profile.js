@@ -20,12 +20,11 @@ Template.userProfile.events({
 Template.userProfile.helpers({
 
     isFollower: function(){
-        console.log(this.followers);
 
-        if($.inArray(Meteor.userId(), this.followers) > -1){
-            return true;
-        }else {
+        if($.inArray(Meteor.userId(), this.followers) == -1){
             return false;
+        } else {
+            return true;
         }
     },
     userPosts: function(){
