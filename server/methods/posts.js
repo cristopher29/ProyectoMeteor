@@ -2,26 +2,14 @@
  * Created by CristoH on 10/03/2016.
  */
 
-
-// Funcion para sanitizar el html
-
-function sanitize(html){
-    return sanitizeHtml(html, {
-        allowedTags: [ 'b', 'i', 'u', 'strong', 'font','strike','span','div' ],
-        allowedAttributes: {
-            '*': [ 'color','style' ]
-        }
-    });
-}
-
-
 Meteor.methods({
 
     postLike: function(postId, userId){
+
         check(Meteor.userId(), String);
 
-        if (userId != Meteor.userId()) {
-            throw new Meteor.Error('invalid-id', 'userId no es igual');
+        if (userId !== Meteor.userId()) {
+            throw new Meteor.Error('invalid-id', 'ID de usuario no válido');
         }
 
         var post = Posts.findOne({_id: postId});
@@ -37,12 +25,15 @@ Meteor.methods({
             return {
                 like: true
             }
+        }else{
+            throw new Meteor.Error('invalid-post', 'Post no encontrado');
         }
     },
 
     postInsert: function(postAttributes) {
 
         check(Meteor.userId(), String);
+
         //Comprobamos que el post tenga los campos obligatorios del esquema
         check(postAttributes, Posts.simpleSchema());
 
@@ -87,7 +78,7 @@ Meteor.methods({
 
         var res = Posts.findOne(post._id);
 
-        //Devolvemos el id
+        //Devolvemos el id y slug
         return {
             slug: res.slug,
             _id: res._id
@@ -97,14 +88,13 @@ Meteor.methods({
 
     postUpdate: function(newValues, oldValues){
 
+        check(Meteor.userId(), String);
+        check(newValues, Posts.simpleSchema());
+
         //Comprobamos que sea el autor del post
         if(Meteor.userId() !== oldValues.userId){
-            throw new Meteor.Error("no-author", "No eres el autor del post");
+            throw new Meteor.Error("invalid-author", "No eres el autor del post");
         }
-
-        check(Meteor.userId(), String);
-
-        check(newValues, Posts.simpleSchema());
 
         //Limpiamos el html
         var dirtyHtml = newValues.description;
@@ -135,7 +125,6 @@ Meteor.methods({
         }
 
         //Actualizamos los valores
-
         var post = _.extend(newValues, {
             title: newValues.title,
             shortDescription: newValues.shortDescription,
@@ -146,18 +135,6 @@ Meteor.methods({
 
         //Actualizamos el post
         Posts.update(oldValues._id, {$set: post});
-
-        if(newValues.title !== oldValues.title){
-
-            var comments = Comments.find({postId: oldValues._id});
-
-            if(comments){
-                comments.forEach(function(doc){
-                    Comments.update({_id: doc._id},{$set: {postSlug: post.slug}});
-                });
-            }
-
-        }
 
         var res = Posts.findOne(oldValues._id);
 
