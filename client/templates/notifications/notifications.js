@@ -26,10 +26,9 @@ Template.notifications.helpers({
 Template.notificationItem.helpers({
     notificationPath: function() {
         if(this.action == "comment" || this.action == "like"){
-            var res = Posts.findOne({_id: this.contentId});
-            return Router.routes.postPage.path({_id: res._id, slug: res.slug});
+            var post = Posts.findOne({_id: this.contentId});
+            return Router.routes.postPage.path({_id: post._id, slug: post.slug});
         }
-
     }
 });
 

@@ -6,19 +6,18 @@
         <div class="panel-body">
             <div class="valign">
                 <div>
-                    <a href="{{pathFor 'postPage'}}" class="lead">{{title}}</a>
+                    <a href="{{pathFor 'postPage'}}" class="lead">{{title}} <span class="pull-right time">{{livestamp createdAt}}</span></a>
                     <p>{{shortDescription}}</p>
                 </div>
             </div>
             <div >
                 {{#if currentUser}}
-                    <a href="{{pathFor 'postPage'}}" class="btn btn-sm btn-primary"><em class="fa fa-eye fa-fw"></em></a>
 
                     {{#if ownPost}}
                         <a href="{{pathFor 'postEdit'}}" class="pull-right btn btn-sm btn-primary"><em class="fa fa-pencil fa-fw"></em></a>
                     {{/if}}
 
-                    <div class="pull-right btn btn-sm btn-primary"><em class="fa fa-comment fa-fw"></em> {{commentsCount}}</div>
+                    <a href="{{pathFor 'postPage'}}" class="pull-right btn btn-sm btn-primary"><em class="fa fa-comment fa-fw"></em> {{commentsCount}}</a>
 
                     {{#if liked}}
                         <button class="pull-right like btn btn-sm btn-danger"><em class="fa fa-heart fa-fw"></em> {{likesCount}}</button>
