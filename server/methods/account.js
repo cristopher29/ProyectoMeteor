@@ -11,7 +11,7 @@ Meteor.methods({
         check(followeeId, String);
 
         if(followerId === Meteor.userId() && checkUser(followeeId)){
-            Meteor.users.update({_id: followeeId},{$inc: {followerCount: 1}});
+            Meteor.users.update({_id: followeeId},{$inc: {followersCount: 1}});
             Meteor.users.update({_id: followerId},{$inc: {followingCount: 1}});
 
             Meteor.users.update({_id: followeeId},{$push: {followers: followerId}});
@@ -31,7 +31,7 @@ Meteor.methods({
 
         if(followerId === Meteor.userId() && checkUser(followeeId)){
 
-            Meteor.users.update({_id: followeeId},{$inc: {followerCount: -1}});
+            Meteor.users.update({_id: followeeId},{$inc: {followersCount: -1}});
             Meteor.users.update({_id: followerId},{$inc: {followingCount: -1}});
 
             Meteor.users.update({_id: followeeId},{$pull: {followers: followerId}});

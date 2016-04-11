@@ -33,7 +33,7 @@ Template.notificationItem.helpers({
 });
 
 Template.notificationItem.events({
-    'click .postRoute, click .read-notification': function() {
+    'click .postRoute, click .read-notification, click .user-profile': function() {
         Notifications.update(this._id, {$set: {read: true}});
     }
 });

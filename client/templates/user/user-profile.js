@@ -14,6 +14,10 @@ Template.userProfile.events({
         if(Meteor.user()){
             Meteor.call('unfollow',Meteor.userId(),this._id);
         }
+    },
+    'click .edit-profile': function(e,t){
+        e.preventDefault();
+        Modal.show('editProfile');
     }
 });
 

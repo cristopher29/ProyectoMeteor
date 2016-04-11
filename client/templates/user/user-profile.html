@@ -11,15 +11,36 @@
                 </div>
                 <div class="info">
                     <div class="title">
-                        <a target="_blank" >{{username}}</a>
+                        <h3>{{profile.firstName}} {{profile.lastName}}</h3>
+                        <a target="_blank" >@{{username}}</a>
                     </div>
-                    <div class="desc">Seguidores {{followerCount}}</div>
-                    <div class="desc">Siguiendo {{followingCount}} </div>
                     <div class="desc">Tech geek</div>
+                </div>
+                <div class="stats">
+                    <ul class="arrange">
+                        <li class="arrangeSizeFit">
+                            <a href="">
+                                <span class="statLabel">Posts</span>
+                                <span class="statValue">9.840</span>
+                            </a>
+                        </li>
+                        <li class="arrangeSizeFit">
+                            <a href="">
+                                <span class="statLabel">Siguiendo</span>
+                                <span class="statValue">{{followingCount}}</span>
+                            </a>
+                        </li>
+                        <li class="arrangeSizeFit">
+                            <a href="">
+                                <span class="statLabel">Seguidores</span>
+                                <span class="statValue">{{followersCount}}</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 {{#if ownProfile}}
                     <div class="bottom">
-                        <button class="btn btn-primary btn-twitter btn-sm" >
+                        <button class="edit-profile btn btn-primary btn-twitter btn-sm" >
                             <i class="fa fa-pencil"></i> Editar
                         </button>
                     </div>

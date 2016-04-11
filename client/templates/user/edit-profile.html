@@ -1,11 +1,24 @@
 <template name="editProfile">
 
-    {{#autoForm collection="Meteor.users" doc=currentUser type="update" id="updateProfile"}}
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
 
-        {{> afObjectField name='profile'}}
+                    {{#autoForm collection="Meteor.users" doc=currentUser type="update" id="updateProfile"}}
 
-        <input id="enviar" type="submit" value="Guardar" class="btn btn-primary"/>
+                        {{> afObjectField name='profile'}}
 
-    {{/autoForm}}
+                        <input id="enviar" type="submit" value="Guardar" class="btn btn-primary"/>
+
+                    {{/autoForm}}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
 
 </template>

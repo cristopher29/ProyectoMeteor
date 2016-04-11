@@ -9,16 +9,15 @@ var postSubmitHook = {
             if (error){
                 Bert.alert(error.reason, 'danger', 'growl-top-right');
                 $('#enviar').removeAttr('disabled');
-                return;
+                return false;
             }
             //Muestra alert si existe ese post
             if (result.postExists){
                 Bert.alert('Este título y descripción ya existen', 'warning', 'growl-top-right');
                 $('#enviar').removeAttr('disabled');
-                return;
+                return false;
             }
             Router.go('postPage', {_id: result._id, slug: result.slug});
-
             Bert.alert('Nuevo post agregado', 'success', 'growl-top-right');
         });
         return false;
