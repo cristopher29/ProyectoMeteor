@@ -3,11 +3,19 @@
     <div class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Perfil</h4>
+                </div>
                 <div class="modal-body">
 
-                    {{#autoForm collection="Meteor.users" doc=currentUser type="update" id="updateProfile"}}
+                    {{#autoForm collection="Meteor.users" doc=currentUser type="update" id="updateProfile" }}
 
-                        {{> afObjectField name='profile'}}
+                        {{> afQuickField name='profile.firstName'}}
+                        {{> afQuickField name='profile.lastName'}}
+                        {{> afQuickField name='profile.birthday'}}
+                        {{> afQuickField name='profile.gender'}}
+                        {{> afQuickField name='profile.website'}}
 
                         <input id="enviar" type="submit" value="Guardar" class="btn btn-primary"/>
 

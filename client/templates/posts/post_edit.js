@@ -50,13 +50,23 @@ Template.postEdit.events({
     },
 
     'click #eliminar': function(e) {
-        e.preventDefault();
 
-        if (confirm("Seguro que quiere eliminar este post?")) {
-            var currentPostId = this._id;
+        e.preventDefault();
+        var currentPostId = this._id;
+
+        swal({
+            title: '¿Estás seguro?',
+            text: 'El post no se podra recuperar',
+            type: 'warning',
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Elimínalo!",
+            cancelButtonText: "No, pls!",
+            showCancelButton: true
+        }, function(){
             Posts.remove(currentPostId);
             Router.go('postsList');
-        }
+        });
+
     },
 
     'keyup .note-editable': function(e){

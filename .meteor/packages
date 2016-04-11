@@ -20,6 +20,7 @@ accounts-password
 iron:router
 sacha:spin
 twbs:bootstrap
+peppelg:bootstrap-3-modal
 ian:accounts-ui-bootstrap-3
 themeteorchef:bert
 check
@@ -31,8 +32,8 @@ msavin:mongol
 email
 momentjs:moment
 copleykj:livestamp
-peppelg:bootstrap-3-modal
 djedi:sanitize-html
 todda00:friendly-slugs
+kevohagan:sweetalert
 #useraccounts:bootstrap
 #useraccounts:iron-routing

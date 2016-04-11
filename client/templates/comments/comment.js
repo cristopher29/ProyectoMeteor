@@ -10,16 +10,21 @@ Template.comment.helpers({
 Template.comment.events({
     'click .delete' : function(e){
         e.preventDefault();
-        Modal.show('deleteCommentModal');
-        Session.set('commentId',this._id);
+
+        var currentCommentId = this._id;
+
+        swal({
+            title: '¿Estás seguro?',
+            text: 'El comentario no se podra recuperar',
+            type: 'warning',
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Elimínalo!",
+            cancelButtonText: "No, pls!",
+            showCancelButton: true
+        }, function(){
+            Meteor.call('commentDelete', currentCommentId);
+        });
+
     }
 
-});
-Template.deleteCommentModal.events({
-    'click .deleteComment' : function(e){
-        e.preventDefault();
-        var currentCommentId = Session.get('commentId');
-        Meteor.call('commentDelete', currentCommentId);
-        Modal.hide('deleteCommentModal')
-    }
 });
