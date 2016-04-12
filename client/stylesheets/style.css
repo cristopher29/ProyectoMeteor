@@ -496,3 +496,21 @@ ul.arrange {
 .well{
   background-color: #f5f9fa;
 }
+.cropit-preview {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-top: 7px;
+  width: 250px;
+  height: 250px;
+}
+.cropit-preview-image-container {
+  cursor: move;
+}
+.cropit-image-zoom-input {
+  width: 210px !important;
+  margin: 20px 20px;
+}
+.cropit-image-input{
+  margin-bottom: 15px;
+}

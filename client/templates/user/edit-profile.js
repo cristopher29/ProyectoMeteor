@@ -11,3 +11,7 @@ var editProfileHook = {
 };
 
 AutoForm.addHooks('updateProfile',editProfileHook);
+
+Template.editProfile.onRendered(function(){
+    $('#image-cropper').cropit();
+});

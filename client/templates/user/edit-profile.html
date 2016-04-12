@@ -11,6 +11,12 @@
 
                     {{#autoForm collection="Meteor.users" doc=currentUser type="update" id="updateProfile" }}
 
+                        <div id="image-cropper">
+                            <div class="cropit-preview"></div>
+                            <input type="range" class="cropit-image-zoom-input" />
+                            <input type="file" class="cropit-image-input" />
+                        </div>
+
                         {{> afQuickField name='profile.firstName'}}
                         {{> afQuickField name='profile.lastName'}}
                         {{> afQuickField name='profile.birthday'}}
