@@ -3,8 +3,11 @@
  */
 
 var editProfileHook = {
-
     onSuccess: function(){
+        var imageData = $('#image-cropper').cropit('export');
+        if(imageData !== null){
+            Meteor.users.update(Meteor.userId(), {$set:{ "profile.display_picture" : imageData}});
+        }
         Modal.hide('editProfile');
     }
 
@@ -13,5 +16,20 @@ var editProfileHook = {
 AutoForm.addHooks('updateProfile',editProfileHook);
 
 Template.editProfile.onRendered(function(){
-    $('#image-cropper').cropit();
+
+    if(Meteor.user().profile.display_picture !== null){
+
+        $('#image-cropper').cropit({
+            imageState: {
+                src: Meteor.user().profile.display_picture
+            },
+            onZoomDisabled: function(){
+                $('.cropit-image-zoom-input').removeAttr("disabled");
+            }
+        });
+    }else{
+        $('#image-cropper').cropit();
+    }
+
+
 });
