@@ -2,6 +2,7 @@
  * @author ziloLiang
  * 22/01/2015
  * thx cropbox.js by ezgoing provide inspiration;
+ * test
  */
 
 (function(factory){
