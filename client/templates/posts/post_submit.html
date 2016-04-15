@@ -12,6 +12,16 @@
                     {{> afQuickField name='shortDescription' class='short-description form-control'}}
                 </div>
             </div>
+
+            <div class="form-group">
+                <div class="controls">
+                    <label for="file" class="dropzone">
+                        <input type="file" class="image" id="upload-file" name="image" onchange="this.form.fileName.value = this.value">
+                        <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
+                    </label>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="controls">
                     {{> afQuickField name='description' }}

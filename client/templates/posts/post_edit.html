@@ -12,6 +12,12 @@
                 {{> afQuickField name='shortDescription' class='short-description form-control'}}
             </div>
         </div>
+
+        {{#if image}}
+            <img src="{{image}}" alt="" style="width: 200px;">
+            <button class="btn-sm btn-danger">Eliminar</button>
+        {{/if}}
+
         <div class="form-group">
             <div class="controls">
                 {{> afQuickField name='description' class='description form-control'}}

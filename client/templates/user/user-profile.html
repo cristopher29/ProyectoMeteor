@@ -7,7 +7,11 @@
 
                 </div>
                 <div class="avatar">
-                    <img alt="" src="http://placehold.it/60x60">
+                    {{#if profile.display_picture}}
+                        <img alt="" src="{{profile.display_picture}}">
+                    {{else}}
+                        <img alt="" src="http://placehold.it/60x60">
+                    {{/if}}
                 </div>
                 <div class="info">
                     <div class="title">
