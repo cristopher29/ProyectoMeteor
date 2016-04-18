@@ -18,35 +18,38 @@ AutoForm.addHooks('updateProfile',editProfileHook);
 
 Template.editProfile.onRendered(function(){
 
-    if(Meteor.user().profile.display_picture !== null){
-        rot = 0;
-        ratio = 1;
-        CanvasCrop = $.CanvasCrop({
+    Meteor.defer(function(){
+        if(Meteor.user().profile.display_picture !== null){
+            rot = 0;
+            ratio = 1;
+            CanvasCrop = $.CanvasCrop({
 
-            // outercontainer
-            cropBox : ".imageBox",
+                // outercontainer
+                cropBox : ".imageBox",
 
-            // inner container
-            thumbBox : ".thumbBox",
+                // inner container
+                thumbBox : ".thumbBox",
 
-            // initial image
-            imgSrc : Meteor.user().profile.display_picture,
+                // initial image
+                imgSrc : Meteor.user().profile.display_picture,
 
-            // 0 = original size
-            // 1 = resize image based on outer container
-            // 2 = resize image based on inner container
-            limitOver : 2
+                // 0 = original size
+                // 1 = resize image based on outer container
+                // 2 = resize image based on inner container
+                limitOver : 2
 
-        });
+            });
 
-    }else{
-        rot = 0;
-        ratio = 1;
-        CanvasCrop = $.CanvasCrop({
-            cropBox : ".imageBox",
-            thumbBox : ".thumbBox"
-        });
-    }
+        }else{
+            rot = 0;
+            ratio = 1;
+            CanvasCrop = $.CanvasCrop({
+                cropBox : ".imageBox",
+                thumbBox : ".thumbBox",
+                limitOver : 1
+            });
+        }
+    });
 
 });
 
