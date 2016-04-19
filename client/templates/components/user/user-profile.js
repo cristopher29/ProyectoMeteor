@@ -31,9 +31,7 @@ Template.userProfile.helpers({
             return true;
         }
     },
-    userPosts: function(){
-        return Posts.find({userId: Router.current().params.userId },{sort:{createdAt: -1}});
-    },
+
     ownProfile: function(){
         var res = false;
         var userId = Router.current().params.userId;

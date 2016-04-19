@@ -1,90 +1,70 @@
 <template name="userProfile">
-    <div class="row">
-        <div class="col-sm-3">
 
-            <div class="card hovercard">
-                <div class="cardheader">
+    <div class="col-sm-3">
 
+        <div class="card hovercard">
+            <div class="cardheader">
+
+            </div>
+            <div class="avatar">
+                {{#if profile.display_picture}}
+                    <img alt="" src="{{profile.display_picture}}">
+                {{else}}
+                    <img alt="" src="http://placehold.it/60x60">
+                {{/if}}
+            </div>
+            <div class="info">
+                <div class="title">
+                    <h3>{{profile.firstName}} {{profile.lastName}}</h3>
+                    <a target="_blank" >@{{username}}</a>
                 </div>
-                <div class="avatar">
-                    {{#if profile.display_picture}}
-                        <img alt="" src="{{profile.display_picture}}">
-                    {{else}}
-                        <img alt="" src="http://placehold.it/60x60">
-                    {{/if}}
+                <div class="desc">Tech geek</div>
+            </div>
+            <div class="stats">
+                <ul class="arrange">
+                    <li class="arrangeSizeFit">
+                        <a href="">
+                            <span class="statLabel">Posts</span>
+                            <span class="statValue">9.840</span>
+                        </a>
+                    </li>
+                    <li class="arrangeSizeFit">
+                        <a href="">
+                            <span class="statLabel">Siguiendo</span>
+                            <span class="statValue">{{followingCount}}</span>
+                        </a>
+                    </li>
+                    <li class="arrangeSizeFit">
+                        <a href="{{pathFor 'userProfileFollowers'}}">
+                            <span class="statLabel">Seguidores</span>
+                            <span class="statValue">{{followersCount}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {{#if ownProfile}}
+                <div class="bottom">
+                    <button class="edit-profile btn btn-primary btn-twitter btn-sm" >
+                        <i class="fa fa-pencil"></i> Editar
+                    </button>
                 </div>
-                <div class="info">
-                    <div class="title">
-                        <h3>{{profile.firstName}} {{profile.lastName}}</h3>
-                        <a target="_blank" >@{{username}}</a>
-                    </div>
-                    <div class="desc">Tech geek</div>
-                </div>
-                <div class="stats">
-                    <ul class="arrange">
-                        <li class="arrangeSizeFit">
-                            <a href="">
-                                <span class="statLabel">Posts</span>
-                                <span class="statValue">9.840</span>
-                            </a>
-                        </li>
-                        <li class="arrangeSizeFit">
-                            <a href="">
-                                <span class="statLabel">Siguiendo</span>
-                                <span class="statValue">{{followingCount}}</span>
-                            </a>
-                        </li>
-                        <li class="arrangeSizeFit">
-                            <a href="">
-                                <span class="statLabel">Seguidores</span>
-                                <span class="statValue">{{followersCount}}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                {{#if ownProfile}}
+            {{else}}
+                {{#if isFollower}}
                     <div class="bottom">
-                        <button class="edit-profile btn btn-primary btn-twitter btn-sm" >
-                            <i class="fa fa-pencil"></i> Editar
+                        <button class="unfollow btn btn-primary btn-twitter btn-sm" >
+                            <i class="fa fa-user-plus"></i>Dejar de seguir
                         </button>
                     </div>
                 {{else}}
-                    {{#if isFollower}}
-                        <div class="bottom">
-                            <button class="unfollow btn btn-primary btn-twitter btn-sm" >
-                                <i class="fa fa-user-plus"></i>Dejar de seguir
-                            </button>
-                        </div>
-                    {{else}}
-                        <div class="bottom">
-                            <button class="follow btn btn-primary btn-twitter btn-sm" >
-                                <i class="fa fa-user-plus"></i>Seguir
-                            </button>
-                        </div>
-                    {{/if}}
+                    <div class="bottom">
+                        <button class="follow btn btn-primary btn-twitter btn-sm" >
+                            <i class="fa fa-user-plus"></i>Seguir
+                        </button>
+                    </div>
                 {{/if}}
-            </div>
-
-        </div>
-        <div class="col-sm-6">
-            {{#each userPosts}}
-                {{>userProfilePost}}
-            {{/each}}
+            {{/if}}
         </div>
 
-        <div class="col-sm-3 hidden-xs">
-            <div class="panel panel-default">
-                <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
-                <div class="panel-body">
-                    <img src="http://placehold.it/60x60" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
-                    <div class="clearfix"></div>
-                    There a load of new free Bootstrap 3
-                    ready templates at Bootply. All of these templates are free and don't
-                    require extensive customization to the Bootstrap baseline.
-                    <hr>
-                    <ul class="list-unstyled"><li><a href="http://usebootstrap.com/theme/facebook">Dashboard</a></li><li><a href="http://usebootstrap.com/theme/facebook">Darkside</a></li><li><a href="http://usebootstrap.com/theme/facebook">Greenfield</a></li></ul>
-                </div>
-            </div>
-        </div>
     </div>
+
 </template>

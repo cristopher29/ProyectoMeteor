@@ -2,16 +2,15 @@
  * Created by CristoH on 18/01/16.
  */
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-////////////					AUTOFORM HOOK:							          ////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-
+//Crear funcion para subir imagen
 
 AutoForm.addHooks('updatePost', {
 
     onSubmit: function(insertDoc, updateDoc, currentDoc){
+
+        //var files = [];
+        //var image = $('.image')[0].files[0];
+        //files.push(image);
 
         Meteor.call('postUpdate', insertDoc , currentDoc, function(error, result) {
             if (error) {
@@ -26,6 +25,12 @@ AutoForm.addHooks('updatePost', {
                 return;
             }
 
+            if(image){
+                Cloudinary.upload(files,{}, function(err, img){
+                    Posts.update({_id: result._id},{$set:{image: img.url, imageId: img.public_id}});
+                });
+            }
+
             Router.go('postPage', {_id: result._id, slug: result.slug});
 
             Bert.alert('Post actualizado', 'success', 'growl-top-right');
@@ -35,18 +40,15 @@ AutoForm.addHooks('updatePost', {
 
 });
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-////////////					EVENTOS EDITAR POST:							  ////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-
 Template.postEdit.events({
 
     'submit form': function(e) {
         e.preventDefault();
+    },
+
+    'click #delete-image': function(e){
+        e.preventDefault();
+        Meteor.call('deleteImage',this._id, this.userId, this.imageId);
     },
 
     'click #eliminar': function(e) {

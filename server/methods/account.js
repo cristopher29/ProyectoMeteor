@@ -2,8 +2,6 @@
  * Created by CristoH on 04/04/2016.
  */
 
-
-
 Meteor.methods({
     follow: function(followerId, followeeId){
 
@@ -17,7 +15,11 @@ Meteor.methods({
             Meteor.users.update({_id: followeeId},{$push: {followers: followerId}});
             Meteor.users.update({_id: followerId},{$push: {following: followeeId}});
 
-            Meteor.call('createNotification', followeeId, null, null ,followerId, Meteor.user().username, 'follow');
+            Meteor.call('createNotification', followeeId, null, null ,followerId, Meteor.user().username, 'follow', function(error,result){
+                if(error){
+                    console.log('error al crear notificacion');
+                }
+            });
         } else {
             throw new Meteor.Error("invalid-user", "El usuario no existe");
         }

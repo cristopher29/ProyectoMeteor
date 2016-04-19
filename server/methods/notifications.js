@@ -6,6 +6,7 @@ Meteor.methods({
 
     createNotification: function(alertedUserId, contentId, contentTitle, userId, username , action){
 
+        console.log('creando Notificacion');
         //Si el usuario alertado es el mismo que creo la notificacion
         if (alertedUserId === userId) {
             return null; // Nada va a pasar

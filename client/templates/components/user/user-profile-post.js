@@ -28,5 +28,8 @@ Template.userProfilePost.helpers({
         if(this.usersLiked.indexOf(Meteor.userId()) == -1){
             return false;
         }
+    },
+    userPosts: function(){
+        return Posts.find({userId: Router.current().params.userId },{sort:{createdAt: -1}});
     }
 });
