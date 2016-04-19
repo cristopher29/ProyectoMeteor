@@ -2,15 +2,14 @@
  * Created by CristoH on 18/01/16.
  */
 
-//Crear funcion para subir imagen
 
 AutoForm.addHooks('updatePost', {
 
     onSubmit: function(insertDoc, updateDoc, currentDoc){
 
-        //var files = [];
-        //var image = $('.image')[0].files[0];
-        //files.push(image);
+        var files = [];
+        var image = $('.image')[0].files[0];
+        files.push(image);
 
         Meteor.call('postUpdate', insertDoc , currentDoc, function(error, result) {
             if (error) {

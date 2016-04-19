@@ -13,7 +13,23 @@
             </div>
         </div>
 
+        {{#if image}}
 
+            <h4>Imagen (opcional)</h4>
+            <div><img id="post-image" src="{{image}}" alt="" style="width: 200px;"></div>
+            <div><a id="delete-image" class="btn-sm btn-danger">Eliminar</a></div>
+        {{else}}
+
+            <div class="form-group">
+                <div class="controls">
+                    <label for="upload-file" class="control-label">Imagen (opcional)</label>
+                    <label for="file" class="dropzone">
+                        <input type="file" class="image" id="upload-file" name="image" onchange="this.form.fileName.value = this.value">
+                        <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
+                    </label>
+                </div>
+            </div>
+        {{/if}}
 
         <div class="form-group">
             <div class="controls">
