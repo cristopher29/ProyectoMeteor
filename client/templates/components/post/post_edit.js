@@ -36,6 +36,7 @@ AutoForm.addHooks('updatePost', {
             Bert.alert('Post actualizado', 'success', 'growl-top-right');
 
         });
+        return false;
     }
 
 });
