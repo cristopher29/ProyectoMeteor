@@ -1,7 +1,7 @@
 /**
  * Created by CristoH on 10/01/2016.
  */
-
+//sdfdsf
 Meteor.publish('posts', function() {
     return Posts.find();
 });
