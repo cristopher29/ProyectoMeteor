@@ -2,14 +2,26 @@
  * Created by CristoH on 18/01/16.
  */
 
+var uploadImage= function(result){
+
+    if($('#upload-file').length){
+
+        var files = [];
+        var image = $('.image')[0].files[0];
+
+        if(image){
+
+            files.push(image);
+            Cloudinary.upload(files,{}, function(err, img){
+                Posts.update({_id: result._id},{$set:{image: img.url, imageId: img.public_id}});
+            });
+        }
+    }
+};
 
 AutoForm.addHooks('updatePost', {
 
     onSubmit: function(insertDoc, updateDoc, currentDoc){
-
-        var files = [];
-        var image = $('.image')[0].files[0];
-        files.push(image);
 
         Meteor.call('postUpdate', insertDoc , currentDoc, function(error, result) {
             if (error) {
@@ -24,11 +36,7 @@ AutoForm.addHooks('updatePost', {
                 return;
             }
 
-            if(image){
-                Cloudinary.upload(files,{}, function(err, img){
-                    Posts.update({_id: result._id},{$set:{image: img.url, imageId: img.public_id}});
-                });
-            }
+            uploadImage(result);
 
             Router.go('postPage', {_id: result._id, slug: result.slug});
 

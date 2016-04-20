@@ -5,7 +5,6 @@ var postSubmitHook = {
 
     onSubmit: function(insertDoc){
 
-
         var files = [];
         var image = $('.image')[0].files[0];
         files.push(image);
