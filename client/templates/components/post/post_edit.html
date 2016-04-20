@@ -2,22 +2,22 @@
 
     {{#autoForm collection="Posts" doc=this id="updatePost"}}
 
-        <div class="form-group">
-            <div class="controls">
-                {{> afQuickField name='title' class='title form-control'}}
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="controls">
-                {{> afQuickField name='shortDescription' class='short-description form-control'}}
-            </div>
-        </div>
+
+        {{> afQuickField name='title' class='title form-control'}}
+
+        {{> afQuickField name='shortDescription' class='short-description form-control'}}
 
         {{#if image}}
+            <label for="post-image" class="control-label">Imagen (opcional)</label>
 
-            <h4>Imagen (opcional)</h4>
-            <div><img id="post-image" src="{{image}}" alt="" style="width: 200px;"></div>
-            <div><a id="delete-image" class="btn-sm btn-danger">Eliminar</a></div>
+            <div style="height: 350px;">
+                <figure class="image-with-icon red">
+                    <img src="{{image}}" alt=""/>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <a id="delete-image"></a>
+                </figure>
+            </div>
+
         {{else}}
 
             <div class="form-group">
