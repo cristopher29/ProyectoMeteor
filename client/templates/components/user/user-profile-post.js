@@ -30,6 +30,11 @@ Template.userProfilePost.helpers({
         }
     },
     userPosts: function(){
-        return Posts.find({userId: Router.current().params.userId },{sort:{createdAt: -1}});
+        return Posts.find({
+            $or: [
+                {userId: {$in: this.following} },
+                {userId: this._id }
+            ]
+        },{sort:{createdAt: -1}});
     }
 });

@@ -1,9 +1,8 @@
 /**
- * Created by CristoH on 19/04/2016.
+ * Created by CristoH on 21/04/2016.
  */
 
-
-Meteor.publishComposite('userFollowers', function(userId) {
+Meteor.publishComposite('userProfile', function(userId) {
     check(userId, String);
     return {
         find: function() {
@@ -19,18 +18,19 @@ Meteor.publishComposite('userFollowers', function(userId) {
         children: [
             {
                 find: function(user) {
-                    if (user.followers) {
-                        return Meteor.users.find({_id: {$in: user.followers}}, {fields: {
-                            username:1,
-                            profile:1,
-                            followersCount:1,
-                            followingCount:1
-                        }});
+                    if (user.following) {
+                        return Posts.find({ $or:
+                            [
+                                { userId: { $in: user.following } },
+                                { userId: user._id }
+                            ]
+                        });
+                    }else{
+                        return Posts.find({userId: user._id});
                     }
                 }
             }
 
         ]
     };
-
 });
