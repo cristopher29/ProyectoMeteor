@@ -10,7 +10,7 @@
         {{#if image}}
             <label for="post-image" class="control-label">Imagen (opcional)</label>
 
-            <div style="height: 350px;">
+            <div class="image-container">
                 <figure class="image-with-icon red">
                     <img src="{{image}}" alt=""/>
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <input id="enviar" type="submit" value="Enviar" class="btn btn-primary"/>
+        <input id="enviar" type="submit" value="Guardar" class="btn btn-primary"/>
         <button id="eliminar" type="button" class="btn btn-danger">Eliminar</button>
     {{/autoForm}}
 

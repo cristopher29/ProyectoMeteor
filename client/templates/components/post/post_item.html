@@ -3,7 +3,11 @@
 
     <div class="panel panel-default">
         {{#if image}}
-            <img class="img-responsive" src="{{image}}" alt="">
+            <figure class="image-with-icon background-like">
+                <img class="img-responsive" src="{{image}}" alt="">
+                <i class="icon-heart icon-red" aria-hidden="true"></i>
+                <a class="like"></a>
+            </figure>
         {{/if}}
         <div class="panel-body">
             <div class="valign">

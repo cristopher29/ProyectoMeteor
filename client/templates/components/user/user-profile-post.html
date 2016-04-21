@@ -3,7 +3,9 @@
     {{#each userPosts}}
 
     <div class="thumbnail">
-        <img src="http://placehold.it/450X300/" class="img-responsive">
+        {{#if image}}
+            <img src="{{image}}" class="img-responsive">
+        {{/if}}
         <div class="caption">
             <a href="{{pathFor 'postPage'}}"><h4 class="">{{title}}<span class="pull-right time">{{livestamp createdAt}}</span></h4></a>
 

@@ -1,3 +1,33 @@
+@font-face {
+  font-family: 'icomoon';
+  src:    url('fonts/icomoon.eot?8n0ggd');
+  src:    url('fonts/icomoon.eot?8n0ggd#iefix') format('embedded-opentype'),
+  url('fonts/icomoon.ttf?8n0ggd') format('truetype'),
+  url('fonts/icomoon.woff?8n0ggd') format('woff'),
+  url('fonts/icomoon.svg?8n0ggd#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-heart:before {
+  content: "\e900";
+}
+
 body {
   background: #eee;
   color: #666666;
@@ -592,15 +622,16 @@ ul.arrange {
 /*******Image hover **********/
 /*****************************/
 
+.image-container{
+  width: 300px;
+  margin-bottom: 20px;
+}
+
 figure.image-with-icon {
   position: relative;
-  float: left;
   overflow: hidden;
-  margin: 10px 1%;
-  min-width: 220px;
-  max-width: 310px;
   width: 100%;
-  background: #000000;
+  background: #383838;
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
@@ -636,6 +667,22 @@ figure.image-with-icon a {
   top: 0;
   bottom: 0;
   position: absolute;
+}
+.background-like{
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+.icon-red{
+  color: #e9ecec !important;
+  border-radius: 0 !important;
+  font-size: 74px !important;
+  line-height: 80px !important;
+  background: none !important;
+  box-shadow: none !important;
+  width: 80px !important;
+  height: 80px !important;
+}
+.icon-blue{
+  color: #20638f !important;
 }
 figure.image-with-icon.blue {
   background-color: #2472a4;
@@ -675,9 +722,9 @@ figure.image-with-icon.navy i {
 }
 figure.image-with-icon:hover img,
 figure.image-with-icon.hover img {
-  opacity: 0.3;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  opacity: 0.8;
+  -webkit-filter: grayscale(20%);
+  filter: grayscale(20%);
 }
 figure.image-with-icon:hover i,
 figure.image-with-icon.hover i {
