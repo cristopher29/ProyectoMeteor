@@ -1,0 +1,18 @@
+/**
+ * Created by CristoH on 22/04/2016.
+ */
+
+Meteor.publishComposite('postWithComments', function(postId) {
+    check(postId, String);
+    return {
+        find: function() {
+            return Posts.find({_id: postId});
+        },
+        children: [{
+            find: function(post){
+                return Comments.find({postId: post._id});
+            }
+        }]
+    };
+
+});
