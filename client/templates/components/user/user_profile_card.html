@@ -1,6 +1,6 @@
-<template name="userProfile">
+<template name="userProfileCard">
 
-    <div class="col-sm-3">
+    <div class="col-md-3">
 
         <div class="card hovercard">
             <div class="cardheader">
@@ -16,28 +16,37 @@
             <div class="info">
                 <div class="title">
                     <h3>{{profile.firstName}} {{profile.lastName}}</h3>
-                    <a target="_blank" >@{{username}}</a>
+                    <a href="/profile/{{userId}}" >@{{username}}</a>
                 </div>
                 <div class="desc">Tech geek</div>
             </div>
             <div class="stats">
                 <ul class="arrange">
                     <li class="arrangeSizeFit">
-                        <a href="">
+                        <a href="/profile/{{userId}}">
                             <span class="statLabel">Posts</span>
                             <span class="statValue">9.840</span>
                         </a>
                     </li>
                     <li class="arrangeSizeFit">
-                        <a href="">
+                        <a href="/profile/{{userId}}/following">
                             <span class="statLabel">Siguiendo</span>
-                            <span class="statValue">{{followingCount}}</span>
+                            {{#if followingCount}}
+                                <span class="statValue">{{followingCount}}</span>
+                            {{else}}
+                                <span class="statValue">0</span>
+                            {{/if}}
+
                         </a>
                     </li>
                     <li class="arrangeSizeFit">
-                        <a href="{{pathFor 'userProfileFollowers'}}">
+                        <a href="/profile/{{userId}}/followers">
                             <span class="statLabel">Seguidores</span>
-                            <span class="statValue">{{followersCount}}</span>
+                            {{#if followersCount}}
+                                <span class="statValue">{{followersCount}}</span>
+                            {{else}}
+                                <span class="statValue">0</span>
+                            {{/if}}
                         </a>
                     </li>
                 </ul>

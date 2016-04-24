@@ -14,10 +14,11 @@ Meteor.methods({
 
         var post = Posts.findOne({_id: postId});
 
-        if(post.usersLiked.indexOf(userId) > -1){
+
+        if(post.usersLiked.indexOf(userId) >= 0){
             Posts.update({_id: postId}, {$pull: {usersLiked: userId}, $inc:{likesCount: -1}});
             return {
-                unlike: true
+                dislike: true
             }
         }else if(post.usersLiked.indexOf(userId) == -1){
             Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});

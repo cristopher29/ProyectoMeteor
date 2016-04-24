@@ -8,16 +8,20 @@ Template.postItem.events({
           return;
         }
         if(result.like){
-          Bert.alert('Like', 'success', 'growl-top-right');
+          console.log('like');
         }
-        if(result.unlike){
-          Bert.alert('Unlike', 'success', 'growl-top-right');
+        if(result.dislike){
+          console.log('dislike');
         }
       });
   }
 });
 
 Template.postItem.helpers({
+  'userImage': function(){
+    var user = Meteor.users.findOne({_id: this.userId});
+    return user.profile.display_picture;
+  },
   liked: function(){
     if(this.usersLiked.indexOf(Meteor.userId()) > -1){
       return true;

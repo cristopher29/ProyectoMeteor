@@ -2,11 +2,11 @@
  * Created by CristoH on 21/04/2016.
  */
 
-Meteor.publishComposite('userProfile', function(userId) {
+Meteor.publishComposite('userProfile', function(userId, limit) {
     check(userId, String);
     return {
         find: function() {
-            return Meteor.users.find({_id: userId}, {fields: {
+            return Meteor.users.find({_id: userId}, {limit: 1, fields: {
                 username:1,
                 profile:1,
                 followers:1,
@@ -18,16 +18,7 @@ Meteor.publishComposite('userProfile', function(userId) {
         children: [
             {
                 find: function(user) {
-                    if (user.following) {
-                        return Posts.find({ $or:
-                            [
-                                { userId: { $in: user.following } },
-                                { userId: user._id }
-                            ]
-                        });
-                    }else{
-                        return Posts.find({userId: user._id});
-                    }
+                    return Posts.find({userId: user._id}, {limit: limit});
                 }
             }
 

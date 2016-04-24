@@ -6,31 +6,40 @@
 
         <div class="row">
 
-            {{>userProfile}}
+            {{#if currentUser}}
+
+                {{>userProfileCard}}
 
 
-            <div class="col-sm-6">
+                <div class="col-md-6">
 
-                {{>yield}}
+                    {{>yield}}
 
-            </div>
+                </div>
 
-            <div class="col-sm-3 hidden-xs">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
-                    <div class="panel-body">
-                        <img src="http://placehold.it/60x60" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
-                        <div class="clearfix"></div>
-                        There a load of new free Bootstrap 3
-                        ready templates at Bootply. All of these templates are free and don't
-                        require extensive customization to the Bootstrap baseline.
-                        <hr>
-                        <ul class="list-unstyled"><li><a href="http://usebootstrap.com/theme/facebook">Dashboard</a></li><li><a href="http://usebootstrap.com/theme/facebook">Darkside</a></li><li><a href="http://usebootstrap.com/theme/facebook">Greenfield</a></li></ul>
+                <div class="col-md-3 hidden-xs">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h4>A quién seguir</h4></div>
+                        <div class="panel-body">
+                            <div>
+                                <img src="http://placehold.it/60x60" class="img-circle"><a href="#"> @Usuario1 </a>
+                            </div>
+                            <div>
+                                <img src="http://placehold.it/60x60" class="img-circle"><a href="#"> @Usuario2 </a>
+                            </div>
+                            <div>
+                                <img src="http://placehold.it/60x60" class="img-circle"><a href="#"> @Usuario3 </a>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <ul class="list-unstyled"><li><a href="{{pathFor 'postsList'}}">Proyecto</a></li></ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-
+            {{else}}
+                {{>yield}}
+            {{/if}}
 
         </div>
 
