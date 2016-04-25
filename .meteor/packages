@@ -4,39 +4,49 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-base             # Packages every Meteor app needs to have
-mobile-experience       # Packages for a great mobile UX
-mongo                   # The database Meteor supports right now
-blaze-html-templates    # Compile .html files into Meteor Blaze views
-session                 # Client-side reactive dictionary for your app
-jquery                  # Helpful client-side library
-tracker                 # Meteor's client-side reactive programming library
-
-standard-minifiers      # JS/CSS minifiers run for production mode
-es5-shim                # ECMAScript 5 compatibility for older browsers.
-ecmascript              # Enable ECMAScript2015+ syntax in app code
-
+meteor-base                     # Packages every Meteor app needs to have
+mobile-experience               # Packages for a great mobile UX
+mongo                           # The database Meteor supports right now
+blaze-html-templates            # Compile .html files into Meteor Blaze views
+session                         # Client-side reactive dictionary for your app
+jquery                          # Helpful client-side library
+tracker                         # Meteor's client-side reactive programming library
+standard-minifiers              # JS/CSS minifiers run for production mode
+es5-shim                        # ECMAScript 5 compatibility for older browsers.
+ecmascript                      # Enable ECMAScript2015+ syntax in app code
+email
+check
+ejson
+reactive-var
 accounts-password
-iron:router
+
+
+# UI Packages
 sacha:spin
 twbs:bootstrap
 peppelg:bootstrap-3-modal
 ian:accounts-ui-bootstrap-3
 themeteorchef:bert
-check
-ejson
+kevohagan:sweetalert
+
+# Server
 aldeed:collection2
 aldeed:autoform
 mpowaga:autoform-summernote
 msavin:mongol
-email
+reywood:publish-composite
+
+# Images
+lepozepo:cloudinary
+
+# Tools
+iron:router
 momentjs:moment
 copleykj:livestamp
 djedi:sanitize-html
 todda00:friendly-slugs
-kevohagan:sweetalert
-reywood:publish-composite
+
+
 #useraccounts:bootstrap
 #useraccounts:iron-routing
-lepozepo:cloudinary
-reactive-var
+

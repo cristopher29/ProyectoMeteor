@@ -1,3 +1,7 @@
+html, body {
+  margin: 0;
+}
+
 @font-face {
   font-family: 'icomoon';
   src:    url('fonts/icomoon.eot?8n0ggd');
@@ -760,6 +764,15 @@ figure.image-with-icon.hover i {
 
 /******** END IMAGE HOVER  ********/
 
+.remove-md{
+  position: absolute !important;
+  min-height: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
 .access-denied{
   min-height: 100%;
   min-width: 100%;
@@ -775,6 +788,7 @@ figure.image-with-icon.hover i {
 }
 
 .not-found{
+  z-index: 998;
   min-height: 100%;
   min-width: 100%;
   position: absolute;
@@ -789,6 +803,7 @@ figure.image-with-icon.hover i {
 }
 
 .inside{
+  z-index: 999;
   width: 60%;
   border-radius: 25px;
   padding: 30px 20px 35px 20px;

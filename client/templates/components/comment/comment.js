@@ -4,6 +4,10 @@
 Template.comment.helpers({
     ownComment: function() {
         return this.userId === Meteor.userId();
+    },
+    'userImage': function(){
+        var user = Meteor.users.findOne({_id: this.userId});
+        return user.profile.display_picture;
     }
 });
 

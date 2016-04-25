@@ -11,7 +11,12 @@ Meteor.publishComposite('postWithComments', function(postId) {
         children: [{
             find: function(post){
                 return Comments.find({postId: post._id});
-            }
+            },
+            children: [{
+                find: function(comment,post){
+                    return Meteor.users.find({_id: comment.userId},{fields:{profile:1}});
+                }
+            }]
         }]
     };
 
