@@ -6,7 +6,7 @@ Meteor.publishComposite('userProfile', function(userId, limit) {
     check(userId, String);
     return {
         find: function() {
-            return Meteor.users.find({_id: userId}, {limit: 1, fields: {
+            return Meteor.users.find({_id: userId}, {fields: {
                 username:1,
                 profile:1,
                 followers:1,

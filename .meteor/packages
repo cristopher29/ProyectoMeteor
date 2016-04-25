@@ -50,3 +50,4 @@ todda00:friendly-slugs
 #useraccounts:bootstrap
 #useraccounts:iron-routing
 
+percolate:paginated-subscription

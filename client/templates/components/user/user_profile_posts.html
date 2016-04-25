@@ -1,7 +1,9 @@
 <template name="userProfilePosts">
 
-    {{#each userPosts}}
-        {{>postItem}}
-    {{/each}}
+    {{#if Template.subscriptionsReady}}
+        {{#each userPosts}}
+                {{>postItem}}
+        {{/each}}
+    {{/if}}
 
 </template>
