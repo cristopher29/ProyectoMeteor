@@ -28,6 +28,6 @@ Template.userProfilePosts.helpers({
         }
     },
     userPosts: function(){
-        return Posts.find({},{sort:{createdAt: -1}});
+        return Posts.find();
     }
 });
