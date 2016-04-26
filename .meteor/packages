@@ -45,7 +45,7 @@ momentjs:moment
 copleykj:livestamp
 djedi:sanitize-html
 todda00:friendly-slugs
-
+meteorhacks:fast-render
 
 #useraccounts:bootstrap
 #useraccounts:iron-routing

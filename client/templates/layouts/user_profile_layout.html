@@ -1,5 +1,5 @@
 <template name="userProfileLayout">
-
+    {{#if Template.subscriptionsReady}}
     {{> header}}
 
     <div class="container contenido">
@@ -44,5 +44,5 @@
         </div>
 
     </div>
-
+    {{/if}}
 </template>
