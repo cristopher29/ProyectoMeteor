@@ -1,7 +1,12 @@
+
+
+
+
 Template.postsList.onCreated(function(){
 
   var instance = this;
-
+  instance.limit = new ReactiveVar(10);
+  instance.loaded = new ReactiveVar(0);
   instance.autorun(function(){
 
     instance.handle = Meteor.subscribeWithPagination('allPosts', 10);
@@ -11,13 +16,16 @@ Template.postsList.onCreated(function(){
 });
 
 Template.postsList.onRendered(function(){
-  infiniteScrollPosts(this);
+
+  var instance = this;
+  infiniteScrollPosts(instance);
+
+  instance.autorun(function(){
+
+    instance.loaded.set(Posts.find().count());
+
+  });
 });
 
 
-Template.postsList.helpers({
-  posts: function() {
-    return Posts.find();
-  }
-});
 

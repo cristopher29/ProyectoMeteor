@@ -18,10 +18,6 @@ Template.postItem.events({
 });
 
 Template.postItem.helpers({
-  'userImage': function(){
-    var user = Meteor.users.findOne({_id: this.userId});
-    return user.profile.display_picture;
-  },
   liked: function(){
     if(this.usersLiked.indexOf(Meteor.userId()) > -1){
       return true;
@@ -29,6 +25,11 @@ Template.postItem.helpers({
     if(this.usersLiked.indexOf(Meteor.userId()) == -1){
       return false;
     }
+  },
+  userImage: function(){
+
+    var user = Meteor.users.findOne({_id: this.userId});
+    return user.profile.display_picture;
   }
 });
 

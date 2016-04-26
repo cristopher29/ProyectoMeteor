@@ -5,6 +5,8 @@
 Template.userProfilePosts.onCreated(function(){
 
     var instance = this;
+    instance.limit = new ReactiveVar(10);
+    instance.loaded = new ReactiveVar(0);
 
     instance.autorun(function(){
 
@@ -15,19 +17,13 @@ Template.userProfilePosts.onCreated(function(){
 });
 
 Template.userProfilePosts.onRendered(function(){
-    infiniteScrollPosts(this);
-});
 
-Template.userProfilePosts.helpers({
-    liked: function(){
-        if(this.usersLiked.indexOf(Meteor.userId()) > -1){
-            return true;
-        }
-        if(this.usersLiked.indexOf(Meteor.userId()) == -1){
-            return false;
-        }
-    },
-    userPosts: function(){
-        return Posts.find();
-    }
+    var instance = this;
+    infiniteScrollPosts(instance);
+
+    instance.autorun(function(){
+
+        instance.loaded.set(Posts.find().count());
+
+    });
 });

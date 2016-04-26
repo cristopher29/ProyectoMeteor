@@ -7,12 +7,18 @@
 
             <span class="grey"><img class="img-circle" width="40" src="{{userImage}}" alt=""> por <a href="{{pathFor 'userProfile'}}">{{author}}</a></span>
         </div>
-        {{#if image}}
-            <figure class="image-with-icon background-like">
+        {{#if currentUser}}
+            {{#if image}}
+                <figure class="image-with-icon background-like">
+                    <img class="img-responsive" src="{{image}}" alt="">
+                    <i class="icon-heart icon-red" aria-hidden="true"></i>
+                    <a class="like"></a>
+                </figure>
+            {{/if}}
+        {{else}}
+            {{#if image}}
                 <img class="img-responsive" src="{{image}}" alt="">
-                <i class="icon-heart icon-red" aria-hidden="true"></i>
-                <a class="like"></a>
-            </figure>
+            {{/if}}
         {{/if}}
         <div class="panel-body">
             <div class="valign">
