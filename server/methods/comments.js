@@ -38,7 +38,7 @@ Meteor.methods({
 
         Posts.update(comment.postId, {$inc: {commentsCount: 1}});
 
-        Meteor.call('createNotification', post.userId, post._id, post.title, comment.userId, comment.author, "comment");
+        Meteor.call('createNotification', post.userId, post._id, post.slug, post.title, comment.userId, comment.author, "comment");
 
         return comment._id;
     },

@@ -4,7 +4,7 @@
 
 Meteor.methods({
 
-    createNotification: function(alertedUserId, contentId, contentTitle, userId, username , action){
+    createNotification: function(alertedUserId, contentId, contentSlug, contentTitle, userId, username , action){
 
         //Si el usuario alertado es el mismo que creo la notificacion
         if (alertedUserId === userId) {
@@ -31,6 +31,7 @@ Meteor.methods({
             var notificationId = Notifications.insert({
                 alertedUserId: alertedUserId,
                 contentId: contentId,
+                contentSlug: contentSlug,
                 contentTitle: contentTitle,
                 userId: userId,
                 username: username,

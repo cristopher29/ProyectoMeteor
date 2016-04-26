@@ -22,7 +22,7 @@ Meteor.methods({
             }
         }else if(post.usersLiked.indexOf(userId) == -1){
             Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
-            Meteor.call('createNotification', post.userId, post._id, post.title, userId, Meteor.user().username, "like");
+            Meteor.call('createNotification', post.userId, post._id, post.slug, post.title, userId, Meteor.user().username, "like");
             return {
                 like: true
             }
@@ -138,7 +138,15 @@ Meteor.methods({
         Posts.update(oldValues._id, {$set: post});
 
         var res = Posts.findOne(oldValues._id);
-
+        var notifications = Notifications.find({contentId: res._id, read: false}).fetch();
+        console.log(notifications);
+        if(notifications){
+            notifications.forEach(function(notification){
+                notification.contentSlug = res.slug;
+                notification.contentTitle = res.title;
+                Notifications.update(notification._id, notification);
+            })
+        }
         //Devolvemos el id
         return {
             slug: res.slug,
