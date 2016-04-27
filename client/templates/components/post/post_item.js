@@ -29,7 +29,11 @@ Template.postItem.helpers({
   userImage: function(){
 
     var user = Meteor.users.findOne({_id: this.userId});
-    return user.profile.display_picture;
+    if(user.profile.display_picture){
+      return user.profile.display_picture;
+    }else{
+      return '/img/no-avatar.jpg';
+    }
   }
 });
 

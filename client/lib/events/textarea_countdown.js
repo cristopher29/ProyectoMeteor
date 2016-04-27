@@ -2,7 +2,7 @@
  * Created by CristoH on 15/03/2016.
  */
 
-Template.layout.events({
+Template.mainLayout.events({
 
     'keyup .limit-200': function(){
 

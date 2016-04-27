@@ -2,6 +2,7 @@
  * Created by CristoH on 21/03/2016.
  */
 
+
 Template.userProfileCard.events({
     'click .follow': function(e,t){
         e.preventDefault();

@@ -5,7 +5,7 @@
 Template.postsList.onCreated(function(){
 
   var instance = this;
-  instance.limit = new ReactiveVar(10);
+
   instance.loaded = new ReactiveVar(0);
   instance.autorun(function(){
 
@@ -21,9 +21,7 @@ Template.postsList.onRendered(function(){
   infiniteScrollPosts(instance);
 
   instance.autorun(function(){
-
     instance.loaded.set(Posts.find().count());
-
   });
 });
 

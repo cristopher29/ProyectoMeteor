@@ -23,6 +23,7 @@ accounts-password
 
 # UI Packages
 sacha:spin
+multiply:iron-router-progress
 twbs:bootstrap
 peppelg:bootstrap-3-modal
 ian:accounts-ui-bootstrap-3

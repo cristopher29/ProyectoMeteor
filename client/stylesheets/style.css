@@ -447,7 +447,6 @@ textarea.error{
 }
 
 .card.hovercard .cardheader {
-  background: url("http://lorempixel.com/850/280/nature/4/");
   background-size: cover;
   height: 135px;
 }
@@ -787,6 +786,18 @@ figure.image-with-icon.hover i {
   filter: blur(20px);
 }
 
+#iron-router-progress {
+  background-color : #18BC9C;
+  box-shadow       : 0 0 5px #18BC9C;
+}
+
+.center{
+  bottom: 0; left: 0; top: 0; right: 0;
+  margin: auto;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+}
 .not-found{
   z-index: 998;
   min-height: 100%;

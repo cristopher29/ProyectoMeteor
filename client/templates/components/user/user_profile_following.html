@@ -1,15 +1,19 @@
 <template name="userProfileFollowing">
-    <h2>Following</h2>
 
-    <div class="row">
-        {{#each followingInfo}}
-            <div class="col-sm-4 text-center">
-                <a href="/profile/{{_id}}">
-                    <img class="img-circle" width="150" src="{{profile.display_picture}}" alt="">
-                    <h4>{{username}}</h4>
-                </a>
-            </div>
-        {{/each}}
+    <div class="col-md-6">
+
+        <h2>Following</h2>
+        <div class="row">
+            {{#each followingInfo}}
+                <div class="col-sm-4 text-center">
+                    <a href="/profile/{{_id}}">
+                        <img class="img-circle" width="150" src="{{profile.display_picture}}" alt="">
+                        <h4>{{username}}</h4>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+
     </div>
 
 </template>
