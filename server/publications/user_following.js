@@ -12,7 +12,8 @@ Meteor.publishComposite('userFollowing', function(userId) {
                 followers:1,
                 followersCount:1,
                 following:1,
-                followingCount:1
+                followingCount:1,
+                postsCount: 1
             }});
         },
         children: [

@@ -63,7 +63,7 @@ Template.postEdit.events({
 
         e.preventDefault();
         var currentPostId = this._id;
-
+        var currentPostUserId = this.userId;
         swal({
             title: '¿Estás seguro?',
             text: 'El post no se podra recuperar',
@@ -73,7 +73,7 @@ Template.postEdit.events({
             cancelButtonText: "No, pls!",
             showCancelButton: true
         }, function(){
-            Posts.remove(currentPostId);
+            Meteor.call('postDelete',currentPostUserId, currentPostId);
             Router.go('postsList');
         });
 

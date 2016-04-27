@@ -25,7 +25,11 @@
                     <li class="arrangeSizeFit">
                         <a href="/profile/{{userId}}">
                             <span class="statLabel">Posts</span>
-                            <span class="statValue">9.840</span>
+                            {{#if postsCount}}
+                                <span class="statValue">{{postsCount}}</span>
+                            {{else}}
+                                <span class="statValue">0</span>
+                            {{/if}}
                         </a>
                     </li>
                     <li class="arrangeSizeFit">

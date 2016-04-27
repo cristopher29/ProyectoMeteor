@@ -78,6 +78,7 @@ Meteor.methods({
         post._id = Posts.insert(post);
 
         var res = Posts.findOne(post._id);
+        Meteor.users.update({_id: res.userId}, {$inc:{postsCount: 1}});
 
         //Devolvemos el id y slug
         return {
@@ -153,7 +154,20 @@ Meteor.methods({
             _id: res._id
 
         }
+    },
+    postDelete: function(userId, postId){
 
+        check(userId, String);
+        check(postId, String);
+        check(Meteor.userId(), String);
 
+        if(Meteor.userId() == userId){
+            Posts.remove({_id: postId});
+            Comments.remove({postId: postId});
+            var user = Meteor.users.findOne({_id: userId});
+            if(user.postsCount >= 1){
+                Meteor.users.update({_id: userId}, {$inc:{postsCount: -1}});
+            }
+        }
     }
 });
