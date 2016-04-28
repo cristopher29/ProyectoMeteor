@@ -7,6 +7,11 @@
         {{/if}}
     </a>
     <ul class="notification dropdown-menu">
+        <li class="text-center" style="color: #18bc9c !important; padding-top: 10px; width: 100%;">
+            <div>
+                <a href="{{pathFor 'userAllNotifications'}}">Ver notificaciones leidas</a>
+            </div>
+        </li>
         {{#if notificationCount}}
             {{#each notifications}}
                 {{> notificationItem}}

@@ -4,6 +4,11 @@
 
 Meteor.methods({
 
+    deleteNotification: function(notificationId, alertedUserId){
+        if(alertedUserId === Meteor.userId()){
+            Notifications.remove(notificationId);
+        }
+    },
     createNotification: function(alertedUserId, contentId, contentSlug, contentTitle, userId, username , action){
 
         //Si el usuario alertado es el mismo que creo la notificacion

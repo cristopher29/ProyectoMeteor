@@ -19,7 +19,9 @@ Meteor.publishComposite('userProfile', function(userId, limit) {
         children: [
             {
                 find: function(user) {
-                    return Posts.find({userId: user._id}, {limit: limit, sort:{createdAt: -1}});
+                    if(limit){
+                        return Posts.find({userId: user._id}, {limit: limit, sort:{createdAt: -1}});
+                    }
                 }
             }
 

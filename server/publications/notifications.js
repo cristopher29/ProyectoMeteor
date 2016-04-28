@@ -4,7 +4,6 @@
 
 Meteor.publish('notifications', function() {
     return Notifications.find({
-        alertedUserId: this.userId,
-        read: false
-    });
+        alertedUserId: this.userId
+    },{sort: {createdAt: -1}});
 });
