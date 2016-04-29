@@ -2,6 +2,17 @@
  * Created by CristoH on 21/03/2016.
  */
 
+Template.userProfileCard.onCreated(function(){
+
+    var instance = this;
+
+    instance.autorun(function(){
+
+        instance.handle = Meteor.subscribe('userProfileInfo', Router.current().params.userId);
+
+    });
+
+});
 
 Template.userProfileCard.events({
     'click .follow': function(e,t){
@@ -41,8 +52,8 @@ Template.userProfileCard.helpers({
         }
         return res;
     },
-    'userId': function(){
-        return Router.current().params.userId;
+    'user': function(){
+        return Meteor.user();
     }
 
 });

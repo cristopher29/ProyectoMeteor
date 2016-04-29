@@ -1,8 +1,8 @@
 /**
- * Created by CristoH on 21/04/2016.
+ * Created by CristoH on 29/04/2016.
  */
 
-Meteor.publishComposite('userProfile', function(userId, limit) {
+Meteor.publishComposite('userProfilePosts', function(userId, limit) {
     check(userId, String);
     return {
         find: function() {

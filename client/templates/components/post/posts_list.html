@@ -1,11 +1,15 @@
 <template name="postsList">
 
     <div class="row">
+    {{#if Template.subscriptionsReady}}
         {{#each posts}}
             <div class="col-md-4">
                 {{> postItem}}
             </div>
         {{/each}}
+    {{else}}
+        {{>loading}}
+    {{/if}}
     </div>
 
 </template>

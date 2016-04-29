@@ -7,36 +7,36 @@
 
             </div>
             <div class="avatar">
-                {{#if profile.display_picture}}
-                    <img alt="" src="{{profile.display_picture}}">
+                {{#if user.profile.display_picture}}
+                    <img alt="" src="{{user.profile.display_picture}}">
                 {{else}}
                     <img alt="" src="/img/no-avatar.jpg">
                 {{/if}}
             </div>
             <div class="info">
                 <div class="title">
-                    <h3>{{profile.firstName}} {{profile.lastName}}</h3>
-                    <a href="/profile/{{userId}}" >@{{username}}</a>
+                    <h3>{{user.firstName}} {{user.lastName}}</h3>
+                    <a href="/profile/{{user._id}}" >@{{user.username}}</a>
                 </div>
                 <div class="desc">Tech geek</div>
             </div>
             <div class="stats">
                 <ul class="arrange">
                     <li class="arrangeSizeFit">
-                        <a href="/profile/{{userId}}">
+                        <a href="/profile/{{user._id}}">
                             <span class="statLabel">Posts</span>
-                            {{#if postsCount}}
-                                <span class="statValue">{{postsCount}}</span>
+                            {{#if user.postsCount}}
+                                <span class="statValue">{{user.postsCount}}</span>
                             {{else}}
                                 <span class="statValue">0</span>
                             {{/if}}
                         </a>
                     </li>
                     <li class="arrangeSizeFit">
-                        <a href="/profile/{{userId}}/following">
+                        <a href="/profile/{{user._id}}/following">
                             <span class="statLabel">Siguiendo</span>
-                            {{#if followingCount}}
-                                <span class="statValue">{{followingCount}}</span>
+                            {{#if user.followingCount}}
+                                <span class="statValue">{{user.followingCount}}</span>
                             {{else}}
                                 <span class="statValue">0</span>
                             {{/if}}
@@ -44,10 +44,10 @@
                         </a>
                     </li>
                     <li class="arrangeSizeFit">
-                        <a href="/profile/{{userId}}/followers">
+                        <a href="/profile/{{user._id}}/followers">
                             <span class="statLabel">Seguidores</span>
-                            {{#if followersCount}}
-                                <span class="statValue">{{followersCount}}</span>
+                            {{#if user.followersCount}}
+                                <span class="statValue">{{user.followersCount}}</span>
                             {{else}}
                                 <span class="statValue">0</span>
                             {{/if}}

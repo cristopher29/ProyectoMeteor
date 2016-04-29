@@ -10,7 +10,7 @@ Template.userProfilePosts.onCreated(function(){
 
     instance.autorun(function(){
 
-        instance.handle = Meteor.subscribeWithPagination('userProfile', Router.current().params.userId, 10);
+        instance.handle = Meteor.subscribeWithPagination('userProfilePosts', Router.current().params.userId, 10);
 
     });
 
@@ -26,4 +26,10 @@ Template.userProfilePosts.onRendered(function(){
         instance.loaded.set(Posts.find().count());
 
     });
+});
+
+Template.userProfilePosts.helpers({
+    profilePosts: function(){
+       return Posts.find();
+   }
 });

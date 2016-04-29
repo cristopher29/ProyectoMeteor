@@ -6,28 +6,19 @@ Meteor.methods({
 
     postLike: function(postId, userId){
 
-        check(Meteor.userId(), String);
-
         if (userId !== Meteor.userId()) {
             throw new Meteor.Error('invalid-id', 'ID de usuario no válido');
         }
 
         var post = Posts.findOne({_id: postId});
 
-
         if(post.usersLiked.indexOf(userId) >= 0){
             Posts.update({_id: postId}, {$pull: {usersLiked: userId}, $inc:{likesCount: -1}});
-            return {
-                dislike: true
-            }
-        }else if(post.usersLiked.indexOf(userId) == -1){
+
+        }else{
             Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
             Meteor.call('createNotification', post.userId, post._id, post.slug, post.title, userId, Meteor.user().username, "like");
-            return {
-                like: true
-            }
-        }else{
-            throw new Meteor.Error('invalid-post', 'Post no encontrado');
+
         }
     },
 
@@ -159,9 +150,8 @@ Meteor.methods({
 
         check(userId, String);
         check(postId, String);
-        check(Meteor.userId(), String);
 
-        if(Meteor.userId() == userId){
+        if(Meteor.userId() === userId){
             Posts.remove({_id: postId});
             Comments.remove({postId: postId});
             var user = Meteor.users.findOne({_id: userId});

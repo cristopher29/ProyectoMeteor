@@ -3,15 +3,8 @@
 Template.postItem.events({
   'click .like': function(){
       Meteor.call('postLike', this._id, Meteor.userId(), function(error, result){
-        if(error){
+        if(error) {
           Bert.alert(error.reason, 'danger', 'growl-top-right');
-          return;
-        }
-        if(result.like){
-          console.log('like');
-        }
-        if(result.dislike){
-          console.log('dislike');
         }
       });
   }
@@ -19,10 +12,9 @@ Template.postItem.events({
 
 Template.postItem.helpers({
   liked: function(){
-    if(this.usersLiked.indexOf(Meteor.userId()) > -1){
+    if($.inArray(Meteor.userId(), this.usersLiked) > -1){
       return true;
-    }
-    if(this.usersLiked.indexOf(Meteor.userId()) == -1){
+    }else{
       return false;
     }
   },

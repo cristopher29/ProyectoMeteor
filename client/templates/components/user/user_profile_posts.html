@@ -1,11 +1,9 @@
 <template name="userProfilePosts">
 
-    {{#if Template.subscriptionsReady}}
     <div class="col-md-6">
         {{#each profilePosts}}
                 {{>postItem}}
         {{/each}}
     </div>
-    {{/if}}
 
 </template>
