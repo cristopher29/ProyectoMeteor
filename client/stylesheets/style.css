@@ -128,11 +128,14 @@ textarea.error{
 /*********** POST        ****************/
 /****************************************/
 
-.contenedor-posts {
-  max-width: 650px;
-  width: 100%;
+.itemp {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 300px;
+  padding: 15px;
+  line-height: 1.5;
 }
-
 .posts {
   list-style: none;
   margin: 20px auto;
@@ -153,18 +156,6 @@ textarea.error{
   left: -100px;
   top: 0;
 }
-.posts .post-avatar.post-avatar--fixed {
-  position: fixed;
-  left: 10%;
-  top: 69px;
-}
-.posts .post-avatar.post-avatar--absolute {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-left: -100px;
-  top: auto;
-}
 .posts .post-content {
   background: #fff;
   border-radius: 4px;
@@ -177,10 +168,6 @@ textarea.error{
   padding: 15px 20px;
 }
 
-.panel-footer{
-  background-color: #394264 !important;
-}
-
 .time{
   margin-top: 10px;
   font-size: 1.5rem;
@@ -188,10 +175,6 @@ textarea.error{
 }
 .descripcion{
   overflow-wrap: break-word;
-}
-
-.panel-default>.panel-heading {
-  background-color: #394264;
 }
 
 /***********END POSTS *******************/

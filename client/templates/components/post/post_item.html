@@ -1,60 +1,10 @@
 <template name="postItem">
 
-    <div class="post-content">
-        <header>
-            <span class="grey"> por <a href="{{pathFor 'userProfile'}}">{{author}}</a></span>
-        </header>
+    <!--<div class="post-content">-->
+        <!--<header>-->
+            <!--<span class="grey"> por <a href="{{pathFor 'userProfile'}}">{{author}}</a></span>-->
+        <!--</header>-->
 
-        {{#if currentUser}}
-            {{#if image}}
-                <figure class="image-with-icon background-like">
-                    <img class="img-responsive" src="{{image}}" alt="">
-                    <i class="icon-heart icon-red" aria-hidden="true"></i>
-                    <a class="like"></a>
-                </figure>
-            {{/if}}
-        {{else}}
-            {{#if image}}
-                <img class="img-responsive" src="{{image}}" alt="">
-            {{/if}}
-        {{/if}}
-
-        <div class="panel-body">
-            <div class="valign">
-                <div>
-                    <a href="{{pathFor 'postPage'}}" class="lead">{{title}} </a>
-                    <p>{{shortDescription}}</p>
-                </div>
-            </div>
-
-        </div>
-
-        <footer class="clearfix">
-            {{#if currentUser}}
-                <div class="pull-right">
-                    {{#if ownPost}}
-                        <a href="{{pathFor 'postEdit'}}" class="btn btn-sm btn-primary grey-bg"><em class="fa fa-pencil fa-fw"></em></a>
-                    {{/if}}
-
-                    <a href="{{pathFor 'postPage'}}" class="btn btn-sm btn-primary grey-bg"><em class="fa fa-comment fa-fw"></em> {{commentsCount}}</a>
-
-                    {{#if liked}}
-                        <span class="like btn btn-sm btn-danger "><em class="fa fa-heart fa-fw"></em> {{likesCount}}</span>
-                    {{else}}
-                        <span class="like btn btn-sm btn-danger"><em class="fa fa-heart-o fa-fw"></em> {{likesCount}}</span>
-                    {{/if}}
-                </div>
-            {{/if}}
-        </footer>
-    </div>
-    <a href="{{pathFor 'userProfile'}}" class="post-avatar"><img width="80" src="{{userImage}}" alt=""></a>
-
-    <!--<div class="panel panel-default">-->
-        <!--<div class="panel-heading">-->
-            <!--<div class="pull-right time">{{livestamp createdAt}}</div>-->
-
-            <!--<span class="grey"><img class="img-circle" width="40" src="{{userImage}}" alt=""> por <a href="{{pathFor 'userProfile'}}">{{author}}</a></span>-->
-        <!--</div>-->
         <!--{{#if currentUser}}-->
             <!--{{#if image}}-->
                 <!--<figure class="image-with-icon background-like">-->
@@ -68,6 +18,7 @@
                 <!--<img class="img-responsive" src="{{image}}" alt="">-->
             <!--{{/if}}-->
         <!--{{/if}}-->
+
         <!--<div class="panel-body">-->
             <!--<div class="valign">-->
                 <!--<div>-->
@@ -77,7 +28,8 @@
             <!--</div>-->
 
         <!--</div>-->
-        <!--<div class="panel-footer clearfix">-->
+
+        <!--<footer class="clearfix">-->
             <!--{{#if currentUser}}-->
                 <!--<div class="pull-right">-->
                     <!--{{#if ownPost}}-->
@@ -93,8 +45,56 @@
                     <!--{{/if}}-->
                 <!--</div>-->
             <!--{{/if}}-->
-        <!--</div>-->
+        <!--</footer>-->
     <!--</div>-->
+    <!--<a href="{{pathFor 'userProfile'}}" class="post-avatar"><img width="80" src="{{userImage}}" alt=""></a>-->
+
+    <div class="item panel panel-default">
+        <div class="panel-heading">
+            <div class="pull-right time">{{livestamp createdAt}}</div>
+
+            <span class="grey"><img class="img-circle" width="40" src="{{userImage}}" alt=""> por <a href="{{pathFor 'userProfile'}}">{{author}}</a></span>
+        </div>
+        <div class="panel-body">
+            {{#if currentUser}}
+                {{#if image}}
+                    <figure class="image-with-icon background-like">
+                        <img class="img-responsive" src="{{image}}" alt="">
+                        <i class="icon-heart icon-red" aria-hidden="true"></i>
+                        <a class="like"></a>
+                    </figure>
+                {{/if}}
+            {{else}}
+                {{#if image}}
+                    <img class="img-responsive" src="{{image}}" alt="">
+                {{/if}}
+            {{/if}}
+            <div class="valign">
+                <div>
+                    <a href="{{pathFor 'postPage'}}" class="lead">{{title}} </a>
+                    <p>{{shortDescription}}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-footer clearfix">
+            {{#if currentUser}}
+                <div class="pull-right">
+                    {{#if ownPost}}
+                        <a href="{{pathFor 'postEdit'}}" class="btn btn-sm btn-primary grey-bg"><em class="fa fa-pencil fa-fw"></em></a>
+                    {{/if}}
+
+                    <a href="{{pathFor 'postPage'}}" class="btn btn-sm btn-primary grey-bg"><em class="fa fa-comment fa-fw"></em> {{commentsCount}}</a>
+
+                    {{#if liked}}
+                        <span class="like btn btn-sm btn-danger "><em class="fa fa-heart fa-fw"></em> {{likesCount}}</span>
+                    {{else}}
+                        <span class="like btn btn-sm btn-danger"><em class="fa fa-heart-o fa-fw"></em> {{likesCount}}</span>
+                    {{/if}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
 
 
 </template>

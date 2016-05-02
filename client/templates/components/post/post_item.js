@@ -1,26 +1,11 @@
 Template.postItem.onRendered(function () {
 
-  $('.post-avatar').each(function() {
-    var avatar = $(this),
-        avatarWatcher = scrollMonitor.create(avatar.parent(), {
-          top: 69,
-          bottom: -avatar.height() - 50
-        });
-
-    avatarWatcher.stateChange(function() {
-      if (avatarWatcher.isInViewport) {
-        if (avatarWatcher.isInViewport && avatarWatcher.isAboveViewport) {
-          avatar.removeClass('post-avatar--absolute').addClass('post-avatar--fixed');
-          $(".post-avatar--fixed").css("margin-left", function() { return $(document).width()-40 - $(document).width() });
-        } else if (!avatarWatcher.isAboveViewport) {
-          avatar.removeClass('post-avatar--absolute').removeClass('post-avatar--fixed');
-          $(".post-avatar--fixed").css("margin-left", '');
-        }
-      } else {
-        avatar.removeClass('post-avatar--fixed').addClass('post-avatar--absolute');
-      }
-    });
+  $("#pint").gridalicious({
+    gutter: 10,
+    width: 300,
+    animate: true
   });
+  $('.img-circle').removeAttr('style')
 });
 
 Template.postItem.events({

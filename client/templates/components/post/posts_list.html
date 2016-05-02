@@ -1,20 +1,13 @@
 <template name="postsList">
 
-    <div class="row">
     {{#if Template.subscriptionsReady}}
-        <div class="col-md-7">
-            <ul class="posts">
-                {{#each posts}}
-                    <li class="post">
-                        {{> postItem}}
-                    </li>
-                {{/each}}
-            </ul>
+        <div id="pint">
+            {{#each posts}}
+                {{> postItem}}
+            {{/each}}
         </div>
-        <div>Hola!!</div>
     {{else}}
         {{>loading}}
     {{/if}}
-    </div>
 
 </template>

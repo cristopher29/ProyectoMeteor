@@ -29,6 +29,7 @@ peppelg:bootstrap-3-modal
 ian:accounts-ui-bootstrap-3
 themeteorchef:bert
 kevohagan:sweetalert
+sjors:meteor-masonry
 
 # Server
 aldeed:collection2
