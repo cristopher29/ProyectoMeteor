@@ -5,11 +5,18 @@
 var editProfileHook = {
     onSuccess: function(){
 
-        var imageData = CanvasCrop.getDataURL("jpeg");
-        if(imageData !== null){
-            Meteor.users.update(Meteor.userId(), {$set:{ "profile.display_picture" : imageData}});
+        var image = $('#upload-file')[0].files[0];
+        if(image){
+            var imageData = CanvasCrop.getDataURL("jpeg");
+
+            if(imageData !== null){
+                Meteor.users.update(Meteor.userId(), {$set:{ "profile.display_picture" : imageData}});
+            }
         }
         Modal.hide('editProfile');
+        Bert.alert('Perfil actualizado', 'success', 'growl-top-right');
+
+        return false;
     }
 
 };
@@ -46,7 +53,7 @@ Template.editProfile.onRendered(function(){
             CanvasCrop = $.CanvasCrop({
                 cropBox : ".imageBox",
                 thumbBox : ".thumbBox",
-                limitOver : 1
+                limitOver : 0
             });
         }
     });

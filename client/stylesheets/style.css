@@ -13,10 +13,6 @@ html, body {
   font-style: normal;
 }
 
-hr{
-  border-bottom: 1px solid #ecf0f1;
-}
-
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -36,22 +32,26 @@ hr{
   content: "\e900";
 }
 
+/****************************************/
+/*********** TAGS        ****************/
+/****************************************/
+
+hr{
+  border-bottom: 1px solid #ecf0f1;
+}
+
 body {
-  background: #eee;
-  color: #666666;
+  background: #2C3E50;
+  color: #464643;
 }
 
 a:link, a:visited, a:hover, a:active{
   text-decoration: none;
 }
 
-.thumbnail > img, .thumbnail a > img {
-  width: 100%;
-}
-
-.panel > img {
-  width: 100%;
-}
+/****************************************/
+/*********** COMPONENTS  ****************/
+/****************************************/
 
 .navbar {
   margin-bottom: 10px;
@@ -128,8 +128,57 @@ textarea.error{
 /*********** POST        ****************/
 /****************************************/
 
+.contenedor-posts {
+  max-width: 650px;
+  width: 100%;
+}
+
+.posts {
+  list-style: none;
+  margin: 20px auto;
+  padding: 0;
+  width: 100%;
+}
+.posts .post {
+  margin-top: 20px;
+  margin-left: 100px;
+  position: relative;
+}
+.posts .post-avatar {
+  background: #fff url("/img/no-avatar.jpg") center/100%;
+  height: 80px;
+  width: 80px;
+  border-radius: 4px;
+  position: absolute;
+  left: -100px;
+  top: 0;
+}
+.posts .post-avatar.post-avatar--fixed {
+  position: fixed;
+  left: 10%;
+  top: 69px;
+}
+.posts .post-avatar.post-avatar--absolute {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: -100px;
+  top: auto;
+}
+.posts .post-content {
+  background: #fff;
+  border-radius: 4px;
+  width: 100%;
+}
+.posts .post-content img {
+  width: 100%;
+}
+.posts .post-content header, .posts .post-content footer {
+  padding: 15px 20px;
+}
+
 .panel-footer{
-  background-color: #ffffff !important;
+  background-color: #394264 !important;
 }
 
 .time{
@@ -137,34 +186,12 @@ textarea.error{
   font-size: 1.5rem;
   color: #999999;
 }
-
-.lista{
-  -moz-column-width: 18em;
-  -webkit-column-width: 18em;
-  -moz-column-gap: 1em;
-  -webkit-column-gap:1em;
-}
-
-.item {
-  display: inline-block;
-  padding:  .25rem;
-  width:  100%;
-}
-
-.well {
-  position:relative;
-  display: block;
-}
 .descripcion{
   overflow-wrap: break-word;
 }
-.well img{
-  width: 100%;
-}
 
-.row {
-  margin-right: 0;
-  margin-left: 0;
+.panel-default>.panel-heading {
+  background-color: #394264;
 }
 
 /***********END POSTS *******************/
@@ -490,60 +517,6 @@ textarea.error{
 
 /******** END CARD PERFIL  ********/
 
-/****************************************/
-/*********** POST PERFIL     ************/
-/****************************************/
-
-.media{
-  padding: 20px;
-  background-color: #ffffff;
-  border: 1px solid #d3e0e9;
-}
-
-.panel-default>.panel-heading {
-  background-color: #ffffff;
-}
-.stats {
-  margin-left: 11px;
-  padding: 10px 0;
-}
-.arrange {
-  box-sizing: border-box;
-  display: table;
-  margin: 0;
-  min-width: 100%;
-  padding: 0;
-  table-layout: auto;
-}
-ul.arrange {
-  list-style: outside none none;
-  margin: 0;
-  padding: 0;
-}
-.arrangeSizeFit {
-  display: table-cell;
-  padding: 0;
-  vertical-align: top;
-}
-.arrangeSizeFit a:hover {
-  text-decoration: none;
-}
-
-.statValue {
-  display: block;
-  font-size: 18px;
-  font-weight: 500;
-  transition: color 0.15s ease-in-out 0s;
-}
-.statLabel {
-  color: #8899a6;
-  font-size: 10px;
-  letter-spacing: 0.02em;
-  overflow: hidden;
-  text-transform: uppercase;
-  transition: color 0.15s ease-in-out 0s;
-}
-/******** END POST PERFIL  ********/
 
 .border-radius {
   border-radius: 50%;

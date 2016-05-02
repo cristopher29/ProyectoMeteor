@@ -8,8 +8,11 @@ Template.userProfileCard.onCreated(function(){
 
     instance.autorun(function(){
 
-        instance.handle = Meteor.subscribe('userProfileInfo', Router.current().params.userId);
-
+        if(Router.current().route.getName() === 'userAllNotifications'){
+            instance.handle = Subsman.subscribe('userProfileInfo', Meteor.userId());
+        }else{
+            instance.handle = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
+        }
     });
 
 });
@@ -47,13 +50,22 @@ Template.userProfileCard.helpers({
     ownProfile: function(){
         var res = false;
         var userId = Router.current().params.userId;
+
+        if(Router.current().route.getName() === 'userAllNotifications'){
+            res = true;
+        }
         if(userId === Meteor.userId()){
             res = true;
         }
         return res;
     },
     'user': function(){
-        return Meteor.user();
+        if(Router.current().params.userId){
+            return Meteor.users.findOne({_id: Router.current().params.userId});
+        }else{
+            return Meteor.users.findOne({_id: Meteor.userId()});
+        }
+
     }
 
 });

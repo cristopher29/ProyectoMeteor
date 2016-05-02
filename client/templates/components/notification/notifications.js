@@ -28,6 +28,14 @@ Template.notificationItem.helpers({
         if(this.action == "comment" || this.action == "like"){
             return Router.routes.postPage.path({_id: this.contentId, slug: this.contentSlug});
         }
+    },
+    userImage: function(){
+        var user = Meteor.users.findOne({_id: this.userId});
+        if(user.profile.display_picture){
+            return user.profile.display_picture;
+        }else{
+            return '/img/no-avatar.jpg';
+        }
     }
 });
 

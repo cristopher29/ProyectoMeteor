@@ -42,6 +42,7 @@ lepozepo:cloudinary
 
 # Tools
 iron:router
+meteorhacks:subs-manager
 momentjs:moment
 copleykj:livestamp
 djedi:sanitize-html

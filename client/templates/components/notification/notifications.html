@@ -32,14 +32,14 @@
 <template name="notificationItem">
     <li class="notification">
         <div class="media">
-            <a href="" class="read-notification pull-right"><i class="fa fa-times"></i></a>
+            <a href="" class="read-notification pull-right"><i class="fa fa-eye"></i></a>
             <div class="media-left">
                 <div class="media-object">
-                    <img src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" alt="" width="30px" height="30px" class="img-rounded">
+                    <img src="{{userImage}}" alt="" width="30px" height="30px" class="img-rounded">
                 </div>
             </div>
             <div class="media-body">
-                <strong class="notification-title"><a class="user-profile" href="/profile/{{userId}}">{{username}}</a> {{actionToText action}} <a class="postRoute" href="{{notificationPath}}">{{contentTitle}}</a></strong>
+                <strong class="notification-title"><a class="user-profile" href="{{pathFor 'userProfile'}}">{{username}}</a> {{actionToText action}} <a class="postRoute" href="{{notificationPath}}">{{contentTitle}}</a></strong>
 
                 <div class="notification-desc text-left">
                     <i class="fa fa-clock-o"></i> {{livestamp createdAt}}

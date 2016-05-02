@@ -2,11 +2,16 @@
 
     <div class="row">
     {{#if Template.subscriptionsReady}}
-        {{#each posts}}
-            <div class="col-md-4">
-                {{> postItem}}
-            </div>
-        {{/each}}
+        <div class="col-md-7">
+            <ul class="posts">
+                {{#each posts}}
+                    <li class="post">
+                        {{> postItem}}
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+        <div>Hola!!</div>
     {{else}}
         {{>loading}}
     {{/if}}

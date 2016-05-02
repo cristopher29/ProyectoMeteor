@@ -1,12 +1,36 @@
+Template.postItem.onRendered(function () {
 
+  $('.post-avatar').each(function() {
+    var avatar = $(this),
+        avatarWatcher = scrollMonitor.create(avatar.parent(), {
+          top: 69,
+          bottom: -avatar.height() - 50
+        });
+
+    avatarWatcher.stateChange(function() {
+      if (avatarWatcher.isInViewport) {
+        if (avatarWatcher.isInViewport && avatarWatcher.isAboveViewport) {
+          avatar.removeClass('post-avatar--absolute').addClass('post-avatar--fixed');
+          $(".post-avatar--fixed").css("margin-left", function() { return $(document).width()-40 - $(document).width() });
+        } else if (!avatarWatcher.isAboveViewport) {
+          avatar.removeClass('post-avatar--absolute').removeClass('post-avatar--fixed');
+          $(".post-avatar--fixed").css("margin-left", '');
+        }
+      } else {
+        avatar.removeClass('post-avatar--fixed').addClass('post-avatar--absolute');
+      }
+    });
+  });
+});
 
 Template.postItem.events({
-  'click .like': function(){
-      Meteor.call('postLike', this._id, Meteor.userId(), function(error, result){
-        if(error) {
-          Bert.alert(error.reason, 'danger', 'growl-top-right');
-        }
-      });
+  'click .like': function(e,t){
+    e.preventDefault();
+    Meteor.call('postLike', this._id, Meteor.userId(), function(error, result){
+      if(error) {
+        Bert.alert(error.reason, 'danger', 'growl-top-right');
+      }
+    });
   }
 });
 
