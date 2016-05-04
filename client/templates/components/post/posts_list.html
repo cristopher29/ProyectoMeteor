@@ -1,9 +1,11 @@
 <template name="postsList">
 
     {{#if Template.subscriptionsReady}}
-        <div id="pint">
+        <div id="grid">
             {{#each posts}}
-                {{> postItem}}
+                <div class="grid-item">
+                    {{> postItem}}
+                </div>
             {{/each}}
         </div>
     {{else}}

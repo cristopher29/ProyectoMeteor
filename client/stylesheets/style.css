@@ -41,7 +41,7 @@ hr{
 }
 
 body {
-  background: #2C3E50;
+  background: #fbfbfb;
   color: #464643;
 }
 
@@ -127,14 +127,16 @@ textarea.error{
 /****************************************/
 /*********** POST        ****************/
 /****************************************/
-
-.itemp {
-  position: absolute;
-  top: 0;
-  z-index: 1;
-  width: 300px;
+#grid{
+  margin: 0 auto;
+}
+.grid-item {
+  width: 350px;
   padding: 15px;
-  line-height: 1.5;
+}
+
+.panel-body {
+  background-color: #ECF0F1;
 }
 .posts {
   list-style: none;
@@ -275,6 +277,46 @@ textarea.error{
 /****************************************/
 /*********** CARD PERFIL     ************/
 /****************************************/
+
+.stats {
+  margin-left: 11px;
+  padding: 10px 0;
+}
+.arrange {
+  box-sizing: border-box;
+  display: table;
+  margin: 0;
+  min-width: 100%;
+  padding: 0;
+  table-layout: auto;
+}
+ul.arrange {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0;
+}
+.arrangeSizeFit {
+  display: table-cell;
+  padding: 0;
+  vertical-align: top;
+}
+.arrangeSizeFit a:hover {
+  text-decoration: none;
+}
+.statLabel {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.15s ease-in-out 0s;
+}
+.statLabel {
+  color: #8899a6;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-transform: uppercase;
+  transition: color 0.15s ease-in-out 0s;
+}
 
 .card {
   padding-top: 20px;
