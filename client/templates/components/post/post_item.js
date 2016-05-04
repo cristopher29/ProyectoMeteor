@@ -1,8 +1,10 @@
 
 Template.postItem.onRendered(function () {
   if(ActiveRoute.name('postsList')){
-    $grid.isotope('reloadItems');
-    $grid.isotope('layout');
+    Meteor.setTimeout(function(){
+      $grid.isotope('reloadItems');
+      $grid.isotope('layout');
+    }, 200);
   }
 });
 
