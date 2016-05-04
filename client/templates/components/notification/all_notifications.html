@@ -1,13 +1,20 @@
 <template name="allNotifications">
     <div class="col-md-6">
-        {{#each notifications}}
-            {{>notificationItemRead}}
-        {{/each}}
+        {{#if notifications.count}}
+            {{#each notifications}}
+                {{>notificationItemRead}}
+            {{/each}}
+        {{else}}
+            <div class="text-center">
+                <h3>No hay notificaciones</h3>
+            </div>
+        {{/if}}
+
     </div>
 </template>
 
 <template name="notificationItemRead">
-    <li class="notification">
+    <div class="notification">
         <div class="media">
             <a href="" class="delete pull-right"><i class="fa fa-times"></i></a>
             <div class="media-left">
@@ -24,5 +31,5 @@
 
             </div>
         </div>
-    </li>
+    </div>
 </template>

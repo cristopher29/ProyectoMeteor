@@ -5,13 +5,16 @@
 Template.userProfileCard.onCreated(function(){
 
     var instance = this;
+    instance.subReady = new ReactiveVar(false);
 
     instance.autorun(function(){
 
         if(Router.current().route.getName() === 'userAllNotifications'){
-            instance.sub = Subsman.subscribe('userProfileInfo', Meteor.userId());
+            var handle = Subsman.subscribe('userProfileInfo', Meteor.userId());
+            instance.subReady.set(handle.ready());
         }else{
-            instance.sub = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
+            var handle = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
+            instance.subReady.set(handle.ready());
         }
     });
 
@@ -36,18 +39,32 @@ Template.userProfileCard.events({
     }
 });
 
+Template.userProfileCard.onRendered(function(){
+
+});
+
 Template.userProfileCard.helpers({
 
-    isFollower: function(){
+    'subReady': function(){
+        return Template.instance().subReady.get();
+    },
 
-        if(Template.instance().subscriptionsReady()){
-            if(this.followers.indexOf(Meteor.userId()) === -1) {
-                console.log('false');
-                return false;
+    'user': function(){
+
+        if(Router.current().params.userId){
+
+            var user = Meteor.users.findOne({_id: Router.current().params.userId});
+
+            if(user.followers.indexOf(Meteor.userId()) === -1) {
+                user.isFollower = false;
             } else {
-                console.log('true');
-                return true;
+                user.isFollower = true;
             }
+
+            return user;
+
+        }else{
+            return Meteor.users.findOne({_id: Meteor.userId()});
         }
 
     },
@@ -63,14 +80,5 @@ Template.userProfileCard.helpers({
             res = true;
         }
         return res;
-    },
-    'user': function(){
-        if(Router.current().params.userId){
-            return Meteor.users.findOne({_id: Router.current().params.userId});
-        }else{
-            return Meteor.users.findOne({_id: Meteor.userId()});
-        }
-
     }
-
 });

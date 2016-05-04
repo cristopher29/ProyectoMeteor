@@ -1,84 +1,89 @@
 <template name="userProfileCard">
 
-    {{#if Template.subscriptionsReady}}
-    <div class="col-md-3">
+    {{#if subReady}}
+        <div class="col-md-3">
 
-        <div class="card hovercard">
-            <div class="cardheader" style="background: url('/img/card-header.jpg');">
+            <div class="card hovercard">
+                <div class="cardheader" style="background: url('/img/card-header.jpg');">
 
-            </div>
-            <div class="avatar">
-                {{#if user.profile.display_picture}}
-                    <img alt="" src="{{user.profile.display_picture}}">
-                {{else}}
-                    <img alt="" src="/img/no-avatar.jpg">
-                {{/if}}
-            </div>
-            <div class="info">
-                <div class="title">
-                    <h3>{{user.firstName}} {{user.lastName}}</h3>
-                    <a href="/profile/{{user._id}}" >@{{user.username}}</a>
                 </div>
-                <div class="desc">Tech geek</div>
-            </div>
-            <div class="stats">
-                <ul class="arrange">
-                    <li class="arrangeSizeFit">
-                        <a href="/profile/{{user._id}}">
-                            <span class="statLabel">Posts</span>
-                            {{#if user.postsCount}}
-                                <span class="statValue">{{user.postsCount}}</span>
-                            {{else}}
-                                <span class="statValue">0</span>
-                            {{/if}}
-                        </a>
-                    </li>
-                    <li class="arrangeSizeFit">
-                        <a href="/profile/{{user._id}}/following">
-                            <span class="statLabel">Siguiendo</span>
-                            {{#if user.followingCount}}
-                                <span class="statValue">{{user.followingCount}}</span>
-                            {{else}}
-                                <span class="statValue">0</span>
-                            {{/if}}
-
-                        </a>
-                    </li>
-                    <li class="arrangeSizeFit">
-                        <a href="/profile/{{user._id}}/followers">
-                            <span class="statLabel">Seguidores</span>
-                            {{#if user.followersCount}}
-                                <span class="statValue">{{user.followersCount}}</span>
-                            {{else}}
-                                <span class="statValue">0</span>
-                            {{/if}}
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            {{#if ownProfile}}
-                <div class="bottom">
-                    <button class="edit-profile btn btn-primary btn-twitter btn-sm" >
-                        <i class="fa fa-pencil"></i> Editar
-                    </button>
+                <div class="avatar">
+                    {{#if user.profile.display_picture}}
+                        <img alt="" src="{{user.profile.display_picture}}">
+                    {{else}}
+                        <img alt="" src="/img/no-avatar.jpg">
+                    {{/if}}
                 </div>
-            {{else}}
-                {{#if isFollower}}
+                <div class="info">
+                    <div class="title">
+                        <h3>{{user.firstName}} {{user.lastName}}</h3>
+                        <a href="/profile/{{user._id}}" >@{{user.username}}</a>
+                    </div>
+                    <div class="desc">Tech geek</div>
+                </div>
+                <div class="stats">
+                    <ul class="arrange">
+                        <li class="arrangeSizeFit">
+                            <a href="/profile/{{user._id}}">
+                                <span class="statLabel">Posts</span>
+                                {{#if user.postsCount}}
+                                    <span class="statValue">{{user.postsCount}}</span>
+                                {{else}}
+                                    <span class="statValue">0</span>
+                                {{/if}}
+                            </a>
+                        </li>
+                        <li class="arrangeSizeFit">
+                            <a href="/profile/{{user._id}}/following">
+                                <span class="statLabel">Siguiendo</span>
+                                {{#if user.followingCount}}
+                                    <span class="statValue">{{user.followingCount}}</span>
+                                {{else}}
+                                    <span class="statValue">0</span>
+                                {{/if}}
+
+                            </a>
+                        </li>
+                        <li class="arrangeSizeFit">
+                            <a href="/profile/{{user._id}}/followers">
+                                <span class="statLabel">Seguidores</span>
+                                {{#if user.followersCount}}
+                                    <span class="statValue">{{user.followersCount}}</span>
+                                {{else}}
+                                    <span class="statValue">0</span>
+                                {{/if}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                {{#if ownProfile}}
                     <div class="bottom">
-                        <button class="unfollow btn btn-primary btn-twitter btn-sm" >
-                            <i class="fa fa-user-plus"></i>Dejar de seguir
+                        <button class="edit-profile btn btn-primary btn-twitter btn-sm" >
+                            <i class="fa fa-pencil"></i> Editar
                         </button>
                     </div>
                 {{else}}
-                    <div class="bottom">
-                        <button class="follow btn btn-primary btn-twitter btn-sm" >
-                            <i class="fa fa-user-plus"></i>Seguir
-                        </button>
-                    </div>
+                    {{#if user.isFollower}}
+                        <div class="bottom">
+                            <button class="unfollow btn btn-primary btn-twitter btn-sm" >
+                                <i class="fa fa-user-plus"></i>Dejar de seguir
+                            </button>
+                        </div>
+                    {{else}}
+                        <div class="bottom">
+                            <button class="follow btn btn-primary btn-twitter btn-sm" >
+                                <i class="fa fa-user-plus"></i>Seguir
+                            </button>
+                        </div>
+                    {{/if}}
                 {{/if}}
-            {{/if}}
+            </div>
+
         </div>
-
-    </div>
+    {{else}}
+        <div class="col-md-3">
+            {{>loading}}
+        </div>
     {{/if}}
+
 </template>
