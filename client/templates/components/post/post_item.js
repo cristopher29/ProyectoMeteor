@@ -1,11 +1,9 @@
-Template.postItem.onRendered(function () {
 
-  $("#pint").gridalicious({
-    gutter: 10,
-    width: 300,
-    animate: true
-  });
-  $('.img-circle').removeAttr('style')
+Template.postItem.onRendered(function () {
+  if(ActiveRoute.name('postsList')){
+    $grid.isotope('reloadItems');
+    $grid.isotope('layout');
+  }
 });
 
 Template.postItem.events({

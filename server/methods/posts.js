@@ -131,7 +131,7 @@ Meteor.methods({
 
         var res = Posts.findOne(oldValues._id);
         var notifications = Notifications.find({contentId: res._id, read: false}).fetch();
-        console.log(notifications);
+
         if(notifications){
             notifications.forEach(function(notification){
                 notification.contentSlug = res.slug;

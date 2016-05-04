@@ -29,7 +29,7 @@ peppelg:bootstrap-3-modal
 ian:accounts-ui-bootstrap-3
 themeteorchef:bert
 kevohagan:sweetalert
-sjors:meteor-masonry
+isotope:isotope
 
 # Server
 aldeed:collection2
@@ -43,6 +43,7 @@ lepozepo:cloudinary
 
 # Tools
 iron:router
+zimme:active-route
 meteorhacks:subs-manager
 momentjs:moment
 copleykj:livestamp
