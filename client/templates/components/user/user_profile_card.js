@@ -5,19 +5,78 @@
 Template.userProfileCard.onCreated(function(){
 
     var instance = this;
+
     instance.subReady = new ReactiveVar(false);
+    instance.user = new ReactiveVar();
+
+});
+
+Template.userProfileCard.onRendered(function(){
+
+    var instance = this;
+
+    var paramUserId = Router.current().params.userId;
+    var currentUserId = Meteor.userId();
+    var sub;
+
+    if(Router.current().route.getName() === 'userAllNotifications'){
+        sub = Subsman.subscribe('userProfileInfo', currentUserId);
+    }else{
+        sub = Subsman.subscribe('userProfileInfo', paramUserId);
+    }
 
     instance.autorun(function(){
 
-        if(Router.current().route.getName() === 'userAllNotifications'){
-            var handle = Subsman.subscribe('userProfileInfo', Meteor.userId());
-            instance.subReady.set(handle.ready());
-        }else{
-            var handle = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
-            instance.subReady.set(handle.ready());
-        }
+        instance.subReady.set(sub.ready());
+
     });
 
+
+});
+
+Template.userProfileCard.helpers({
+
+    'noReady': function(){
+        return !Template.instance().subReady.get();
+    },
+
+    'user': function(){
+
+        var userId = Router.current().params.userId;
+        var ready = Template.instance().subReady.get();
+
+        if(userId && ready){
+
+            var user = Meteor.users.findOne({_id: userId});
+
+            if(user.followers.indexOf(Meteor.userId()) === -1) {
+                user.isFollower = false;
+            } else {
+                user.isFollower = true;
+            }
+
+            return user;
+
+        }else{
+
+            return Meteor.users.findOne({_id: Meteor.userId()});
+
+        }
+
+    },
+
+    ownProfile: function(){
+        var res = false;
+        var userId = Router.current().params.userId;
+
+        if(Router.current().route.getName() === 'userAllNotifications'){
+            res = true;
+        }
+        if(userId === Meteor.userId()){
+            res = true;
+        }
+        return res;
+    }
 });
 
 Template.userProfileCard.events({
@@ -36,49 +95,5 @@ Template.userProfileCard.events({
     'click .edit-profile': function(e,t){
         e.preventDefault();
         Modal.show('editProfile');
-    }
-});
-
-Template.userProfileCard.onRendered(function(){
-
-});
-
-Template.userProfileCard.helpers({
-
-    'subReady': function(){
-        return Template.instance().subReady.get();
-    },
-
-    'user': function(){
-
-        if(Router.current().params.userId){
-
-            var user = Meteor.users.findOne({_id: Router.current().params.userId});
-
-            if(user.followers.indexOf(Meteor.userId()) === -1) {
-                user.isFollower = false;
-            } else {
-                user.isFollower = true;
-            }
-
-            return user;
-
-        }else{
-            return Meteor.users.findOne({_id: Meteor.userId()});
-        }
-
-    },
-
-    ownProfile: function(){
-        var res = false;
-        var userId = Router.current().params.userId;
-
-        if(Router.current().route.getName() === 'userAllNotifications'){
-            res = true;
-        }
-        if(userId === Meteor.userId()){
-            res = true;
-        }
-        return res;
     }
 });

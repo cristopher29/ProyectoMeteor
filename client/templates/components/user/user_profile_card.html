@@ -1,6 +1,10 @@
 <template name="userProfileCard">
 
-    {{#if subReady}}
+    {{#if noReady}}
+        <div class="col-md-3">
+
+        </div>
+    {{else}}
         <div class="col-md-3">
 
             <div class="card hovercard">
@@ -79,10 +83,6 @@
                 {{/if}}
             </div>
 
-        </div>
-    {{else}}
-        <div class="col-md-3">
-            {{>loading}}
         </div>
     {{/if}}
 

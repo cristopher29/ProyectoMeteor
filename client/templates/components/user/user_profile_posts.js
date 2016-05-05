@@ -30,8 +30,8 @@ Template.userProfilePosts.onRendered(function(){
 
 Template.userProfilePosts.helpers({
 
-    'subReady': function(){
-        return Template.instance().handle.ready();
+    'noReady': function(){
+        return !Template.instance().handle.ready();
     },
 
     profilePosts: function(){
