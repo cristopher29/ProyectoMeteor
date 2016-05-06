@@ -1,5 +1,10 @@
 <template name="userProfilePosts">
 
+    {{#if noReady}}
+        <div class="col-xs-12">
+            {{>loading}}
+        </div>
+    {{/if}}
 
     <div class="col-md-6">
         {{#if profilePosts.count}}
@@ -12,12 +17,5 @@
             </div>
         {{/if}}
     </div>
-
-    {{#if noReady}}
-        <div class="col-xs-12">
-            {{>loading}}
-        </div>
-    {{/if}}
-
 
 </template>

@@ -41,23 +41,63 @@ hr{
 }
 
 body {
-  background: #fbfbfb;
-  color: #464643;
+  background: #6A7E87;
+  color: #737f8d;
+}
+a{
+  text-decoration: none;
+  color: #243549;
 }
 
-a:link, a:visited, a:hover, a:active{
+a:link a:visited, a:active{
   text-decoration: none;
+  color: #243549;
+}
+
+a:hover, a:focus{
+  text-decoration: none;
+  color: #2d425b;
 }
 
 /****************************************/
 /*********** COMPONENTS  ****************/
 /****************************************/
 
+.btn-default {
+  color: #ffffff !important;
+  background-color: #6A7E87;
+  border-color: #6A7E87;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.btn-default:hover {
+  background-color: #6A7E87;
+  border-color:#6A7E87;
+  -webkit-transform: translate3d(0, -1px, 0);
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 0 10px hsla(198, 12%, 47%, 0.32)
+}
+
+.btn-primary {
+  color: #ffffff !important;
+  background-color: #243549;
+  border-color: #243549;
+}
+
+.btn-primary:hover {
+  background-color: #3B4C53;
+  border-color: #3B4C53;
+  -webkit-transform: translate3d(0, -1px, 0);
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 0 10px hsla(197, 16%, 27%, 0.32)
+}
+
 /************** IRON PROGRESS *****************/
 
 #iron-router-progress {
-  background-color : #18BC9C;
-  box-shadow       : 0 0 5px #18BC9C;
+  background-color : #31FF3A;
+  box-shadow       : 0 0 5px #31FF3A;
 }
 
 /************ IRON PROGRESS END ****************/
@@ -183,6 +223,32 @@ a:link, a:visited, a:hover, a:active{
 
 /********NAVBAR**********/
 
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: #2A353B;
+  color: #ffffff;
+}
+
+.navbar-default {
+  background-color: #2A353B;
+  border-color: transparent;
+}
+
+.navbar-default .navbar-brand {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #FFFFFF;
+}
+
 .navbar {
   margin-bottom: 10px;
 }
@@ -262,45 +328,50 @@ textarea.error{
   padding: 15px;
 }
 
+.panel {
+  margin-bottom: 21px;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: none;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.panel:hover {
+  -webkit-transform: translate3d(0, -1px, 0);
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 0 10px hsla(212, 33%, 21%, 0.32)
+}
+
 .panel-body {
-  background-color: #ECF0F1;
+  background-color: #FFFFFF;
 }
-.posts {
-  list-style: none;
-  margin: 20px auto;
-  padding: 0;
-  width: 100%;
+.panel-body a{
+  color: #737f8d;
 }
-.posts .post {
-  margin-top: 20px;
-  margin-left: 100px;
-  position: relative;
+
+.panel-heading {
+  padding: 10px 15px;
+  border: none;
 }
-.posts .post-avatar {
-  background: #fff url("/img/no-avatar.jpg") center/100%;
-  height: 80px;
-  width: 80px;
-  border-radius: 4px;
-  position: absolute;
-  left: -100px;
-  top: 0;
+
+.panel-default > .panel-heading {
+  color: #737f8d;
+  background-color: #2F3E45;
 }
-.posts .post-content {
-  background: #fff;
-  border-radius: 4px;
-  width: 100%;
+.panel-default > .panel-heading > span > a {
+  color: #79909a;
 }
-.posts .post-content img {
-  width: 100%;
-}
-.posts .post-content header, .posts .post-content footer {
-  padding: 15px 20px;
+
+.panel-footer {
+  padding: 10px 15px;
+  background-color: #FFFFFF;
+  border: none;
 }
 
 .time{
   margin-top: 10px;
   font-size: 1.5rem;
-  color: #999999;
 }
 .descripcion{
   overflow-wrap: break-word;
@@ -405,6 +476,30 @@ textarea.error{
 /*********** CARD PERFIL     ************/
 /****************************************/
 
+
+.profile-btn {
+  background: #6A7E87;
+  color: #FFFFFF;
+  width: 210px;
+  height: 40px;
+  margin: 22px 0 8px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  outline: none;
+  text-align: center;
+  line-height: 40px;
+}
+.profile-btn:hover {
+  -webkit-transform: translate3d(0, -1px, 0);
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 0 10px hsla(198, 12%, 47%, 0.32)
+}
+
 .stats {
   margin-left: 11px;
   padding: 10px 0;
@@ -459,6 +554,13 @@ ul.arrange {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.card:hover{
+  -webkit-transform: translate3d(0, -1px, 0);
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 0 10px hsla(226, 58%, 65%, 0.32)
 }
 
 .card .card-heading {
@@ -622,12 +724,15 @@ ul.arrange {
   padding-bottom: 20px;
   overflow: hidden;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
+  margin-bottom: 20px;
 }
 
 .card.hovercard .cardheader {
-  background-size: cover;
+  background-size: cover !important;
   height: 135px;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 
 .card.hovercard .avatar {

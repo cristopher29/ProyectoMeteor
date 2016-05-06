@@ -61,24 +61,24 @@
                     </ul>
                 </div>
                 {{#if ownProfile}}
-                    <div class="bottom">
-                        <button class="edit-profile btn btn-primary btn-twitter btn-sm" >
+
+                        <button class="profile-btn edit-profile" >
                             <i class="fa fa-pencil"></i> Editar
                         </button>
-                    </div>
+
                 {{else}}
                     {{#if user.isFollower}}
-                        <div class="bottom">
-                            <button class="unfollow btn btn-primary btn-twitter btn-sm" >
-                                <i class="fa fa-user-plus"></i>Dejar de seguir
-                            </button>
-                        </div>
+
+                        <button class="unfollow profile-btn" >
+                            <i class="fa fa-user-plus"></i> Dejar de seguir
+                        </button>
+
                     {{else}}
-                        <div class="bottom">
-                            <button class="follow btn btn-primary btn-twitter btn-sm" >
-                                <i class="fa fa-user-plus"></i>Seguir
-                            </button>
-                        </div>
+
+                        <button class="follow profile-btn" >
+                            <i class="fa fa-user-plus"></i> Seguir
+                        </button>
+
                     {{/if}}
                 {{/if}}
             </div>

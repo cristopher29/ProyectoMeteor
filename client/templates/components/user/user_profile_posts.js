@@ -41,6 +41,13 @@ Template.userProfilePosts.helpers({
         return !Template.instance().subReady.get();
     },
 
+    'noPosts': function(){
+        var count = Posts.find().count();
+        if(count == null || count == 0){
+            return true;
+        }
+    },
+
     profilePosts: function(){
        return Posts.find({userId: Template.instance().userId.get()},{sort:{createdAt: -1}});
    }
