@@ -28,7 +28,7 @@ Template.postsList.onRendered(function(){
       instance.loaded.set(Posts.find().count());
     }
 
-    if(instance.loaded.get() >= 10 && ActiveRoute.name('postsList')){
+    if(instance.loaded.get() >= 10 && Router.current().route.getName() === 'postsList'){
 
       Tracker.afterFlush(function() {
         //Deberia de ejecutarse cuando el child template este renderizado

@@ -4,18 +4,22 @@
         <div class="col-xs-12">
             {{>loading}}
         </div>
+    {{else}}
+        {{#if noPosts}}
+            <div class="col-md-6">
+                <div class="text-center no-posts">
+                    No tiene posts! :(
+                </div>
+            </div>
+        {{/if}}
     {{/if}}
 
-    <div class="col-md-6">
-        {{#if profilePosts.count}}
+    {{#if profilePosts.count}}
+        <div class="col-md-6">
             {{#each profilePosts}}
                 {{>postItem}}
             {{/each}}
-        {{else}}
-            <div class="text-center">
-                <h3>No tiene posts! :(</h3>
-            </div>
-        {{/if}}
-    </div>
+        </div>
+    {{/if}}
 
 </template>
