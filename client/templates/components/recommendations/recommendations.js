@@ -40,13 +40,16 @@ Template.recommendations.helpers({
 
         if(ready){
 
-            return Meteor.users.find({
-                $and: [
-                    { _id: { $ne: Meteor.userId() } },
-                    { _id: { $nin: Meteor.user().followers } }
-                ]
-            });
-
+            if(Meteor.user().followers){
+                return Meteor.users.find({
+                    $and: [
+                        { _id: { $ne: Meteor.userId() } },
+                        { _id: { $nin: Meteor.user().followers } }
+                    ]
+                });
+            }else{
+                return Meteor.users.find({ _id: { $ne: Meteor.userId() } });
+            }
         }
 
     }

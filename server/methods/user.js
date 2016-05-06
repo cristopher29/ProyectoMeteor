@@ -62,8 +62,5 @@ Meteor.methods({
         } else {
             throw new Meteor.Error("invalid-user", "El usuario no existe");
         }
-
-
-
     }
 });

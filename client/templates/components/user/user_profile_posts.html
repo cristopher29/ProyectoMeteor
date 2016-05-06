@@ -2,9 +2,15 @@
 
 
     <div class="col-md-6">
-        {{#each profilePosts}}
-            {{>postItem}}
-        {{/each}}
+        {{#if profilePosts.count}}
+            {{#each profilePosts}}
+                {{>postItem}}
+            {{/each}}
+        {{else}}
+            <div class="text-center">
+                <h3>No tiene posts! :(</h3>
+            </div>
+        {{/if}}
     </div>
 
     {{#if noReady}}

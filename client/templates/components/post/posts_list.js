@@ -3,11 +3,14 @@ Template.postsList.onCreated(function(){
 
   var instance = this;
 
+  instance.limit = new ReactiveVar(10);
   instance.loaded = new ReactiveVar(0);
+  instance.sub = new ReactiveVar();
+  instance.subReady = new ReactiveVar(false);
+
   instance.autorun(function(){
-
-    instance.handle = Meteor.subscribeWithPagination('allPosts', 10);
-
+    var sub = Meteor.subscribe('allPosts', instance.limit.get());
+    instance.subReady.set(sub.ready());
   });
 
 });
@@ -15,15 +18,17 @@ Template.postsList.onCreated(function(){
 Template.postsList.onRendered(function(){
 
   var instance = this;
-  infiniteScrollPosts(instance);
 
   $grid = $('#grid');
+  infiniteScrollPosts(instance);
 
   instance.autorun(function(){
 
-    instance.loaded.set(Posts.find().count());
+    if(instance.subReady.get()){
+      instance.loaded.set(Posts.find().count());
+    }
 
-    if(Posts.find().count() >= 10 && ActiveRoute.name('postsList')){
+    if(instance.loaded.get() >= 10 && ActiveRoute.name('postsList')){
 
       Tracker.afterFlush(function() {
         //Deberia de ejecutarse cuando el child template este renderizado
@@ -47,6 +52,11 @@ Template.postsList.onRendered(function(){
 });
 
 Template.postsList.helpers({
+
+  'noReady': function(){
+    return !Template.instance().subReady.get();
+  },
+
   posts: function(){
     return Posts.find({},{sort:{createdAt: -1}});
   }

@@ -53,6 +53,80 @@ a:link, a:visited, a:hover, a:active{
 /*********** COMPONENTS  ****************/
 /****************************************/
 
+/************** IRON PROGRESS *****************/
+
+#iron-router-progress {
+  background-color : #18BC9C;
+  box-shadow       : 0 0 5px #18BC9C;
+}
+
+/************ IRON PROGRESS END ****************/
+
+/*----------------------------**/
+
+/************** ACCESS *****************/
+.remove-md{
+  position: absolute !important;
+  min-height: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.access-denied{
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: url("https://49.media.tumblr.com/5aaf070fae351fc08efceaf2c68c2d99/tumblr_mzsp040alc1ste03lo1_500.gif");
+  background-position: center;
+  background-size: cover;
+  filter: blur(20px);
+}
+
+.center{
+  bottom: 0; left: 0; top: 0; right: 0;
+  margin: auto;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+}
+.not-found{
+  z-index: 998;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: url("http://i2.kym-cdn.com/photos/images/newsfeed/001/052/958/ddd.gif");
+  background-position: center;
+  background-size: cover;
+  filter: blur(20px);
+}
+
+.inside{
+  z-index: 999;
+  width: 60%;
+  border-radius: 25px;
+  padding: 30px 20px 35px 20px;
+  background-color: rgba(41, 41, 40, 0.87);
+  color: #b7b7b7;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/************** ACCESS END *****************/
+
+/*----------------------------**/
 
 /********LOADING**********/
 
@@ -103,9 +177,11 @@ a:link, a:visited, a:hover, a:active{
   fill: rgba(0, 0, 0, 0.2);
 }
 
-
-
 /********LOADING END**********/
+
+/*----------------------------**/
+
+/********NAVBAR**********/
 
 .navbar {
   margin-bottom: 10px;
@@ -113,10 +189,6 @@ a:link, a:visited, a:hover, a:active{
 
 .navbar .navbar-inner {
   border-radius: 0px 0px 3px 3px;
-}
-
-#spinner {
-  height: 300px;
 }
 
 .dropdown-menu span {
@@ -127,10 +199,10 @@ a:link, a:visited, a:hover, a:active{
   color: #bbb;
   white-space: nowrap; }
 
-.posts .spinner-container{
-  position: relative;
-  height: 100px;
-}
+
+/********NAVBAR END**********/
+
+/*----------------------------**/
 
 .jumbotron{
   text-align: center;
@@ -602,11 +674,13 @@ ul.arrange {
   border-radius: 50%;
 }
 
-
-
 .well{
   background-color: #f5f9fa;
 }
+
+/****************************************/
+/*********** IMAGE UPLOAD    ************/
+/****************************************/
 
 #visbleCanvas {
   position: absolute;
@@ -698,9 +772,10 @@ ul.arrange {
   background-color: #eee;
   border: 6px dashed rgba(#000, 0.1);
 }
+/******** UPLOAD IMAGE END  ********/
 
 /*****************************/
-/*******Image hover **********/
+/*******IMAGE HOVER **********/
 /*****************************/
 
 .image-container{
@@ -815,69 +890,4 @@ figure.image-with-icon.hover i {
   transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/******** END IMAGE HOVER  ********/
-
-.remove-md{
-  position: absolute !important;
-  min-height: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  width: 100% !important;
-  margin: 0 !important;
-}
-
-.access-denied{
-  min-height: 100%;
-  min-width: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background: url("https://49.media.tumblr.com/5aaf070fae351fc08efceaf2c68c2d99/tumblr_mzsp040alc1ste03lo1_500.gif");
-  background-position: center;
-  background-size: cover;
-  filter: blur(20px);
-}
-
-#iron-router-progress {
-  background-color : #18BC9C;
-  box-shadow       : 0 0 5px #18BC9C;
-}
-
-.center{
-  bottom: 0; left: 0; top: 0; right: 0;
-  margin: auto;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-}
-.not-found{
-  z-index: 998;
-  min-height: 100%;
-  min-width: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background: url("http://i2.kym-cdn.com/photos/images/newsfeed/001/052/958/ddd.gif");
-  background-position: center;
-  background-size: cover;
-  filter: blur(20px);
-}
-
-.inside{
-  z-index: 999;
-  width: 60%;
-  border-radius: 25px;
-  padding: 30px 20px 35px 20px;
-  background-color: rgba(41, 41, 40, 0.87);
-  color: #b7b7b7;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+/******** IMAGE HOVER END  ********/

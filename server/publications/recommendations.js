@@ -13,7 +13,7 @@ Meteor.publish('recommendations', function(){
 
             var user = Meteor.users.findOne({},{skip: random});
 
-            users.push(user._id);
+            users[i] = user._id;
         }
 
         return Meteor.users.find({_id:{$in:users}},{limit: 4, fields: {

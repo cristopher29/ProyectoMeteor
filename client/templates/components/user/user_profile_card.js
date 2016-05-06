@@ -15,19 +15,27 @@ Template.userProfileCard.onRendered(function(){
 
     var instance = this;
 
-    var paramUserId = Router.current().params.userId;
-    var currentUserId = Meteor.userId();
+    var currentUserId;
     var sub;
 
     if(Router.current().route.getName() === 'userAllNotifications'){
-        sub = Subsman.subscribe('userProfileInfo', currentUserId);
+        sub = Subsman.subscribe('userProfileInfo', Meteor.userId());
+        currentUserId = Meteor.userId();
     }else{
-        sub = Subsman.subscribe('userProfileInfo', paramUserId);
+        sub = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
+        currentUserId = Router.current().params.userId;
     }
 
     instance.autorun(function(){
 
         instance.subReady.set(sub.ready());
+
+        if(sub.ready()){
+            var exist = Meteor.users.findOne({_id: currentUserId});
+            if(!exist){
+                Router.go('notFound');
+            }
+        }
 
     });
 
@@ -43,18 +51,18 @@ Template.userProfileCard.helpers({
     'user': function(){
 
         var userId = Router.current().params.userId;
-        var ready = Template.instance().subReady.get();
 
-        if(userId && ready){
+        if(userId){
 
             var user = Meteor.users.findOne({_id: userId});
 
-            if(user.followers.indexOf(Meteor.userId()) === -1) {
-                user.isFollower = false;
-            } else {
-                user.isFollower = true;
+            if(user.followers){
+                if(user.followers.indexOf(Meteor.userId()) === -1) {
+                    user.isFollower = false;
+                } else {
+                    user.isFollower = true;
+                }
             }
-
             return user;
 
         }else{

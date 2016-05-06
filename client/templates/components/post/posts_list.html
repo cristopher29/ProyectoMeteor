@@ -1,15 +1,15 @@
 <template name="postsList">
 
-    {{#if Template.subscriptionsReady}}
-        <div id="grid">
-            {{#each posts}}
-                <div class="grid-item">
-                    {{> postItem}}
-                </div>
-            {{/each}}
-        </div>
-    {{else}}
+    {{#if noReady}}
         {{>loading}}
     {{/if}}
+
+    <div id="grid">
+        {{#each posts}}
+            <div class="grid-item">
+                {{> postItem}}
+            </div>
+        {{/each}}
+    </div>
 
 </template>

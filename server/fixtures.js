@@ -2,13 +2,14 @@
  * Created by CristoH on 05/05/2016.
  */
 
-
-//if(Meteor.users.find().count() == 2){
-//    for(var i=0;i<20;i++){
+//var usernames = ['BibleThump', 'WutFace', 'Singx2', 'ANELE', '4Head','DansGame','FailFish','EleGiggle'];
+//
+//if(Meteor.users.find().count() == 3){
+//    for(var i=0;i<usernames.length;i++){
 //        Accounts.createUser({
-//            username: Random.id(),
+//            username: usernames[0],
 //            email : Random.id()+'@gmail.com',
-//            password : Random.id()
+//            password : usernames[0]
 //        });
 //    }
 //}
