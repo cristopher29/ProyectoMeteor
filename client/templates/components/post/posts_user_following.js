@@ -52,7 +52,7 @@ Template.postsUserFollowing.helpers({
 
         return Posts.find({ $or:
             [
-                { userId: Meteor.user().following },
+                { userId: { $in:Meteor.user().following } },
                 { userId: Meteor.userId() }
             ]
         }, {sort :{createdAt: -1}});

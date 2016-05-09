@@ -10,6 +10,10 @@ Meteor.methods({
             throw new Meteor.Error('invalid-id', 'ID de usuario no válido');
         }
 
+        if (!Meteor.user().emails[0].verified) {
+            throw new Meteor.Error('email-not-verified', 'Verifica tu email!');
+        }
+
         var post = Posts.findOne({_id: postId});
 
         if(post.usersLiked.indexOf(userId) >= 0){
