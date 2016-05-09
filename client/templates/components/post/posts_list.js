@@ -5,11 +5,11 @@ Template.postsList.onCreated(function(){
 
   instance.limit = new ReactiveVar(10);
   instance.loaded = new ReactiveVar(0);
-  instance.sub = new ReactiveVar();
+  instance.subCount = new ReactiveVar(0);
   instance.subReady = new ReactiveVar(false);
 
   instance.autorun(function(){
-    var sub = Meteor.subscribe('allPosts', instance.limit.get());
+    var sub = Subsman.subscribe('allPosts', instance.limit.get());
     instance.subReady.set(sub.ready());
   });
 
@@ -19,21 +19,20 @@ Template.postsList.onRendered(function(){
 
   var instance = this;
 
-  $grid = $('#grid');
   infiniteScrollPosts(instance);
 
   instance.autorun(function(){
 
     if(instance.subReady.get()){
+
       instance.loaded.set(Posts.find().count());
-    }
+      instance.subCount.set(1);
 
-    if(instance.loaded.get() >= 10 && Router.current().route.getName() === 'postsList'){
+      if(Router.current().route.getName() === 'postsList'){
 
-      Tracker.afterFlush(function() {
-        //Deberia de ejecutarse cuando el child template este renderizado
-        Meteor.setTimeout(function(){
-          $grid.isotope({
+        Tracker.afterFlush(function() {
+          //Deberia de ejecutarse cuando el child template este renderizado
+          $('#grid').isotope({
             resizable: false,
             itemSelector: '.grid-item',
             transformsEnabled: false,
@@ -42,9 +41,12 @@ Template.postsList.onRendered(function(){
               isFitWidth: true
             }
           });
-        }, 200);
+          //Meteor.setTimeout(function(){
+          //
+          //}, 50);
+        });
+      }
 
-      });
     }
 
   });
@@ -53,12 +55,25 @@ Template.postsList.onRendered(function(){
 
 Template.postsList.helpers({
 
-  'noReady': function(){
-    return !Template.instance().subReady.get();
+  'ready': function(){
+    if(Template.instance().subCount.get() == 1){
+      return true;
+    }else{
+      return Template.instance().subReady.get();
+    }
+
   },
 
   posts: function(){
-    return Posts.find({},{sort:{createdAt: -1}});
+    return Posts.find({},{sort :{createdAt: -1}});
   }
 });
 
+
+Template.postsList.events({
+  'click .load-more': function(){
+    var actualLimit = Template.instance().limit.get();
+    var newLimit = actualLimit+ 10;
+    Template.instance().limit.set(newLimit);
+  }
+});

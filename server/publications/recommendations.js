@@ -16,7 +16,7 @@ Meteor.publish('recommendations', function(){
             users[i] = user._id;
         }
 
-        return Meteor.users.find({_id:{$in:users}},{limit: 4, fields: {
+        return Meteor.users.find({_id:{$in:users, $ne: this.userId}},{limit: 4, fields: {
             username:1,
             profile:1,
             followersCount:1,

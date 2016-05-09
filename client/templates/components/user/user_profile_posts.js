@@ -20,11 +20,12 @@ Template.userProfilePosts.onCreated(function(){
 
 });
 
+
 Template.userProfilePosts.onRendered(function(){
 
     var instance = this;
-    infiniteScrollPosts(instance);
 
+    infiniteScrollPosts(instance);
 
     instance.autorun(function(){
 
@@ -33,22 +34,29 @@ Template.userProfilePosts.onRendered(function(){
         }
 
     });
+
+
 });
 
 Template.userProfilePosts.helpers({
 
-    'noReady': function(){
-        return !Template.instance().subReady.get();
-    },
-
-    'noPosts': function(){
-        var count = Posts.find().count();
-        if(count == null || count == 0){
-            return true;
-        }
+    'ready': function(){
+        return Template.instance().subReady.get();
     },
 
     profilePosts: function(){
-       return Posts.find({userId: Template.instance().userId.get()},{sort:{createdAt: -1}});
-   }
+        return Posts.find({userId: Template.instance().userId.get()},{sort:{createdAt: -1}});
+    },
+
+    noMorePosts: function(){
+        return !(Template.instance().loaded.get() >= Template.instance().limit.get());
+    }
+});
+
+Template.userProfilePosts.events({
+    'click .load-more': function(){
+        var actualLimit = Template.instance().limit.get();
+        var newLimit = actualLimit+ 10;
+        Template.instance().limit.set(newLimit);
+    }
 });

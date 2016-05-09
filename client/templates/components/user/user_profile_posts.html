@@ -1,25 +1,35 @@
 <template name="userProfilePosts">
 
-    {{#if noReady}}
-        <div class="col-xs-12">
-            {{>loading}}
-        </div>
-    {{else}}
-        {{#if noPosts}}
-            <div class="col-md-6">
-                <div class="text-center no-posts">
-                    No tiene posts! :(
-                </div>
-            </div>
-        {{/if}}
-    {{/if}}
+    <!--{{#if ready}}-->
+        <!--{{#if noPosts}}-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="text-center no-posts">-->
+                    <!--No tiene posts! :(-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--{{/if}}-->
+    <!--{{/if}}-->
 
-    {{#if profilePosts.count}}
-        <div class="col-md-6">
+    <div class="col-md-6">
+        {{#if profilePosts.count}}
             {{#each profilePosts}}
                 {{>postItem}}
             {{/each}}
-        </div>
-    {{/if}}
+            {{#if noMorePosts}}
+                No hay mas posts :(
+            {{else}}
+                <button class="load-more">Mas</button>
+            {{/if}}
+
+        {{else}}
+            {{#if ready}}
+                <div class="text-center no-posts">
+                    No tiene posts! :(
+                </div>
+            {{else}}
+                {{>loading}}
+            {{/if}}
+        {{/if}}
+    </div>
 
 </template>

@@ -2,16 +2,10 @@
  * Created by CristoH on 21/03/2016.
  */
 
-Template.userProfileCard.onCreated(function(){
-
-    var instance = this;
-
-    instance.subReady = new ReactiveVar(false);
-    instance.user = new ReactiveVar();
-
-});
 
 Template.userProfileCard.onRendered(function(){
+
+    $('.profile-btn').hide();
 
     var instance = this;
 
@@ -28,9 +22,8 @@ Template.userProfileCard.onRendered(function(){
 
     instance.autorun(function(){
 
-        instance.subReady.set(sub.ready());
-
         if(sub.ready()){
+            $('.profile-btn').show();
             var exist = Meteor.users.findOne({_id: currentUserId});
             if(!exist){
                 Router.go('notFound');
@@ -43,10 +36,6 @@ Template.userProfileCard.onRendered(function(){
 });
 
 Template.userProfileCard.helpers({
-
-    'noReady': function(){
-        return !Template.instance().subReady.get();
-    },
 
     'user': function(){
 

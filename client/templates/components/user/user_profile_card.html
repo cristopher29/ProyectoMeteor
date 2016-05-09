@@ -1,47 +1,44 @@
 <template name="userProfileCard">
 
-    {{#if noReady}}
-        <div class="col-md-3">
+    {{#if user}}
+    {{#with user}}
+        <div class="col-md-3 sidebar-outer">
 
-        </div>
-    {{else}}
-        <div class="col-md-3">
-
-            <div class="card hovercard">
+            <div class="card hovercard sidebar">
                 <div class="cardheader" style="background: url('/img/card-header.jpg');">
 
                 </div>
                 <div class="avatar">
-                    {{#if user.profile.display_picture}}
-                        <img alt="" src="{{user.profile.display_picture}}">
+                    {{#if profile.display_picture}}
+                        <img alt="" src="{{profile.display_picture}}">
                     {{else}}
                         <img alt="" src="/img/no-avatar.jpg">
                     {{/if}}
                 </div>
                 <div class="info">
                     <div class="title">
-                        <h3>{{user.firstName}} {{user.lastName}}</h3>
-                        <a href="/profile/{{user._id}}" >@{{user.username}}</a>
+                        <h3>{{firstName}} {{lastName}}</h3>
+                        <a href="/profile/{{_id}}" >@{{username}}</a>
                     </div>
                     <div class="desc">Tech geek</div>
                 </div>
                 <div class="stats">
                     <ul class="arrange">
                         <li class="arrangeSizeFit">
-                            <a href="/profile/{{user._id}}">
+                            <a href="/profile/{{_id}}">
                                 <span class="statLabel">Posts</span>
-                                {{#if user.postsCount}}
-                                    <span class="statValue">{{user.postsCount}}</span>
+                                {{#if postsCount}}
+                                    <span class="statValue">{{postsCount}}</span>
                                 {{else}}
                                     <span class="statValue">0</span>
                                 {{/if}}
                             </a>
                         </li>
                         <li class="arrangeSizeFit">
-                            <a href="/profile/{{user._id}}/following">
+                            <a href="/profile/{{_id}}/following">
                                 <span class="statLabel">Siguiendo</span>
-                                {{#if user.followingCount}}
-                                    <span class="statValue">{{user.followingCount}}</span>
+                                {{#if followingCount}}
+                                    <span class="statValue">{{followingCount}}</span>
                                 {{else}}
                                     <span class="statValue">0</span>
                                 {{/if}}
@@ -49,10 +46,10 @@
                             </a>
                         </li>
                         <li class="arrangeSizeFit">
-                            <a href="/profile/{{user._id}}/followers">
+                            <a href="/profile/{{_id}}/followers">
                                 <span class="statLabel">Seguidores</span>
-                                {{#if user.followersCount}}
-                                    <span class="statValue">{{user.followersCount}}</span>
+                                {{#if followersCount}}
+                                    <span class="statValue">{{followersCount}}</span>
                                 {{else}}
                                     <span class="statValue">0</span>
                                 {{/if}}
@@ -67,7 +64,7 @@
                         </button>
 
                 {{else}}
-                    {{#if user.isFollower}}
+                    {{#if isFollower}}
 
                         <button class="unfollow profile-btn" >
                             <i class="fa fa-user-plus"></i> Dejar de seguir
@@ -83,6 +80,10 @@
                 {{/if}}
             </div>
 
+        </div>
+    {{/with}}
+    {{else}}
+        <div class="col-md-3 sidebar-outer">
         </div>
     {{/if}}
 

@@ -13,8 +13,5 @@ Meteor.publish('userProfileInfo', function(userId){
             followingCount:1,
             postsCount: 1
         }});
-    }else{
-        this.ready();
     }
-
 });

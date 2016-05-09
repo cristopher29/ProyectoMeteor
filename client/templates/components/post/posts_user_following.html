@@ -1,7 +1,7 @@
-<template name="postsList">
+<template name="postsUserFollowing">
 
     <div class="col-md-9">
-        {{#if ready}}
+        {{#if posts.count}}
             <div id="grid">
                 {{#each posts}}
                     <div class="grid-item">
@@ -11,7 +11,13 @@
                 <button class="load-more">Mas</button>
             </div>
         {{else}}
-            {{>loading}}
+            {{#if noReady}}
+                {{>loading}}
+            {{else}}
+                <div>
+                    <h3>No hay posts :(</h3>
+                </div>
+            {{/if}}
         {{/if}}
 
     </div>

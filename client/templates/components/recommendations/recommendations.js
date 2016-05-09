@@ -3,53 +3,36 @@
  */
 
 Template.recommendations.onCreated(function(){
-
     var instance = this;
-
     instance.subReady = new ReactiveVar(false);
-    instance.user = new ReactiveVar();
-
 });
 
 Template.recommendations.onRendered(function(){
 
     var instance = this;
+    var sub = Meteor.subscribe('recommendations');
 
-    var sub;
-
-    sub = Subsman.subscribe('recommendations');
 
     instance.autorun(function(){
 
-        instance.subReady.set(sub.ready());
+        if(sub.ready()){
+            instance.subReady.set(true);
+        }
 
     });
-
 
 });
 
 Template.recommendations.helpers({
-
-    'noReady': function(){
-        return !Template.instance().subReady.get();
+    'ready': function(){
+        return Template.instance().subReady.get();
     },
-
     'users': function(){
 
-        var ready = Template.instance().subReady.get();
-
-        if(ready){
-
-            if(Meteor.user().followers){
-                return Meteor.users.find({
-                    $and: [
-                        { _id: { $ne: Meteor.userId() } },
-                        { _id: { $nin: Meteor.user().followers } }
-                    ]
-                });
-            }else{
-                return Meteor.users.find({ _id: { $ne: Meteor.userId() } });
-            }
+        if(Meteor.user().following){
+            return Meteor.users.find({ _id: { $ne: Meteor.userId(), $nin: Meteor.user().following } },{limit: 4,field: {profile:1, username:1}});
+        }else{
+            return Meteor.users.find({ _id: { $ne: Meteor.userId() } },{limit: 4, field: {profile:1, username:1}});
         }
 
     }

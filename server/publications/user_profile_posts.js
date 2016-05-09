@@ -2,29 +2,15 @@
  * Created by CristoH on 29/04/2016.
  */
 
-Meteor.publishComposite('userProfilePosts', function(userId, limit) {
+Meteor.publish('userProfilePosts', function(userId, limit) {
     check(userId, String);
-    return {
-        find: function() {
-            return Meteor.users.find({_id: userId}, {fields: {
-                username:1,
-                profile:1,
-                followers:1,
-                followersCount:1,
-                following:1,
-                followingCount:1,
-                postsCount: 1
-            }});
-        },
-        children: [
-            {
-                find: function(user) {
-                    if(limit){
-                        return Posts.find({userId: user._id}, {limit: limit, sort:{createdAt: -1}});
-                    }
-                }
-            }
 
-        ]
-    };
+    var exist = Meteor.users.findOne({_id: userId});
+
+    if(exist){
+        return Posts.find({userId: userId}, {limit: limit, sort:{createdAt: -1}});
+    }else{
+        this.ready();
+    }
+
 });

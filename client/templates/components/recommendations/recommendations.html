@@ -1,17 +1,18 @@
 <template name="recommendations">
 
-    {{#if noReady}}
-        <div class="col-md-3 hidden-xs">
-
-        </div>
-    {{else}}
-        <div class="col-md-3 hidden-xs">
-            <div class="panel panel-default">
+    {{#if ready}}
+        <div class="col-md-3 hidden-xs sidebar-outer">
+            <div class="panel panel-default sidebar">
                 <div class="panel-heading"><h4>A quién seguir</h4></div>
                 <div class="panel-body">
                     {{#each users}}
                         <div>
-                            <img src="{{profile.display_picture}}" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
+                            {{#if profile.display_picture}}
+                                <img src="{{profile.display_picture}}" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
+                            {{else}}
+                                <img src="/img/no-avatar.jpg" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
+                            {{/if}}
+
                         </div>
                     {{/each}}
                     <div class="clearfix"></div>
@@ -19,5 +20,8 @@
                 </div>
             </div>
         </div>
+    {{else}}
+        <div class="col-md-3 hidden-xs sidebar-outer"></div>
     {{/if}}
+
 </template>

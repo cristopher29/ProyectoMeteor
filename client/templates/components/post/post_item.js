@@ -1,11 +1,12 @@
 
 Template.postItem.onRendered(function () {
-  if(ActiveRoute.name('postsList')){
-    Meteor.setTimeout(function(){
-      $grid.isotope('reloadItems');
-      $grid.isotope('layout');
-    }, 200);
+  //if(ActiveRoute.name('postsList')){
+  //  Meteor.setTimeout(function(){
+  if(Router.current().route.getName() === 'postsList' || Router.current().route.getName() === 'postsUserFollowing'){
+    $('#grid').isotope('reloadItems');
   }
+  //  }, 200);
+  //}
 });
 
 Template.postItem.events({

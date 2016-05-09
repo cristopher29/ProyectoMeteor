@@ -4,17 +4,18 @@
 
 infiniteScrollPosts = function(template){
 
+    lastScrollTop = 0;
     $(window).scroll(function() {
         if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-            if(template.loaded.get() >= template.limit.get()){
-                var actualLimit = template.limit.get();
-                var newLimit = actualLimit+ 10;
-                console.log(actualLimit + ''+ newLimit);
-                template.limit.set(newLimit);
-            }else{
-                return;
+            var scrollTop = $(this).scrollTop();
+            if(scrollTop > lastScrollTop){
+                if(template.loaded.get() >= template.limit.get()){
+                    $('.load-more').click();
+                }else{
+                    return;
+                }
             }
-
+            lastScrollTop = scrollTop;
         }
     });
 
