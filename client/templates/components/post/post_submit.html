@@ -1,37 +1,43 @@
 <template name="postSubmit">
 
-    {{#autoForm collection="Posts" id="insertPost"}}
+    <div class="col-xs-12">
 
-            <div class="form-group">
-                <div class="controls">
-                    {{> afQuickField name='title' class='title form-control'}}
+        {{#autoForm collection="Posts" id="insertPost"}}
+
+                <div class="form-group">
+                    <div class="controls">
+                        {{> afQuickField name='title' class='title form-control'}}
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="controls">
-                    {{> afQuickField name='shortDescription' class='short-description form-control'}}
+                <div class="form-group">
+                    <div class="controls">
+                        {{> afQuickField name='shortDescription' class='short-description form-control'}}
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="controls">
-                    <label for="upload-file" class="control-label">Imagen (opcional)</label>
-                    <label for="file" class="dropzone">
-                        <input type="file" class="image" id="upload-file" name="image" onchange="this.form.fileName.value = this.value">
-                        <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
-                    </label>
+                <div class="form-group">
+                    <div class="controls">
+                        <label for="upload-file" class="control-label">Imagen (opcional)</label>
+                        <label for="file" class="dropzone">
+                            <input type="file" class="image" id="upload-file" name="image" onchange="this.form.fileName.value = this.value">
+                            <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
+                        </label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="controls">
-                    {{> afQuickField name='description' }}
-                    <span class="countdown">500 caracteres restantes.</span>
+                <div class="form-group">
+                    <div class="controls">
+                        {{> afQuickField name='description' }}
+                        <span class="countdown">500 caracteres restantes.</span>
+                    </div>
                 </div>
-            </div>
 
-            <input id="enviar" type="submit" value="Enviar" class="btn btn-primary"/>
+                <input id="enviar" type="submit" value="Enviar" class="btn btn-primary"/>
 
-    {{/autoForm}}
+        {{/autoForm}}
+
+        <hr>
+
+    </div>
 
 </template>

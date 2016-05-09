@@ -1,43 +1,41 @@
 <template name="postPage">
 
-    <div class="row">
-        <div class="col-md-7">
+    <div class="col-md-7">
 
-            <h2>{{title}}</h2>
+        <h2>{{title}}</h2>
 
-            <p class="lead">
-                por <a href="{{pathFor 'userProfile'}}">{{author}}</a>
-            </p>
-            <p><span class="glyphicon glyphicon-time"></span> Publicado el {{formatDate createdAt}} a las {{formatHour createdAt}}</p>
-            <hr>
-            <div class="descripcion">
-                {{{description}}}
-            </div>
+        <p class="lead">
+            por <a href="{{pathFor 'userProfile'}}">{{author}}</a>
+        </p>
+        <p><span class="glyphicon glyphicon-time"></span> Publicado el {{formatDate createdAt}} a las {{formatHour createdAt}}</p>
+        <hr>
+        <div class="descripcion">
+            {{{description}}}
         </div>
+    </div>
 
-        <div class="col-md-5 text-center">
-                <img style="display: inline-block" class="img-responsive" src="{{image}}" alt="">
-        </div>
+    <div class="col-md-5 text-center">
+            <img style="display: inline-block" class="img-responsive" src="{{image}}" alt="">
     </div>
 
     <hr>
 
-    <div class="row">
-
+    <div class="col-xs-12">
         {{>commentForm}}
-
     </div>
 
     <hr>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <section class="comment-list">
-                {{#each comments}}
-                    {{>comment}}
-                {{/each}}
-            </section>
-        </div>
+    <div class="col-xs-12">
+
+        <hr>
+
+        <section class="comment-list">
+            {{#each comments}}
+                {{>comment}}
+            {{/each}}
+        </section>
     </div>
+
 
 </template>

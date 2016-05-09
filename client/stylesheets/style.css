@@ -43,8 +43,10 @@ html, body {
 /*********** TAGS        ****************/
 /****************************************/
 
+
 hr{
-  border-bottom: 1px solid #ecf0f1;
+  border-top: 1px solid #7289DA;
+  border-bottom: 1px solid #7289DA;
 }
 
 body, button, html, input {
@@ -70,6 +72,31 @@ a:hover, a:focus{
 /****************************************/
 /*********** COMPONENTS  ****************/
 /****************************************/
+
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
+  border:none;
+  border-radius: 4px;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  z-index: 2;
+  color: #FFFFFF;
+  background-color: #5668a5;
+}
+
+.list-group-item {
+  border-radius: 4px;
+}
+
+#comentar{
+  background-color: #FFFFFF;
+  color: #7289da !important;
+}
+
+#enviar{
+  background-color: #FFFFFF;
+  color: #7289da !important;
+}
 
 .load-more{
   visibility: hidden;
