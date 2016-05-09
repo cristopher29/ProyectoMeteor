@@ -168,15 +168,21 @@ a:hover, a:focus{
 
 /************** ACCESS *****************/
 
-.no-posts{
+.alert-user{
   color: #7289DA;
   background: white;
-  padding: 10px;
+  width: 100%;
   border-radius: 5px;
   text-align: center;
-  vertical-align: middle;
-  line-height: 60px;
-  font-size: 2rem;
+  position: relative;
+  height: 150px;
+  margin-bottom: 40px;
+}
+.center-div{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .remove-md{
@@ -428,24 +434,25 @@ textarea.error{
 /****************************************/
 /*********** POST        ****************/
 /****************************************/
-#grid{
-  margin: 0 auto;
-}
-.grid-item {
-  width: 350px;
-  padding: 0 12px 0 12px;
+
+.masonry { /* Masonry container */
+  column-count: 2;
+  column-gap: 1em;
 }
 
-@media (max-width: 375px) {
-  .grid-item {
-    width: 100%;
-    padding: 0;
+@media (max-width:767px) {
+  .masonry {
+    column-count: 1;
+    column-gap: 0.5em;
   }
-  #grid {
-     width: 100% !important;
-  }
+
 }
 
+.item { /* Masonry bricks or child elements */
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+}
 
 .panel {
   margin-bottom: 21px;

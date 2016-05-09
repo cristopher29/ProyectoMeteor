@@ -4,32 +4,22 @@
 
     <div class="container contenido">
 
-        {{#if isActiveRoute regex='postsList|postsUserFollowing'}}
-
-            <div class="row">
-
-                <div class="col-xs-12">
-
-                    <div class="">
-                        <p class="lead">{{currentUser.username}}</p>
-                        <div class="list-group">
-                            <a href="/" class="list-group-item {{isActiveRoute 'postsList' class='active'}}">Todos los posts</a>
-                            <a href="{{pathFor 'postsUserFollowing'}}" class="list-group-item {{isActiveRoute 'postsUserFollowing' class='active'}}">Siguiendo</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-        {{/if}}
-
-
         <div class="row">
 
             {{#if isActiveRoute regex='postsList|postsUserFollowing'}}
 
-                {{>recommendations}}
+                <div class="col-md-3">
+
+                    <p class="lead">{{currentUser.username}}</p>
+                    <div class="list-group">
+                        <a href="/" class="list-group-item {{isActiveRoute 'postsList' class='active'}}">Todos los posts</a>
+                        <a href="{{pathFor 'postsUserFollowing'}}" class="list-group-item {{isActiveRoute 'postsUserFollowing' class='active'}}">Siguiendo</a>
+                    </div>
+
+                    {{>recommendations}}
+
+                </div>
+
 
             {{/if}}
 

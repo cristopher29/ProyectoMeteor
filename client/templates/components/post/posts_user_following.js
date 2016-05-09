@@ -36,27 +36,6 @@ Template.postsUserFollowing.onRendered(function(){
         if(instance.subReady.get()){
 
             instance.loaded.set(Posts.find().count());
-
-            if(Router.current().route.getName() === 'postsUserFollowing'){
-
-                Tracker.afterFlush(function() {
-                    //Deberia de ejecutarse cuando el child template este renderizado
-                    $('#grid').isotope({
-                        resizable: false,
-                        itemSelector: '.grid-item',
-                        transformsEnabled: false,
-                        masonry: {
-                            columnWidth: 350,
-                            isFitWidth: true
-                        }
-                    });
-
-                    //Meteor.setTimeout(function(){
-                    //
-                    //}, 50);
-                });
-            }
-
         }
 
     });
@@ -73,7 +52,7 @@ Template.postsUserFollowing.helpers({
 
         return Posts.find({ $or:
             [
-                { userId: { $in: Meteor.user().following } },
+                { userId: Meteor.user().following },
                 { userId: Meteor.userId() }
             ]
         }, {sort :{createdAt: -1}});

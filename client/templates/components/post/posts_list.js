@@ -28,25 +28,6 @@ Template.postsList.onRendered(function(){
       instance.loaded.set(Posts.find().count());
       instance.subCount.set(1);
 
-      if(Router.current().route.getName() === 'postsList'){
-
-        Tracker.afterFlush(function() {
-          //Deberia de ejecutarse cuando el child template este renderizado
-          $('#grid').isotope({
-            resizable: false,
-            itemSelector: '.grid-item',
-            transformsEnabled: false,
-            masonry: {
-              columnWidth: 350,
-              isFitWidth: true
-            }
-          });
-          //Meteor.setTimeout(function(){
-          //
-          //}, 50);
-        });
-      }
-
     }
 
   });

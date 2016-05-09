@@ -2,9 +2,9 @@
 
     <div class="col-md-9">
         {{#if posts.count}}
-            <div id="grid">
+            <div class="masonry">
                 {{#each posts}}
-                    <div class="grid-item">
+                    <div class="item">
                         {{> postItem}}
                     </div>
                 {{/each}}
@@ -14,8 +14,11 @@
             {{#if noReady}}
                 {{>loading}}
             {{else}}
-                <div>
-                    <h3>No hay posts :(</h3>
+                <div class="alert-user">
+                    <div class="center-div">
+                        <h4>No tienes posts o no sigues a nadie</h4>
+                        <img src="/img/deal.png" width="70" alt="">
+                    </div>
                 </div>
             {{/if}}
         {{/if}}

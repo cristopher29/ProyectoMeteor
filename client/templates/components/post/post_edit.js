@@ -64,6 +64,8 @@ Template.postEdit.events({
         e.preventDefault();
         var currentPostId = this._id;
         var currentPostUserId = this.userId;
+        var imageId = this.imageId;
+
         swal({
             title: '¿Estás seguro?',
             text: 'El post no se podra recuperar',
@@ -74,6 +76,9 @@ Template.postEdit.events({
             showCancelButton: true
         }, function(){
             Meteor.call('postDelete',currentPostUserId, currentPostId);
+            if(imageId){
+                Meteor.call('deleteImage',currentPostId, currentPostUserId, imageId);
+            }
             Router.go('postsList');
         });
 

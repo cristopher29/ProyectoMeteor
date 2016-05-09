@@ -1,8 +1,8 @@
 <template name="recommendations">
 
     {{#if ready}}
-        <div class="col-md-3 hidden-xs sidebar-outer">
-            <div class="panel panel-default sidebar">
+        <div class="hidden-xs {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar-outer col-md-3'}}">
+            <div class="panel panel-default {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar'}}">
                 <div class="panel-heading"><h4>A quién seguir</h4></div>
                 <div class="panel-body">
                     {{#each users}}

@@ -16,15 +16,28 @@
                 {{>postItem}}
             {{/each}}
             {{#if noMorePosts}}
-                No hay mas posts :(
+                <div class="alert-user">
+                    <div class="center-div">
+                        <h3> No hay mas posts</h3>
+                        <img src="/img/FeelsBadMan.png" width="70" alt="">
+                    </div>
+                </div>
             {{else}}
                 <button class="load-more">Mas</button>
             {{/if}}
 
         {{else}}
             {{#if ready}}
-                <div class="text-center no-posts">
-                    No tiene posts! :(
+                <div class="alert-user">
+                    <div class="center-div">
+                        {{#if ownProfile}}
+                            <h3>No tienes posts</h3>
+                        {{else}}
+                            <h3>Este usuario no tiene posts</h3>
+                        {{/if}}
+
+                        <img src="/img/FeelsBadMan.png" width="70" alt="">
+                    </div>
                 </div>
             {{else}}
                 {{>loading}}
