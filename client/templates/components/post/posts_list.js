@@ -8,7 +8,14 @@ Template.postsList.onCreated(function(){
   instance.subCount = new ReactiveVar(0);
   instance.subReady = new ReactiveVar(false);
 
+  if(Meteor.user()){
+    if(!Meteor.user().emails[0].verified){
+      Bert.alert( 'Por favor, verifica tu email', 'warning', 'fixed-bottom' );
+    }
+  }
+
   instance.autorun(function(){
+
     var sub = Subsman.subscribe('allPosts', instance.limit.get());
     instance.subReady.set(sub.ready());
   });

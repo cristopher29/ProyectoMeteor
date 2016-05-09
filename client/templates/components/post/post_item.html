@@ -15,18 +15,8 @@
 
         </div>
 
-        {{#if currentUser}}
-            {{#if image}}
-                <figure class="image-with-icon background-like">
-                    <img class="post-image img-responsive" src="{{image}}" alt="">
-                    <i class="icon-heart icon-red" aria-hidden="true"></i>
-                    <a class="like"></a>
-                </figure>
-            {{/if}}
-        {{else}}
-            {{#if image}}
-                <img class="post-image img-responsive" src="{{image}}" alt="">
-            {{/if}}
+        {{#if image}}
+            <img class="post-image img-responsive" src="{{image}}" alt="">
         {{/if}}
 
         <div class="panel-body">

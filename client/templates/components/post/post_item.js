@@ -4,9 +4,12 @@ Template.postItem.events({
   'click .like': function(e,t){
     e.preventDefault();
     Meteor.call('postLike', this._id, Meteor.userId(), function(error, result){
-      if(error) {
+      if(error.error == 'email-not-verified') {
+        Bert.alert(error.reason, 'warning', 'growl-top-right');
+      }else{
         Bert.alert(error.reason, 'danger', 'growl-top-right');
       }
+
     });
   }
 });

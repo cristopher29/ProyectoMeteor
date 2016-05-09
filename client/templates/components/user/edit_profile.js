@@ -6,9 +6,12 @@ var editProfileHook = {
     onSuccess: function(){
 
         var image = $('#upload-file')[0].files[0];
+        var imageData = CanvasCrop.getDataURL("jpeg");
         if(image){
-            var imageData = CanvasCrop.getDataURL("jpeg");
-
+            if(imageData !== null){
+                Meteor.users.update(Meteor.userId(), {$set:{ "profile.display_picture" : imageData}});
+            }
+        }else{
             if(imageData !== null){
                 Meteor.users.update(Meteor.userId(), {$set:{ "profile.display_picture" : imageData}});
             }
