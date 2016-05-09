@@ -9,7 +9,7 @@ var postSubmitHook = {
         var image = $('.image')[0].files[0];
         files.push(image);
 
-        Meteor.call('postInsert', insertDoc , files , function(error, result) {
+        Meteor.call('postInsert', insertDoc , function(error, result) {
             //Muestra alert con el error
             if (error){
                 Bert.alert(error.reason, 'danger', 'growl-top-right');
@@ -42,6 +42,22 @@ AutoForm.addHooks('insertPost', postSubmitHook);
 
 Template.postSubmit.events({
 
+    'keydown .youtube-url': function(){
+        $('.upload').hide();
+    },
+
+    'keyup .youtube-url': function(){
+        if(!$('.youtube-url').val()){
+            $('.upload').show();
+        }
+    },
+    'change #upload-file': function(){
+        if (!$('#upload-file').val()) {
+            $('.youtube').show();
+        }else{
+            $('.youtube').hide();
+        }
+    },
     'submit form': function(e){
         return false;
     },

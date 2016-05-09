@@ -30,6 +30,17 @@ Template.postItem.helpers({
     }else{
       return '/img/no-avatar.jpg';
     }
+  },
+  youtubeId: function(){
+
+    if(this.youtubeUrl){
+      var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      var match = this.youtubeUrl.match(regExp);
+      if (match && match[2].length == 11) {
+        return match[2];
+      }
+    }
+
   }
 });
 

@@ -19,6 +19,12 @@
             <img class="post-image img-responsive" src="{{image}}" alt="">
         {{/if}}
 
+        {{#if youtubeUrl}}
+            <div class="videoWrapper">
+                <iframe width="560" height="349" src="https://www.youtube.com/embed/{{youtubeId}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+        {{/if}}
         <div class="panel-body">
             <div class="valign">
                 <div>
