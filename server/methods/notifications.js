@@ -17,7 +17,7 @@ Meteor.methods({
         }
 
         //Comprobamos si la notificacion ya existe
-        var notificationExist = Notifications.findOne({alertedUserId: alertedUserId, contentId: contentId, userId: userId, username: username,  action: action});
+        var notificationExist = Notifications.findOne({alertedUserId: alertedUserId, contentId: contentId, userId: userId, action: action});
 
         //Si es un comentario actualizamos para que se vuelva a mostrar
         if(notificationExist && action == "comment"){

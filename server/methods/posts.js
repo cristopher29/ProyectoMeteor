@@ -6,24 +6,33 @@ Meteor.methods({
 
     postLike: function(postId, userId){
 
-        if (userId !== Meteor.userId()) {
-            throw new Meteor.Error('invalid-id', 'ID de usuario no válido');
-        }
-
         if (!Meteor.user().emails[0].verified) {
             throw new Meteor.Error('email-not-verified', 'Verifica tu email!');
         }
 
-        var post = Posts.findOne({_id: postId});
+        var user = Meteor.users.findOne({_id: userId});
 
-        if(post.usersLiked.indexOf(userId) >= 0){
-            Posts.update({_id: postId}, {$pull: {usersLiked: userId}, $inc:{likesCount: -1}});
+        if(user){
+            var post = Posts.findOne({_id: postId});
 
+            if(post.usersLiked.indexOf(userId) >= 0){
+                Posts.update({_id: postId}, {$pull: {usersLiked: user._id}, $inc:{likesCount: -1}});
+                return true;
+
+            }else{
+                if(user._id == Meteor.userId()){
+                    Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
+                    return true;
+                }else{
+                    Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
+                    Meteor.call('createNotification', post.userId, post._id, post.slug, post.title, user._id, user.username, "like");
+                    return true;
+                }
+            }
         }else{
-            Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
-            Meteor.call('createNotification', post.userId, post._id, post.slug, post.title, userId, Meteor.user().username, "like");
-
+            return null;
         }
+
     },
 
     postInsert: function(postAttributes) {
