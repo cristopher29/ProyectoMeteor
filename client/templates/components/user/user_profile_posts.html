@@ -1,15 +1,5 @@
 <template name="userProfilePosts">
 
-    <!--{{#if ready}}-->
-        <!--{{#if noPosts}}-->
-            <!--<div class="col-md-6">-->
-                <!--<div class="text-center no-posts">-->
-                    <!--No tiene posts! :(-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--{{/if}}-->
-    <!--{{/if}}-->
-
     <div class="col-md-6">
         {{#if profilePosts.count}}
             {{#each profilePosts}}
@@ -36,8 +26,11 @@
                         {{/if}}
                     </div>
                 </div>
+
             {{else}}
-                {{>loading}}
+                <div class="loader">
+                    {{>loading}}
+                </div>
             {{/if}}
         {{/if}}
     </div>

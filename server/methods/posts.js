@@ -4,6 +4,32 @@
 
 Meteor.methods({
 
+    postDislike: function(postId, userId){
+
+        check(Meteor.userId(), String);
+
+        var user = Meteor.users.findOne({_id: userId});
+        var post = Posts.findOne({_id: postId});
+
+        if(user){
+
+            if(post.usersLiked.indexOf(userId) >= 0){
+
+                Posts.update({_id: postId}, {$pull: {usersLiked: user._id}, $inc:{likesCount: -1}});
+                return {
+                    dislike : true
+                }
+
+            }else{
+                throw new Meteor.Error('invalid-user', 'Ya has votado este post');
+            }
+
+        }else{
+            throw new Meteor.Error('invalid-user', 'El usuario no existe');
+        }
+
+    },
+
     postLike: function(postId, userId){
 
         if (!Meteor.user().emails[0].verified) {
@@ -11,26 +37,25 @@ Meteor.methods({
         }
 
         var user = Meteor.users.findOne({_id: userId});
+        var post = Posts.findOne({_id: postId});
 
-        if(user){
-            var post = Posts.findOne({_id: postId});
+        if(user && post && post.usersLiked.indexOf(userId) == -1){
 
-            if(post.usersLiked.indexOf(userId) >= 0){
-                Posts.update({_id: postId}, {$pull: {usersLiked: user._id}, $inc:{likesCount: -1}});
-                return true;
-
+            if(user._id == Meteor.userId()){
+                Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
+                return {
+                    selfLike: true
+                };
             }else{
-                if(user._id == Meteor.userId()){
-                    Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
-                    return true;
-                }else{
-                    Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
-                    Meteor.call('createNotification', post.userId, post._id, post.slug, post.title, user._id, user.username, "like");
-                    return true;
-                }
+                Posts.update({_id: postId}, {$push: {usersLiked: userId}, $inc:{likesCount: 1}});
+                Meteor.call('createNotification', post.userId, post._id, post.slug, post.title, user._id, user.username, "like");
+                return {
+                    likeNotification: true
+                };
             }
+
         }else{
-            return null;
+            throw new Meteor.Error('invalid-user', 'Error al realizar el like');
         }
 
     },

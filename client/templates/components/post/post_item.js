@@ -1,19 +1,39 @@
 
 
 Template.postItem.events({
+
   'click .like': function(e,t){
     e.preventDefault();
-    Meteor.call('postLike', this._id, Meteor.userId(), function(error, result){
 
-      if(error){
-        if(error.error == 'email-not-verified') {
-          Bert.alert(error.reason, 'warning', 'growl-top-right');
-        }else{
+    if($.inArray(Meteor.userId(), this.usersLiked) == -1){
+
+      Meteor.call('postLike', this._id, Meteor.userId(), function(error, result){
+
+        if(error){
+          if(error.error == 'email-not-verified') {
+            Bert.alert(error.reason, 'warning', 'growl-top-right');
+          }else{
+            Bert.alert(error.reason, 'danger', 'growl-top-right');
+          }
+        }
+
+      });
+    }
+  },
+  'click .dislike': function(e,t){
+    e.preventDefault();
+
+    if($.inArray(Meteor.userId(), this.usersLiked) >= 0){
+
+      Meteor.call('postDislike', this._id, Meteor.userId(), function(error, result){
+
+        if(error){
           Bert.alert(error.reason, 'danger', 'growl-top-right');
         }
-      }
 
-    });
+      });
+    }
+
   }
 });
 

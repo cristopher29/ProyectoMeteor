@@ -1,7 +1,8 @@
 <template name="postsList">
 
-    <div class="col-md-9">
-        {{#if ready}}
+
+    {{#if ready}}
+        <div class="col-md-9">
             <div class="masonry">
                 {{#each posts}}
                     <div class="item ">
@@ -10,10 +11,13 @@
                 {{/each}}
                 <button class="load-more">Mas</button>
             </div>
-        {{else}}
+        </div>
+    {{else}}
+        <div class="loader">
             {{>loading}}
-        {{/if}}
+        </div>
+    {{/if}}
 
-    </div>
+
 
 </template>

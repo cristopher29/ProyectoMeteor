@@ -302,6 +302,17 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 
 /********LOADING**********/
 
+
+.loader{
+  position:fixed;
+  z-index:999;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  background: #7e95e8;
+}
+
 .loader-container {
   width: 100%;
   text-align: center;
