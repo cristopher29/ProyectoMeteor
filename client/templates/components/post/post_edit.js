@@ -23,6 +23,7 @@ AutoForm.addHooks('updatePost', {
 
     onSubmit: function(insertDoc, updateDoc, currentDoc){
 
+        console.log(insertDoc);
         Meteor.call('postUpdate', insertDoc , currentDoc, function(error, result) {
             if (error) {
                 Bert.alert(error.reason, 'danger', 'growl-top-right');
@@ -48,7 +49,34 @@ AutoForm.addHooks('updatePost', {
 
 });
 
+Template.postEdit.onRendered(function () {
+
+    if($('.youtube-url').val()){
+        $('.upload').hide();
+    }else if($('#upload-file').val()){
+        $('.youtube').hide();
+    }
+
+});
+
 Template.postEdit.events({
+
+    'keyup .youtube-url, change .youtube-url': function(){
+
+        var youtubeInput =  $(".youtube-url");
+        if(!youtubeInput.val()){
+            $('.upload').show();
+        }else{
+            $('.upload').hide();
+        }
+    },
+    'change #upload-file': function(){
+        if (!$('#upload-file').val()) {
+            $('.youtube').show();
+        }else{
+            $('.youtube').hide();
+        }
+    },
 
     'submit form': function(e) {
         e.preventDefault();

@@ -155,10 +155,18 @@ Meteor.methods({
             throw new Meteor.Error("over-limit", "Error limite descripcion");
         }
 
+        var youtubeUrl;
+        if(newValues.youtubeUrl){
+            youtubeUrl = newValues.youtubeUrl;
+        }else{
+            youtubeUrl = null;
+        }
+
         //Actualizamos los valores
         var post = _.extend(newValues, {
             title: newValues.title,
             shortDescription: newValues.shortDescription,
+            youtubeUrl: youtubeUrl,
             description: cleanHtml,
             textDescription: text,
             updatedAt: new Date()

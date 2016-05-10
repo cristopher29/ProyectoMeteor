@@ -1,6 +1,6 @@
 <template name="postEdit">
 
-    {{#autoForm collection="Posts" doc=this id="updatePost"}}
+    {{#autoForm collection="Posts" doc=this id="updatePost" autocomplete="off"}}
 
 
         {{> afQuickField name='title' class='title form-control'}}
@@ -8,35 +8,34 @@
         {{> afQuickField name='shortDescription' class='short-description form-control'}}
 
 
-        {{#if youtubeUrl}}
-            {{> afQuickField name='youtubeUrl' class='youtube-url form-control'}}
+        <div class="form-group youtube">
+            <div class="controls">
+                {{> afQuickField name='youtubeUrl' class='youtube-url form-control'}}
+            </div>
+        </div>
+
+        {{#if image}}
+            <label for="post-image" class="control-label">Imagen (opcional)</label>
+
+            <div class="image-container">
+                <figure class="image-with-icon red">
+                    <img src="{{image}}" alt=""/>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <a id="delete-image"></a>
+                </figure>
+            </div>
 
         {{else}}
 
-            {{#if image}}
-                <label for="post-image" class="control-label">Imagen (opcional)</label>
-
-                <div class="image-container">
-                    <figure class="image-with-icon red">
-                        <img src="{{image}}" alt=""/>
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                        <a id="delete-image"></a>
-                    </figure>
+            <div class="form-group upload">
+                <div class="controls">
+                    <label for="upload-file" class="control-label">Imagen (opcional)</label>
+                    <label for="file" class="dropzone">
+                        <input type="file" class="image" id="upload-file" name="image" onchange="this.form.fileName.value = this.value">
+                        <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
+                    </label>
                 </div>
-
-            {{else}}
-
-                <div class="form-group">
-                    <div class="controls">
-                        <label for="upload-file" class="control-label">Imagen (opcional)</label>
-                        <label for="file" class="dropzone">
-                            <input type="file" class="image" id="upload-file" name="image" onchange="this.form.fileName.value = this.value">
-                            <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
-                        </label>
-                    </div>
-                </div>
-            {{/if}}
-
+            </div>
         {{/if}}
 
         <div class="form-group">

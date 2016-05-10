@@ -42,14 +42,15 @@ AutoForm.addHooks('insertPost', postSubmitHook);
 
 Template.postSubmit.events({
 
-    'keydown .youtube-url': function(){
-        $('.upload').hide();
-    },
+    'keyup .youtube-url, change .youtube-url': function(){
 
-    'keyup .youtube-url': function(){
-        if(!$('.youtube-url').val()){
+        var youtubeInput =  $(".youtube-url");
+        if(!youtubeInput.val()){
             $('.upload').show();
+        }else{
+            $('.upload').hide();
         }
+
     },
     'change #upload-file': function(){
         if (!$('#upload-file').val()) {
