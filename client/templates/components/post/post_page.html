@@ -15,7 +15,14 @@
     </div>
 
     <div class="col-md-5 text-center">
+        {{#if image}}
             <img style="display: inline-block" class="img-responsive" src="{{image}}" alt="">
+        {{/if}}
+        {{#if youtubeUrl}}
+            <div class="videoWrapper">
+                <iframe width="560" height="349" src="https://www.youtube.com/embed/{{youtubeId}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        {{/if}}
     </div>
 
     <hr>
