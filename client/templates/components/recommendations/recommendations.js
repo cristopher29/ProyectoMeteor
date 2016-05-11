@@ -10,7 +10,7 @@ Template.recommendations.onCreated(function(){
 Template.recommendations.onRendered(function(){
 
     var instance = this;
-    var sub = Meteor.subscribe('recommendations');
+    var sub = Subsman.subscribe('recommendations');
 
 
     instance.autorun(function(){
