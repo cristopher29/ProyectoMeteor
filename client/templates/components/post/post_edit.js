@@ -51,10 +51,18 @@ AutoForm.addHooks('updatePost', {
 
 Template.postEdit.onRendered(function () {
 
-    if($('.youtube-url').val()){
+    post = Posts.findOne();
+    $('.preview').hide();
+
+    if(post.youtubeUrl){
         $('.upload').hide();
-    }else if($('#upload-file').val()){
+    }else{
+        $('.upload').show();
+    }
+    if(post.image){
         $('.youtube').hide();
+    }else{
+        $('.youtube').show();
     }
 
 });
@@ -70,14 +78,34 @@ Template.postEdit.events({
             $('.upload').hide();
         }
     },
-    'change #upload-file': function(){
-        if (!$('#upload-file').val()) {
-            $('.youtube').show();
-        }else{
-            $('.youtube').hide();
-        }
-    },
+    'change #upload-file': function(e,t){
 
+        var input = e.target;
+
+        if (input.files && input.files[0]) {
+
+            $('.youtube').hide();
+
+            var reader = new FileReader();
+
+            reader.onload = function (image) {
+                $('#image_preview').attr('src', image.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            $('.preview').show();
+
+        }else{
+            $('.youtube').show();
+        }
+
+    },
+    'click #delete-image-preview': function(e){
+        e.preventDefault();
+        $("#upload-file").val("");
+        $('.preview').hide();
+        $('.youtube').show();
+    },
     'submit form': function(e) {
         e.preventDefault();
     },
@@ -85,6 +113,7 @@ Template.postEdit.events({
     'click #delete-image': function(e){
         e.preventDefault();
         Meteor.call('deleteImage',this._id, this.userId, this.imageId);
+        $('.youtube').show();
     },
 
     'click #eliminar': function(e) {

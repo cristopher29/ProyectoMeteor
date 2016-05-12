@@ -41,6 +41,7 @@ reywood:publish-composite
 lepozepo:cloudinary
 
 # Tools
+easy:search
 iron:router
 zimme:active-route
 meteorhacks:subs-manager

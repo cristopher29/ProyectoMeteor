@@ -1,0 +1,16 @@
+<template name="search">
+
+    <div class="search-container">
+        <div class="search-box">
+            <div class="search-icon"><i class="fa fa-search"></i></div>
+            {{> EasySearch.Input index=postsIndex }}
+            
+            <ul id="results" class="search-results">
+                {{#EasySearch.Each index=postsIndex }}
+                    <li>{{title}}</li>
+                {{/EasySearch.Each}}
+            </ul>
+        </div>
+    </div>
+
+</template>

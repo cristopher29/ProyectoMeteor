@@ -39,6 +39,10 @@ var postSubmitHook = {
 
 AutoForm.addHooks('insertPost', postSubmitHook);
 
+Template.postSubmit.onRendered(function(){
+    $('.preview').hide();
+});
+
 
 Template.postSubmit.events({
 
@@ -53,11 +57,31 @@ Template.postSubmit.events({
 
     },
     'change #upload-file': function(){
-        if (!$('#upload-file').val()) {
-            $('.youtube').show();
-        }else{
+
+        var input = e.target;
+
+        if (input.files && input.files[0]) {
+
             $('.youtube').hide();
+
+            var reader = new FileReader();
+
+            reader.onload = function (image) {
+                $('#image_preview').attr('src', image.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            $('.preview').show();
+
+        }else{
+            $('.youtube').show();
         }
+    },
+    'click #delete-image-preview': function(e){
+        e.preventDefault();
+        $("#upload-file").val("");
+        $('.preview').hide();
+        $('.youtube').show();
     },
     'submit form': function(e){
         return false;
