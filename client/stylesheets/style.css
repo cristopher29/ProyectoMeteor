@@ -498,24 +498,27 @@ textarea.error{
 /*********** POST        ****************/
 /****************************************/
 
-.masonry { /* Masonry container */
-  column-count: 2;
-  column-gap: 1em;
-}
+/*.masonry { !* Masonry container *!*/
+  /*-moz-column-width: 26em;*/
+  /*-webkit-column-width: 26em;*/
+  /*-moz-column-gap: 1em;*/
+  /*-webkit-column-gap: 1em;*/
+/*}*/
 
-@media (max-width:767px) {
-  .masonry {
-    column-count: 1;
-    column-gap: 0.5em;
-  }
+/*@media (max-width:767px) {*/
+  /*.masonry {*/
+    /*column-count: 1;*/
+    /*column-gap: 0.5em;*/
+  /*}*/
 
-}
+/*}*/
 
-.item { /* Masonry bricks or child elements */
-  display: inline-block;
-  margin: 0 0 1em;
-  width: 100%;
-}
+/*.item { !* Masonry bricks or child elements *!*/
+  /*display: inline-block;*/
+  /*margin: 0.25rem;*/
+  /*padding: 1rem;*/
+  /*width: 100%;*/
+/*}*/
 
 .panel {
   margin-bottom: 21px;
@@ -1193,3 +1196,23 @@ figure.image-with-icon.hover i {
 }
 
 /******** IMAGE HOVER END  ********/
+
+.outer-pic {
+  padding:40px 0;
+  display:block;
+  width:100%;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background-color:#fff;
+  background-image:-webkit-linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%), -webkit-linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%);
+  background-image:linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%), linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%);
+  background-size:16px 16px;
+  background-position:0 0, 8px 8px;
+  box-shadow:inset 0 0 6px rgba(0, 0, 0, .5)
+}
+.cropit-preview {
+  /* You can specify preview size in CSS */
+  width: 760px;
+  height: 540px;
+}

@@ -31,10 +31,10 @@ Template.notificationItem.helpers({
     },
     userImage: function(){
         var user = Meteor.users.findOne({_id: this.userId});
-        if(user.profile.display_picture){
-            return user.profile.display_picture;
-        }else{
+        if(user.profile.display_picture === null){
             return '/img/no-avatar.jpg';
+        }else{
+            return user.profile.display_picture;
         }
     }
 });

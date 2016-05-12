@@ -8,21 +8,22 @@
 
             {{#if isActiveRoute regex='postsList|postsUserFollowing'}}
 
-                <div class="col-md-3">
+                <div class="col-md-4">
 
-                    <div class="list-group">
+                    {{#if currentUser}}
 
-                        {{#if currentUser}}
+                        {{>currentUserProfileCard}}
+
+                        <div class="list-group">
                             <a href="/" class="list-group-item {{isActiveRoute 'postsList' class='active'}}">Todos los posts</a>
                             <a href="{{pathFor 'postsUserFollowing'}}" class="list-group-item {{isActiveRoute 'postsUserFollowing' class='active'}}">Siguiendo</a>
-                        {{else}}
+                        </div>
+                        {{>recommendations}}
+                    {{else}}
+                        <div class="list-group">
                             <a href="/" class="list-group-item {{isActiveRoute 'postsList' class='active'}}">Todos los posts</a>
-                        {{/if}}
-
-
-                    </div>
-
-                    {{>recommendations}}
+                        </div>
+                    {{/if}}
 
                 </div>
 

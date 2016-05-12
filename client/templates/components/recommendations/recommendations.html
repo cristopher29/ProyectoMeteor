@@ -1,27 +1,23 @@
 <template name="recommendations">
 
-    {{#if ready}}
-        <div class="hidden-xs {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar-outer col-md-3'}}">
-            <div class="panel panel-default {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar'}}">
-                <div class="panel-heading"><h4>A quién seguir</h4></div>
-                <div class="panel-body">
-                    {{#each users}}
-                        <div>
-                            {{#if profile.display_picture}}
-                                <img src="{{profile.display_picture}}" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
-                            {{else}}
-                                <img src="/img/no-avatar.jpg" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
-                            {{/if}}
+    <div class="hidden-xs {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar-outer col-md-3'}}">
+        <div class="panel panel-default {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar'}}">
+            <div class="panel-heading"><h4>A quién seguir</h4></div>
+            <div class="panel-body">
+                {{#each users}}
+                    <div>
+                        {{#if profile.display_picture}}
+                            <img src="{{profile.display_picture}}" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
+                        {{else}}
+                            <img src="/img/no-avatar.jpg" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
+                        {{/if}}
 
-                        </div>
-                    {{/each}}
-                    <div class="clearfix"></div>
-                    <ul class="list-unstyled"><li><a href="{{pathFor 'postsList'}}">Proyecto</a></li></ul>
-                </div>
+                    </div>
+                {{/each}}
+                <div class="clearfix"></div>
+                <ul class="list-unstyled"><li><a href="{{pathFor 'postsList'}}">Proyecto</a></li></ul>
             </div>
         </div>
-    {{else}}
-        <div class="col-md-3 hidden-xs sidebar-outer"></div>
-    {{/if}}
+    </div>
 
 </template>

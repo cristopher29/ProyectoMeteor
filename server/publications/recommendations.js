@@ -22,5 +22,7 @@ Meteor.publish('recommendations', function(){
             followersCount:1,
             followingCount:1
         }});
+    }else{
+        this.ready();
     }
 });

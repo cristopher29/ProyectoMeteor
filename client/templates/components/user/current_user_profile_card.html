@@ -1,0 +1,64 @@
+<template name="currentUserProfileCard">
+
+    <div class="card hovercard">
+        <div class="cardheader" style="background: url('/img/card-header.jpg');">
+
+        </div>
+        <div class="avatar">
+            {{#if currentUser.profile.display_picture}}
+                <img alt="" src="{{currentUser.profile.display_picture}}">
+            {{else}}
+                <img alt="" src="/img/no-avatar.jpg">
+            {{/if}}
+        </div>
+        <div class="info">
+            <div class="title">
+                <h3>{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</h3>
+                <a href="/profile/{{currentUser._id}}" >@{{currentUser.username}}</a>
+            </div>
+            <div class="desc">Tech geek</div>
+        </div>
+        <div class="stats">
+            <ul class="arrange">
+                <li class="arrangeSizeFit">
+                    <a href="/profile/{{currentUser._id}}">
+                        <span class="statLabel">Posts</span>
+                        {{#if currentUser.postsCount}}
+                            <span class="statValue">{{currentUser.postsCount}}</span>
+                        {{else}}
+                            <span class="statValue">0</span>
+                        {{/if}}
+                    </a>
+                </li>
+                <li class="arrangeSizeFit">
+                    <a href="/profile/{{currentUser._id}}/following">
+                        <span class="statLabel">Siguiendo</span>
+                        {{#if currentUser.followingCount}}
+                            <span class="statValue">{{currentUser.followingCount}}</span>
+                        {{else}}
+                            <span class="statValue">0</span>
+                        {{/if}}
+
+                    </a>
+                </li>
+                <li class="arrangeSizeFit">
+                    <a href="/profile/{{currentUser._id}}/followers">
+                        <span class="statLabel">Seguidores</span>
+                        {{#if currentUser.followersCount}}
+                            <span class="statValue">{{currentUser.followersCount}}</span>
+                        {{else}}
+                            <span class="statValue">0</span>
+                        {{/if}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <button class="profile-btn edit-profile" >
+            <i class="fa fa-pencil"></i> Editar
+        </button>
+
+    </div>
+
+</template>

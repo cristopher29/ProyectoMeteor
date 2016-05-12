@@ -2,15 +2,16 @@
 
 
     {{#if ready}}
-        <div class="col-md-9">
-            <div class="masonry">
+        <div class="col-md-8">
+
                 {{#each posts}}
-                    <div class="item ">
-                        {{> postItem}}
-                    </div>
+
+                    {{> postItem}}
+
                 {{/each}}
+
                 <button class="load-more">Mas</button>
-            </div>
+
         </div>
     {{else}}
         <div class="loader">

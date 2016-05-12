@@ -12,21 +12,10 @@ Template.recommendations.onRendered(function(){
     var instance = this;
     var sub = Subsman.subscribe('recommendations');
 
-
-    instance.autorun(function(){
-
-        if(sub.ready()){
-            instance.subReady.set(true);
-        }
-
-    });
-
 });
 
 Template.recommendations.helpers({
-    'ready': function(){
-        return Template.instance().subReady.get();
-    },
+
     'users': function(){
 
         if(Meteor.user().following){

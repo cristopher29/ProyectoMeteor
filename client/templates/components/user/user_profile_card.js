@@ -81,3 +81,10 @@ Template.userProfileCard.events({
         Modal.show('editProfile');
     }
 });
+
+Template.currentUserProfileCard.events({
+    'click .edit-profile': function(e,t){
+        e.preventDefault();
+        Modal.show('editProfile');
+    }
+});

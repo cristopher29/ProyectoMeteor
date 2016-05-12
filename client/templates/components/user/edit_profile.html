@@ -11,11 +11,18 @@
 
                     {{#autoForm collection="Meteor.users" doc=currentUser type="update" id="updateProfile" }}
 
-                        <div class="container-profile-pic">
-                            <div class="imageBox" >
-                                <div class="mask"></div>
-                                <div class="thumbBox"></div>
-                            </div>
+
+                        <div class="imageBox">
+                            <div class="thumbBox"></div>
+                        </div>
+
+
+
+                        <!--<div class="container-profile-pic">-->
+                            <!--<div class="imageBox" >-->
+                                <!--<div class="mask"></div>-->
+                                <!--<div class="thumbBox"></div>-->
+                            <!--</div>-->
 
                             <div class="tools clearfix">
                                 <span class="btn btn-primary" id="rotateLeft"><i class="fa fa-undo" aria-hidden="true"></i></span>
@@ -29,7 +36,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        <!--</div>-->
 
                         {{> afQuickField name='profile.firstName'}}
                         {{> afQuickField name='profile.lastName'}}

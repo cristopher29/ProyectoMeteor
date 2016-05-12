@@ -17,7 +17,8 @@ Meteor.publishComposite('notifications', function() {
         children: [{
             find: function(notification){
                 return Meteor.users.find({_id: notification.userId}, {fields: {
-                    profile:1
+                    profile:1,
+                    username:1
                 }});
             }
         }]

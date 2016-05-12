@@ -10,14 +10,9 @@ Meteor.publishComposite('postsUserFollowing', function(userId, limit) {
     return {
         find: function() {
             if (user.following) {
-                return Posts.find({ $or:
-                    [
-                        { userId: { $in: user.following } },
-                        { userId: user._id }
-                    ]
-                }, {limit: limit});
+                return Posts.find({ userId: { $in: user.following } }, {sort:{createdAt: -1},limit: limit});
             }else{
-                return Posts.find({userId: user._id}, {limit: limit});
+                this.ready();
             }
         },
         children: [
