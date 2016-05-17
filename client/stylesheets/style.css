@@ -871,7 +871,7 @@ textarea.error{
 .panel.panel-card .panel-body {
   padding-top: 40px;
   padding-bottom: 20px;
-
+  height: 150px;
   -webkit-transition: padding 400ms ease-in-out;
   transition: padding 400ms ease-in-out;
 }
@@ -919,7 +919,7 @@ textarea.error{
   margin: 22px 0 8px;
   border: none;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   -webkit-transition: all .2s ease;

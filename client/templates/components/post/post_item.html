@@ -43,11 +43,9 @@
 
                     <a href="{{pathFor 'postPage'}}" ><i class=" fa fa-comment"></i> {{commentsCount}}</a>
 
-                    {{#if liked}}
-                        <div class="dislike heart"><i class=" fa fa-heart"></i> {{likesCount}}</div>
-                    {{else}}
-                        <div class="like heart"><i class=" fa fa-heart-o"></i> {{likesCount}}</div>
-                    {{/if}}
+
+                    <div class="{{liked}} heart"><i class=" fa fa-heart"></i> {{likesCount}}</div>
+
                 </div>
             {{/if}}
         </div>

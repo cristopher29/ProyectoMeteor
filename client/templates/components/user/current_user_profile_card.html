@@ -2,7 +2,7 @@
 
     <div class="panel panel-default panel-card">
         <div class="panel-heading">
-            <img src="https://unsplash.imgix.net/12/barley.jpg?q=75&fm=jpg&s=f39de5ca1970a13dbe6af6c86b3c47ec" />
+            <img src="/img/card-header.jpg" />
             <button class="btn btn-primary btn-sm edit-profile" role="button">Editar</button>
         </div>
         <div class="panel-figure">
@@ -17,7 +17,7 @@
             <h4 class="panel-header">
                 <a href="/profile/{{currentUser._id}}">{{currentUser.username}}</a>
             </h4>
-            <small style="color: black">A short description goes here.</small>
+            <small style="color: black">{{currentUser.profile.description}}</small>
         </div>
         <div class="panel-thumbnails">
             <div class="row">

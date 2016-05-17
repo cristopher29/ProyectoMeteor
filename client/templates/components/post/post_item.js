@@ -3,10 +3,13 @@
 Template.postItem.events({
 
   'click .like': function(e,t){
+
     e.preventDefault();
 
-
     if($.inArray(Meteor.userId(), this.usersLiked) == -1){
+
+      t.$('.heart').removeClass('broken');
+      t.$('.heart').addClass('happy');
 
       Meteor.call('postLike', this._id, Meteor.userId(), function(error, result){
 
@@ -18,24 +21,23 @@ Template.postItem.events({
           }
         }
 
-        t.$('.dislike').addClass('happy');
-
       });
     }
   },
   'click .dislike': function(e,t){
+
     e.preventDefault();
 
     if($.inArray(Meteor.userId(), this.usersLiked) >= 0){
+
+      t.$('.heart').removeClass('happy');
+      t.$('.heart').addClass('broken');
 
       Meteor.call('postDislike', this._id, Meteor.userId(), function(error, result){
 
         if(error){
           Bert.alert(error.reason, 'danger', 'growl-top-right');
         }
-
-        t.$('.like').addClass('broken');
-
       });
     }
 
@@ -45,9 +47,9 @@ Template.postItem.events({
 Template.postItem.helpers({
   liked: function(){
     if($.inArray(Meteor.userId(), this.usersLiked) > -1){
-      return true;
+      return 'dislike';
     }else{
-      return false;
+      return 'like';
     }
   },
   userImage: function(){

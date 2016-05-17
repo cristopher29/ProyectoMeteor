@@ -7,6 +7,15 @@
                     {{> EasySearch.Input indexes=searchIndexes  attributes=inputAttributes}}
                     <!--<input type='text' id="search-box" class='suggest-prompt form-control' placeholder="Search" name="q" autocomplete="off">-->
                     <ul class="suggestions">
+
+                        {{#EasySearch.IfNoResults indexes=searchIndexes logic="AND" }}
+                            <li style="color: #444444"><strong>No hay resultados (ಥ﹏ಥ)</strong></li>
+                        {{/EasySearch.IfNoResults}}
+
+                        {{#EasySearch.IfSearching indexes=searchIndexes logic="OR" }}
+                            <li style="color: #444444"><strong>Buscando... (~˘▾˘)~</strong></li>
+                        {{/EasySearch.IfSearching}}
+
                         {{#EasySearch.Each index=postsIndex }}
                             {{>postSuggestions}}
                         {{/EasySearch.Each}}
