@@ -7,9 +7,9 @@
         <p class="lead">
             por <a href="{{pathFor 'userProfile'}}">{{author}}</a>
         </p>
-        <p><span class="glyphicon glyphicon-time"></span> Publicado el {{formatDate createdAt}} a las {{formatHour createdAt}}</p>
+        <p><i class="fa fa-clock-o" aria-hidden="true"></i> Publicado el {{formatDate createdAt}} a las {{formatHour createdAt}}</p>
         <hr>
-        <div class="descripcion">
+        <div class="post-description">
             {{{description}}}
         </div>
     </div>

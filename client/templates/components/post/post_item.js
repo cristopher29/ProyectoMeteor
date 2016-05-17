@@ -5,6 +5,7 @@ Template.postItem.events({
   'click .like': function(e,t){
     e.preventDefault();
 
+
     if($.inArray(Meteor.userId(), this.usersLiked) == -1){
 
       Meteor.call('postLike', this._id, Meteor.userId(), function(error, result){
@@ -16,6 +17,8 @@ Template.postItem.events({
             Bert.alert(error.reason, 'danger', 'growl-top-right');
           }
         }
+
+        t.$('.dislike').addClass('happy');
 
       });
     }
@@ -30,6 +33,8 @@ Template.postItem.events({
         if(error){
           Bert.alert(error.reason, 'danger', 'growl-top-right');
         }
+
+        t.$('.like').addClass('broken');
 
       });
     }

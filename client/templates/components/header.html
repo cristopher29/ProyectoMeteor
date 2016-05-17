@@ -7,23 +7,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{pathFor 'postsList'}}">Proyecto</a>
+            <a class="navbar-brand" href="{{pathFor 'postsList'}}">P</a>
         </div>
         <div class="collapse navbar-collapse" id="navigation">
-            <ul class="nav navbar-nav">
-                {{#if currentUser}}
-                    <li><a href="{{pathFor 'postSubmit'}}">Nuevo post</a></li>
-                    <li class="dropdown dropdown-notifications">
-                        {{> notifications}}
-                    </li>
-                {{/if}}
-                {{>search}}
-            </ul>
+
+            {{>search}}
 
             <!--<ul class="nav navbar-nav navbar-right">-->
                 <!--{{> atNavButton}}-->
             <!--</ul>-->
             <ul class="nav navbar-nav navbar-right">
+                {{#if currentUser}}
+                    <li><a title="Nuevo post" href="{{pathFor 'postSubmit'}}"><i class="bigger-icon fa fa-plus" aria-hidden="true"></i></a></li>
+                    <li title="Notificaciones" class="dropdown dropdown-notifications">
+                        {{> notifications}}
+                    </li>
+                {{/if}}
                 {{> loginButtons}}
             </ul>
 

@@ -36,17 +36,17 @@
         </div>
         <div class="panel-footer clearfix">
             {{#if currentUser}}
-                <div class="pull-right">
+                <div class="pull-right post-actions">
                     {{#if ownPost}}
-                        <a href="{{pathFor 'postEdit'}}" class="btn btn-sm btn-primary grey-bg"><em class="fa fa-pencil fa-fw"></em></a>
+                        <a href="{{pathFor 'postEdit'}}"><i class=" fa fa-pencil"></i></a>
                     {{/if}}
 
-                    <a href="{{pathFor 'postPage'}}" class="btn btn-sm btn-primary grey-bg"><em class="fa fa-comment fa-fw"></em> {{commentsCount}}</a>
+                    <a href="{{pathFor 'postPage'}}" ><i class=" fa fa-comment"></i> {{commentsCount}}</a>
 
                     {{#if liked}}
-                        <span class="dislike btn btn-sm btn-danger "><em class="fa fa-heart fa-fw"></em> {{likesCount}}</span>
+                        <div class="dislike heart"><i class=" fa fa-heart"></i> {{likesCount}}</div>
                     {{else}}
-                        <span class="like btn btn-sm btn-danger"><em class="fa fa-heart-o fa-fw"></em> {{likesCount}}</span>
+                        <div class="like heart"><i class=" fa fa-heart-o"></i> {{likesCount}}</div>
                     {{/if}}
                 </div>
             {{/if}}

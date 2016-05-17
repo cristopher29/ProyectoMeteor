@@ -42,6 +42,7 @@ lepozepo:cloudinary
 
 # Tools
 easy:search
+sergeyt:typeahead
 iron:router
 zimme:active-route
 meteorhacks:subs-manager

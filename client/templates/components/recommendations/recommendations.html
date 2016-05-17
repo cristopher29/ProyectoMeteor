@@ -2,16 +2,27 @@
 
     <div class="hidden-xs {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar-outer col-md-3'}}">
         <div class="panel panel-default {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar'}}">
-            <div class="panel-heading"><h4>A quién seguir</h4></div>
-            <div class="panel-body">
+            <div class="panel-heading recommendations-heading"><h6><strong>USUARIOS RECOMENDADOS</strong></h6></div>
+            <div class="panel-body recommendations">
                 {{#each users}}
-                    <div>
-                        {{#if profile.display_picture}}
-                            <img src="{{profile.display_picture}}" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
-                        {{else}}
-                            <img src="/img/no-avatar.jpg" width="70" class="img-circle"><a href="/profile/{{_id}}"> {{username}} </a>
-                        {{/if}}
+                    <div class="recommendation row">
+                        <div class="col-xs-2">
+                            {{#if profile.display_picture}}
+                                <img src="{{profile.display_picture}}" class="img-circle img-responsive">
+                            {{else}}
+                                <img src="/img/no-avatar.jpg" class="img-circle img-responsive">
+                            {{/if}}
+                        </div>
+                        <div class="col-xs-7 recommendation-text">
+                            <a href="/profile/{{_id}}"> <strong>{{username}}</strong> </a>
+                            <p>A short description goes here.</p>
+                        </div>
 
+                        <div class="col-xs-3">
+                            <div class="follow-recommendation">
+                                <a class="follow" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
                     </div>
                 {{/each}}
                 <div class="clearfix"></div>

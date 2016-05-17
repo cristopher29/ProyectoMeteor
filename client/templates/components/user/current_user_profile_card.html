@@ -1,64 +1,59 @@
 <template name="currentUserProfileCard">
 
-    <div class="card hovercard">
-        <div class="cardheader" style="background: url('/img/card-header.jpg');">
-
+    <div class="panel panel-default panel-card">
+        <div class="panel-heading">
+            <img src="https://unsplash.imgix.net/12/barley.jpg?q=75&fm=jpg&s=f39de5ca1970a13dbe6af6c86b3c47ec" />
+            <button class="btn btn-primary btn-sm edit-profile" role="button">Editar</button>
         </div>
-        <div class="avatar">
+        <div class="panel-figure">
             {{#if currentUser.profile.display_picture}}
-                <img alt="" src="{{currentUser.profile.display_picture}}">
+                <img class="img-responsive img-circle" alt="" src="{{currentUser.profile.display_picture}}">
             {{else}}
-                <img alt="" src="/img/no-avatar.jpg">
+                <img class="img-responsive img-circle" alt="" src="/img/no-avatar.jpg">
             {{/if}}
         </div>
-        <div class="info">
-            <div class="title">
-                <h3>{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</h3>
-                <a href="/profile/{{currentUser._id}}" >@{{currentUser.username}}</a>
-            </div>
-            <div class="desc">Tech geek</div>
+        <div class="panel-body text-center">
+            <p class="grey">{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</p>
+            <h4 class="panel-header">
+                <a href="/profile/{{currentUser._id}}">{{currentUser.username}}</a>
+            </h4>
+            <small style="color: black">A short description goes here.</small>
         </div>
-        <div class="stats">
-            <ul class="arrange">
-                <li class="arrangeSizeFit">
-                    <a href="/profile/{{currentUser._id}}">
+        <div class="panel-thumbnails">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="/profile/{{currentUser._id}}" class="text-center">
                         <span class="statLabel">Posts</span>
                         {{#if currentUser.postsCount}}
-                            <span class="statValue">{{currentUser.postsCount}}</span>
+                            <span>{{currentUser.postsCount}}</span>
                         {{else}}
-                            <span class="statValue">0</span>
+                            <span>0</span>
                         {{/if}}
                     </a>
-                </li>
-                <li class="arrangeSizeFit">
-                    <a href="/profile/{{currentUser._id}}/following">
+                </div>
+                <div class="col-xs-4">
+                    <a href="/profile/{{currentUser._id}}/following" class="text-center">
                         <span class="statLabel">Siguiendo</span>
                         {{#if currentUser.followingCount}}
-                            <span class="statValue">{{currentUser.followingCount}}</span>
+                            <span>{{currentUser.followingCount}}</span>
                         {{else}}
-                            <span class="statValue">0</span>
+                            <span>0</span>
                         {{/if}}
 
                     </a>
-                </li>
-                <li class="arrangeSizeFit">
-                    <a href="/profile/{{currentUser._id}}/followers">
+                </div>
+                <div class="col-xs-4">
+                    <a href="/profile/{{currentUser._id}}/followers" class="text-center">
                         <span class="statLabel">Seguidores</span>
                         {{#if currentUser.followersCount}}
-                            <span class="statValue">{{currentUser.followersCount}}</span>
+                            <span>{{currentUser.followersCount}}</span>
                         {{else}}
-                            <span class="statValue">0</span>
+                            <span>0</span>
                         {{/if}}
                     </a>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-
-
-        <button class="profile-btn edit-profile" >
-            <i class="fa fa-pencil"></i> Editar
-        </button>
-
     </div>
 
 </template>

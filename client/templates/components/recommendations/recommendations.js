@@ -10,7 +10,7 @@ Template.recommendations.onCreated(function(){
 Template.recommendations.onRendered(function(){
 
     var instance = this;
-    var sub = Subsman.subscribe('recommendations');
+    var sub = Meteor.subscribe('recommendations');
 
 });
 
@@ -24,5 +24,15 @@ Template.recommendations.helpers({
             return Meteor.users.find({ _id: { $ne: Meteor.userId() } },{limit: 4, field: {profile:1, username:1}});
         }
 
+    }
+});
+
+Template.recommendations.events({
+
+    'click .follow': function(e,t){
+        e.preventDefault();
+        if(Meteor.user()){
+            Meteor.call('follow',Meteor.userId(),this._id);
+        }
     }
 });

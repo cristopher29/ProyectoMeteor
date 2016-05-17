@@ -1,16 +1,35 @@
 <template name="search">
 
-    <div class="search-container">
-        <div class="search-box">
-            <div class="search-icon"><i class="fa fa-search"></i></div>
-            {{> EasySearch.Input index=postsIndex }}
-            
-            <ul id="results" class="search-results">
-                {{#EasySearch.Each index=postsIndex }}
-                    <li>{{title}}</li>
-                {{/EasySearch.Each}}
-            </ul>
-        </div>
+    <div class="col-sm-3 col-md-3">
+        <form class="navbar-form" role="search">
+            <div class="input-group">
+                <div class='suggest-holder'>
+                    {{> EasySearch.Input indexes=searchIndexes  attributes=inputAttributes}}
+                    <!--<input type='text' id="search-box" class='suggest-prompt form-control' placeholder="Search" name="q" autocomplete="off">-->
+                    <ul class="suggestions">
+                        {{#EasySearch.Each index=postsIndex }}
+                            {{>postSuggestions}}
+                        {{/EasySearch.Each}}
+                        {{#EasySearch.Each index=usersIndex }}
+                            {{>userSuggestions}}
+                        {{/EasySearch.Each}}
+                    </ul>
+                </div>
+            </div>
+        </form>
     </div>
 
+</template>
+
+<template name="postSuggestions">
+    <li class="postSugg">
+        <span class='suggest-name' style="color: black;">{{title}}</span>
+        <span class='suggest-description' style="color: black;">{{shortDescription}}</span>
+    </li>
+</template>
+
+<template name="userSuggestions">
+    <li class="userSugg">
+        <span class='suggest-name' style="color: black;">{{username}}</span>
+    </li>
 </template>

@@ -51,7 +51,7 @@ AutoForm.addHooks('updatePost', {
 
 Template.postEdit.onRendered(function () {
 
-    post = Posts.findOne();
+    post = this.data;
     $('.preview').hide();
 
     if(post.youtubeUrl){
