@@ -2,6 +2,10 @@
  * Created by CristoH on 10/05/2016.
  */
 
+Template.postPage.onRendered(function(){
+
+});
+
 Template.postPage.helpers({
 
     youtubeId: function(){

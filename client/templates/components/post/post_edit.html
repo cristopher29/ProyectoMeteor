@@ -14,6 +14,14 @@
             </div>
         </div>
 
+        <div class="preview image-container">
+            <figure class="image-with-icon red">
+                <img id="image_preview" src="" alt=""/>
+                <i class="fa fa-times" aria-hidden="true"></i>
+                <a id="delete-image-preview"></a>
+            </figure>
+        </div>
+
         {{#if image}}
             <label for="post-image" class="control-label">Imagen (opcional)</label>
 
@@ -26,14 +34,6 @@
             </div>
 
         {{else}}
-
-            <div class="preview image-container">
-                <figure class="image-with-icon red">
-                    <img id="image_preview" src="" alt=""/>
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                    <a id="delete-image-preview"></a>
-                </figure>
-            </div>
 
             <div class="form-group upload">
                 <div class="controls">

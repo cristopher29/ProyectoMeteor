@@ -86,6 +86,8 @@ Template.postEdit.events({
 
         if (input.files && input.files[0]) {
 
+            input.form.fileName.value = imgPath;
+
             if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
 
                 $('.youtube').hide();
@@ -112,7 +114,9 @@ Template.postEdit.events({
     },
     'click #delete-image-preview': function(e){
         e.preventDefault();
-        $("#upload-file")[0].form.fileName.value = "";
+        var input = $("#upload-file");
+        input[0].form.fileName.value = "";
+        input.val('');
         $('.preview').hide();
         $('.youtube').show();
     },
@@ -122,8 +126,13 @@ Template.postEdit.events({
 
     'click #delete-image': function(e){
         e.preventDefault();
-        Meteor.call('deleteImage',this._id, this.userId, this.imageId);
+        $('.image-container').hide();
         $('.youtube').show();
+        Meteor.call('deleteImage',this._id, this.userId, this.imageId, function(error,result){
+            if(error){
+                return Bert.alert(error.reason, 'danger', 'growl-top-right');
+            }
+        });
     },
 
     'click #eliminar': function(e) {

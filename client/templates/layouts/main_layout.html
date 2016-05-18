@@ -14,10 +14,14 @@
 
                         {{>currentUserProfileCard}}
 
-                        <div class="list-group">
-                            <a href="/" class="list-group-item {{isActiveRoute 'postsList' class='active'}}">Todos los posts</a>
-                            <a href="{{pathFor 'postsUserFollowing'}}" class="list-group-item {{isActiveRoute 'postsUserFollowing' class='active'}}">Siguiendo</a>
-                        </div>
+                        <ul class="list-unstyled options">
+                            <a href="/"><li class="{{isActiveRoute 'postsList' class='active'}}" ><span class="glyphicon glyphicon-calendar"></span>TRENDING</li></a>
+                            <a href="{{pathFor 'postsUserFollowing'}}"><li class="{{isActiveRoute 'postsUserFollowing' class='active'}}"  ><span class="glyphicon glyphicon-folder-open"></span>SIGUIENDO</li></a>
+                            <li><span class="glyphicon glyphicon-user"></span>SOCIAL NEWS</li>
+                            <li><span class="glyphicon glyphicon-plus"></span>ADD INTEREST</li>
+                            <li><span class="glyphicon glyphicon-off"></span>LOGOUT</li>
+                        </ul>
+
                         {{>recommendations}}
                     {{else}}
                         <div class="list-group">
