@@ -28,6 +28,19 @@ Meteor.methods({
             }
         }
 
+        var youtubeUrl;
+        if(postAttributes.youtubeUrl){
+            var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+            var match = postAttributes.youtubeUrl.match(regExp);
+            if (match && match[2].length == 11) {
+                youtubeUrl = postAttributes.youtubeUrl;
+            }else{
+                youtubeUrl = null;
+            }
+        }else{
+            youtubeUrl = null;
+        }
+
         //Comprobamos la longitud del texto
         if(textLength > 500){
             throw new Meteor.Error("over-limit", "Error limite descripcion");
@@ -99,9 +112,16 @@ Meteor.methods({
             throw new Meteor.Error("over-limit", "Error limite descripcion");
         }
 
+
         var youtubeUrl;
         if(newValues.youtubeUrl){
-            youtubeUrl = newValues.youtubeUrl;
+            var regExp = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+            var match = newValues.youtubeUrl.match(regExp);
+            if (match && match[2].length == 11) {
+                youtubeUrl = newValues.youtubeUrl;
+            }else{
+                youtubeUrl = null;
+            }
         }else{
             youtubeUrl = null;
         }

@@ -34,7 +34,7 @@ isotope:isotope
 aldeed:collection2
 aldeed:autoform
 mpowaga:autoform-summernote
-msavin:mongol
+#msavin:mongol
 reywood:publish-composite
 
 # Images
@@ -51,7 +51,7 @@ copleykj:livestamp
 djedi:sanitize-html
 todda00:friendly-slugs
 meteorhacks:fast-render
-#meteorhacks:kadira
+meteorhacks:kadira
 
 #useraccounts:bootstrap
 #useraccounts:iron-routing

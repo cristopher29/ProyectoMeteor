@@ -23,7 +23,7 @@ var postSubmitHook = {
                 return false;
             }
 
-            if(image){
+            if(image && !insertDoc.youtubeUrl){
                 Cloudinary.upload(files,{}, function(err, img){
                     Posts.update({_id: result._id},{$set:{image: img.url, imageId: img.public_id}});
                 });
@@ -46,7 +46,7 @@ Template.postSubmit.onRendered(function(){
 
 Template.postSubmit.events({
 
-    'keyup .youtube-url, change .youtube-url': function(){
+    'keyup .youtube-url, change .youtube-url': function(e,t){
 
         var youtubeInput =  $(".youtube-url");
         if(!youtubeInput.val()){
@@ -56,22 +56,31 @@ Template.postSubmit.events({
         }
 
     },
-    'change #upload-file': function(){
+    'change #upload-file': function(e,t){
 
         var input = e.target;
+        var imgPath = e.target.value;
+        var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
 
         if (input.files && input.files[0]) {
 
-            $('.youtube').hide();
+            if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
 
-            var reader = new FileReader();
+                $('.youtube').hide();
 
-            reader.onload = function (image) {
-                $('#image_preview').attr('src', image.target.result);
-            };
+                var reader = new FileReader();
 
-            reader.readAsDataURL(input.files[0]);
-            $('.preview').show();
+                reader.onload = function (image) {
+                    $('#image_preview').attr('src', image.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+                $('.preview').show();
+
+            }else{
+                e.target.form.fileName.value = "";
+                swal('Solo se permiten imagenes!');
+            }
 
         }else{
             $('.youtube').show();
@@ -79,7 +88,7 @@ Template.postSubmit.events({
     },
     'click #delete-image-preview': function(e){
         e.preventDefault();
-        $("#upload-file").val("");
+        $("#upload-file")[0].form.fileName.value = "";
         $('.preview').hide();
         $('.youtube').show();
     },
