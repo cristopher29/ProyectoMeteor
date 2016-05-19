@@ -53,9 +53,22 @@ html, body {
 span{
   display: block;
 }
+.livestamp{
+  display: inline-block;
+}
+.notViewed{
+  background: #d2e2ea !important;
+}
+
 .notification-read{
-  background: white;
+  background: #FFFFFF;
   margin-bottom: 10px;
+}
+.notification-read .delete{
+  cursor: pointer;
+}
+.notification-read .read-notification{
+  cursor: pointer;
 }
 
 hr{
@@ -212,8 +225,8 @@ a:hover, a:focus{
 /************** IRON PROGRESS *****************/
 
 #iron-router-progress {
-  background-color : #90aaba;
-  box-shadow       : 0 0 5px #90AABA;
+  background-color : #24b4bb;
+  box-shadow       : 0 0 5px #24b4bb;
 }
 
 /************ IRON PROGRESS END ****************/
@@ -1543,6 +1556,9 @@ figure.image-with-icon.hover i {
 
 ul.options {
   background-color: #36465D;
+}
+ul.options i{
+  padding-right: 20px;
 }
 ul.options li {
   background-color: #36465D;

@@ -1,7 +1,7 @@
 <template name="recommendations">
 
-    <div class="hidden-xs {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar-outer col-md-3'}}">
-        <div class="panel panel-default {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userAllNotifications' class='sidebar'}}">
+    <div class="hidden-xs {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing' class='sidebar-outer col-md-3'}}">
+        <div class="panel panel-default {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing' class='sidebar'}}">
             <div class="panel-heading recommendations-heading"><h6><strong>USUARIOS RECOMENDADOS</strong></h6></div>
             <div class="panel-body recommendations">
                 {{#each users}}

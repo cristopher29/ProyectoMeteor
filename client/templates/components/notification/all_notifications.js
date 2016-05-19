@@ -4,7 +4,7 @@
 
 Template.allNotifications.helpers({
    notifications: function(){
-       return Notifications.find({alertedUserId: Meteor.userId(), read: true},{sort:{createdAt: -1}});
+       return Notifications.find({alertedUserId: Meteor.userId()},{sort:{createdAt: -1}});
    }
 });
 
@@ -20,6 +20,11 @@ Template.notificationItemRead.helpers({
             return user.profile.display_picture;
         }else{
             return '/img/no-avatar.jpg';
+        }
+    },
+    notViewed: function(){
+        if(this.read == false){
+            return 'notViewed';
         }
     }
 });
@@ -40,5 +45,8 @@ Template.notificationItemRead.events({
             Meteor.call('deleteNotification', notificationID, alertedUserId);
         });
 
+    },
+    'click .postRoute, click .read-notification': function() {
+        Notifications.update(this._id, {$set: {read: true}});
     }
 });

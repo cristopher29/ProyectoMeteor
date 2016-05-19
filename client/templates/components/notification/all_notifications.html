@@ -1,12 +1,14 @@
 <template name="allNotifications">
-    <div class="col-md-6">
+    <div class="col-md-8">
         {{#if notifications.count}}
             {{#each notifications}}
                 {{>notificationItemRead}}
             {{/each}}
         {{else}}
-            <div class="text-center">
-                <h3>No hay notificaciones</h3>
+            <div class="alert-user">
+                <div class="center-div">
+                    <h4>No hay notificaciones</h4>
+                </div>
             </div>
         {{/if}}
 
@@ -14,9 +16,15 @@
 </template>
 
 <template name="notificationItemRead">
-    <div class="notification notification-read">
+    <div class="notification notification-read {{notViewed}}">
         <div class="media">
-            <a href="" class="delete pull-right"><i class="fa fa-times"></i></a>
+            {{#if read}}
+                <span title="Eliminar" class="delete pull-right"> <i class="fa fa-times"></i></span>
+            {{else}}
+                <span title="Marcar como leída" class="read-notification pull-right"> <i class="fa fa-eye-slash"></i></span>
+                <span class="label label-danger pull-right">Nuevo</span>
+            {{/if}}
+
             <div class="media-left">
                 <div class="media-object">
                     <img src="{{userImage}}" alt="" width="30px" height="30px" class="img-rounded">

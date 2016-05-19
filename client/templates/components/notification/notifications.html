@@ -9,7 +9,7 @@
     <ul class="notification dropdown-menu">
         <li class="text-center" style="color: #18bc9c !important; padding-top: 10px; width: 100%;">
             <div>
-                <a href="{{pathFor 'userAllNotifications'}}">Ver notificaciones leidas</a>
+                <a href="{{pathFor 'userAllNotifications'}}">Ver todas las notificaciones</a>
             </div>
         </li>
         {{#if notificationCount}}
@@ -32,10 +32,15 @@
 <template name="notificationItem">
     <li class="notification">
         <div class="media">
-            <a href="" class="read-notification pull-right"><i class="fa fa-times"></i></a>
+            <a title="Marcar como leída" href="" class="read-notification pull-right"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
             <div class="media-left">
                 <div class="media-object">
-                    <img src="{{userImage}}" alt="" width="30px" height="30px" class="img-rounded">
+                    {{#if userImage}}
+                        <img src="{{userImage}}" alt="" width="30px" height="30px" class="img-rounded">
+                    {{else}}
+                        <img src="/img/no-avatar.jpg" alt="" width="30px" height="30px" class="img-rounded">
+                    {{/if}}
+
                 </div>
             </div>
             <div class="media-body">
