@@ -15,14 +15,14 @@
         <div class="panel-body text-center">
             <p class="grey">{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</p>
             <h4 class="panel-header">
-                <a href="/profile/{{currentUser._id}}">{{currentUser.username}}</a>
+                <a href="{{pathFor 'userProfile' userId=currentUser._id}}">{{currentUser.username}}</a>
             </h4>
             <small style="color: black">{{currentUser.profile.description}}</small>
         </div>
         <div class="panel-thumbnails">
             <div class="row">
                 <div class="col-xs-4">
-                    <a href="/profile/{{currentUser._id}}" class="text-center">
+                    <a href="{{pathFor 'userProfile' userId=currentUser._id}}" class="text-center">
                         <span class="statLabel">Posts</span>
                         {{#if currentUser.postsCount}}
                             <span>{{currentUser.postsCount}}</span>
@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <div class="col-xs-4">
-                    <a href="/profile/{{currentUser._id}}/following" class="text-center">
+                    <a href="{{pathFor 'userProfileFollowing' userId=currentUser._id}}" class="text-center">
                         <span class="statLabel">Siguiendo</span>
                         {{#if currentUser.followingCount}}
                             <span>{{currentUser.followingCount}}</span>
@@ -43,7 +43,7 @@
                     </a>
                 </div>
                 <div class="col-xs-4">
-                    <a href="/profile/{{currentUser._id}}/followers" class="text-center">
+                    <a href="{{pathFor 'userProfileFollowers' userId=currentUser._id}}" class="text-center">
                         <span class="statLabel">Seguidores</span>
                         {{#if currentUser.followersCount}}
                             <span>{{currentUser.followersCount}}</span>

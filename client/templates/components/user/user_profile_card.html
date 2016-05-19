@@ -19,14 +19,14 @@
                 <div class="info">
                     <div class="title">
                         <h3>{{firstName}} {{lastName}}</h3>
-                        <a href="/profile/{{_id}}" >@{{username}}</a>
+                        <a href="{{pathFor 'userProfile' userId=_id}}" >@{{username}}</a>
                     </div>
                     <div class="desc">{{profile.description}}</div>
                 </div>
                 <div class="stats">
                     <ul class="arrange">
                         <li class="arrangeSizeFit">
-                            <a href="/profile/{{_id}}">
+                            <a href="{{pathFor 'userProfile' userId=_id}}">
                                 <span class="statLabel">Posts</span>
                                 {{#if postsCount}}
                                     <span class="statValue">{{postsCount}}</span>
@@ -36,7 +36,7 @@
                             </a>
                         </li>
                         <li class="arrangeSizeFit">
-                            <a href="/profile/{{_id}}/following">
+                            <a href="{{pathFor 'userProfileFollowing' userId=_id}}">
                                 <span class="statLabel">Siguiendo</span>
                                 {{#if followingCount}}
                                     <span class="statValue">{{followingCount}}</span>
@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li class="arrangeSizeFit">
-                            <a href="/profile/{{_id}}/followers">
+                            <a href="{{pathFor 'userProfileFollowers' userId=_id}}">
                                 <span class="statLabel">Seguidores</span>
                                 {{#if followersCount}}
                                     <span class="statValue">{{followersCount}}</span>

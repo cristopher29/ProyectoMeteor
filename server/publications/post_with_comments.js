@@ -2,6 +2,10 @@
  * Created by CristoH on 22/04/2016.
  */
 
+//Meteor.publish('postWithComments', function(postId) {
+//    return Posts.find({_id: postId});
+//});
+
 Meteor.publishComposite('postWithComments', function(postId) {
     check(postId, String);
     return {

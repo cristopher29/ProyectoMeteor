@@ -1,0 +1,43 @@
+<template name="followCard">
+    <div class="col-md-6">
+        <div class="flip-container">
+            <div class="flipper">
+                <div class="front">
+                    <img class="img-responsive" src="{{profile.display_picture}}"/>
+
+                    <div class="sub">
+                        <p>{{username}}</p>
+                    </div>
+                </div>
+                <div class="back">
+                    <p id="titulo"><a href="{{pathFor 'userProfile' userId=_id}}">{{username}}</a></p>
+                    <p>{{profile.firstName}} {{profile.lastName}}</p>
+                    <p>{{profile.description}}</p>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="{{pathFor 'userProfileFollowing' userId=_id}}" class="text-center">
+                                <span class="statLabel">Siguiendo</span>
+                                {{#if followingCount}}
+                                    <span>{{followingCount}}</span>
+                                {{else}}
+                                    <span>0</span>
+                                {{/if}}
+
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="{{pathFor 'userProfileFollowers' userId=_id}}" class="text-center">
+                                <span class="statLabel">Seguidores</span>
+                                {{#if followersCount}}
+                                    <span>{{followersCount}}</span>
+                                {{else}}
+                                    <span>0</span>
+                                {{/if}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

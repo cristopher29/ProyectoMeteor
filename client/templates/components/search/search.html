@@ -9,11 +9,11 @@
                     <ul class="suggestions">
 
                         {{#EasySearch.IfNoResults indexes=searchIndexes logic="AND" }}
-                            <li style="color: #444444"><strong>No hay resultados (ಥ﹏ಥ)</strong></li>
+                            <li class="search-no-results" style="color: #444444"><strong>No hay resultados (ಥ﹏ಥ)</strong></li>
                         {{/EasySearch.IfNoResults}}
 
                         {{#EasySearch.IfSearching indexes=searchIndexes logic="OR" }}
-                            <li style="color: #444444"><strong>Buscando... (~˘▾˘)~</strong></li>
+                            <li class="searching" style="color: #444444"><strong>Buscando... (~˘▾˘)~</strong></li>
                         {{/EasySearch.IfSearching}}
 
                         {{#EasySearch.Each index=postsIndex }}

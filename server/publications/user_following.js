@@ -11,7 +11,8 @@ Meteor.publish('userFollowing', function(userId){
                 username:1,
                 profile:1,
                 followersCount:1,
-                followingCount:1
+                followingCount:1,
+                postsCount: 1
             }});
         }else{
             this.ready();
