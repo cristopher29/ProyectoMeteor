@@ -29,11 +29,14 @@ ian:accounts-ui-bootstrap-3
 themeteorchef:bert
 kevohagan:sweetalert
 isotope:isotope
+michalvalasek:autoform-bootstrap-colorpicker
+mpowaga:autoform-summernote
 
-# Server
+# Core Packages
+easy:search
+iron:router
 aldeed:collection2
 aldeed:autoform
-mpowaga:autoform-summernote
 msavin:mongol
 reywood:publish-composite
 
@@ -41,9 +44,6 @@ reywood:publish-composite
 lepozepo:cloudinary
 
 # Tools
-easy:search
-sergeyt:typeahead
-iron:router
 zimme:active-route
 meteorhacks:subs-manager
 momentjs:moment
@@ -56,4 +56,3 @@ meteorhacks:fast-render
 #useraccounts:bootstrap
 #useraccounts:iron-routing
 
-percolate:paginated-subscription

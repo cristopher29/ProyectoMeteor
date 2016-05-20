@@ -6,7 +6,7 @@
 
         <div class="row">
 
-            {{#if isActiveRoute regex='postsList|postsUserFollowing|userAllNotifications'}}
+            {{#if isActiveRoute regex='postsList|postsTrending|postsUserFollowing|userAllNotifications'}}
 
                 <div class="col-md-4">
 
@@ -15,8 +15,9 @@
                         {{>currentUserProfileCard}}
 
                         <ul class="list-unstyled options">
-                            <a href="/"><li class="{{isActiveRoute 'postsList' class='active'}}" ><i class="fa fa-rocket" aria-hidden="true"></i> TRENDING</li></a>
+                            <a href="{{pathFor 'postsList'}}"><li class="{{isActiveRoute 'postsList' class='active'}}" ><i class="fa fa-certificate" aria-hidden="true"></i> NUEVO</li></a>
                             <a href="{{pathFor 'postsUserFollowing'}}"><li class="{{isActiveRoute 'postsUserFollowing' class='active'}}"  ><i class="fa fa-users" aria-hidden="true"></i> SIGUIENDO</li></a>
+                            <a href="{{pathFor 'postsTrending'}}"><li class="{{isActiveRoute 'postTrending' class='active'}}" ><i class="fa fa-rocket" aria-hidden="true"></i> TRENDING</li></a>
                             <a href="{{pathFor 'userAllNotifications'}}"><li class="{{isActiveRoute 'userAllNotifications' class='active'}}"><i class="fa fa-bell" aria-hidden="true"></i> NOTIFICACIONES</li></a>
                         </ul>
 

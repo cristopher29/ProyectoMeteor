@@ -12,7 +12,7 @@ Template.userProfileCard.onRendered(function(){
     var currentUserId;
     var sub;
 
-    if(Router.current().route.getName() === 'userAllNotifications'){
+    if(ActiveRoute.name('userAllNotifications')){
         sub = Meteor.subscribe('userProfileInfo', Meteor.userId());
         currentUserId = Meteor.userId();
     }else{
@@ -79,13 +79,6 @@ Template.userProfileCard.events({
     },
     'click .edit-profile': function(e,t){
         e.preventDefault();
-        Modal.show('editProfile');
-    }
-});
-
-Template.currentUserProfileCard.events({
-    'click .edit-profile': function(e,t){
-        e.preventDefault();
-        Modal.show('editProfile');
+        Router.go('userProfileEdit', {userId: this._id});
     }
 });

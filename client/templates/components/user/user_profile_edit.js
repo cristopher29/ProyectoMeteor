@@ -2,7 +2,8 @@
  * Created by CristoH on 11/04/2016.
  */
 
-Template.editProfile.onRendered(function(){
+
+Template.userProfileEdit.onRendered(function(){
 
 
     if(Meteor.user().profile.display_picture !== null){
@@ -11,6 +12,7 @@ Template.editProfile.onRendered(function(){
             thumbBox: '.thumbBox',
             imgSrc: Meteor.user().profile.display_picture
         });
+
 
     }else{
 
@@ -22,7 +24,7 @@ Template.editProfile.onRendered(function(){
 });
 
 
-Template.editProfile.events({
+Template.userProfileEdit.events({
 
    'change #upload-file': function(e,t){
 
@@ -51,16 +53,18 @@ Template.editProfile.events({
 });
 
 var editProfileHook = {
+
     onSuccess: function(){
 
         var imageData = $uploadCrop.getDataURL();
 
         if(imageData !== null){
+
             Meteor.users.update(Meteor.userId(), {$set:{ "profile.display_picture" : imageData}});
         }
 
-        Modal.hide('editProfile');
         Bert.alert('Perfil actualizado', 'success', 'growl-top-right');
+        Router.go('userProfile', {userId: Meteor.userId()});
 
         return false;
     }

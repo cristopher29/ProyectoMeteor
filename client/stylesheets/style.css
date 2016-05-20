@@ -50,6 +50,11 @@ html, body {
 /*********** TAGS        ****************/
 /****************************************/
 
+.bg-user-color{
+  width: 100%;
+  min-height: 100%;
+}
+
 span{
   display: block;
 }
@@ -485,7 +490,7 @@ a:hover, a:focus{
 }
 
 .contenido{
-  margin-top: 100px;
+  padding-top: 100px;
 }
 
 input.error{
@@ -831,7 +836,7 @@ textarea.error{
   -webkit-transform: translate3d(-50%,-50%,0);
   transform: translate3d(-50%,-50%,0);
 }
-.panel.panel-card .panel-heading button {
+.panel.panel-card .panel-heading a {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -1227,6 +1232,10 @@ ul.arrange {
 /*********** IMAGE UPLOAD    ************/
 /****************************************/
 
+.edit-profile-container{
+  padding-bottom: 30px;
+}
+
 #visbleCanvas {
   position: absolute;
   top: 0;
@@ -1237,12 +1246,12 @@ ul.arrange {
   position: relative;
   height: 250px;
   width: 400px;
-  border: 1px solid #aaa;
+  border: 1px solid #2f2f2f;
   background: #fff;
   overflow: hidden;
   background-repeat: no-repeat;
   cursor: move;
-  box-shadow: 4px 4px 12px #B0B0B0;
+  box-shadow: 4px 4px 12px #2f2f2f;
 }
 .thumbBox {
   position: absolute;
@@ -1277,7 +1286,7 @@ ul.arrange {
   position: relative;
   border: 1px solid rgba(#000, 0.1);
   width: 100%;
-  height: 156px;
+  height: 140px;
   display: block;
   border-radius: 4px;
   box-sizing: border-box;
@@ -1471,7 +1480,7 @@ figure.image-with-icon.hover i {
 }
 .recommendations-heading{
   background: #36465D !important;
-  border-bottom: 2px solid #505E72 !important;
+  border-bottom: 2px solid rgba(108, 110, 114, 0.28) !important;
   color: #9AA2AD !important;
 }
 .recommendations{
@@ -1487,7 +1496,7 @@ figure.image-with-icon.hover i {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #505E72;
+  border-bottom: 1px solid rgba(110, 108, 110, 0.29);
   padding: 10px 0 10px 0;
 }
 .recommendation-text > a{

@@ -19,7 +19,7 @@
                 <div class="info">
                     <div class="title">
                         <h3>{{firstName}} {{lastName}}</h3>
-                        <a href="{{pathFor 'userProfile' userId=_id}}" >@{{username}}</a>
+                        <a href="{{pathFor 'userProfile' userId=_id}}" >{{username}}</a>
                     </div>
                     <div class="desc">{{profile.description}}</div>
                 </div>
@@ -60,20 +60,20 @@
                 </div>
                 {{#if ownProfile}}
 
-                        <button class="profile-btn edit-profile" >
+                        <button class="profile-btn edit-profile" style="background: {{profile.bgColor}}">
                             <i class="fa fa-pencil"></i> Editar
                         </button>
 
                 {{else}}
                     {{#if isFollower}}
 
-                        <button class="unfollow profile-btn" >
+                        <button class="unfollow profile-btn" style="background: {{profile.bgColor}}" >
                             <i class="fa fa-user-plus"></i> Dejar de seguir
                         </button>
 
                     {{else}}
 
-                        <button class="follow profile-btn" >
+                        <button class="follow profile-btn" style="background: {{profile.bgColor}}" >
                             <i class="fa fa-user-plus"></i> Seguir
                         </button>
 

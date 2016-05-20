@@ -3,6 +3,12 @@ Template.postsList.onCreated(function(){
 
   var instance = this;
 
+  if(ActiveRoute.name('postsList')){
+    Session.set('postsFilter', 'allPosts');
+  }else if(ActiveRoute.name('postsTrending')){
+    Session.set('postsFilter', 'postsTrending');
+  }
+
   instance.limit = new ReactiveVar(10);
   instance.loaded = new ReactiveVar(0);
   instance.subCount = new ReactiveVar(0);
@@ -10,7 +16,7 @@ Template.postsList.onCreated(function(){
 
   instance.autorun(function(){
 
-    var sub = Subsman.subscribe('allPosts', instance.limit.get());
+    var sub = Subsman.subscribe(Session.get('postsFilter'), instance.limit.get());
     instance.subReady.set(sub.ready());
   });
 
@@ -27,7 +33,6 @@ Template.postsList.onRendered(function(){
     if(instance.subReady.get()){
 
       instance.loaded.set(Posts.find().count());
-      instance.subCount.set(1);
 
     }
 
@@ -38,16 +43,21 @@ Template.postsList.onRendered(function(){
 Template.postsList.helpers({
 
   'ready': function(){
-    if(Template.instance().subCount.get() == 1){
+    if(Posts.find().count()>0){
       return true;
     }else{
-      return Template.instance().subReady.get();
+      return false;
     }
 
   },
 
   posts: function(){
-    return Posts.find({},{sort :{createdAt: -1}});
+    if(ActiveRoute.name('postsList')){
+      return Posts.find({},{sort :{createdAt: -1}});
+    }else if(ActiveRoute.name('postsTrending')){
+      return Posts.find({},{sort :{likesCount: -1, commentsCount: -1}});
+    }
+
   }
 });
 

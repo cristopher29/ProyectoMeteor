@@ -24,6 +24,13 @@ Template.recommendations.helpers({
             return Meteor.users.find({ _id: { $ne: Meteor.userId() } },{limit: 4, field: {profile:1, username:1}});
         }
 
+    },
+    bgColor: function(){
+        if(ActiveRoute.name(new RegExp('userProfile|userProfileFollowers|userProfileFollowing|userProfileEdit'))){
+            var userId = Router.current().params.userId;
+            var user = Meteor.users.findOne({_id: userId});
+            return user.profile.bgColor;
+        }
     }
 });
 
