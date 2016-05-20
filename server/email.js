@@ -1,0 +1,46 @@
+Meteor.startup(function () {
+
+    // Configuración del smtp (settings.json)
+    smtp = {
+        username: Meteor.settings.private.smtp.username,
+        password: Meteor.settings.private.smtp.password,
+        server:   Meteor.settings.private.smtp.server,
+        port: Meteor.settings.private.smtp.port
+    };
+
+    // Variable de entorno
+    process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+
+    // Email del emisor
+    Accounts.emailTemplates.from = smtp.username;
+
+    // Nombre del sitio o aplicación
+    Accounts.emailTemplates.siteName = 'Proyecto';
+
+    // Después de crear un usuario se envia un email
+    Accounts.config({
+        sendVerificationEmail: true
+    });
+
+    // Template Email
+
+    Accounts.emailTemplates.verifyEmail.subject = function (user) {
+        return "Proyecto Cristopher Verificación Email";
+    };
+    Accounts.emailTemplates.verifyEmail.html = function (user, url) {
+        return Spacebars.toHTML({ url: url }, Assets.getText('email_templates/verify_email.html'));
+    };
+
+    Accounts.emailTemplates.verifyEmail.text = function (user, url) {
+        var message = 'Proyecto Cristopher\n\n';
+        message += "Hola! " + user.originalUserName + ",\n"
+        message += "Para finalizar el proceso de registro, necesitamos confirmar tu email\n"
+        message += url + "\n\n";
+        message += "Si ha recibido este mensaje por error o no registró una cuenta en mi Proyecto, puede simplemente ignorarlo.\n\n\n";
+        message += "Att,\n";
+        message += "Cristopher :D";
+
+        return message;
+    };
+
+});

@@ -647,6 +647,9 @@ textarea.error{
 .dislike{
   color: #d14539;
 }
+.dislike i{
+  color: #d14539;
+}
 .dislike:hover, .dislike:link, .dislike:active{
   color: #d14539;
 }

@@ -39,6 +39,7 @@ aldeed:collection2
 aldeed:autoform
 msavin:mongol
 reywood:publish-composite
+dburles:spacebars-tohtml
 
 # Images
 lepozepo:cloudinary
@@ -53,6 +54,7 @@ todda00:friendly-slugs
 meteorhacks:fast-render
 #meteorhacks:kadira
 
-#useraccounts:bootstrap
-#useraccounts:iron-routing
+useraccounts:bootstrap
+useraccounts:iron-routing
+softwarerero:accounts-t9n
 

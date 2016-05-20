@@ -1,9 +1,21 @@
 <template name="userProfileLayout">
 
     {{> header}}
+    <style>
+        {{#if bgColor}}
+            .bgColor{
+                background: {{bgColor}} !important;
+            }
+        {{/if}}
+        {{#if textColor}}
+            .textColor *{
+                color: {{textColor}};
+            }
+        {{/if}}
 
-    <div class="bg-user-color" style="background: {{bgColor}}">
-        <div class="container contenido " style="background: {{bgColor}}">
+    </style>
+    <div class="bg-user-color bgColor textColor">
+        <div class="container contenido bgColor textColor">
 
             <div class="row" >
 

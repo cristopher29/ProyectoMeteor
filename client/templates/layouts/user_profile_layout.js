@@ -7,5 +7,10 @@ Template.userProfileLayout.helpers({
        var userId = Router.current().params.userId;
        var user = Meteor.users.findOne({_id: userId});
        return user.profile.bgColor;
+   },
+   textColor: function(){
+       var userId = Router.current().params.userId;
+       var user = Meteor.users.findOne({_id: userId});
+       return user.profile.textColor;
    }
 });
