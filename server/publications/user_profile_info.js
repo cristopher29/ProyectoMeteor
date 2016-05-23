@@ -11,7 +11,8 @@ Meteor.publish('userProfileInfo', function(userId){
             followersCount:1,
             following:1,
             followingCount:1,
-            postsCount: 1
+            postsCount: 1,
+            services: 1
         }});
     }
 });
