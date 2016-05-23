@@ -1,0 +1,39 @@
+<template name="signUp">
+
+    <img class="logo framed" src="https://www.tumblr.com/images/logo/logo_large.png?v=7ea0eb57dd627a95f82be5bde0c43d59" alt="Tumblr logo" />
+
+    <form id="sign-up" class="form-auth framed" novalidate="novalidate">
+        <div class="has-feedback">
+            <input type="text" id="username" placeholder="{{usernamePlaceholder}}" class="input input--top" />
+            <span class="error-username glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+        <div class="has-feedback">
+            <input type="email" id="email" placeholder="{{emailPlaceholder}}" class="input" />
+            <span class="error-email glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+        <div class="has-feedback">
+            <input type="password" id="password1" placeholder="{{password1Placeholder}}" class="input" />
+            <span class="error-password1 glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+        <div class="has-feedback">
+            <input type="password" id="password2" placeholder="{{password2Placeholder}}" class="input" />
+            <span class="error-password2 glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+
+        <input type="submit" value="Enviar" class="input input--submit" />
+        <label for="toggle--signup" class="text text--centered">No eres nuevo? <b><a href="{{pathFor 'signIn'}}">Entra!</a></b></label>
+    </form>
+
+    <div class="legal">
+        <a class="text text--border-right" href="javascript:;">Terms</a>
+        <a class="text text--border-right" href="javascript:;">Privacy</a>
+        <a class="text " href="javascript:;">Password help</a>
+    </div>
+
+    <div class="photo-cred">
+        <a class="text" title="Check out their blog." href="http://cabinporn.com/post/125371354365/the-cabin-book-book-in-the-wild-21-in-the-us" target="_blank">Photo posted by <b>cabinporn</b></a>
+    </div>
+
+    <div class="fullscreen-bg"></div>
+
+</template>

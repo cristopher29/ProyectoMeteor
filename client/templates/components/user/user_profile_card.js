@@ -68,13 +68,21 @@ Template.userProfileCard.events({
     'click .follow': function(e,t){
         e.preventDefault();
         if(Meteor.user()){
-            Meteor.call('follow',Meteor.userId(),this._id);
+            Meteor.call('follow',Meteor.userId(),this._id, function(error){
+                if(error){
+                    console.log(error.reason);
+                }
+            });
         }
     },
     'click .unfollow': function(e,t){
         e.preventDefault();
         if(Meteor.user()){
-            Meteor.call('unfollow',Meteor.userId(),this._id);
+            Meteor.call('unfollow',Meteor.userId(),this._id, function(error){
+                if(error){
+                    console.log(error.reason);
+                }
+            });
         }
     },
     'click .edit-profile': function(e,t){

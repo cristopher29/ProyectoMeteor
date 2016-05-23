@@ -19,13 +19,13 @@ check
 ejson
 reactive-var
 accounts-password
-
+accounts-twitter
 
 # UI Packages
 multiply:iron-router-progress
 twbs:bootstrap
 peppelg:bootstrap-3-modal
-ian:accounts-ui-bootstrap-3
+#ian:accounts-ui-bootstrap-3
 themeteorchef:bert
 kevohagan:sweetalert
 isotope:isotope
@@ -37,7 +37,7 @@ easy:search
 iron:router
 aldeed:collection2
 aldeed:autoform
-msavin:mongol
+#msavin:mongol
 reywood:publish-composite
 dburles:spacebars-tohtml
 
@@ -52,9 +52,6 @@ copleykj:livestamp
 djedi:sanitize-html
 todda00:friendly-slugs
 meteorhacks:fast-render
-#meteorhacks:kadira
+meteorhacks:kadira
 
-useraccounts:bootstrap
-useraccounts:iron-routing
-softwarerero:accounts-t9n
 

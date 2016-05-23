@@ -3,6 +3,22 @@
  */
 
 Meteor.methods({
+
+    sendVerificationLink: function() {
+
+        var userId = Meteor.userId();
+
+        if (!userId){
+            throw new Meteor.Error('no-login', 'No hay un usuario logueado');
+        }
+
+        var user = Meteor.users.findOne({_id: userId, 'emails.0.verified': false});
+
+        if (user){
+            return Accounts.sendVerificationEmail(userId);
+        }
+    },
+
     follow: function(followerId, followeeId){
 
         var followeeExist = Meteor.users.findOne({_id: followeeId});

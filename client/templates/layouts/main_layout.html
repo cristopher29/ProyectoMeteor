@@ -6,6 +6,11 @@
 
         <div class="row">
 
+            {{#if currentUser}}
+                {{#unless currentUser.emails.[0].verified}}
+                    <p class="alert alert-warning">Necesitas verificar tu email antes de usar mi aplicación. <a href="#" class="white-nice resend-verification-link">Reenviar de link de verificación?</a></p>
+                {{/unless}}
+            {{/if}}
             {{#if isActiveRoute regex='postsList|postsTrending|postsUserFollowing|userAllNotifications'}}
 
                 <div class="col-md-4">

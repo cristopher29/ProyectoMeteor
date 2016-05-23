@@ -28,6 +28,7 @@ Meteor.startup(function () {
         return "Proyecto Cristopher Verificación Email";
     };
     Accounts.emailTemplates.verifyEmail.html = function (user, url) {
+        //var urlWithoutHash = url.replace( '#/', '' );
         return Spacebars.toHTML({ url: url }, Assets.getText('email_templates/verify_email.html'));
     };
 
