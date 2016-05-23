@@ -1,6 +1,6 @@
 <template name="signUp">
 
-    <img class="logo framed" src="https://www.tumblr.com/images/logo/logo_large.png?v=7ea0eb57dd627a95f82be5bde0c43d59" alt="Tumblr logo" />
+    <img class="logo framed" src="/img/logo-proyecto.png" alt="Tumblr logo" />
 
     <form id="sign-up" class="form-auth framed" novalidate="novalidate">
         <div class="has-feedback">
@@ -25,15 +25,18 @@
     </form>
 
     <div class="legal">
-        <a class="text text--border-right" href="javascript:;">Terms</a>
-        <a class="text text--border-right" href="javascript:;">Privacy</a>
-        <a class="text " href="javascript:;">Password help</a>
+        <a class="text text--border-right" href="javascript:;">Terminos</a>
+        <a class="text text--border-right" href="javascript:;">Privacidad</a>
+        <a class="text " href="javascript:;">FAQ</a>
     </div>
 
     <div class="photo-cred">
-        <a class="text" title="Check out their blog." href="http://cabinporn.com/post/125371354365/the-cabin-book-book-in-the-wild-21-in-the-us" target="_blank">Photo posted by <b>cabinporn</b></a>
+        <a class="text" target="_blank">Video por <b>Rémy Golinelli</b></a>
     </div>
 
-    <div class="fullscreen-bg"></div>
+    <video autoplay loop muted poster="/img/video2.jpg" id="bgvid">
+        <source src="/video/video2.webm" type="video/webm">
+        <source src="/video/video2.mp4" type="video/mp4">
+    </video>
 
 </template>

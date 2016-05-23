@@ -65,5 +65,8 @@ Template.signIn.events({
         Session.set('passwordPlaceholder','Contraseña');
         $('#password').removeClass('input-error');
         $('.error-password').hide();
+    },
+    'click #login-with-twitter': function(){
+        Meteor.loginWithTwitter();
     }
 });

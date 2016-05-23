@@ -1,18 +1,21 @@
 <template name="notFound">
 
-    <div class="text-wrapper center-div">
+    <div class="text-wrapper">
 
-        <div class="title" data-content="404">
-            404
+        <div class="center-div">
+            <div class="title-four" data-content="404">
+                404
+            </div>
+
+            <div class="subtitle-four" data-content="Oops, the page you're looking for doesn't exist">
+                Oops, ¡Lo sentimos! La página que buscas no existe :(
+            </div>
+
+            <div class="buttons">
+                <a class="button" href="{{pathFor 'postsList'}}">Volver al inicio</a>
+            </div>
         </div>
 
-        <div class="subtitle" data-content="Oops, the page you're looking for doesn't exist">
-            Oops, ¡Lo sentimos! La página que buscas no existe :(
-        </div>
-
-        <div class="buttons">
-            <a class="button" href="{{pathFor 'postsList'}}">Volver al inicio</a>
-        </div>
 
     </div>
 

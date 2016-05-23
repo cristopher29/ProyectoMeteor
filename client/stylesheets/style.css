@@ -92,7 +92,7 @@ html, body {
 }
 
 .logo {
-  margin-top: -9em;
+  margin-top: -10em;
   cursor: default;
 }
 
@@ -171,6 +171,22 @@ html, body {
   z-index: -1;
   top:0; right:0; bottom:0; left:0;
   background: url(http://36.media.tumblr.com/3cae448eafe6cdd27c210b4da274cfe7/tumblr_ns9p18pY5a1qzwmsso1_1280.jpg) center;
+  background-size: cover;
+}
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(polina.jpg) no-repeat;
   background-size: cover;
 }
 
@@ -436,14 +452,14 @@ a:hover, a:focus{
   justify-content: center;
 }
 
-.title {
+.title-four {
   font-size: 9em;
   font-weight: 700;
   color: white;
   position: relative;
 }
 
-.subtitle {
+.subtitle-four {
   font-size: 40px;
   font-weight: 700;
   color: white;
@@ -602,7 +618,7 @@ a:hover, a:focus{
     clip: rect(10px, 9999px, 85px, 0);
   }
 }
-.subtitle:after, .title:after {
+.subtitle-four:after, .title-four:after {
   content: attr(data-content);
   position: absolute;
   left: 2px;
