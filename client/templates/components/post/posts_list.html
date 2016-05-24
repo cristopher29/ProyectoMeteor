@@ -3,15 +3,20 @@
 
     {{#if ready}}
         <div class="col-md-8">
+            <ul class="posts">
 
-                {{#each posts}}
+                {{#if posts.count}}
+                    {{#each posts}}
 
-                    {{> postItem}}
+                        {{> postItem}}
 
-                {{/each}}
+                    {{/each}}
+                {{/if}}
 
+            </ul>
+            <div>
                 <button class="load-more">Mas</button>
-
+            </div>
         </div>
     {{else}}
         <div class="loader">

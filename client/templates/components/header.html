@@ -25,24 +25,26 @@
             <!--</ul>-->
             <ul class="nav navbar-nav navbar-right">
                 {{#if currentUser}}
-                    <li><a title="Nuevo post" href="{{pathFor 'postSubmit'}}"><i class="bigger-icon fa fa-plus" aria-hidden="true"></i></a></li>
-                    <li title="Notificaciones" class="dropdown dropdown-notifications">
-                        {{> notifications}}
-                    </li>
-                    <li id="login-dropdown-list" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            {{currentUser.username}}
-                            {{#if currentUser.profile.display_picture}}
-                                <img src="{{currentUser.profile.display_picture}}" width="30px" height="30px" class="img-circle" alt="#">
-                            {{/if}}
-                            <b class="caret"></b>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="{{pathFor 'userProfile' userId=currentUser._id}}" class="btn btn-default btn-block" id="profile">Mi Perfil</a>
-                            <button class="btn btn-default btn-block" id="change-password">Cambiar contraseña</button>
-                            <button class="btn btn-block btn-primary" id="logout">Cerrar sesión</button>
-                        </div>
-                    </li>
+                    {{#with currentUser}}
+                        <li><a title="Nuevo post" href="{{pathFor 'postSubmit'}}"><i class="bigger-icon fa fa-plus" aria-hidden="true"></i></a></li>
+                        <li title="Notificaciones" class="dropdown dropdown-notifications">
+                            {{> notifications}}
+                        </li>
+                        <li id="login-dropdown-list" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                {{username}}
+                                {{#if profile.display_picture}}
+                                    <img src="{{profile.display_picture}}" width="30px" height="30px" class="img-circle" alt="#">
+                                {{/if}}
+                                <b class="caret"></b>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="{{pathFor 'userProfile' userId=_id}}" class="btn btn-default btn-block" id="profile">Mi Perfil</a>
+                                <button class="btn btn-default btn-block" id="change-password">Cambiar contraseña</button>
+                                <button class="btn btn-block btn-primary" id="logout">Cerrar sesión</button>
+                            </div>
+                        </li>
+                    {{/with}}
                 {{else}}
                     <li><a href="{{pathFor 'signIn'}}">Iniciar Sesión/Registrarse</a></li>
                 {{/if}}

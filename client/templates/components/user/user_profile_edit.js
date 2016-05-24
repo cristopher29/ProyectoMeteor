@@ -23,6 +23,17 @@ Template.userProfileEdit.onRendered(function(){
     }
 });
 
+Template.userProfileEdit.helpers({
+
+   noServices: function(){
+       if(!Meteor.user().services.twitter){
+           return true;
+       }else{
+           return false;
+       }
+   }
+});
+
 
 Template.userProfileEdit.events({
 

@@ -14,7 +14,7 @@ Template.userProfilePosts.onCreated(function(){
 
         instance.userId.set(Router.current().params.userId);
 
-        var sub = Subsman.subscribe('userProfilePosts', instance.userId.get(), instance.limit.get());
+        var sub = Meteor.subscribe('userProfilePosts', instance.userId.get(), instance.limit.get());
         instance.subReady.set(sub.ready());
     });
 

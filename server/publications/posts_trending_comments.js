@@ -1,12 +1,11 @@
 /**
- * Created by CristoH on 19/05/2016.
+ * Created by CristoH on 24/05/2016.
  */
 
-
-Meteor.publishComposite('postsTrending', function(limit) {
+Meteor.publishComposite('postsTrendingComments', function(limit) {
     return {
         find: function() {
-            return Posts.find({}, {sort: {likesCount: -1, commentsCount: -1}, limit: limit});
+            return Posts.find({}, {sort: {commentsCount: -1}, limit: limit});
         },
         children: [{
             find: function(post){

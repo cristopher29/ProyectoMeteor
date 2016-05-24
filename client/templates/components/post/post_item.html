@@ -1,55 +1,108 @@
 <template name="postItem">
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="pull-right time">{{livestamp createdAt}}</div>
+    <li class="post">
+        <div class="post-content">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="pull-right time">{{livestamp createdAt}}</div>
 
             <span>
-                {{#if userImage}}
-                    <img class="img-circle" width="40" src="{{userImage}}" alt="">  por <a href="{{pathFor 'userProfile'}}"><strong>{{author}}</strong></a>
-                {{else}}
-                    <img class="img-circle" width="40" src="/img/no-avatar.jpg" alt="">  por <a href="{{pathFor 'userProfile'}}"><strong>{{author}}</strong></a>
-                {{/if}}
-
+                por <a href="{{pathFor 'userProfile'}}"><strong>{{author}}</strong></a>
             </span>
 
-        </div>
-
-        {{#if image}}
-            <img class="post-image img-responsive" src="{{image}}" alt="">
-        {{/if}}
-
-        {{#if youtubeUrl}}
-            <div class="videoWrapper">
-                <iframe width="560" height="349" src="https://www.youtube.com/embed/{{youtubeId}}" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-        {{/if}}
-        <div class="panel-body">
-            <div class="valign">
-                <div>
-                    <a href="{{pathFor 'postPage'}}" class="lead">{{title}} </a>
-                    <p>{{shortDescription}}</p>
                 </div>
-            </div>
 
-        </div>
-        <div class="panel-footer clearfix">
-            {{#if currentUser}}
-                <div class="pull-right post-actions">
-                    {{#if ownPost}}
-                        <a href="{{pathFor 'postEdit'}}"><i class=" fa fa-pencil"></i></a>
+                {{#if image}}
+                    <img class="post-image img-responsive" src="{{image}}" alt="">
+                {{/if}}
+
+                {{#if youtubeUrl}}
+                    <div class="videoWrapper">
+                        <iframe width="560" height="349" src="https://www.youtube.com/embed/{{youtubeId}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                {{/if}}
+                <div class="panel-body">
+                    <div class="valign">
+                        <div>
+                            <a href="{{pathFor 'postPage'}}" class="lead">{{title}} </a>
+                            <p>{{shortDescription}}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-footer clearfix">
+                    {{#if currentUser}}
+                        <div class="pull-right post-actions">
+                            {{#if ownPost}}
+                                <a href="{{pathFor 'postEdit'}}"><i class=" fa fa-pencil"></i></a>
+                            {{/if}}
+
+                            <a href="{{pathFor 'postPage'}}" ><i class=" fa fa-comment"></i> {{commentsCount}}</a>
+
+
+                            <div class="{{liked}} heart"><i class=" fa fa-heart"></i> {{likesCount}}</div>
+
+                        </div>
                     {{/if}}
-
-                    <a href="{{pathFor 'postPage'}}" ><i class=" fa fa-comment"></i> {{commentsCount}}</a>
-
-
-                    <div class="{{liked}} heart"><i class=" fa fa-heart"></i> {{likesCount}}</div>
-
                 </div>
-            {{/if}}
+            </div>
         </div>
-    </div>
+
+        <div class="profile">
+            {{#if userImage}}
+                <a href="{{pathFor 'userProfile'}}" class="post-avatar profile-ava"><img class="img-responsive" width="50" src="{{userImage}}"></a>
+            {{else}}
+                <a href="{{pathFor 'userProfile'}}" class="post-avatar profile-ava"><img class="img-responsive" width="50" src="/img/no-avatar.jpg"></a>
+            {{/if}}
+
+            <div class="profile-popup">
+                <div class="profile-header"></div>
+
+                <div class="profile-navigation">
+                    <!--<a href="" class="profile-action">Seguir</a>-->
+                    <p class="profile-nick">
+                        <a href="{{pathFor 'userProfile'}}">{{author}}</a>
+                    </p>
+                </div>
+
+                <div class="profile-ava">
+                    {{#if userImage}}
+                        <a href="{{pathFor 'userProfile'}}"><img class="img-responsive" width="50" src="{{userImage}}"></a>
+                    {{else}}
+                        <a href="{{pathFor 'userProfile'}}"><img class="img-responsive" width="50" src="/img/no-avatar.jpg"></a>
+                    {{/if}}
+                </div>
+                <div class="profile-info">
+                    <a href="{{pathFor 'userProfile'}}"><h1 class="profile-title">{{author}}</h1></a>
+                    <p class="profile-description">{{userDescription}}</p>
+                </div>
+                <ul class="profile-items">
+                    <li>
+                        <a href="{{pathFor 'userProfile'}}" class="text-center">
+                            <span class="statLabel">Posts</span>
+                            <span>{{userPosts}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'userProfileFollowing'}}" class="text-center">
+                            <span class="statLabel">Siguiendo</span>
+                            <span>{{userFollowing}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'userProfileFollowers'}}" class="text-center">
+                            <span class="statLabel">Seguidores</span>
+                            <span>{{userFollowers}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </li>
+
+
 
 
 </template>

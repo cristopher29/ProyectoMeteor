@@ -61,6 +61,42 @@ Template.postItem.helpers({
       return '/img/no-avatar.jpg';
     }
   },
+  userDescription: function(){
+
+    var user = Meteor.users.findOne({_id: this.userId});
+    if(user.profile.description){
+      return user.profile.description;
+    }else{
+      return 'No hay descripción';
+    }
+  },
+  userPosts: function(){
+
+    var user = Meteor.users.findOne({_id: this.userId});
+    if(user.postsCount){
+      return user.postsCount;
+    }else{
+      return '0';
+    }
+  },
+  userFollowers: function(){
+
+    var user = Meteor.users.findOne({_id: this.userId});
+    if(user.followersCount){
+      return user.followersCount;
+    }else{
+      return '0';
+    }
+  },
+  userFollowing: function(){
+
+    var user = Meteor.users.findOne({_id: this.userId});
+    if(user.followingCount){
+      return user.followingCount;
+    }else{
+      return '0';
+    }
+  },
   youtubeId: function(){
 
     if(this.youtubeUrl){

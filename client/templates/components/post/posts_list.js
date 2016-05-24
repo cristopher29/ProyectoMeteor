@@ -7,6 +7,10 @@ Template.postsList.onCreated(function(){
     Session.set('postsFilter', 'allPosts');
   }else if(ActiveRoute.name('postsTrending')){
     Session.set('postsFilter', 'postsTrending');
+  }else if(ActiveRoute.name('postsTrendingComments')){
+    Session.set('postsFilter', 'postsTrendingComments');
+  }else if(ActiveRoute.name('postsTrendingLikes')){
+    Session.set('postsFilter', 'postsTrendingLikes');
   }
 
   instance.limit = new ReactiveVar(10);
@@ -56,6 +60,10 @@ Template.postsList.helpers({
       return Posts.find({},{sort :{createdAt: -1}});
     }else if(ActiveRoute.name('postsTrending')){
       return Posts.find({},{sort :{likesCount: -1, commentsCount: -1}});
+    }else if(ActiveRoute.name('postsTrendingComments')){
+      return Posts.find({},{sort :{commentsCount: -1}});
+    }else if(ActiveRoute.name('postsTrendingLikes')){
+      return Posts.find({},{sort :{likesCount: -1}});
     }
 
   }

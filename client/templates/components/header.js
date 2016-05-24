@@ -6,4 +6,3 @@ Template.header.events({
         Router.go('postsList');
     }
 });
-

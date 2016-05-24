@@ -6,12 +6,12 @@
 
         <div class="row">
 
-            {{#if currentUser}}
+            {{#if currentUser.emails}}
                 {{#unless currentUser.emails.[0].verified}}
                     <p class="alert alert-warning">Necesitas verificar tu email antes de usar mi aplicación. <a href="#" class="white-nice resend-verification-link">Reenviar de link de verificación?</a></p>
                 {{/unless}}
             {{/if}}
-            {{#if isActiveRoute regex='postsList|postsTrending|postsUserFollowing|userAllNotifications'}}
+            {{#if isActiveRoute regex='postsList|postsTrending|postsTrendingComments|postsTrendingLikes|postsUserFollowing|userAllNotifications'}}
 
                 <div class="col-md-4">
 
@@ -23,6 +23,8 @@
                             <a href="{{pathFor 'postsList'}}"><li class="{{isActiveRoute 'postsList' class='active'}}" ><i class="fa fa-certificate" aria-hidden="true"></i> NUEVO</li></a>
                             <a href="{{pathFor 'postsUserFollowing'}}"><li class="{{isActiveRoute 'postsUserFollowing' class='active'}}"  ><i class="fa fa-users" aria-hidden="true"></i> SIGUIENDO</li></a>
                             <a href="{{pathFor 'postsTrending'}}"><li class="{{isActiveRoute 'postsTrending' class='active'}}" ><i class="fa fa-rocket" aria-hidden="true"></i> TRENDING</li></a>
+                            <a href="{{pathFor 'postsTrendingComments'}}"><li class="{{isActiveRoute 'postsTrendingComments' class='active'}}" ><i class="fa fa-comments" aria-hidden="true"></i> +COMENTARIOS</li></a>
+                            <a href="{{pathFor 'postsTrendingLikes'}}"><li class="{{isActiveRoute 'postsTrendingLikes' class='active'}}" ><i class="fa fa-heart" aria-hidden="true"></i> +LIKES</li></a>
                             <a href="{{pathFor 'userAllNotifications'}}"><li class="{{isActiveRoute 'userAllNotifications' class='active'}}"><i class="fa fa-bell" aria-hidden="true"></i> NOTIFICACIONES</li></a>
                         </ul>
 

@@ -2,9 +2,11 @@
 
     <div class="col-md-6">
         {{#if profilePosts.count}}
-            {{#each profilePosts}}
-                {{>postItem}}
-            {{/each}}
+            <ul class="posts">
+                {{#each profilePosts}}
+                    {{>postItem}}
+                {{/each}}
+            </ul>
             {{#if noMorePosts}}
                 <div class="alert-user">
                     <div class="center-div">

@@ -2,23 +2,28 @@
     <div class="col-md-6 edit-profile-container">
     {{#autoForm collection="Meteor.users" doc=currentUser type="update" id="updateProfile" }}
 
-        <div class="container-profile-pic">
+        {{#if noServices}}
 
-            <div class="imageBox">
-                <div class="thumbBox"></div>
-            </div>
+            <div class="container-profile-pic">
 
-            <div class="tools clearfix">
-                <span class="btn btn-primary" id="zoomIn"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                <span class="btn btn-primary" id="zoomOut"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                <div class="upload-wapper">
-                    <label for="file" class="dropzone">
-                        <input type="file" id="upload-file" name="file" onchange="this.form.fileName.value = this.value" required>
-                        <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
-                    </label>
+                <div class="imageBox">
+                    <div class="thumbBox"></div>
+                </div>
+
+                <div class="tools clearfix">
+                    <span class="btn btn-primary" id="zoomIn"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                    <span class="btn btn-primary" id="zoomOut"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                    <div class="upload-wapper">
+                        <label for="file" class="dropzone">
+                            <input type="file" id="upload-file" name="file" onchange="this.form.fileName.value = this.value" required>
+                            <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        {{/if}}
+
         {{> afQuickField name='profile.bgColor'}}
         {{> afQuickField name='profile.textColor'}}
         {{> afQuickField name='profile.firstName'}}
