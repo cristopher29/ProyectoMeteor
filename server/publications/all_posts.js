@@ -15,7 +15,10 @@ Meteor.publishComposite('allPosts', function(limit) {
             find: function(post){
                 return Meteor.users.find({_id: post.userId}, {fields: {
                     profile:1,
-                    username:1
+                    username:1,
+                    followersCount: 1,
+                    followingCount: 1,
+                    postsCount: 1
                 }});
             }
         }]

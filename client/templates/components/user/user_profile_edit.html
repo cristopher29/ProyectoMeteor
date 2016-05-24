@@ -2,7 +2,7 @@
     <div class="col-md-6 edit-profile-container">
     {{#autoForm collection="Meteor.users" doc=currentUser type="update" id="updateProfile" }}
 
-        {{#if noServices}}
+        {{#if noServiceTwitter}}
 
             <div class="container-profile-pic">
 
@@ -26,8 +26,10 @@
 
         {{> afQuickField name='profile.bgColor'}}
         {{> afQuickField name='profile.textColor'}}
-        {{> afQuickField name='profile.firstName'}}
-        {{> afQuickField name='profile.lastName'}}
+        {{#if noServiceFacebook}}
+            {{> afQuickField name='profile.firstName'}}
+            {{> afQuickField name='profile.lastName'}}
+        {{/if}}
         {{> afQuickField name='profile.birthday'}}
         {{> afQuickField name='profile.description'}}
 

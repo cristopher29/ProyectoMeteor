@@ -11,9 +11,11 @@ Meteor.methods({
         check(commentAttributes, Comments.simpleSchema());
 
         //Comprobamos que el email de usuario este verificado
-        if(!Meteor.user().emails[0].verified) {
-            return {
-                emailNotVerified: true
+        if(Meteor.user().emails){
+            if(!Meteor.user().emails[0].verified) {
+                return {
+                    emailNotVerified: true
+                }
             }
         }
 

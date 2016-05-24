@@ -66,7 +66,10 @@ Template.signIn.events({
         $('#password').removeClass('input-error');
         $('.error-password').hide();
     },
-    'click #login-with-twitter': function(){
+    'click .btn-twitter': function(){
         Meteor.loginWithTwitter();
+    },
+    'click .btn-facebook': function(){
+        Meteor.loginWithFacebook();
     }
 });

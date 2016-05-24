@@ -67,6 +67,8 @@ html, body {
 /*******************************************/
 
 
+
+
 #sign-up span{
   color: #ff5956;
 }
@@ -91,18 +93,18 @@ html, body {
   margin-left: -15rem;
 }
 
-.social{
-  display: inline-block;
-  top: 25%;
+.social-buttons{
+  width: 300px;
+  margin-top: -15em;
 }
 
 .logo {
-  margin-top: -10em;
+  margin-top: -8.5em;
   cursor: default;
 }
 
 .form-auth {
-  margin-top: -4.5em;
+  margin-top: -3em;
   transition: 1s ease-in-out;
 }
 
@@ -1179,12 +1181,10 @@ textarea.error{
 
 .posts {
   list-style: none;
-  margin: 20px auto;
   padding: 0;
   width: 100%;
 }
 .posts .post {
-  margin-top: 20px;
   margin-left: 65px;
   position: relative;
 }

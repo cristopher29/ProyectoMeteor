@@ -3,15 +3,20 @@
  */
 Meteor.publish('userProfileInfo', function(userId){
 
-    if(userId){
+    if(userId && this.userId){
 
         var user = Meteor.users.findOne({_id: userId});
 
         if(user.services){
-            if(user.services.twitter){
-                Meteor.users.update({_id: userId},{$set: {"profile.display_picture": user.services.twitter.profile_image_url, username: user.services.twitter.screenName}});
+            if(user.services.twitter && !user.profile.display_picture && !user.username){
+                console.log('Actualizando usuario con twitter');
+                Meteor.users.update({_id: userId},{$set: { profile: { display_picture: user.services.twitter.profile_image_url }, username: user.services.twitter.screenName}});
                 //user.profile.display_picture = user.services.twitter.profile_image_url;
                 //user.username = user.services.twitter.screenName;
+            }
+            if(user.services.facebook && !user.profile.firstName && !user.profile.lastName && !user.username){
+                console.log('Actualizando usuario con facebook');
+                Meteor.users.update({_id: userId},{$set: { profile :{ firstName: user.services.facebook.first_name, lastName: user.services.facebook.last_name }, username: user.services.facebook.first_name}});
             }
         }
         return Meteor.users.find({_id: userId}, {fields: {
@@ -22,7 +27,10 @@ Meteor.publish('userProfileInfo', function(userId){
             following:1,
             followingCount:1,
             postsCount: 1,
-            "services.twitter": 1
+            "services.twitter": 1,
+            "services.facebook": 1
         }});
+    }else{
+        this.ready();
     }
 });

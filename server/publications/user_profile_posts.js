@@ -3,7 +3,6 @@
  */
 
 Meteor.publish('userProfilePosts', function(userId, limit) {
-    check(userId, String);
 
     var exist = Meteor.users.findOne({_id: userId});
 

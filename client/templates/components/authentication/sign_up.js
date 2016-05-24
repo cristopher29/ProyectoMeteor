@@ -133,5 +133,11 @@ Template.signUp.events({
         Session.set('password2Placeholder','Repetir contraseña');
         $('#password2').removeClass('input-error');
         $('.error-password2').hide();
+    },
+    'click .btn-twitter': function(){
+        Meteor.loginWithTwitter();
+    },
+    'click .btn-facebook': function(){
+        Meteor.loginWithFacebook();
     }
 });

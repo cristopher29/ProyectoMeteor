@@ -25,13 +25,20 @@ Template.userProfileEdit.onRendered(function(){
 
 Template.userProfileEdit.helpers({
 
-   noServices: function(){
+   noServiceTwitter: function(){
        if(!Meteor.user().services.twitter){
            return true;
        }else{
            return false;
        }
-   }
+   },
+    noServiceFacebook: function(){
+        if(!Meteor.user().services.facebook){
+            return true;
+        }else{
+            return false;
+        }
+    }
 });
 
 
