@@ -1,3 +1,3 @@
 # ProyectoMeteor
 
-Proyecto de una web similar a Twitter/Tumblr con Meteor
+Proyecto de una web similar a Tumblr con Meteor
