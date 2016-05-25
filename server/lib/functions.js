@@ -7,7 +7,7 @@
 sanitize = function(html){
 
     return sanitizeHtml(html, {
-        allowedTags: [ 'b', 'i', 'u', 'strong', 'font','strike','span','div' ],
+        allowedTags: [ 'b', 'i', 'u', 'strong', 'font','strike','span','div', 'p' ],
         allowedAttributes: {
             '*': [ 'color','style' ]
         }

@@ -15,7 +15,7 @@ Template.postsUserFollowing.onCreated(function(){
 
     if(currentUser){
         instance.autorun(function(){
-            var sub = Meteor.subscribe('postsUserFollowing', currentUser ,instance.limit.get());
+                var sub = Subsman.subscribe('postsUserFollowing', currentUser ,instance.limit.get());
             instance.subReady.set(sub.ready());
         });
     }else{
