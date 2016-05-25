@@ -14,9 +14,12 @@
                 {{/if}}
 
             </ul>
-            <div>
+            {{#if morePosts}}
+                <div class="post-loader-container">
+                    <div class="post-loader"></div>
+                </div>
                 <button class="load-more">Mas</button>
-            </div>
+            {{/if}}
         </div>
     {{else}}
         <div class="loader">

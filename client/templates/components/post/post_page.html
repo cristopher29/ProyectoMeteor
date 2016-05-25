@@ -1,6 +1,6 @@
 <template name="postPage">
 
-    <div class="col-md-7">
+    <div class="{{NoImageOrVideo}}">
 
         <h2>{{title}}</h2>
 
@@ -33,16 +33,15 @@
 
     <hr>
 
+
     <div class="col-xs-12">
-
-        <hr>
-
-        <section class="comment-list">
+        <section class="content-item" id="comments">
             {{#each comments}}
                 {{>comment}}
             {{/each}}
         </section>
     </div>
+
 
 
 </template>

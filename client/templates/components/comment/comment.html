@@ -1,37 +1,31 @@
 <template name="comment">
 
-    <article class="row">
-        <div class="col-md-2 col-sm-2 hidden-xs">
-            <figure class="thumbnail">
-                {{#if userImage}}
-                    <img class="img-responsive" src="{{userImage}}" />
-                {{else}}
-                    <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
+    <div class="media">
+        {{#if userImage}}
+            <a class="pull-left" href="{{pathFor 'userProfile'}}"><img class="media-object" src="{{userImage}}" alt=""></a>
+        {{else}}
+            <a class="pull-left" href="{{pathFor 'userProfile'}}"><img class="media-object" src="/img/no-avatar.jpg" alt=""></a>
+        {{/if}}
+        <div class="media-body">
+            <h4 class="media-heading"><a href="{{pathFor 'userProfile'}}"><i class="fa fa-user" aria-hidden="true"></i> {{author}}</a></h4>
+            <p class="grey">{{body}}</p>
+            <ul class="list-unstyled list-inline media-detail pull-left">
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i>{{livestamp createdAt}}</li>
+            </ul>
+            <ul class="list-unstyled list-inline media-detail pull-right">
+                <li class="comment-like"><a href="" class="{{liked}}"><i class="fa fa-heart"></i></a>
+                    {{#if likesCount}}
+                        {{likesCount}}
+                    {{else}}
+                        0
+                    {{/if}}
+                </li>
+                {{#if ownComment}}
+                    <li class="remove"><a href="" class="delete"><i class="fa fa-trash"></i></a></li>
                 {{/if}}
-                <figcaption class="text-center">{{author}}</figcaption>
-            </figure>
+                <li class=""><a href="">Reply</a></li>
+            </ul>
         </div>
-        <div class="col-md-10 col-sm-10">
-            <div class="panel panel-default arrow left">
-                <div class="panel-body comment-content">
-                    <header class="text-left">
-                        <div class="comment-user"><i class="fa fa-user"></i> <a href="{{pathFor 'userProfile'}}">{{author}}</a></div>
-                        <div class="comment-date"><i class="fa fa-clock-o"></i> {{livestamp createdAt}}</div>
-                    </header>
-                    <div class="comment-post">
-                        <p>
-                            {{body}}
-                        </p>
-                    </div>
-                    <p class="text-right">
-                        <!--<button class="replyComment btn btn-default btn-sm"><i class="fa fa-reply"></i> responder</button>-->
-                        {{#if ownComment}}
-                            <button class="delete btn btn-default btn-sm"><i class="fa fa-trash"></i> eliminar</button>
-                        {{/if}}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </article>
+    </div>
 
 </template>

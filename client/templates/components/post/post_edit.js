@@ -153,24 +153,14 @@ Template.postEdit.events({
         }, function(){
             Meteor.call('postDelete',currentPostUserId, currentPostId);
             if(imageId){
-                Meteor.call('deleteImage',currentPostId, currentPostUserId, imageId);
+                Meteor.call('deleteImage',currentPostId, currentPostUserId, imageId, function(error){
+                    if(error){
+                        Bert.alert(error.reason, 'danger', 'growl-top-right');
+                    }
+                });
             }
             Router.go('postsList');
         });
 
-    },
-
-    'keyup .note-editable': function(e){
-        var num = $('.note-editable').text().replace(/(<([^>]+)>)/ig,"").length;
-        var countdown = $('.countdown');
-        var remaining = 500 - num;
-        countdown.text(remaining + ' caracteres restantes.');
-        if(remaining < 0){
-            countdown.css('color', 'red');
-            $('#enviar').prop('disabled', true);
-        }else{
-            countdown.css('color', 'black');
-            $('#enviar').prop('disabled', false);
-        }
     }
 });

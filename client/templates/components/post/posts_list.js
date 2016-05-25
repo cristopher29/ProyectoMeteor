@@ -52,7 +52,10 @@ Template.postsList.helpers({
     }else{
       return false;
     }
+  },
 
+  morePosts: function(){
+    return (Template.instance().loaded.get() >= Template.instance().limit.get());
   },
 
   posts: function(){

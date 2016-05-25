@@ -4,13 +4,34 @@
 
         <div class="form-group">
             <h3>Comentar</h3>
-            <div class="controls">
-                {{> afQuickField name='body' class='limit-200 form-control'}}
-                <span class="countdown">200 caracteres restantes.</span>
-            </div>
-        </div>
 
-        <input id="comentar" type="submit" value="Enviar" class="btn btn-primary"/>
+            <div class="row">
+
+                <div class="col-sm-3 col-lg-2 hidden-xs">
+
+                    {{#if currentUser.profile.display_picture}}
+                        <img class="img-responsive" src="{{currentUser.profile.display_picture}}" alt="">
+                    {{else}}
+                        <img class="img-responsive" src="/img/no-avatar.jpg" alt="">
+                    {{/if}}
+
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-9 col-lg-10">
+                    <div class="controls">
+                        {{> afQuickField name='body' class='limit-200 form-control' placeholder='Comenta este post!'}}
+                        <div>
+                            <span class="countdown">200 caracteres restantes.</span>
+                            <input id="comentar" type="submit" value="Enviar" class="pull-right btn btn-primary"/>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     {{/autoForm}}
 

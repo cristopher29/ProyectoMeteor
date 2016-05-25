@@ -18,6 +18,13 @@ Template.postPage.helpers({
             }
         }
 
+    },
+    NoImageOrVideo: function(){
+        if(this.youtubeUrl || this.image){
+            return 'col-md-7'
+        }else{
+            return 'col-xs-12'
+        }
     }
 
 });

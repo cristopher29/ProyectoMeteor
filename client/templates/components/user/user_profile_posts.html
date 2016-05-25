@@ -7,13 +7,10 @@
                     {{>postItem}}
                 {{/each}}
             </ul>
-            {{#if noMorePosts}}
-                <div class="alert-user">
-                    <div class="center-div">
-                        <h4> No hay mas posts</h4>
-                    </div>
+            {{#if morePosts}}
+                <div class="post-loader-container">
+                    <div class="post-loader"></div>
                 </div>
-            {{else}}
                 <button class="load-more">Mas</button>
             {{/if}}
 

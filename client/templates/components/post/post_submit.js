@@ -40,7 +40,9 @@ var postSubmitHook = {
 AutoForm.addHooks('insertPost', postSubmitHook);
 
 Template.postSubmit.onRendered(function(){
+
     $('.preview').hide();
+
 });
 
 
@@ -94,20 +96,6 @@ Template.postSubmit.events({
     },
     'submit form': function(e){
         return false;
-    },
-
-    'keyup .note-editable': function(e){
-        var num = $('.note-editable').text().replace(/(<([^>]+)>)/ig,"").length;
-        var countdown = $('.countdown');
-        var remaining = 500 - num;
-        countdown.text(remaining + ' caracteres restantes.');
-        if(remaining < 0){
-            countdown.css('color', 'red');
-            $('#enviar').prop('disabled', true);
-        }else{
-            countdown.css('color', 'black');
-            $('#enviar').prop('disabled', false);
-        }
     }
 
 });

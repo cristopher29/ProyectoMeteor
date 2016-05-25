@@ -55,5 +55,49 @@ Meteor.methods({
         }else {
             return false;
         }
+    },
+    commentLike: function(commentId, userId){
+
+        if(!Meteor.userId()){
+            throw new Meteor.Error('no-login', 'Error, Inicia sesión')
+        }
+
+        var comment = Comments.findOne({_id: commentId});
+
+        if(comment.usersLiked){
+            if(comment.usersLiked.indexOf(userId) == -1){
+                Comments.update({_id: commentId}, {$inc: {likesCount: 1}, $push: {usersLiked: userId}});
+                return {
+                    likeComment: true
+                }
+            }else{
+                throw new Meteor.Error('error-comment-like', 'Ya has votado este comentario');
+            }
+        }else {
+            Comments.update({_id: commentId}, {$inc: {likesCount: 1}, $push: {usersLiked: userId}});
+            return {
+                likeComment: true
+            }
+        }
+    },
+    commentDislike: function(commentId, userId){
+
+        if(!Meteor.userId()){
+            throw new Meteor.Error('no-login', 'Error, Inicia sesión')
+        }
+
+        var comment = Comments.findOne({_id: commentId});
+
+        if(comment.usersLiked.indexOf(userId) >= 0){
+
+            Comments.update({_id: commentId}, {$pull: {usersLiked: userId}, $inc:{likesCount: -1}});
+            return {
+                dislike : true
+            }
+
+        }else{
+            return null;
+        }
+
     }
 });

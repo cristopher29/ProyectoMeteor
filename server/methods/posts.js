@@ -17,7 +17,6 @@ Meteor.methods({
 
         //Obtenemos solo el texto
         var text = cleanHtml.replace(/<[^>]*>/g, "");
-        var textLength = text.length;
 
         //Comprobamos si existe el post con los mismo atributos
         var postExists = Posts.findOne({title: postAttributes.title, shortDescription: postAttributes.shortDescription, textDescription: text});
@@ -26,11 +25,6 @@ Meteor.methods({
             return {
                 postExists: true
             }
-        }
-
-        //Comprobamos la longitud del texto
-        if(textLength > 500){
-            throw new Meteor.Error("over-limit", "Error limite descripcion");
         }
 
         //Agregamos los valores
@@ -77,7 +71,6 @@ Meteor.methods({
 
         //Obtenemos solo el texto
         var text = cleanHtml.replace(/<[^>]*>/g, "");
-        var textLength = text.length;
 
         //Si ha modificado alguno de estos valores entramos
         if(oldValues.title != newValues.title || oldValues.textDescription != text || oldValues.shortDescription != newValues.shortDescription){
@@ -93,12 +86,6 @@ Meteor.methods({
             }
 
         }
-
-        //Comprobamos la longitud del texto
-        if(textLength > 500){
-            throw new Meteor.Error("over-limit", "Error limite descripcion");
-        }
-
 
         //Actualizamos los valores
         var post = _.extend(newValues, {

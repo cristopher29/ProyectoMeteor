@@ -30,7 +30,7 @@ Template.userProfilePosts.onRendered(function(){
     instance.autorun(function(){
 
         if(instance.subReady.get()){
-            instance.loaded.set(Posts.find().count());
+            instance.loaded.set(Posts.find({userId: instance.userId.get()}).count());
         }
 
     });
@@ -48,8 +48,11 @@ Template.userProfilePosts.helpers({
         return Posts.find({userId: Template.instance().userId.get()},{sort:{createdAt: -1}});
     },
 
-    noMorePosts: function(){
-        return !(Template.instance().loaded.get() >= Template.instance().limit.get());
+    morePosts: function(){
+        if(Template.instance().subReady.get()){
+            console.log(Template.instance().loaded.get() + "  " + Template.instance().limit.get());
+            return (Template.instance().loaded.get() >= Template.instance().limit.get());
+        }
     }
 });
 

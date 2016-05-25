@@ -13,10 +13,10 @@ Template.userProfileCard.onRendered(function(){
     var sub;
 
     if(ActiveRoute.name('userAllNotifications')){
-        sub = Meteor.subscribe('userProfileInfo', Meteor.userId());
+        sub = Subsman.subscribe('userProfileInfo', Meteor.userId());
         currentUserId = Meteor.userId();
     }else{
-        sub = Meteor.subscribe('userProfileInfo', Router.current().params.userId);
+        sub = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
         currentUserId = Router.current().params.userId;
     }
 

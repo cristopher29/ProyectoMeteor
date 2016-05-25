@@ -10,6 +10,7 @@ Template.postsUserFollowing.onCreated(function(){
     instance.loaded = new ReactiveVar(0);
     instance.subCount = new ReactiveVar(0);
     instance.subReady = new ReactiveVar(false);
+    instance.userId= new ReactiveVar();
 
     var currentUser = Meteor.userId();
 
@@ -35,7 +36,7 @@ Template.postsUserFollowing.onRendered(function(){
 
         if(instance.subReady.get()){
 
-            instance.loaded.set(Posts.find().count());
+            instance.loaded.set(Posts.find({ userId: { $in:Meteor.user().following } }).count());
         }
 
     });

@@ -6,6 +6,7 @@
                 <div class='suggest-holder'>
                     {{> EasySearch.Input indexes=searchIndexes  attributes=inputAttributes}}
                     <!--<input type='text' id="search-box" class='suggest-prompt form-control' placeholder="Search" name="q" autocomplete="off">-->
+
                     <ul class="suggestions">
 
                         {{#EasySearch.IfNoResults indexes=searchIndexes logic="AND" }}
@@ -23,6 +24,7 @@
                             {{>userSuggestions}}
                         {{/EasySearch.Each}}
                     </ul>
+
                 </div>
             </div>
         </form>
