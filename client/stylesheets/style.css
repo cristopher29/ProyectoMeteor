@@ -208,6 +208,106 @@ video#bgvid {
 /*********** TAGS        ****************/
 /****************************************/
 
+
+.follow-card {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 230px;
+  max-width: 315px;
+  color: #ffffff;
+  text-align: left;
+  font-size: 16px;
+  background-color: #161c26;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.follow-card span{
+  color: #9AA2AD;
+}
+
+.follow-card * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.45s ease;
+  transition: all 0.45s ease;
+}
+
+.follow-card img {
+  vertical-align: top;
+  max-width: 100%;
+  backface-visibility: hidden;
+}
+
+.follow-card figcaption {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 30px;
+  background-color: #2F3D51;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.follow-card h2,
+.follow-card h3,
+.follow-card p {
+  margin: 0;
+}
+
+.follow-card h2,
+.follow-card h3 {
+  line-height: 1.2em;
+}
+
+.follow-card h2 {
+  font-size: 1.9em;
+  color: #9AA2AD;
+}
+
+.follow-card h3 {
+  color: #EBEBEB;
+  font-size: 1.3em;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+.follow-card p {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9em;
+  margin-top: 12px;
+  padding: 12px 0 15px;
+  line-height: 1.5em;
+}
+
+.follow-card a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.follow-card:hover > img,
+.follow-card.hover > img {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.follow-card:hover figcaption,
+.follow-card.hover figcaption {
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+}
+
 .bg-user-color{
   width: 100%;
   min-height: 100%;
@@ -1291,6 +1391,18 @@ textarea.error{
 /*********** COMMENTS    ****************/
 /****************************************/
 
+.editing-comment{
+  padding: 35px 0;
+  display: block;
+}
+.editing-comment span{
+  display: inline-block;
+}
+
+#submit-edited-comment{
+  margin: 10px 0;
+}
+
 .comment-like{
   padding-right: 8px !important;
 }
@@ -1561,7 +1673,7 @@ textarea.error{
 .profile-header {
   height: 120px;
   background-image: url('/img/card-header.jpg');
-  background-size: auto 120px;
+  background-size: cover;
   background-position: 50%;
 }
 .profile-navigation {
@@ -1572,8 +1684,12 @@ textarea.error{
   width: 100%;
   box-sizing: border-box;
 }
+
+.profile-nick a{
+  color: #444444;
+}
 .profile-nick {
-  color: #fff;
+  color: #444444;
   margin: 0;
   padding: 0.4em 0;
   font-size: 0.8em;
@@ -2314,10 +2430,10 @@ figure.image-with-icon.hover i {
   padding: 10px 0 10px 0;
 }
 .recommendation-text > a{
-  color: #9AA2AD !important;
+  color: #9AA2AD;
 }
 .recommendation-text > p{
-  color: #6E7380 !important;
+  color: #6E7380;
 }
 
 /* ============================ */

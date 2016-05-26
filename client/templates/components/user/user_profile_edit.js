@@ -71,7 +71,7 @@ Template.userProfileEdit.events({
        files.push(image);
 
        Cloudinary.upload(files,{}, function(err, img){
-           Meteor.users.update(Meteor.userId(),{$set:{"profile.cardImage": img.url}});
+           Meteor.users.update(Meteor.userId(),{$set:{"profile.cardImage": img.url, "profile.cardImageId": img.public_id}});
        });
    },
    'click #zoomIn': function(e,t){
@@ -79,6 +79,15 @@ Template.userProfileEdit.events({
    },
    'click #zoomOut': function(e,t){
        $uploadCrop.zoomOut();
+   },
+   'click #delete-image': function(e,t){
+       e.preventDefault();
+       $('.image-container').hide();
+       Meteor.call('deleteCardImage',Meteor.userId(), Meteor.user().profile.cardImageId, function(error,result){
+           if(error){
+               return Bert.alert(error.reason, 'danger', 'growl-top-right');
+           }
+       });
    }
 });
 

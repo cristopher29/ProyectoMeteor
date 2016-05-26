@@ -1,47 +1,40 @@
 <template name="followCard">
-    <div class="col-md-6">
-        <div class="flip-container">
-            <div class="flipper">
-                <div class="front">
-                    {{#if profile.display_picture}}
-                        <img class="img-responsive" src="{{profile.display_picture}}"/>
-                    {{else}}
-                        <img class="img-responsive" src="/img/no-avatar.jpg"/>
-                    {{/if}}
 
-                    <div class="sub">
-                        <p class="white-nice">{{username}}</p>
-                    </div>
+    <figure class="follow-card col-sm-4">
+        {{#if profile.display_picture}}
+            <img src="{{profile.display_picture}}" class="img-responsive" alt="{{username}}" />
+        {{else}}
+            <img src="/img/no-avatar.jpg" class="img-responsive" alt="{{username}}" />
+        {{/if}}
+
+        <figcaption>
+            <h2>{{username}}</h2>
+            <h3>{{profile.firstName}} {{profile.lastName}}</h3>
+            <p>{{profile.description}}</p>
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="{{pathFor 'userProfileFollowing' userId=_id}}" class="text-center">
+                        <span class="statLabel">Siguiendo</span>
+                        {{#if followingCount}}
+                            <span>{{followingCount}}</span>
+                        {{else}}
+                            <span>0</span>
+                        {{/if}}
+
+                    </a>
                 </div>
-                <div class="back">
-                    <p id="titulo"><a class="white-nice" href="{{pathFor 'userProfile' userId=_id}}">{{username}}</a></p>
-                    <p>{{profile.firstName}} {{profile.lastName}}</p>
-                    <p>{{profile.description}}</p>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <a href="{{pathFor 'userProfileFollowing' userId=_id}}" class="text-center">
-                                <span class="statLabel">Siguiendo</span>
-                                {{#if followingCount}}
-                                    <span>{{followingCount}}</span>
-                                {{else}}
-                                    <span>0</span>
-                                {{/if}}
-
-                            </a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href="{{pathFor 'userProfileFollowers' userId=_id}}" class="text-center">
-                                <span class="statLabel">Seguidores</span>
-                                {{#if followersCount}}
-                                    <span>{{followersCount}}</span>
-                                {{else}}
-                                    <span>0</span>
-                                {{/if}}
-                            </a>
-                        </div>
-                    </div>
+                <div class="col-xs-6">
+                    <a href="{{pathFor 'userProfileFollowers' userId=_id}}" class="text-center">
+                        <span class="statLabel">Seguidores</span>
+                        {{#if followersCount}}
+                            <span>{{followersCount}}</span>
+                        {{else}}
+                            <span>0</span>
+                        {{/if}}
+                    </a>
                 </div>
             </div>
-        </div>
-    </div>
+        </figcaption>
+    </figure>
+
 </template>

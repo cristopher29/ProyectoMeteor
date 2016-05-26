@@ -44,6 +44,21 @@ Meteor.methods({
 
         return comment._id;
     },
+    commentUpdate: function(commentId, commentBody){
+
+        if(commentBody.length > 200){
+            throw new Meteor.Error('comment-limit', 'El límite es de 200 caracteres');
+        }
+
+        var comment = Comments.findOne({_id: commentId});
+
+        if(comment && Meteor.userId() === comment.userId){
+            Comments.update({_id: commentId},{$set:{body: commentBody}});
+            return true;
+        }else {
+            throw new Meteor.Error('comment-update', 'Error al actualizar el comentario');
+        }
+    },
     commentDelete: function(commentId){
 
         var comment = Comments.findOne({_id: commentId});
@@ -53,7 +68,7 @@ Meteor.methods({
             Comments.remove(comment._id);
             return true;
         }else {
-            return false;
+            throw new Meteor.Error('comment-delete', 'Error al eliminar el comentario');
         }
     },
     commentLike: function(commentId, userId){

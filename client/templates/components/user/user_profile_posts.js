@@ -50,7 +50,6 @@ Template.userProfilePosts.helpers({
 
     morePosts: function(){
         if(Template.instance().subReady.get()){
-            console.log(Template.instance().loaded.get() + "  " + Template.instance().limit.get());
             return (Template.instance().loaded.get() >= Template.instance().limit.get());
         }
     }

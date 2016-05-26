@@ -52,6 +52,15 @@ Template.postItem.helpers({
       return 'like';
     }
   },
+  cardImage: function(){
+
+    var user = Meteor.users.findOne({_id: this.userId});
+    if(user.profile.cardImage){
+      return user.profile.cardImage;
+    }else{
+      return '/img/card-header.jpg';
+    }
+  },
   userImage: function(){
 
     var user = Meteor.users.findOne({_id: this.userId});

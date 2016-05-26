@@ -1,7 +1,21 @@
 /**
  * Created by CristoH on 15/03/2016.
  */
+
+
+Template.comment.onCreated(function(){
+
+    var instance= this;
+
+    instance.isEditing = new ReactiveVar(false);
+
+});
+
 Template.comment.helpers({
+
+    isEditingComment: function(){
+        return Template.instance().isEditing.get();
+    },
     ownComment: function() {
         return this.userId === Meteor.userId();
     },
@@ -62,6 +76,24 @@ Template.comment.events({
             });
         }else{
             Bert.alert('Necesitas iniciar sesión', 'warning', 'growl-top-right');
+        }
+    },
+    'click .edit-comment': function(e,t){
+        Template.instance().isEditing.set(!Template.instance().isEditing.get());
+    },
+    'submit .editing-comment': function(e,t){
+        e.preventDefault();
+
+        var comment = $('.comment-edit-input').val();
+        if(comment){
+            Meteor.call('commentUpdate', this._id, comment, function(error, result){
+                if(error){
+                    Bert.alert(error.reason, 'danger', 'growl-top-right');
+                }
+            });
+            Template.instance().isEditing.set(false);
+        }else{
+            Bert.alert('Comentario vacio', 'warning', 'growl-top-right');
         }
     }
 

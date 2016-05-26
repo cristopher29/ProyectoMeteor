@@ -24,12 +24,24 @@
 
         {{/if}}
 
-        <div class="form-group">
-            <label for="card-image" class="control-label">Imagen</label>
-            <input type="file" id="card-image" name="file" class="form-control">
-        </div>
+        {{#if currentUser.profile.cardImage}}
 
+            <label for="post-image" class="control-label">Imagen</label>
+            <div class="image-container">
+                <figure class="image-with-icon red">
+                    <img src="{{currentUser.profile.cardImage}}" alt=""/>
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    <a id="delete-image"></a>
+                </figure>
+            </div>
 
+        {{else}}
+            <div class="form-group">
+                <label for="card-image" class="control-label">Imagen</label>
+                <input type="file" id="card-image" name="file" class="form-control">
+            </div>
+
+        {{/if}}
 
         {{> afQuickField name='profile.bgColor'}}
         {{> afQuickField name='profile.textColor'}}
