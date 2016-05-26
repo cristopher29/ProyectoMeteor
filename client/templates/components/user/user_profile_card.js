@@ -53,6 +53,34 @@ Template.userProfileCard.helpers({
 
     },
 
+    cardImage: function(){
+
+        var userId = Router.current().params.userId;
+
+        if(userId){
+
+            var user = Meteor.users.findOne({_id: userId});
+
+            if(user.profile.cardImage){
+                return user.profile.cardImage;
+            }else{
+                return '/img/card-header.jpg';
+            }
+
+        }else{
+
+            var user = Meteor.user();
+
+            if(user.profile.cardImage){
+                return user.profile.cardImage;
+            }else{
+                return '/img/card-header.jpg';
+            }
+
+        }
+
+    },
+
     isFollower: function(){
         if(this.followers){
             if(this.followers.indexOf(Meteor.userId()) >= 0) {

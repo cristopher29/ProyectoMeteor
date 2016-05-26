@@ -1560,7 +1560,7 @@ textarea.error{
 }
 .profile-header {
   height: 120px;
-  background-image: url(https://pbs.twimg.com/profile_banners/571038694/1395748220/1500x500);
+  background-image: url('/img/card-header.jpg');
   background-size: auto 120px;
   background-position: 50%;
 }

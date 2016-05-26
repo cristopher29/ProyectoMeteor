@@ -62,6 +62,18 @@ Template.userProfileEdit.events({
            swal("No has seleccionado una imagen");
        }
    },
+   'change #card-image': function(e,t){
+
+       var input = e.target;
+
+       var files = [];
+       var image = input.files[0];
+       files.push(image);
+
+       Cloudinary.upload(files,{}, function(err, img){
+           Meteor.users.update(Meteor.userId(),{$set:{"profile.cardImage": img.url}});
+       });
+   },
    'click #zoomIn': function(e,t){
        $uploadCrop.zoomIn();
    },

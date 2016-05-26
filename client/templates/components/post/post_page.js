@@ -3,7 +3,7 @@
  */
 
 Template.postPage.onRendered(function(){
-
+    $("a#post_image").fancybox();
 });
 
 Template.postPage.helpers({
