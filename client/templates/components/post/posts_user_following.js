@@ -35,8 +35,9 @@ Template.postsUserFollowing.onRendered(function(){
     instance.autorun(function(){
 
         if(instance.subReady.get()){
-
-            instance.loaded.set(Posts.find({ userId: { $in:Meteor.user().following } }).count());
+            if(Meteor.user().following){
+                instance.loaded.set(Posts.find({ userId: { $in:Meteor.user().following } }).count());
+            }
         }
 
     });
@@ -50,8 +51,9 @@ Template.postsUserFollowing.helpers({
     },
 
     posts: function(){
-
-        return Posts.find({ userId: { $in:Meteor.user().following } }, {sort :{createdAt: -1}});
+        if(Meteor.user().following){
+            return Posts.find({ userId: { $in:Meteor.user().following } }, {sort :{createdAt: -1}});
+        }
     }
 });
 

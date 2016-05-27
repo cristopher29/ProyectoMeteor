@@ -1,5 +1,4 @@
 
-
 Template.mainLayout.events({
     'click .resend-verification-link': function(e,t){
         e.preventDefault();
@@ -13,6 +12,5 @@ Template.mainLayout.events({
         });
     }
 });
-
 
 

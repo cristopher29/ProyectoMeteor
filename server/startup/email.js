@@ -26,7 +26,7 @@ Meteor.startup(function () {
     // Reset password
 
     Accounts.emailTemplates.resetPassword.subject = function (user) {
-        return "Reestablecer Contraseña";
+        return "Proyecto Cristopher Restablecer Contraseña";
     };
     Accounts.emailTemplates.resetPassword.html = function (user, url) {
         return Spacebars.toHTML({ url: url }, Assets.getText('email_templates/reset_password.html'));
@@ -35,11 +35,11 @@ Meteor.startup(function () {
     Accounts.emailTemplates.resetPassword.text = function (user, url) {
         var message = 'Proyecto\n\n';
         message += "Hola " + user.originalUserName + ",\n"
-        message += "To reset your password, simply click the link below.\n"
+        message += "Para restablecer tu contraseña, haz click en el siguiente enlace.\n"
         message += url + "\n\n";
-        message += "If you've received this email in error or didn't request a password reset, you can simply ignore it.\n\n\n";
-        message += "Sincerely,\n";
-        message += "Proyecto";
+        message += "Si has recibido este email por error, lo puedes ignorar.\n\n\n";
+        message += "Att,\n";
+        message += "Cristopher :D";
 
         return message;
     };

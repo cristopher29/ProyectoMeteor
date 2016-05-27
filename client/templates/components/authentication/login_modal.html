@@ -6,22 +6,12 @@
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></button>
-                        <h4 class="modal-title">Inicia Sesión!</h4>
+                        <h4 class="modal-title">Bienvenido!</h4>
                     </div>
 
                     <div class="modal-body text-center">
-                        <a class="btn btn-block btn-social btn-twitter">
-                            <span class="fa fa-twitter"></span> Entra con Twitter
-                        </a>
-                        <a class="btn btn-block btn-social btn-facebook">
-                            <span class="fa fa-facebook"></span> Entra con Facebook
-                        </a>
-
-                        <div style="padding: 10px; font-size: larger">
-                            <span><a href="{{pathFor 'signIn'}}">Iniciar Sesión</a></span>
-                            <span><a href="{{pathFor 'signUp'}}">Regístrate</a></span>
-                        </div>
-
+                        <a href="{{pathFor 'signIn'}}" class="modal-btn blue">Inicia Sesión</a>
+                        <a href="{{pathFor 'signUp'}}" class="modal-btn green">Regístrate</a>
                     </div>
 
                 </div>

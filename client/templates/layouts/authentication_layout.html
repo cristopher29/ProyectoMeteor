@@ -1,0 +1,19 @@
+<template name="authenticationLayout">
+
+    {{> header}}
+
+    <div class="container contenido">
+        <div class="row">
+
+            {{#momentum plugin='iron-router' options=transition}}
+                {{>yield}}
+            {{/momentum}}
+
+            <video autoplay loop muted poster="/img/video2.jpg" id="bgvid">
+                <source src="/video/video2.webm" type="video/webm">
+                <source src="/video/video2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+</template>

@@ -50,61 +50,59 @@ Template.postItem.events({
 
 Template.postItem.helpers({
   liked: function(){
-    if($.inArray(Meteor.userId(), this.usersLiked) > -1){
-      return 'dislike';
-    }else{
-      return 'like';
+    if(Meteor.user()){
+      if($.inArray(Meteor.userId(), this.usersLiked) > -1){
+        return 'dislike';
+      }else{
+        return 'like';
+      }
     }
   },
   cardImage: function(){
 
     var user = Meteor.users.findOne({_id: this.userId});
-    if(user.profile.cardImage){
+    if(user && user.profile.cardImage){
       return user.profile.cardImage;
     }else{
       return '/img/card-header.jpg';
     }
   },
   userImage: function(){
-
     var user = Meteor.users.findOne({_id: this.userId});
-    if(user.profile.display_picture){
+    if(user && user.profile.display_picture){
       return user.profile.display_picture;
     }else{
       return '/img/no-avatar.jpg';
     }
+
   },
   userDescription: function(){
-
     var user = Meteor.users.findOne({_id: this.userId});
-    if(user.profile.description){
+    if(user && user.profile.description){
       return user.profile.description;
     }else{
       return 'No hay descripción';
     }
   },
   userPosts: function(){
-
     var user = Meteor.users.findOne({_id: this.userId});
-    if(user.postsCount){
+    if(user && user.postsCount){
       return user.postsCount;
     }else{
       return '0';
     }
   },
   userFollowers: function(){
-
     var user = Meteor.users.findOne({_id: this.userId});
-    if(user.followersCount){
+    if(user && user.followersCount){
       return user.followersCount;
     }else{
       return '0';
     }
   },
   userFollowing: function(){
-
     var user = Meteor.users.findOne({_id: this.userId});
-    if(user.followingCount){
+    if(user && user.followingCount){
       return user.followingCount;
     }else{
       return '0';
