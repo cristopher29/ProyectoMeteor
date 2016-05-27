@@ -1,4 +1,8 @@
 
+Template.postItem.onRendered(function(){
+  $("a#post_image").fancybox();
+});
+
 
 Template.postItem.events({
 

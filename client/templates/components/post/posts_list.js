@@ -28,6 +28,13 @@ Template.postsList.onCreated(function(){
 
 Template.postsList.onRendered(function(){
 
+  if(!Meteor.user()){
+    Meteor.setTimeout(function(){
+      Modal.show('loginModal');
+    }, 2000);
+  }
+
+
   var instance = this;
 
   infiniteScrollPosts(instance);
@@ -45,6 +52,14 @@ Template.postsList.onRendered(function(){
 });
 
 Template.postsList.helpers({
+
+  userLoginIn: function(){
+    if(Meteor.user()){
+      return 'col-md-8';
+    }else{
+      return 'col-md-12 no-login-container';
+    }
+  },
 
   'ready': function(){
     if(Posts.find().count()>0){

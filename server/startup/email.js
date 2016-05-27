@@ -22,7 +22,29 @@ Meteor.startup(function () {
         sendVerificationEmail: true
     });
 
-    // Template Email
+
+    // Reset password
+
+    Accounts.emailTemplates.resetPassword.subject = function (user) {
+        return "Reestablecer Contraseña";
+    };
+    Accounts.emailTemplates.resetPassword.html = function (user, url) {
+        return Spacebars.toHTML({ url: url }, Assets.getText('email_templates/reset_password.html'));
+    };
+
+    Accounts.emailTemplates.resetPassword.text = function (user, url) {
+        var message = 'Proyecto\n\n';
+        message += "Hola " + user.originalUserName + ",\n"
+        message += "To reset your password, simply click the link below.\n"
+        message += url + "\n\n";
+        message += "If you've received this email in error or didn't request a password reset, you can simply ignore it.\n\n\n";
+        message += "Sincerely,\n";
+        message += "Proyecto";
+
+        return message;
+    };
+
+    // Verify Email
 
     Accounts.emailTemplates.verifyEmail.subject = function (user) {
         return "Proyecto Cristopher Verificación Email";

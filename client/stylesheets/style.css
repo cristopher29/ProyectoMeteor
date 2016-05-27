@@ -73,8 +73,28 @@ a:focus {outline:0;}
 /*********** AUTHENTICATION ****************/
 /*******************************************/
 
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
 
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
 
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.no-login-container{
+  padding: 0 15%;
+}
 
 #sign-up span{
   color: #ff5956;
@@ -184,7 +204,6 @@ a:focus {outline:0;}
   position: fixed;
   z-index: -1;
   top:0; right:0; bottom:0; left:0;
-  background: url(http://36.media.tumblr.com/3cae448eafe6cdd27c210b4da274cfe7/tumblr_ns9p18pY5a1qzwmsso1_1280.jpg) center;
   background-size: cover;
 }
 video#bgvid {
@@ -200,7 +219,6 @@ video#bgvid {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  background: url(polina.jpg) no-repeat;
   background-size: cover;
 }
 
@@ -208,6 +226,10 @@ video#bgvid {
 /*********** TAGS        ****************/
 /****************************************/
 
+
+.fancybox-skin {
+  background: #232d3c;
+}
 
 .follow-card {
   position: relative;

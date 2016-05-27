@@ -1,0 +1,31 @@
+<template name="loginModal">
+
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <h4 class="modal-title">Inicia Sesión!</h4>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <a class="btn btn-block btn-social btn-twitter">
+                            <span class="fa fa-twitter"></span> Entra con Twitter
+                        </a>
+                        <a class="btn btn-block btn-social btn-facebook">
+                            <span class="fa fa-facebook"></span> Entra con Facebook
+                        </a>
+
+                        <div style="padding: 10px; font-size: larger">
+                            <span><a href="{{pathFor 'signIn'}}">Iniciar Sesión</a></span>
+                            <span><a href="{{pathFor 'signUp'}}">Regístrate</a></span>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+</template>

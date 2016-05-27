@@ -13,7 +13,7 @@
                 </div>
 
                 {{#if image}}
-                    <img class="post-image img-responsive" src="{{image}}" alt="">
+                    <a id="post_image" href="{{image}}" title="{{title}}"><img style="display: inline-block" class="post-image img-responsive" src="{{image}}" alt="{{title}}"/></a>
                 {{/if}}
 
                 {{#if youtubeUrl}}
