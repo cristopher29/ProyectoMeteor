@@ -40,7 +40,7 @@ easy:search
 iron:router
 aldeed:collection2
 aldeed:autoform
-msavin:mongol
+#msavin:mongol
 reywood:publish-composite
 dburles:spacebars-tohtml
 
@@ -56,4 +56,4 @@ djedi:sanitize-html
 todda00:friendly-slugs
 meteorhacks:fast-render
 manuelschoebel:ms-seo
-#meteorhacks:kadira
+meteorhacks:kadira
