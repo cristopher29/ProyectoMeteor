@@ -91,6 +91,9 @@ Template.search.events({
        }else{
            $('.suggestions').hide();
        }
+   },
+   'submit #search': function(e,t){
+       e.preventDefault();
    }
 });
 
