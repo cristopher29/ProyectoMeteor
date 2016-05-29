@@ -8,7 +8,7 @@
         {{/if}}
 
         <figcaption style="background-color: {{userBgColor}};">
-            <h2>{{username}}</h2>
+            <a href="{{pathFor 'userProfile' userId=_id}}"><h2>{{username}}</h2></a>
             <h3>{{profile.firstName}} {{profile.lastName}}</h3>
             <p>{{profile.description}}</p>
             <div class="row">

@@ -353,15 +353,6 @@ video#bgvid {
   line-height: 1.5em;
 }
 
-.follow-card a {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-}
-
 .follow-card:hover > img,
 .follow-card.hover > img {
   -webkit-transform: translateY(-100%);
