@@ -10,19 +10,18 @@ Template.postsUserFollowing.onCreated(function(){
     instance.loaded = new ReactiveVar(0);
     instance.subCount = new ReactiveVar(0);
     instance.subReady = new ReactiveVar(false);
-    instance.userId= new ReactiveVar();
+    instance.userFollowing = new ReactiveVar(false);
 
-    var currentUser = Meteor.userId();
 
-    if(currentUser){
-        instance.autorun(function(){
-                var sub = Subsman.subscribe('postsUserFollowing', currentUser ,instance.limit.get());
-            instance.subReady.set(sub.ready());
-        });
-    }else{
-        Router.go('accessDenied');
-    }
+    instance.autorun(function(){
 
+        var currentUser = Meteor.userId();
+
+        var sub = Subsman.subscribe('postsUserFollowing', currentUser ,instance.limit.get());
+
+        instance.subReady.set(sub.ready());
+
+    });
 
 });
 

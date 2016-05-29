@@ -9,6 +9,7 @@ Template.userProfilePosts.onCreated(function(){
     instance.loaded = new ReactiveVar(0);
     instance.userId= new ReactiveVar();
     instance.subReady = new ReactiveVar(false);
+    instance.readyCount = new ReactiveVar();
 
     instance.autorun(function(){
 
@@ -30,6 +31,7 @@ Template.userProfilePosts.onRendered(function(){
     instance.autorun(function(){
 
         if(instance.subReady.get()){
+            instance.readyCount.set(1);
             instance.loaded.set(Posts.find({userId: instance.userId.get()}).count());
         }
 
@@ -40,8 +42,25 @@ Template.userProfilePosts.onRendered(function(){
 
 Template.userProfilePosts.helpers({
 
-    'ready': function(){
-        return Template.instance().subReady.get();
+
+    ready: function(){
+        if(Template.instance().readyCount.get() == 1){
+            return true;
+        }
+    },
+
+    'hasPosts': function(){
+        if(Template.instance().loaded.get()>0){
+            return true;
+        }
+    },
+
+    'noPosts': function(){
+        if(Template.instance().subReady.get()){
+            if(Template.instance().loaded.get()<=0){
+                return true;
+            }
+        }
     },
 
     profilePosts: function(){
@@ -57,8 +76,7 @@ Template.userProfilePosts.helpers({
 
 Template.userProfilePosts.events({
     'click .load-more': function(){
-        var actualLimit = Template.instance().limit.get();
-        var newLimit = actualLimit+ 10;
+        var newLimit = Template.instance().limit.get() + 10;
         Template.instance().limit.set(newLimit);
     }
 });

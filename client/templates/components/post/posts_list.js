@@ -20,7 +20,7 @@ Template.postsList.onCreated(function(){
 
   instance.autorun(function(){
 
-    var sub = Subsman.subscribe(Session.get('postsFilter'), instance.limit.get());
+    var sub = Meteor.subscribe(Session.get('postsFilter'), instance.limit.get());
     instance.subReady.set(sub.ready());
   });
 
@@ -31,7 +31,7 @@ Template.postsList.onRendered(function(){
   if(!Meteor.user()){
     Meteor.setTimeout(function(){
       Modal.show('loginModal');
-    }, 2000);
+    }, 5000);
   }
 
 

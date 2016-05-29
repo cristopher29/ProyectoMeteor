@@ -38,10 +38,10 @@
                                 <a href="{{pathFor 'postEdit'}}"><i class=" fa fa-pencil"></i></a>
                             {{/if}}
 
-                            <a href="{{pathFor 'postPage'}}" ><i class=" fa fa-comment"></i> {{commentsCount}}</a>
+                            <a href="{{pathFor 'postPage'}}" ><i class=" fa fa-comment"></i> </a> <commentsCount class="grey">{{commentsCount}}</commentsCount>
 
 
-                            <div class="{{liked}} heart"><i class=" fa fa-heart"></i> {{likesCount}}</div>
+                            <a class="{{liked}} heart"><i class=" fa fa-heart"></i> </a> <likesCount class="grey">{{likesCount}}</likesCount>
 
                         </div>
                     {{/if}}

@@ -10,7 +10,10 @@ Template.recommendations.onCreated(function(){
 Template.recommendations.onRendered(function(){
 
     var instance = this;
-    var sub = Meteor.subscribe('recommendations');
+
+    instance.autorun(function(){
+        var sub = Meteor.subscribe('recommendations');
+    });
 
 });
 
@@ -29,7 +32,9 @@ Template.recommendations.helpers({
         if(ActiveRoute.name(new RegExp('userProfile|userProfileFollowers|userProfileFollowing|userProfileEdit'))){
             var userId = Router.current().params.userId;
             var user = Meteor.users.findOne({_id: userId});
-            return user.profile.bgColor;
+            if(user.profile && user.profile.bgColor){
+                return user.profile.bgColor;
+            }
         }
     }
 });

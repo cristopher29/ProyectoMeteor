@@ -92,6 +92,7 @@ Template.comment.events({
                 }
             });
             Template.instance().isEditing.set(false);
+            Bert.alert('Comentario actualizado', 'success', 'growl-top-right');
         }else{
             Bert.alert('Comentario vacio', 'warning', 'growl-top-right');
         }

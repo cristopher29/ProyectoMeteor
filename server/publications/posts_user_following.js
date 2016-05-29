@@ -3,16 +3,14 @@
  */
 
 Meteor.publishComposite('postsUserFollowing', function(userId, limit) {
-    check(userId, String);
-
-    var user = Meteor.users.findOne({_id: userId});
 
     return {
         find: function() {
+
+            var user = Meteor.users.findOne({_id: userId});
+
             if (user.following) {
                 return Posts.find({ userId: { $in: user.following } }, {sort:{createdAt: -1},limit: limit});
-            }else{
-                this.ready();
             }
         },
         children: [
@@ -20,7 +18,12 @@ Meteor.publishComposite('postsUserFollowing', function(userId, limit) {
                 find: function(post) {
                     return Meteor.users.find({_id: post.userId}, {fields: {
                         profile:1,
-                        username:1
+                        username:1,
+                        followers:1,
+                        followersCount:1,
+                        following:1,
+                        followingCount:1,
+                        postsCount: 1
                     }});
                 }
             }

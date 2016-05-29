@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="col-md-5 text-center">
+    <div class="col-md-6 text-center">
         {{#if image}}
             <a id="post_image" href="{{image}}" title="{{title}}"><img style="display: inline-block" class="img-responsive" src="{{image}}" alt="{{title}}"/></a>
         {{/if}}
@@ -23,6 +23,19 @@
                 <iframe width="560" height="349" src="https://www.youtube.com/embed/{{youtubeId}}" frameborder="0" allowfullscreen></iframe>
             </div>
         {{/if}}
+
+    </div>
+
+    <div class="col-xs-12">
+
+        {{#if ownPost}}
+            <a style="padding-right: 10px; font-size: 2rem;" href="{{pathFor 'postEdit'}}"><i class=" fa fa-pencil"></i></a>
+        {{/if}}
+
+        <a style="font-size: 2rem;" class="{{liked}} heart"><i class=" fa fa-heart"></i> </a> <likesCount class="grey">{{likesCount}}</likesCount>
+
+        <div id="shareIcons"></div>
+
     </div>
 
     <hr>

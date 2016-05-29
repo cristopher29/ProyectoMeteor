@@ -1,7 +1,10 @@
 <template name="userProfilePosts">
 
+
     <div class="col-md-6">
-        {{#if profilePosts.count}}
+    {{#if ready}}
+        {{#if hasPosts}}
+
             <ul class="posts">
                 {{#each profilePosts}}
                     {{>postItem}}
@@ -14,24 +17,26 @@
                 <button class="load-more">Mas</button>
             {{/if}}
 
-        {{else}}
-            {{#if ready}}
-                <div class="alert-user">
-                    <div class="center-div">
-                        {{#if ownProfile}}
-                            <h4>No tienes posts</h4>
-                        {{else}}
-                            <h4>Este usuario no tiene posts</h4>
-                        {{/if}}
-                    </div>
-                </div>
-
-            {{else}}
-                <div class="loader">
-                    {{>loading}}
-                </div>
-            {{/if}}
         {{/if}}
+
+        {{#if noPosts}}
+
+            <div class="alert-user">
+                <div class="center-div">
+                    {{#if ownProfile}}
+                        <h4>No tienes posts</h4>
+                    {{else}}
+                        <h4>Este usuario no tiene posts</h4>
+                    {{/if}}
+                </div>
+            </div>
+
+        {{/if}}
+
+
+    {{else}}
+        {{>loading}}
+    {{/if}}
     </div>
 
 </template>

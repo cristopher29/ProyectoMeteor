@@ -2,38 +2,38 @@
  * Created by CristoH on 21/03/2016.
  */
 
-
-Template.userProfileCard.onRendered(function(){
-
-    $('.profile-btn').hide();
-
-    var instance = this;
-
-    var currentUserId;
-    var sub;
-
-    if(ActiveRoute.name('userAllNotifications')){
-        sub = Subsman.subscribe('userProfileInfo', Meteor.userId());
-        currentUserId = Meteor.userId();
-    }else{
-        sub = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
-        currentUserId = Router.current().params.userId;
-    }
-
-    instance.autorun(function(){
-
-        if(sub.ready()){
-            $('.profile-btn').show();
-            var exist = Meteor.users.findOne({_id: currentUserId});
-            if(!exist){
-                Router.go('notFound');
-            }
-        }
-
-    });
-
-
-});
+//
+//Template.userProfileCard.onRendered(function(){
+//
+//    $('.profile-btn').hide();
+//
+//    var instance = this;
+//
+//    var currentUserId;
+//    var sub;
+//
+//    if(ActiveRoute.name('userAllNotifications')){
+//        sub = Subsman.subscribe('userProfileInfo', Meteor.userId());
+//        currentUserId = Meteor.userId();
+//    }else{
+//        sub = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
+//        currentUserId = Router.current().params.userId;
+//    }
+//
+//    instance.autorun(function(){
+//
+//        if(sub.ready()){
+//            $('.profile-btn').show();
+//            var exist = Meteor.users.findOne({_id: currentUserId});
+//            if(!exist){
+//                Router.go('notFound');
+//            }
+//        }
+//
+//    });
+//
+//
+//});
 
 Template.userProfileCard.helpers({
 
@@ -61,7 +61,7 @@ Template.userProfileCard.helpers({
 
             var user = Meteor.users.findOne({_id: userId});
 
-            if(user.profile.cardImage){
+            if(user.profile && user.profile.cardImage){
                 return user.profile.cardImage;
             }else{
                 return '/img/card-header.jpg';
@@ -71,7 +71,7 @@ Template.userProfileCard.helpers({
 
             var user = Meteor.user();
 
-            if(user.profile.cardImage){
+            if(user.profile && user.profile.cardImage){
                 return user.profile.cardImage;
             }else{
                 return '/img/card-header.jpg';
