@@ -6,7 +6,7 @@
 Template.userProfileEdit.onRendered(function(){
 
 
-    if(Meteor.user().profile.display_picture !== null){
+    if(Meteor.user().profile && Meteor.user().profile.display_picture !== null){
 
         $uploadCrop = $('.imageBox').cropbox({
             thumbBox: '.thumbBox',
@@ -18,7 +18,7 @@ Template.userProfileEdit.onRendered(function(){
 
         $uploadCrop = $('.imageBox').cropbox({
             thumbBox: '.thumbBox',
-            imgSrc: 'img/no-avatar.jpg'
+            imgSrc: '/img/no-avatar.jpg'
         });
     }
 });

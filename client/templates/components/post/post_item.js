@@ -44,17 +44,48 @@ Template.postItem.events({
         }
       });
     }
-
+  },
+  'click .follow': function(e,t){
+    e.preventDefault();
+    if(Meteor.user()){
+      Meteor.call('follow',Meteor.userId(),this.userId, function(error){
+        if(error){
+          Bert.alert(error.reason, 'danger', 'growl-top-right');
+        }
+      });
+    }
+  },
+  'click .unfollow': function(e,t){
+    e.preventDefault();
+    if(Meteor.user()){
+      Meteor.call('unfollow',Meteor.userId(),this.userId, function(error){
+        if(error){
+          Bert.alert(error.reason, 'danger', 'growl-top-right');
+        }
+      });
+    }
   }
 });
 
 Template.postItem.helpers({
+
   liked: function(){
     if(Meteor.user()){
       if($.inArray(Meteor.userId(), this.usersLiked) > -1){
         return 'dislike';
       }else{
         return 'like';
+      }
+    }
+  },
+  isFollower: function(){
+
+    var user = Meteor.users.findOne({_id: this.userId});
+    if(user && user.followers){
+      if(user.followers.indexOf(Meteor.userId()) >= 0) {
+        return true;
+      } else {
+        return false;
       }
     }
   },

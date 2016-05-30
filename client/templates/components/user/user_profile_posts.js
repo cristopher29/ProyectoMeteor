@@ -9,13 +9,12 @@ Template.userProfilePosts.onCreated(function(){
     instance.loaded = new ReactiveVar(0);
     instance.userId= new ReactiveVar();
     instance.subReady = new ReactiveVar(false);
-    instance.readyCount = new ReactiveVar();
+
+    instance.userId.set(Router.current().params.userId);
 
     instance.autorun(function(){
 
-        instance.userId.set(Router.current().params.userId);
-
-        var sub = Subsman.subscribe('userProfilePosts', instance.userId.get(), instance.limit.get());
+        var sub = Meteor.subscribe('userProfilePosts', instance.userId.get(), instance.limit.get());
         instance.subReady.set(sub.ready());
     });
 
@@ -31,7 +30,6 @@ Template.userProfilePosts.onRendered(function(){
     instance.autorun(function(){
 
         if(instance.subReady.get()){
-            instance.readyCount.set(1);
             instance.loaded.set(Posts.find({userId: instance.userId.get()}).count());
         }
 
@@ -42,12 +40,6 @@ Template.userProfilePosts.onRendered(function(){
 
 Template.userProfilePosts.helpers({
 
-
-    ready: function(){
-        if(Template.instance().readyCount.get() == 1){
-            return true;
-        }
-    },
 
     'hasPosts': function(){
         if(Template.instance().loaded.get()>0){

@@ -98,7 +98,7 @@ Template.userProfileCard.events({
         if(Meteor.user()){
             Meteor.call('follow',Meteor.userId(),this._id, function(error){
                 if(error){
-                    console.log(error.reason);
+                    Bert.alert(error.reason, 'danger', 'growl-top-right');
                 }
             });
         }
@@ -108,7 +108,7 @@ Template.userProfileCard.events({
         if(Meteor.user()){
             Meteor.call('unfollow',Meteor.userId(),this._id, function(error){
                 if(error){
-                    console.log(error.reason);
+                    Bert.alert(error.reason, 'danger', 'growl-top-right');
                 }
             });
         }

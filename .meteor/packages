@@ -27,10 +27,8 @@ service-configuration
 multiply:iron-router-progress
 twbs:bootstrap
 peppelg:bootstrap-3-modal
-#ian:accounts-ui-bootstrap-3
 themeteorchef:bert
 kevohagan:sweetalert
-isotope:isotope
 michalvalasek:autoform-bootstrap-colorpicker
 mpowaga:autoform-summernote
 sinda:fancybox

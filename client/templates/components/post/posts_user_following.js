@@ -8,17 +8,16 @@ Template.postsUserFollowing.onCreated(function(){
 
     instance.limit = new ReactiveVar(10);
     instance.loaded = new ReactiveVar(0);
-    instance.subCount = new ReactiveVar(0);
     instance.subReady = new ReactiveVar(false);
     instance.userFollowing = new ReactiveVar(false);
 
-
     instance.autorun(function(){
-
-        var currentUser = Meteor.userId();
-
-        var sub = Subsman.subscribe('postsUserFollowing', currentUser ,instance.limit.get());
-
+        var sub;
+        if(Meteor.user().following){
+            sub = Meteor.subscribe('postsUserFollowing', Meteor.user().following ,instance.limit.get());
+        }else{
+            sub = Meteor.subscribe('postsUserFollowing', false ,instance.limit.get());
+        }
         instance.subReady.set(sub.ready());
 
     });

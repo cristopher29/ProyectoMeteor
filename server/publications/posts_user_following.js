@@ -2,15 +2,15 @@
  * Created by CristoH on 24/04/2016.
  */
 
-Meteor.publishComposite('postsUserFollowing', function(userId, limit) {
+Meteor.publishComposite('postsUserFollowing', function(userFollowing, limit) {
 
     return {
         find: function() {
 
-            var user = Meteor.users.findOne({_id: userId});
-
-            if (user.following) {
-                return Posts.find({ userId: { $in: user.following } }, {sort:{createdAt: -1},limit: limit});
+            if (userFollowing) {
+                return Posts.find({ userId: { $in: userFollowing } }, {sort:{createdAt: -1},limit: limit});
+            }else{
+                this.ready();
             }
         },
         children: [

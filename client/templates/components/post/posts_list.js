@@ -28,11 +28,11 @@ Template.postsList.onCreated(function(){
 
 Template.postsList.onRendered(function(){
 
-  if(!Meteor.user()){
-    Meteor.setTimeout(function(){
-      Modal.show('loginModal');
-    }, 5000);
-  }
+  //if(!Meteor.user()){
+  //  Meteor.setTimeout(function(){
+  //    Modal.show('loginModal');
+  //  }, 5000);
+  //}
 
 
   var instance = this;

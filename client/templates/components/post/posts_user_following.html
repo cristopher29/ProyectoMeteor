@@ -1,26 +1,22 @@
 <template name="postsUserFollowing">
 
     <div class="col-md-8">
-        {{#if posts.count}}
+
             <ul class="posts">
                 {{#each posts}}
-
-                        {{> postItem}}
-
+                    {{> postItem}}
                 {{/each}}
             </ul>
                 <button class="load-more">Mas</button>
 
+        {{#if posts.count}}
+
         {{else}}
-            {{#if noReady}}
-                {{>loading}}
-            {{else}}
-                <div class="alert-user">
-                    <div class="center-div">
-                        <h4>No hay posts</h4>
-                    </div>
+            <div class="alert-user">
+                <div class="center-div">
+                    <h4>No hay posts</h4>
                 </div>
-            {{/if}}
+            </div>
         {{/if}}
 
     </div>
