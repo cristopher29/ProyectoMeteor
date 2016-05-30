@@ -607,7 +607,6 @@ a:hover, a:focus{
   background: url("https://49.media.tumblr.com/5aaf070fae351fc08efceaf2c68c2d99/tumblr_mzsp040alc1ste03lo1_500.gif");
   background-position: center;
   background-size: cover;
-  filter: blur(20px);
 }
 
 .center{

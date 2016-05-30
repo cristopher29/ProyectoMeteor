@@ -10,7 +10,7 @@ Meteor.publishComposite('allPosts', function(limit) {
 
     return {
         find: function() {
-            return Posts.find({}, {sort: {createdAt: -1}, limit: limit});
+            return Posts.find({}, {limit: limit, sort: {createdAt: -1}});
         },
         children: [{
             find: function(post){

@@ -1,9 +1,4 @@
 
-Template.postItem.onRendered(function(){
-  $("a#post_image").fancybox();
-});
-
-
 Template.postItem.events({
 
   'click .like': function(e,t){

@@ -20,10 +20,6 @@ Template.userProfilePosts.onCreated(function(){
 
     });
 
-    instance.posts = function() {
-        return Posts.find({userId: Router.current().params.userId}, {limit: instance.limit.get(), sort:{createdAt: -1}});
-    }
-
 });
 
 
@@ -45,7 +41,7 @@ Template.userProfilePosts.helpers({
     },
 
     profilePosts: function(){
-        return Template.instance().posts();
+        return Posts.find({userId: Router.current().params.userId}, {sort:{createdAt: -1}});
     },
 
     morePosts: function(){

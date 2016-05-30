@@ -4,8 +4,6 @@
 
 Template.postPage.onRendered(function(){
 
-    $("a#post_image").fancybox();
-
     $("#shareIcons").jsSocials({
         showLabel: false,
         showCount: false,

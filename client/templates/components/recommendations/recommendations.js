@@ -3,18 +3,18 @@
  */
 
 Template.recommendations.onCreated(function(){
+
     var instance = this;
     instance.subReady = new ReactiveVar(false);
+
+    instance.autorun(function(){
+        var sub = Subsman.subscribe('recommendations');
+    });
+
 });
 
 Template.recommendations.onRendered(function(){
-
     var instance = this;
-
-    instance.autorun(function(){
-        var sub = Meteor.subscribe('recommendations');
-    });
-
 });
 
 Template.recommendations.helpers({
@@ -44,7 +44,11 @@ Template.recommendations.events({
     'click .follow': function(e,t){
         e.preventDefault();
         if(Meteor.user()){
-            Meteor.call('follow',Meteor.userId(),this._id);
+            Meteor.call('follow',Meteor.userId(),this._id, function(error){
+                if(error){
+                    Bert.alert(error.reason, 'danger', 'growl-top-right');
+                }
+            });
         }
     }
 });

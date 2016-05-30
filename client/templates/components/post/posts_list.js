@@ -17,9 +17,10 @@ Template.postsList.onCreated(function(){
   instance.loaded = new ReactiveVar(0);
   instance.subReady = new ReactiveVar(false);
 
+
   instance.autorun(function(){
 
-    var sub = Subsman.subscribe(Session.get('postsFilter'), instance.limit.get());
+    var sub = instance.subscribe(Session.get('postsFilter'), instance.limit.get());
     instance.subReady.set(sub.ready());
 
     if(instance.subReady.get()){
@@ -34,11 +35,6 @@ Template.postsList.onCreated(function(){
 
 Template.postsList.onRendered(function(){
 
-  //if(!Meteor.user()){
-  //  Meteor.setTimeout(function(){
-  //    Modal.show('loginModal');
-  //  }, 5000);
-  //}
   var instance = this;
   infiniteScrollPosts(instance);
 
@@ -51,14 +47,6 @@ Template.postsList.helpers({
       return 'col-md-8';
     }else{
       return 'col-md-12 no-login-container';
-    }
-  },
-
-  'ready': function(){
-    if(Posts.find().count()>0){
-      return true;
-    }else{
-      return false;
     }
   },
 
