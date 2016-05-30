@@ -14,9 +14,9 @@ Template.postsUserFollowing.onCreated(function(){
     instance.autorun(function(){
         var sub;
         if(Meteor.user().following){
-            sub = Meteor.subscribe('postsUserFollowing', Meteor.user().following ,instance.limit.get());
+            sub = Subsman.subscribe('postsUserFollowing', Meteor.user().following ,instance.limit.get());
         }else{
-            sub = Meteor.subscribe('postsUserFollowing', false ,instance.limit.get());
+            sub = Subsman.subscribe('postsUserFollowing', false ,instance.limit.get());
         }
         instance.subReady.set(sub.ready());
 
@@ -38,6 +38,10 @@ Template.postsUserFollowing.onRendered(function(){
 });
 
 Template.postsUserFollowing.helpers({
+
+    'noReady': function(){
+        return !Template.instance().subReady.get();
+    },
 
     'noPosts': function(){
         if(Template.instance().subReady.get()){

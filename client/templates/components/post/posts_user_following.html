@@ -9,7 +9,9 @@
                 {{/each}}
             </ul>
         {{else}}
-            {{>loading}}
+            {{#if noReady}}
+                {{>loading}}
+            {{/if}}
         {{/if}}
 
         <button class="load-more">Mas</button>
