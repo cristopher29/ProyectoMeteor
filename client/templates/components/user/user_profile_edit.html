@@ -15,7 +15,7 @@
                     <span class="btn btn-primary" id="zoomOut"><i class="fa fa-minus" aria-hidden="true"></i></span>
                     <div class="upload-wapper">
                         <label for="file" class="dropzone">
-                            <input type="file" id="upload-file" name="file" onchange="this.form.fileName.value = this.value" required>
+                            <input type="file" id="upload-file" name="file" onchange="this.form.fileName.value = this.value"  accept="image/*">
                             <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
                         </label>
                     </div>
@@ -38,7 +38,7 @@
         {{else}}
             <div class="form-group">
                 <label for="card-image" class="control-label">Imagen</label>
-                <input type="file" id="card-image" name="file" class="form-control">
+                <input type="file" id="card-image" name="file" class="form-control" accept="image/*">
             </div>
 
         {{/if}}

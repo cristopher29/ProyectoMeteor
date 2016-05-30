@@ -29,10 +29,10 @@ Template.recommendations.helpers({
 
     },
     bgColor: function(){
-        if(ActiveRoute.name(new RegExp('userProfile|userProfileFollowers|userProfileFollowing|userProfileEdit'))){
+        if(ActiveRoute.name(new RegExp('userProfile|userProfileFollowers|userProfileFollowing|userProfileEdit|userDifference'))){
             var userId = Router.current().params.userId;
             var user = Meteor.users.findOne({_id: userId});
-            if(user.profile && user.profile.bgColor){
+            if(user && user.profile && user.profile.bgColor){
                 return user.profile.bgColor;
             }
         }

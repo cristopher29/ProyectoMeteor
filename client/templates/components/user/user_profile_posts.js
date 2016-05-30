@@ -7,16 +7,22 @@ Template.userProfilePosts.onCreated(function(){
     var instance = this;
     instance.limit = new ReactiveVar(10);
     instance.loaded = new ReactiveVar(0);
-    instance.userId= new ReactiveVar();
     instance.subReady = new ReactiveVar(false);
-
-    instance.userId.set(Router.current().params.userId);
 
     instance.autorun(function(){
 
-        var sub = Meteor.subscribe('userProfilePosts', instance.userId.get(), instance.limit.get());
+        var sub = instance.subscribe('userProfilePosts', Router.current().params.userId, instance.limit.get());
         instance.subReady.set(sub.ready());
+
+        if(instance.subReady.get()){
+            instance.loaded.set(Posts.find({userId: Router.current().params.userId}).count());
+        }
+
     });
+
+    instance.posts = function() {
+        return Posts.find({userId: Router.current().params.userId}, {limit: instance.limit.get(), sort:{createdAt: -1}});
+    }
 
 });
 
@@ -24,28 +30,11 @@ Template.userProfilePosts.onCreated(function(){
 Template.userProfilePosts.onRendered(function(){
 
     var instance = this;
-
     infiniteScrollPosts(instance);
-
-    instance.autorun(function(){
-
-        if(instance.subReady.get()){
-            instance.loaded.set(Posts.find({userId: instance.userId.get()}).count());
-        }
-
-    });
-
 
 });
 
 Template.userProfilePosts.helpers({
-
-
-    'hasPosts': function(){
-        if(Template.instance().loaded.get()>0){
-            return true;
-        }
-    },
 
     'noPosts': function(){
         if(Template.instance().subReady.get()){
@@ -56,13 +45,11 @@ Template.userProfilePosts.helpers({
     },
 
     profilePosts: function(){
-        return Posts.find({userId: Template.instance().userId.get()},{sort:{createdAt: -1}});
+        return Template.instance().posts();
     },
 
     morePosts: function(){
-        if(Template.instance().subReady.get()){
-            return (Template.instance().loaded.get() >= Template.instance().limit.get());
-        }
+        return Template.instance().loaded.get() >= Template.instance().limit.get();
     }
 });
 

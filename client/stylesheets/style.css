@@ -47,6 +47,22 @@ p{
 
 button:focus {outline:0;}
 a:focus {outline:0;}
+
+a.back-to-top {
+  display: none;
+  width: 60px;
+  height: 60px;
+  text-indent: -9999px;
+  position: fixed;
+  z-index: 999;
+  right: 20px;
+  bottom: 20px;
+  background: #293446 url("/img/up-arrow.png") no-repeat center 43%;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+
 /****************************************/
 /*********** COLORS      ****************/
 /****************************************/
@@ -1157,11 +1173,11 @@ textarea.error{
 /*********** POST        ****************/
 /****************************************/
 .post-loader-container{
-  padding: 10px;
+  padding-bottom: 40px;
+  padding-top: 10px;
+  margin-bottom: 20px;
 }
 .post-loader {
-  bottom: 5px;
-  margin: auto;
   position: absolute;
   left: 50%;
 }
@@ -1892,7 +1908,7 @@ textarea.error{
   color: #FFFFFF;
   width: 210px;
   height: 40px;
-  margin: 22px 0 8px;
+  margin: 6px 0 8px;
   border: none;
   border-radius: 3px;
   font-size: 12px;

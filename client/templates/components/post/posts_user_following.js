@@ -20,18 +20,6 @@ Template.postsUserFollowing.onCreated(function(){
         }
         instance.subReady.set(sub.ready());
 
-    });
-
-});
-
-Template.postsUserFollowing.onRendered(function(){
-
-    var instance = this;
-
-    infiniteScrollPosts(instance);
-
-    instance.autorun(function(){
-
         if(instance.subReady.get()){
             if(Meteor.user().following){
                 instance.loaded.set(Posts.find({ userId: { $in:Meteor.user().following } }).count());
@@ -42,10 +30,21 @@ Template.postsUserFollowing.onRendered(function(){
 
 });
 
+Template.postsUserFollowing.onRendered(function(){
+
+    var instance = this;
+    infiniteScrollPosts(instance);
+
+});
+
 Template.postsUserFollowing.helpers({
 
-    'noReady': function(){
-        return !Template.instance().subReady.get();
+    'noPosts': function(){
+        if(Template.instance().subReady.get()){
+            if(Template.instance().loaded.get()<=0){
+                return true;
+            }
+        }
     },
 
     posts: function(){

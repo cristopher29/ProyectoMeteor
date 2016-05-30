@@ -15,13 +15,19 @@ Template.postsList.onCreated(function(){
 
   instance.limit = new ReactiveVar(10);
   instance.loaded = new ReactiveVar(0);
-  instance.subCount = new ReactiveVar(0);
   instance.subReady = new ReactiveVar(false);
 
   instance.autorun(function(){
 
-    var sub = Meteor.subscribe(Session.get('postsFilter'), instance.limit.get());
+    var sub = Subsman.subscribe(Session.get('postsFilter'), instance.limit.get());
     instance.subReady.set(sub.ready());
+
+    if(instance.subReady.get()){
+
+      instance.loaded.set(Posts.find().count());
+
+    }
+
   });
 
 });
@@ -33,21 +39,8 @@ Template.postsList.onRendered(function(){
   //    Modal.show('loginModal');
   //  }, 5000);
   //}
-
-
   var instance = this;
-
   infiniteScrollPosts(instance);
-
-  instance.autorun(function(){
-
-    if(instance.subReady.get()){
-
-      instance.loaded.set(Posts.find().count());
-
-    }
-
-  });
 
 });
 

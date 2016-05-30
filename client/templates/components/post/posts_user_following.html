@@ -2,16 +2,19 @@
 
     <div class="col-md-8">
 
+        {{#if posts.count}}
             <ul class="posts">
                 {{#each posts}}
                     {{> postItem}}
                 {{/each}}
             </ul>
-                <button class="load-more">Mas</button>
-
-        {{#if posts.count}}
-
         {{else}}
+            {{>loading}}
+        {{/if}}
+
+        <button class="load-more">Mas</button>
+
+        {{#if noPosts}}
             <div class="alert-user">
                 <div class="center-div">
                     <h4>No hay posts</h4>

@@ -3,20 +3,22 @@
 
     <div class="col-md-6">
 
-        {{#if hasPosts}}
+        <ul class="posts">
+            {{#each profilePosts}}
+                {{>postItem}}
+            {{/each}}
+        </ul>
 
-            <ul class="posts">
-                {{#each profilePosts}}
-                    {{>postItem}}
-                {{/each}}
-            </ul>
+        <button class="load-more">Mas</button>
+
+        {{#if Template.subscriptionsReady}}
             {{#if morePosts}}
-                <div class="post-loader-container">
-                    <div class="post-loader"></div>
-                </div>
-                <button class="load-more">Mas</button>
-            {{/if}}
 
+            {{/if}}
+        {{else}}
+            <div class="post-loader-container">
+                <div class="post-loader"></div>
+            </div>
         {{/if}}
 
         {{#if noPosts}}

@@ -2,7 +2,7 @@
  * Created by CristoH on 21/03/2016.
  */
 
-//
+
 //Template.userProfileCard.onRendered(function(){
 //
 //    $('.profile-btn').hide();
@@ -12,13 +12,8 @@
 //    var currentUserId;
 //    var sub;
 //
-//    if(ActiveRoute.name('userAllNotifications')){
-//        sub = Subsman.subscribe('userProfileInfo', Meteor.userId());
-//        currentUserId = Meteor.userId();
-//    }else{
-//        sub = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
-//        currentUserId = Router.current().params.userId;
-//    }
+//    sub = Subsman.subscribe('userProfileInfo', Router.current().params.userId);
+//    currentUserId = Router.current().params.userId;
 //
 //    instance.autorun(function(){
 //
@@ -31,7 +26,6 @@
 //        }
 //
 //    });
-//
 //
 //});
 
@@ -116,5 +110,9 @@ Template.userProfileCard.events({
     'click .edit-profile': function(e,t){
         e.preventDefault();
         Router.go('userProfileEdit', {userId: this._id});
+    },
+    'click .difference': function(e,t){
+        e.preventDefault();
+        Router.go('userDifference', {userId: this._id});
     }
 });
