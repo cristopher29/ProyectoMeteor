@@ -8,13 +8,13 @@ Meteor.publish('userProfileInfo', function(userId){
         var user = Meteor.users.findOne({_id: userId});
 
         if(user.services){
-            if(user.services.twitter && !user.profile.display_picture && !user.username){
+            if(user.services.twitter && !user.profile){
                 console.log('Actualizando usuario con twitter');
                 Meteor.users.update({_id: userId},{$set: { profile: { display_picture: user.services.twitter.profile_image_url }, username: user.services.twitter.screenName}});
                 //user.profile.display_picture = user.services.twitter.profile_image_url;
                 //user.username = user.services.twitter.screenName;
             }
-            if(user.services.facebook && !user.profile.firstName && !user.profile.lastName && !user.username){
+            if(user.services.facebook && !user.profile){
                 console.log('Actualizando usuario con facebook');
                 Meteor.users.update({_id: userId},{$set: { profile :{ firstName: user.services.facebook.first_name, lastName: user.services.facebook.last_name }, username: user.services.facebook.first_name}});
             }
