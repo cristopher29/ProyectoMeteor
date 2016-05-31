@@ -23,7 +23,7 @@
         </div>
 
         {{#if image}}
-            <label for="post-image" class="control-label">Imagen (opcional)</label>
+            <label for="post-image" class="control-label">{{i18n 'postForm.imageField'}}</label>
 
             <div class="image-container">
                 <figure class="image-with-icon red">
@@ -37,10 +37,10 @@
 
             <div class="form-group upload">
                 <div class="controls">
-                    <label for="upload-file" class="control-label">Imagen (opcional)</label>
+                    <label for="upload-file" class="control-label">{{i18n 'postForm.imageField'}}</label>
                     <label for="file" class="dropzone">
                         <input type="file" class="image" id="upload-file" name="image" onchange="this.form.fileName.value = this.value" accept="image/*">
-                        <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
+                        <input type="text" id="fileName" name="fileName" placeholder="{{i18n 'dragAndDrop'}}" readonly>
                     </label>
                 </div>
             </div>
@@ -53,8 +53,8 @@
             </div>
         </div>
 
-        <input id="enviar" type="submit" value="Guardar" class="btn btn-primary"/>
-        <button id="eliminar" type="button" class="btn btn-danger">Eliminar</button>
+        <input id="enviar" type="submit" value="{{i18n 'postForm.saveButton'}}" class="btn btn-primary"/>
+        <button id="eliminar" type="button" class="btn btn-danger">{{i18n 'postForm.deleteButton'}}</button>
     {{/autoForm}}
 
     <hr>

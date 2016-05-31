@@ -8,7 +8,7 @@
                 <img src="/img/card-header.jpg" />
             {{/if}}
 
-            <a href="{{pathFor 'userProfileEdit' userId=currentUser._id}}" class="btn btn-primary btn-sm edit-profile" role="button">Editar</a>
+            <a href="{{pathFor 'userProfileEdit' userId=currentUser._id}}" class="btn btn-primary btn-sm edit-profile" role="button">{{i18n 'userCard.editProfile'}}</a>
         </div>
         <div class="panel-figure">
             {{#if currentUser.profile.display_picture}}
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-xs-4">
                     <a href="{{pathFor 'userProfile' userId=currentUser._id}}" class="text-center">
-                        <span class="statLabel">Posts</span>
+                        <span class="statLabel">{{i18n 'userCard.posts'}}</span>
                         {{#if currentUser.postsCount}}
                             <span>{{currentUser.postsCount}}</span>
                         {{else}}
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-xs-4">
                     <a href="{{pathFor 'userProfileFollowing' userId=currentUser._id}}" class="text-center">
-                        <span class="statLabel">Siguiendo</span>
+                        <span class="statLabel">{{i18n 'userCard.following'}}</span>
                         {{#if currentUser.followingCount}}
                             <span>{{currentUser.followingCount}}</span>
                         {{else}}
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-xs-4">
                     <a href="{{pathFor 'userProfileFollowers' userId=currentUser._id}}" class="text-center">
-                        <span class="statLabel">Seguidores</span>
+                        <span class="statLabel">{{i18n 'userCard.followers'}}</span>
                         {{#if currentUser.followersCount}}
                             <span>{{currentUser.followersCount}}</span>
                         {{else}}

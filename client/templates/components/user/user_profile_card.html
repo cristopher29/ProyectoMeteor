@@ -28,7 +28,7 @@
                     <ul class="arrange">
                         <li class="arrangeSizeFit">
                             <a href="{{pathFor 'userProfile' userId=_id}}">
-                                <span class="statLabel">Posts</span>
+                                <span class="statLabel">{{i18n 'userCard.posts'}}</span>
                                 {{#if postsCount}}
                                     <span class="statValue">{{postsCount}}</span>
                                 {{else}}
@@ -38,7 +38,7 @@
                         </li>
                         <li class="arrangeSizeFit">
                             <a href="{{pathFor 'userProfileFollowing' userId=_id}}">
-                                <span class="statLabel">Siguiendo</span>
+                                <span class="statLabel">{{i18n 'userCard.following'}}</span>
                                 {{#if followingCount}}
                                     <span class="statValue">{{followingCount}}</span>
                                 {{else}}
@@ -49,7 +49,7 @@
                         </li>
                         <li class="arrangeSizeFit">
                             <a href="{{pathFor 'userProfileFollowers' userId=_id}}">
-                                <span class="statLabel">Seguidores</span>
+                                <span class="statLabel">{{i18n 'userCard.followers'}}</span>
                                 {{#if followersCount}}
                                     <span class="statValue">{{followersCount}}</span>
                                 {{else}}
@@ -62,26 +62,26 @@
                 {{#if ownProfile}}
 
                         <button class="profile-btn edit-profile" style="background: {{profile.bgColor}}">
-                            <i class="fa fa-pencil"></i> Editar
+                            <i class="fa fa-pencil"></i> {{i18n 'userCard.editProfile'}}
                         </button>
 
                 {{else}}
                     {{#if isFollower}}
 
                         <button class="unfollow profile-btn" style="background: {{profile.bgColor}}" >
-                            <i class="fa fa-user-times" aria-hidden="true"></i> Dejar de seguir
+                            <i class="fa fa-user-times" aria-hidden="true"></i> {{i18n 'userCard.unfollow'}}
                         </button>
 
                     {{else}}
 
                         <button class="follow profile-btn" style="background: {{profile.bgColor}}" >
-                            <i class="fa fa-user-plus"></i> Seguir
+                            <i class="fa fa-user-plus"></i> {{i18n 'userCard.follow'}}
                         </button>
 
                     {{/if}}
 
                     <button class="profile-btn difference" style="background: {{profile.bgColor}}">
-                        <i class="fa fa-bar-chart" aria-hidden="true"></i> Comparar
+                        <i class="fa fa-bar-chart" aria-hidden="true"></i> {{i18n 'userCard.difference'}}
                     </button>
 
 

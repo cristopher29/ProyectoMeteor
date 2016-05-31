@@ -19,9 +19,9 @@
         <div class="has-feedback">
             <input type="password" id="password" placeholder="{{passwordPlaceholder}}" class="input" /><span class="error-password glyphicon glyphicon-remove form-control-feedback"></span>
         </div>
-        <input type="submit" value="Entrar" class="input input--submit" />
-        <label for="toggle--signup" class="text text--centered">Nuevo? <b><a class="text-auth" href="{{pathFor 'signUp'}}">Registrate</a></b></label>
-        <label for="toggle--signup" class="text text--centered">Has olvidado tu contraseña? <b><a class="text-auth" href="{{pathFor 'forgotPassword'}}">Restablecer</a></b></label>
+        <input type="submit" value="{{i18n 'authentication.signIn'}}" class="input input--submit" />
+        <label for="toggle--signup" class="text text--centered">{{i18n 'authentication.newUser'}}  <b><a class="text-auth" href="{{pathFor 'signUp'}}">{{i18n 'authentication.signUp'}}</a></b></label>
+        <label for="toggle--signup" class="text text--centered">{{i18n 'authentication.forgotPassword'}} <b><a class="text-auth" href="{{pathFor 'forgotPassword'}}">{{i18n 'authentication.sendForgotPassword'}}</a></b></label>
     </form>
 
     <div class="legal">

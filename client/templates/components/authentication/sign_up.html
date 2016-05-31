@@ -29,8 +29,8 @@
             <span class="error-password2 glyphicon glyphicon-remove form-control-feedback"></span>
         </div>
 
-        <input type="submit" value="Enviar" class="input input--submit" />
-        <label for="toggle--signup" class="text text--centered">No eres nuevo? <b><a href="{{pathFor 'signIn'}}">Entra!</a></b></label>
+        <input type="submit" value="{{i18n 'authentication.signUp'}}" class="input input--submit" />
+        <label for="toggle--signup" class="text text--centered">{{i18n 'authentication.notNew'}} <b><a href="{{pathFor 'signIn'}}">{{i18n 'authentication.signIn'}}!</a></b></label>
     </form>
 
     <div class="legal">

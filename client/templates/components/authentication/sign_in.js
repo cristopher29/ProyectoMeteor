@@ -4,8 +4,8 @@ Template.signIn.onCreated(function() {
 });
 
 Template.signIn.onRendered(function() {
-    Session.set('usernamePlaceholder','Usuario o Email');
-    Session.set('passwordPlaceholder','Contraseña');
+    Session.set('usernamePlaceholder',i18n('authentication.usernameOrEmail'));
+    Session.set('passwordPlaceholder',i18n('authentication.password'));
     $('.error-username').hide();
     $('.error-password').hide();
 });
@@ -28,13 +28,13 @@ Template.signIn.events({
             , password = $('#password');
 
         if(!emailOrUsername.val()){
-            Session.set('usernamePlaceholder','Introduce un usuario');
+            Session.set('usernamePlaceholder',i18n('authentication.errors.noUsername'));
             emailOrUsername.addClass('input-error');
             $('.error-username').show();
             return;
         }
         if(!password.val()){
-            Session.set('passwordPlaceholder','Introduce una contraseña');
+            Session.set('passwordPlaceholder',i18n('authentication.errors.noPassword'));
             password.addClass('input-error');
             $('.error-password').show();
             return;
@@ -42,14 +42,11 @@ Template.signIn.events({
 
         emailOrUsername = emailOrUsername.val().replace(/ /g,'');
         password = password.val().replace(/ /g,'');
-        // Trim and validate your fields here....
 
-        // If validation passes, supply the appropriate fields to the
-        // Meteor.loginWithPassword() function.
         Meteor.loginWithPassword(emailOrUsername, password, function(error){
             if (error){
                 if(error.error === 403){
-                    return Bert.alert('Usuario no encontrado','warning', 'growl-top-right');
+                    return Bert.alert(i18n('authentication.errors.userNotFound'),'warning', 'growl-top-right');
                 }
                 return Bert.alert(error.reason,'danger', 'growl-top-right');
             }

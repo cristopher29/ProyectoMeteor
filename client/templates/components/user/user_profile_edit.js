@@ -21,6 +21,14 @@ Template.userProfileEdit.onRendered(function(){
             imgSrc: '/img/no-avatar.jpg'
         });
     }
+
+    if(Meteor.user().profile.cardImage){
+        $('.preview').show();
+    }else{
+        $('.preview').hide();
+    }
+
+
 });
 
 Template.userProfileEdit.helpers({
@@ -62,17 +70,37 @@ Template.userProfileEdit.events({
            swal("No has seleccionado una imagen");
        }
    },
+
+    'click #delete-image-preview': function(e){
+        $('.preview').hide();
+        $('#card-image').val("");
+    },
+
    'change #card-image': function(e,t){
 
        var input = e.target;
+       var imgPath = e.target.value;
+       var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
 
-       var files = [];
-       var image = input.files[0];
-       files.push(image);
+       if (input.files && input.files[0]) {
 
-       Cloudinary.upload(files,{}, function(err, img){
-           Meteor.users.update(Meteor.userId(),{$set:{"profile.cardImage": img.url, "profile.cardImageId": img.public_id}});
-       });
+           if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+
+               var reader = new FileReader();
+
+               reader.onload = function (image) {
+                   $('#image_preview').attr('src', image.target.result);
+               };
+               reader.readAsDataURL(input.files[0]);
+
+               $('.preview').show();
+
+           }else{
+               e.target.form.fileName.value = "";
+               swal('Solo se permiten imagenes!');
+           }
+
+       }
    },
    'click #zoomIn': function(e,t){
        $uploadCrop.zoomIn();
@@ -82,11 +110,12 @@ Template.userProfileEdit.events({
    },
    'click #delete-image': function(e,t){
        e.preventDefault();
-       $('.image-container').hide();
        Meteor.call('deleteCardImage',Meteor.userId(), Meteor.user().profile.cardImageId, function(error,result){
            if(error){
                return Bert.alert(error.reason, 'danger', 'growl-top-right');
            }
+           $('.preview').hide();
+           $('#card-image').val("");
        });
    }
 });
@@ -96,9 +125,17 @@ var editProfileHook = {
     onSuccess: function(){
 
         var imageData = $uploadCrop.getDataURL();
+        var imageCard =$('#card-image')[0].files[0];
+        var files = [];
+        files.push(imageCard);
+
+        if(imageCard){
+            Cloudinary.upload(files,{}, function(err, img){
+                Meteor.users.update(Meteor.userId(),{$set:{"profile.cardImage": img.url, "profile.cardImageId": img.public_id}});
+            });
+        }
 
         if(imageData !== null){
-
             Meteor.users.update(Meteor.userId(), {$set:{ "profile.display_picture" : imageData}});
         }
 

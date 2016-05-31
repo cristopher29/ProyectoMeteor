@@ -6,10 +6,10 @@ Template.signUp.onCreated(function() {
 Template.signUp.onRendered(function() {
 
 
-    Session.set('usernamePlaceholder','Nombre de usuario');
-    Session.set('emailPlaceholder','Email');
-    Session.set('password1Placeholder','Contraseña');
-    Session.set('password2Placeholder','Repetir Contraseña');
+    Session.set('usernamePlaceholder',i18n('authentication.username'));
+    Session.set('emailPlaceholder',i18n('authentication.email'));
+    Session.set('password1Placeholder',i18n('authentication.password'));
+    Session.set('password2Placeholder',i18n('authentication.repeatPassword'));
     $('.error-username').hide();
     $('.error-email').hide();
     $('.error-password1').hide();
@@ -44,7 +44,7 @@ Template.signUp.events({
 
 
         if(!email.val()){
-            Session.set('emailPlaceholder','El email esta vacío');
+            Session.set('emailPlaceholder',i18n('authentication.errors.emailRequired'));
             $('.error-email').show();
             email.addClass('input-error');
             checkForm=false;
@@ -56,26 +56,26 @@ Template.signUp.events({
         }
 
         if(!username.val()){
-            Session.set('usernamePlaceholder','El usuario esta vacío');
+            Session.set('usernamePlaceholder',i18n('authentication.errors.usernameRequired'));
             $('.error-username').show();
             username.addClass('input-error');
             checkForm=false;
         }
 
         if(!password1.val()){
-            Session.set('password1Placeholder','La contraseña esta vacía');
+            Session.set('password1Placeholder',i18n('authentication.errors.passwordRequired'));
             $('.error-password1').show();
             password1.addClass('input-error');
             checkForm=false;
         }
 
         if(!password2.val()){
-            Session.set('password2Placeholder','La contraseña esta vacía');
+            Session.set('password2Placeholder',i18n('authentication.errors.passwordRequired'));
             $('.error-password2').show();
             password2.addClass('input-error');
             checkForm=false;
         }else if(password1.val().replace(/ /g,'') !== password2.val().replace(/ /g,'')){
-            Bert.alert('Las contraseñas no coinciden','danger', 'growl-top-right');
+            Bert.alert(i18n('authentication.errors.passwordNotMatch'),'danger', 'growl-top-right');
             $('.error-password2').show();
             password2.addClass('input-error');
             checkForm=false;
@@ -95,7 +95,7 @@ Template.signUp.events({
                     return Bert.alert(error.reason,'danger', 'growl-top-right');
                 } else {
                     Router.go('postsList');
-                    Bert.alert('Se ha enviado un email de confirmación','success');
+                    Bert.alert(i18n('authentication.verificationEmailSend'),'success');
                 }
 
             });
@@ -106,33 +106,45 @@ Template.signUp.events({
 
     },
     'keyup #username': function(e,t){
-        Session.set('usernamePlaceholder','Nombre de usuario');
+        Session.set('usernamePlaceholder',i18n('authentication.username'));
         $('#username').removeClass('input-error');
         $('.error-username').hide();
     },
     'keyup #email': function(e,t){
         var email = $('#email');
         if(validateEmail(email.val())){
-            Session.set('emailPlaceholder','Email');
+            Session.set('emailPlaceholder',i18n('authentication.email'));
             email.removeClass('input-error');
             $('.error-email').hide();
         }
 
     },
     'keyup #password1': function(e,t){
-        Session.set('password1Placeholder','Contraseña');
+        Session.set('password1Placeholder',i18n('authentication.password'));
         $('#password1').removeClass('input-error');
         $('.error-password1').hide();
     },
     'keyup #password2': function(e,t){
-        Session.set('password2Placeholder','Repetir contraseña');
+        Session.set('password2Placeholder',i18n('authentication.repeatPassword'));
         $('#password2').removeClass('input-error');
         $('.error-password2').hide();
     },
     'click .btn-twitter': function(){
-        Meteor.loginWithTwitter();
+        Meteor.loginWithTwitter({}, function(error){
+            if (error) {
+                Bert.alert(error.reason,'danger','growl-top-right');
+            }else{
+                Router.go('postList');
+            }
+        });
     },
     'click .btn-facebook': function(){
-        Meteor.loginWithFacebook();
+        Meteor.loginWithFacebook({}, function(error){
+            if (error) {
+                Bert.alert(error.reason,'danger','growl-top-right');
+            }else{
+                Router.go('postList');
+            }
+        });
     }
 });

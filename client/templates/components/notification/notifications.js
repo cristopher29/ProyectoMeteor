@@ -4,13 +4,13 @@
 
 Template.registerHelper('actionToText', function(action){
     if(action == "comment"){
-        return "ha comentado"
+        return i18n('notifications.commented')
     }
     if(action == "like"){
-        return "le ha gustado"
+        return i18n('notifications.liked')
     }
     if(action == "follow"){
-        return "te ha seguido"
+        return i18n('notifications.followed')
     }
 });
 

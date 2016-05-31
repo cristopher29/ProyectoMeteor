@@ -37,7 +37,7 @@ easy:search
 iron:router
 aldeed:collection2
 aldeed:autoform
-#msavin:mongol
+msavin:mongol
 reywood:publish-composite
 anti:i18n
 meteorhacks:subs-manager
@@ -55,4 +55,4 @@ copleykj:livestamp
 djedi:sanitize-html
 todda00:friendly-slugs
 meteorhacks:fast-render
-meteorhacks:kadira
+#meteorhacks:kadira

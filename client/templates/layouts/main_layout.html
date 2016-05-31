@@ -8,7 +8,7 @@
 
             {{#if currentUser.emails}}
                 {{#unless currentUser.emails.[0].verified}}
-                    <p class="alert alert-warning">Necesitas verificar tu email antes de usar mi aplicación. <a href="#" class="white-nice resend-verification-link">Reenviar email de verificación?</a></p>
+                    <p class="alert alert-warning">{{i18n 'security.emailNotVerified'}} <a href="#" class="white-nice resend-verification-link">{{i18n 'security.sendVerificationEmail'}}</a></p>
                 {{/unless}}
             {{/if}}
 
@@ -21,12 +21,12 @@
                     {{>currentUserProfileCard}}
 
                     <ul class="list-unstyled options">
-                        <li><strong>FILTRAR</strong></li>
-                        <a href="{{pathFor 'postsList'}}"><li class="{{isActiveRoute 'postsList' class='active'}}" ><i class="fa fa-certificate" aria-hidden="true"></i> NUEVO</li></a>
-                        <a href="{{pathFor 'postsUserFollowing'}}"><li class="{{isActiveRoute 'postsUserFollowing' class='active'}}"  ><i class="fa fa-users" aria-hidden="true"></i> SIGUIENDO</li></a>
+                        <li class="text-uppercase"><strong>{{i18n 'filter.title'}}</strong></li>
+                        <a href="{{pathFor 'postsList'}}"><li class="text-uppercase {{isActiveRoute 'postsList' class='active'}}" ><i class="fa fa-certificate" aria-hidden="true"></i> {{i18n 'filter.newPosts'}}</li></a>
+                        <a href="{{pathFor 'postsUserFollowing'}}"><li class="text-uppercase {{isActiveRoute 'postsUserFollowing' class='active'}}"  ><i class="fa fa-users" aria-hidden="true"></i> {{i18n 'filter.followingPosts'}}</li></a>
                         <!--<a href="{{pathFor 'postsTrending'}}"><li class="{{isActiveRoute 'postsTrending' class='active'}}" ><i class="fa fa-rocket" aria-hidden="true"></i> TRENDING</li></a>-->
-                        <a href="{{pathFor 'postsTrendingComments'}}"><li class="{{isActiveRoute 'postsTrendingComments' class='active'}}" ><i class="fa fa-comments" aria-hidden="true"></i> +COMENTARIOS</li></a>
-                        <a href="{{pathFor 'postsTrendingLikes'}}"><li class="{{isActiveRoute 'postsTrendingLikes' class='active'}}" ><i class="fa fa-heart" aria-hidden="true"></i> +LIKES</li></a>
+                        <a href="{{pathFor 'postsTrendingComments'}}"><li class="text-uppercase {{isActiveRoute 'postsTrendingComments' class='active'}}" ><i class="fa fa-comments" aria-hidden="true"></i> +{{i18n 'filter.moreComments'}}</li></a>
+                        <a href="{{pathFor 'postsTrendingLikes'}}"><li class="text-uppercase {{isActiveRoute 'postsTrendingLikes' class='active'}}" ><i class="fa fa-heart" aria-hidden="true"></i> +{{i18n 'filter.moreLikes'}}</li></a>
                     </ul>
 
                     {{>recommendations}}

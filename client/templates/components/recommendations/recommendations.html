@@ -2,7 +2,7 @@
 
     <div class="hidden-xs {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userProfileEdit|userDifference' class='sidebar-outer col-md-3'}}">
         <div style="background: {{bgColor}}" class="panel panel-default {{isActiveRoute regex='userProfile|userProfileFollowers|userProfileFollowing|userProfileEdit|userDifference' class='sidebar'}}">
-            <div style="background: {{bgColor}} !important;" class="panel-heading recommendations-heading"><h6><strong>USUARIOS ALEATORIOS</strong></h6></div>
+            <div style="background: {{bgColor}} !important;" class="panel-heading recommendations-heading"><h6 class="text-uppercase"><strong>{{i18n 'randomUsers'}}</strong></h6></div>
             <div style="background: {{bgColor}}" class="panel-body recommendations">
                 {{#each users}}
                     <div class="recommendation row">

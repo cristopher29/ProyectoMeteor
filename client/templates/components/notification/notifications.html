@@ -9,7 +9,7 @@
     <ul class="notifications dropdown-menu">
         <li class="text-center" style="color: #18bc9c !important; padding-top: 10px; width: 100%;">
             <div>
-                <a href="{{pathFor 'userAllNotifications'}}">Ver todas las notificaciones</a>
+                <a href="{{pathFor 'userAllNotifications'}}">{{i18n 'notifications.allNotifications'}}</a>
             </div>
         </li>
         {{#if notificationCount}}
@@ -20,7 +20,7 @@
             <li class="notification">
                 <div class="media">
                     <div class="media-body">
-                        <strong class="notification-title">No hay notificaciones</strong>
+                        <strong class="notification-title">{{i18n 'notifications.noNotifications'}}</strong>
 
                     </div>
                 </div>

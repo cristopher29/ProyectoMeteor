@@ -31,10 +31,10 @@
 
                 <div class="form-group upload">
                     <div class="controls">
-                        <label for="upload-file" class="control-label">Imagen (opcional)</label>
+                        <label for="upload-file" class="control-label">{{i18n 'postForm.imageField'}}</label>
                         <label for="file" class="dropzone">
                             <input type="file" class="image" id="upload-file" name="image" onchange="this.form.fileName.value = this.value" accept="image/*">
-                            <input type="text" id="fileName" name="fileName" placeholder="Arrastrar y soltar para subir (o click)" readonly>
+                            <input type="text" id="fileName" name="fileName" placeholder="{{i18n 'dragAndDrop'}}" readonly>
                         </label>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
 
-                <input id="enviar" type="submit" value="Enviar" class="btn btn-primary"/>
+                <input id="enviar" type="submit" value="{{i18n 'postForm.button'}}" class="btn btn-primary"/>
 
         {{/autoForm}}
 

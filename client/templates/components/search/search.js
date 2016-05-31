@@ -73,7 +73,7 @@ Template.search.helpers({
         return PostsIndex;
     },
     inputAttributes: function () {
-        return {'id': 'search-box', 'class': 'suggest-prompt form-control', 'placeholder': 'Buscar...', 'autocomplete': 'off' };
+        return {'id': 'search-box', 'class': 'suggest-prompt form-control', 'placeholder': i18n('search'), 'autocomplete': 'off' };
     }
 });
 
