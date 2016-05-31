@@ -21,7 +21,7 @@ Template.recommendations.helpers({
 
     'users': function(){
 
-        if(Meteor.user().following){
+        if(Meteor.user() && Meteor.user().following){
             return Meteor.users.find({ _id: { $ne: Meteor.userId(), $nin: Meteor.user().following } },{limit: 4,field: {profile:1, username:1}});
         }else{
             return Meteor.users.find({ _id: { $ne: Meteor.userId() } },{limit: 4, field: {profile:1, username:1}});

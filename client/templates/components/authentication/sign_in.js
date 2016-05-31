@@ -67,9 +67,21 @@ Template.signIn.events({
         $('.error-password').hide();
     },
     'click .btn-twitter': function(){
-        Meteor.loginWithTwitter();
+        Meteor.loginWithTwitter({}, function(error){
+            if (error) {
+                Bert.alert(error.reason,'danger','growl-top-right');
+            }else{
+                Router.go('postList');
+            }
+        });
     },
     'click .btn-facebook': function(){
-        Meteor.loginWithFacebook();
+        Meteor.loginWithFacebook({}, function(error){
+            if (error) {
+                Bert.alert(error.reason,'danger','growl-top-right');
+            }else{
+                Router.go('postList');
+            }
+        });
     }
 });
