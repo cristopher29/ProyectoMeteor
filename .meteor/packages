@@ -39,19 +39,20 @@ aldeed:collection2
 aldeed:autoform
 #msavin:mongol
 reywood:publish-composite
+anti:i18n
+meteorhacks:subs-manager
 dburles:spacebars-tohtml
 maazalik:highcharts
+manuelschoebel:ms-seo
 
 # Images
 lepozepo:cloudinary
 
 # Tools
 zimme:active-route
-meteorhacks:subs-manager
 momentjs:moment
 copleykj:livestamp
 djedi:sanitize-html
 todda00:friendly-slugs
 meteorhacks:fast-render
-manuelschoebel:ms-seo
 meteorhacks:kadira

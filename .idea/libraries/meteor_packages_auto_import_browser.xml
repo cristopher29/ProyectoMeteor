@@ -215,6 +215,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-rate-limiter/1.0.0/web.browser/ddp-rate-limiter.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/peerlibrary_assert/0.2.5/web.browser/packages/peerlibrary_assert.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/session/1.1.1/web.browser/session.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/anti_i18n/0.4.3/web.browser/packages/anti_i18n.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/peerlibrary_data-lookup/0.1.0/web.browser/packages/peerlibrary_data-lookup.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/sha/1.0.4/web.browser/sha256.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/dburles_spacebars-tohtml/1.0.1/web.browser/spacebars-tohtml.js" />
@@ -565,6 +566,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-rate-limiter/1.0.0/web.browser/ddp-rate-limiter.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/peerlibrary_assert/0.2.5/web.browser/packages/peerlibrary_assert.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/session/1.1.1/web.browser/session.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/anti_i18n/0.4.3/web.browser/packages/anti_i18n.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/peerlibrary_data-lookup/0.1.0/web.browser/packages/peerlibrary_data-lookup.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/sha/1.0.4/web.browser/sha256.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/dburles_spacebars-tohtml/1.0.1/web.browser/spacebars-tohtml.js" />
