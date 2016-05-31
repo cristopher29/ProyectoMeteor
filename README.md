@@ -1,24 +1,26 @@
 # ProyectoMeteor
 
-Proyecto de una web similar a Tumblr con Meteor
+Proyecto de una web similar a Tumblr con Meteor :rocket:
 
--web: http://cristopher.herokuapp.com/
++ web: http://cristopher.herokuapp.com/
 
-:wavy_dash: Meteor
+# Motivation
+
+La motivación principal de este proyecto ha sido aprender un nuevo framework con el que poder hacer nuevas aplicaciones web.
 
 # Useful Packages
 
-:wavy_dash: easy:search
-:wavy_dash: iron:router
-:wavy_dash: aldeed:collection2
-:wavy_dash: aldeed:autoform
-:wavy_dash: msavin:mongol
-:wavy_dash: reywood:publish-composite
-:wavy_dash: anti:i18n
-:wavy_dash: meteorhacks:subs-manager
-:wavy_dash: dburles:spacebars-tohtml
-:wavy_dash: maazalik:highcharts
-:wavy_dash: manuelschoebel:ms-seo
-:wavy_dash: meteorhacks:fast-render
-:wavy_dash: meteorhacks:kadira
-:wavy_dash: momentjs:moment
++ easy:search
++ iron:router
++ aldeed:collection2
++ aldeed:autoform
++ msavin:mongol
++ reywood:publish-composite
++ anti:i18n
++ meteorhacks:subs-manager
++ dburles:spacebars-tohtml
++ maazalik:highcharts
++ manuelschoebel:ms-seo
++ meteorhacks:fast-render
++ meteorhacks:kadira
++ momentjs:moment
