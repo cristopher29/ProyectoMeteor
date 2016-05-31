@@ -73,6 +73,11 @@ Template.postItem.helpers({
       }
     }
   },
+  noSameUser: function(){
+    if(this.userId !== Meteor.userId()){
+      return true
+    }
+  },
   isFollower: function(){
 
     var user = Meteor.users.findOne({_id: this.userId});

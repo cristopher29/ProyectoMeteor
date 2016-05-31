@@ -61,10 +61,13 @@
                 <div class="profile-header" style="background-image: url({{cardImage}})"></div>
 
                 <div class="profile-navigation">
-                    {{#if isFollower}}
-                        <a href="" class="profile-action unfollow"><i class="fa fa-user-times" aria-hidden="true"></i> Dejar de seguir</a>
-                    {{else}}
-                        <a href="" class="profile-action follow"><i class="fa fa-user-plus"></i> Seguir</a>
+
+                    {{#if noSameUser}}
+                        {{#if isFollower}}
+                            <a href="" class="profile-action unfollow"><i class="fa fa-user-times" aria-hidden="true"></i> Dejar de seguir</a>
+                        {{else}}
+                            <a href="" class="profile-action follow"><i class="fa fa-user-plus"></i> Seguir</a>
+                        {{/if}}
                     {{/if}}
 
                     <p class="profile-nick">
