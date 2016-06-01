@@ -8,7 +8,7 @@ Proyecto de una web similar a Tumblr con Meteor :rocket:
 
 # Motivation
 
-La motivación principal de este proyecto ha sido aprender un nuevo framework con el que poder hacer nuevas aplicaciones web.
+The main motivation of this project has been to learn a new framework to make new web applications.
 
 # Useful Packages
 
