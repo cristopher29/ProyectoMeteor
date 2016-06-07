@@ -4,7 +4,7 @@ Proyecto de una web similar a Tumblr con Meteor :rocket:
 
 + web: http://cristopher.herokuapp.com/
 
-![alt tag](http://i.imgur.com/PtWdYj4.png)
+![alt tag](http://i.imgur.com/8tPbmJk.png)
 
 # Motivation
 
