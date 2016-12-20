@@ -1,6 +1,6 @@
 # ProyectoMeteor
 
-Proyecto de una web similar a Tumblr con Meteor :rocket:
+Proyecto de una web similar a Tumblr con Meteor :rocket: [![](https://img.shields.io/badge/app-Meteor-red.svg)]()
 
 + web: http://cristopher.herokuapp.com/
 
