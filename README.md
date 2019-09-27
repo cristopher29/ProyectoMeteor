@@ -2,8 +2,6 @@
 
 Proyecto de una web similar a Tumblr con Meteor :rocket: [![](https://img.shields.io/badge/app-Meteor-red.svg)]()
 
-+ web: http://cristopher.herokuapp.com/
-
 ![alt tag](http://i.imgur.com/8tPbmJk.png)
 
 # Motivation
